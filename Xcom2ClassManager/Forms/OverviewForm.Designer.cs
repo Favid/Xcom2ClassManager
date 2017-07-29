@@ -1232,6 +1232,8 @@
             // 
             this.cSquaddie1.AllowDrop = true;
             this.cSquaddie1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSquaddie1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSquaddie1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSquaddie1.DisplayMember = "internalName";
             this.cSquaddie1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie1.FormattingEnabled = true;
@@ -1250,6 +1252,8 @@
             // 
             this.cSquaddie2.AllowDrop = true;
             this.cSquaddie2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSquaddie2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSquaddie2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSquaddie2.DisplayMember = "internalName";
             this.cSquaddie2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie2.FormattingEnabled = true;
@@ -1280,6 +1284,8 @@
             // 
             this.cBrigadier3.AllowDrop = true;
             this.cBrigadier3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBrigadier3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cBrigadier3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cBrigadier3.DisplayMember = "internalName";
             this.cBrigadier3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier3.FormattingEnabled = true;
@@ -1298,6 +1304,8 @@
             // 
             this.cSquaddie5.AllowDrop = true;
             this.cSquaddie5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSquaddie5.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSquaddie5.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSquaddie5.DisplayMember = "internalName";
             this.cSquaddie5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie5.FormattingEnabled = true;
@@ -1316,6 +1324,8 @@
             // 
             this.cBrigadier2.AllowDrop = true;
             this.cBrigadier2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBrigadier2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cBrigadier2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cBrigadier2.DisplayMember = "internalName";
             this.cBrigadier2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier2.FormattingEnabled = true;
@@ -1334,6 +1344,8 @@
             // 
             this.cSquaddie6.AllowDrop = true;
             this.cSquaddie6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSquaddie6.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSquaddie6.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSquaddie6.DisplayMember = "internalName";
             this.cSquaddie6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie6.FormattingEnabled = true;
@@ -1352,6 +1364,8 @@
             // 
             this.cBrigadier1.AllowDrop = true;
             this.cBrigadier1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBrigadier1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cBrigadier1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cBrigadier1.DisplayMember = "internalName";
             this.cBrigadier1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier1.FormattingEnabled = true;
@@ -1370,6 +1384,8 @@
             // 
             this.cSquaddie3.AllowDrop = true;
             this.cSquaddie3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSquaddie3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSquaddie3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSquaddie3.DisplayMember = "internalName";
             this.cSquaddie3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie3.FormattingEnabled = true;
@@ -1388,6 +1404,8 @@
             // 
             this.cColonel3.AllowDrop = true;
             this.cColonel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cColonel3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cColonel3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cColonel3.DisplayMember = "internalName";
             this.cColonel3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cColonel3.FormattingEnabled = true;
@@ -1406,6 +1424,8 @@
             // 
             this.cCorporal1.AllowDrop = true;
             this.cCorporal1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cCorporal1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cCorporal1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cCorporal1.DisplayMember = "internalName";
             this.cCorporal1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCorporal1.FormattingEnabled = true;
@@ -1424,6 +1444,8 @@
             // 
             this.cColonel2.AllowDrop = true;
             this.cColonel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cColonel2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cColonel2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cColonel2.DisplayMember = "internalName";
             this.cColonel2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cColonel2.FormattingEnabled = true;
@@ -1442,6 +1464,8 @@
             // 
             this.cCorporal2.AllowDrop = true;
             this.cCorporal2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cCorporal2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cCorporal2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cCorporal2.DisplayMember = "internalName";
             this.cCorporal2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCorporal2.FormattingEnabled = true;
@@ -1460,6 +1484,8 @@
             // 
             this.cColonel1.AllowDrop = true;
             this.cColonel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cColonel1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cColonel1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cColonel1.DisplayMember = "internalName";
             this.cColonel1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cColonel1.FormattingEnabled = true;
@@ -1478,6 +1504,8 @@
             // 
             this.cCorporal3.AllowDrop = true;
             this.cCorporal3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cCorporal3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cCorporal3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cCorporal3.DisplayMember = "internalName";
             this.cCorporal3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCorporal3.FormattingEnabled = true;
@@ -1496,6 +1524,8 @@
             // 
             this.cMajor3.AllowDrop = true;
             this.cMajor3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cMajor3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cMajor3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cMajor3.DisplayMember = "internalName";
             this.cMajor3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cMajor3.FormattingEnabled = true;
@@ -1514,6 +1544,8 @@
             // 
             this.cSergeant1.AllowDrop = true;
             this.cSergeant1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSergeant1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSergeant1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSergeant1.DisplayMember = "internalName";
             this.cSergeant1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSergeant1.FormattingEnabled = true;
@@ -1532,6 +1564,8 @@
             // 
             this.cMajor2.AllowDrop = true;
             this.cMajor2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cMajor2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cMajor2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cMajor2.DisplayMember = "internalName";
             this.cMajor2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cMajor2.FormattingEnabled = true;
@@ -1550,6 +1584,8 @@
             // 
             this.cSergeant2.AllowDrop = true;
             this.cSergeant2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSergeant2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSergeant2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSergeant2.DisplayMember = "internalName";
             this.cSergeant2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSergeant2.FormattingEnabled = true;
@@ -1568,6 +1604,8 @@
             // 
             this.cMajor1.AllowDrop = true;
             this.cMajor1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cMajor1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cMajor1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cMajor1.DisplayMember = "internalName";
             this.cMajor1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cMajor1.FormattingEnabled = true;
@@ -1586,6 +1624,8 @@
             // 
             this.cSergeant3.AllowDrop = true;
             this.cSergeant3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSergeant3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSergeant3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSergeant3.DisplayMember = "internalName";
             this.cSergeant3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSergeant3.FormattingEnabled = true;
@@ -1604,6 +1644,8 @@
             // 
             this.cCaptain3.AllowDrop = true;
             this.cCaptain3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cCaptain3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cCaptain3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cCaptain3.DisplayMember = "internalName";
             this.cCaptain3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCaptain3.FormattingEnabled = true;
@@ -1622,6 +1664,8 @@
             // 
             this.cLieutenant1.AllowDrop = true;
             this.cLieutenant1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cLieutenant1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cLieutenant1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cLieutenant1.DisplayMember = "internalName";
             this.cLieutenant1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cLieutenant1.FormattingEnabled = true;
@@ -1640,6 +1684,8 @@
             // 
             this.cCaptain2.AllowDrop = true;
             this.cCaptain2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cCaptain2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cCaptain2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cCaptain2.DisplayMember = "internalName";
             this.cCaptain2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCaptain2.FormattingEnabled = true;
@@ -1658,6 +1704,8 @@
             // 
             this.cLieutenant2.AllowDrop = true;
             this.cLieutenant2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cLieutenant2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cLieutenant2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cLieutenant2.DisplayMember = "internalName";
             this.cLieutenant2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cLieutenant2.FormattingEnabled = true;
@@ -1676,6 +1724,8 @@
             // 
             this.cCaptain1.AllowDrop = true;
             this.cCaptain1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cCaptain1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cCaptain1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cCaptain1.DisplayMember = "internalName";
             this.cCaptain1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCaptain1.FormattingEnabled = true;
@@ -1694,6 +1744,8 @@
             // 
             this.cLieutenant3.AllowDrop = true;
             this.cLieutenant3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cLieutenant3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cLieutenant3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cLieutenant3.DisplayMember = "internalName";
             this.cLieutenant3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cLieutenant3.FormattingEnabled = true;
@@ -1712,6 +1764,8 @@
             // 
             this.cSquaddie4.AllowDrop = true;
             this.cSquaddie4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSquaddie4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSquaddie4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSquaddie4.DisplayMember = "internalName";
             this.cSquaddie4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie4.FormattingEnabled = true;
@@ -1860,21 +1914,21 @@
             // newToolStripMenuItem1
             // 
             this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            this.newToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.newToolStripMenuItem1.Text = "New";
             this.newToolStripMenuItem1.Click += new System.EventHandler(this.newToolStripMenuItem1_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -1884,41 +1938,41 @@
             this.abilitiesToolStripMenuItem,
             this.classesToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.importToolStripMenuItem.Text = "Import";
             // 
             // abilitiesToolStripMenuItem
             // 
             this.abilitiesToolStripMenuItem.Name = "abilitiesToolStripMenuItem";
-            this.abilitiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abilitiesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.abilitiesToolStripMenuItem.Text = "Abilities";
             this.abilitiesToolStripMenuItem.Click += new System.EventHandler(this.abilitiesToolStripMenuItem_Click);
             // 
             // classesToolStripMenuItem
             // 
             this.classesToolStripMenuItem.Name = "classesToolStripMenuItem";
-            this.classesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.classesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.classesToolStripMenuItem.Text = "Classes";
             this.classesToolStripMenuItem.Click += new System.EventHandler(this.classesToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1936,28 +1990,28 @@
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.deleteToolStripMenuItem1.Text = "Delete";
             this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -1970,6 +2024,8 @@
             // 
             this.cSoldierClass.AllowDrop = true;
             this.cSoldierClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSoldierClass.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cSoldierClass.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSoldierClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSoldierClass.FormattingEnabled = true;
             this.cSoldierClass.Location = new System.Drawing.Point(12, 34);

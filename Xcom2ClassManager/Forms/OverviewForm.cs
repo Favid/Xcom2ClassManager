@@ -559,25 +559,12 @@ namespace Xcom2ClassManager.Forms
 
         private void cAbility_DragDrop(object sender, DragEventArgs e)
         {
-            //ComboBox comboSender = sender as ComboBox;
-            //ComboBox comboDragged = e.Data.GetData(typeof(ComboBox)) as ComboBox;
+            ComboBox comboSender = sender as ComboBox;
+            ComboBox comboDragged = e.Data.GetData(typeof(ComboBox)) as ComboBox;
 
-            //string temp = comboSender.Text;
-
-            //Ability senderAbility = ProjectState.getAbility(comboSender.Text);
-            //if (senderAbility == null)
-            //{
-            //    senderAbility = new Ability();
-            //}
-
-            //Ability draggedAbility = ProjectState.getAbility(comboDragged.Text);
-            //if (draggedAbility == null)
-            //{
-            //    draggedAbility = new Ability();
-            //}
-
-            //comboSender.SelectedIndex = comboSender.Items.IndexOf(draggedAbility);
-            //comboDragged.SelectedIndex = comboSender.Items.IndexOf(senderAbility);
+            Object temp = comboSender.SelectedItem;
+            comboSender.SelectedIndex = comboSender.Items.IndexOf(comboDragged.SelectedItem);
+            comboDragged.SelectedIndex = comboDragged.Items.IndexOf(temp);
         }
 
         private void abilitiesToolStripMenuItem_Click(object sender, EventArgs e)
