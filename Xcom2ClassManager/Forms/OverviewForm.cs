@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Xcom2ClassManager.DataObjects;
+using Xcom2ClassManager.FileManagers;
 
 namespace Xcom2ClassManager.Forms
 {
@@ -69,11 +72,11 @@ namespace Xcom2ClassManager.Forms
 
         private void initAbilityDataSource(ComboBox combo)
         {
-            //List<Ability> abilities = new List<Ability>(ProjectState.getAbilities());
-            //abilities.Add(new Ability());
-            //abilities = abilities.OrderBy(x => x.internalName).ToList();
+            List<Ability> abilities = new List<Ability>(ProjectState.getAbilities());
+            abilities.Add(new Ability());
+            abilities = abilities.OrderBy(x => x.internalName).ToList();
 
-            //combo.DataSource = abilities;
+            combo.DataSource = abilities;
         }
 
         private void setupMenuItemOpen()
@@ -99,25 +102,25 @@ namespace Xcom2ClassManager.Forms
 
         private void open(SoldierClass soldierClass)
         {
-            //SoldierClass openSoldierClass = ProjectState.setOpenSoldierClass(soldierClass.getInternalName());
-            //setupMenuItemOpen();
+            ProjectState.setOpenSoldierClass(soldierClass);
+            setupMenuItemOpen();
 
-            //tDisplayName.Text = soldierClass.metadata.displayName;
-            //tDescription.Text = soldierClass.metadata.description;
-            //tIconString.Text = soldierClass.metadata.iconString;
+            tDisplayName.Text = soldierClass.metadata.displayName;
+            tDescription.Text = soldierClass.metadata.description;
+            tIconString.Text = soldierClass.metadata.iconString;
 
-            //tNumInForcedDeck.Text = soldierClass.experience.numberInForcedDeck.ToString();
-            //tNumInDeck.Text = soldierClass.experience.numberInDeck.ToString();
-            //tKillAssistsPerKill.Text = soldierClass.experience.killAssistsPerKill.ToString();
+            tNumInForcedDeck.Text = soldierClass.experience.numberInForcedDeck.ToString();
+            tNumInDeck.Text = soldierClass.experience.numberInDeck.ToString();
+            tKillAssistsPerKill.Text = soldierClass.experience.killAssistsPerKill.ToString();
 
-            //tSquaddieLoadout.Text = soldierClass.equipment.squaddieLoadout;
-            //tAllowedArmor.Text = soldierClass.equipment.allowedArmors;
+            tSquaddieLoadout.Text = soldierClass.equipment.squaddieLoadout;
+            tAllowedArmor.Text = soldierClass.equipment.allowedArmors;
 
-            //BindingList<Weapon> weapons = new BindingList<Weapon>(soldierClass.equipment.weapons);
-            //lWeapons.DataSource = weapons;
+            BindingList<Weapon> weapons = new BindingList<Weapon>(soldierClass.equipment.weapons);
+            lWeapons.DataSource = weapons;
 
-            //openSoldierStats(soldierClass);
-            //openSoldierAbilities(soldierClass);
+            openSoldierStats(soldierClass);
+            openSoldierAbilities(soldierClass);
         }
 
         private SoldierClass buildSoldierClass()
@@ -644,15 +647,45 @@ namespace Xcom2ClassManager.Forms
         // new class pack
         private void newToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            ClassPack classPack = new ClassPack();
+            ProjectState.setClassPack(classPack);
+            loadClassPack(classPack);
+        }
 
+        private void loadClassPack(ClassPack classPack)
+        {
+            SoldierClass soldierClass = classPack.soldierClasses.First();
+            open(soldierClass);
         }
 
         // open class pack
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // open file browser and let user select a class pack
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            
+            openFileDialog1.Filter = "xml files (*.xml)|*.xml";
+            openFileDialog1.FilterIndex = 0;
+            openFileDialog1.RestoreDirectory = true;
 
-
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            ClassPack classPack = ClassPackManager.loadClassPack(myStream);
+                            loadClassPack(classPack);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
         }
 
         // save class pack
@@ -664,6 +697,22 @@ namespace Xcom2ClassManager.Forms
         // save as class pack
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // open file browser and let user select a location
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "xml files (*.xml)|*.xml";
+            saveFileDialog1.FilterIndex = 0;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    ClassPackManager.saveClassPack(ProjectState.getClassPack(), myStream);
+                    myStream.Close();
+                }
+            }
 
         }
     }
