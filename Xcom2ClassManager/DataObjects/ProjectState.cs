@@ -34,6 +34,12 @@ namespace Xcom2ClassManager.DataObjects
             return instance;
         }
 
+        public static void reloadAbilities()
+        {
+            AbilityManager abilityManager = new AbilityManager();
+            instance.abilities = abilityManager.read();
+        }
+
         public static List<Ability> getAbilities()
         {
             return getInstance().abilities;
