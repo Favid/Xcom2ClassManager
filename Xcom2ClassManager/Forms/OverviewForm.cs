@@ -354,52 +354,52 @@ namespace Xcom2ClassManager.Forms
 
         private void bEditWeapon_Click(object sender, EventArgs e)
         {
-            //WeaponEditor weaponEditor = new WeaponEditor(lWeapons.SelectedItem as Weapon, EditorState.EDIT);
-            //weaponEditor.FormClosing += weaponEditorClosingListener;
-            //weaponEditor.ShowDialog(this);
+            WeaponForm weaponEditor = new WeaponForm(lWeapons.SelectedItem as Weapon, EditorState.EDIT);
+            weaponEditor.FormClosing += weaponEditorClosingListener;
+            weaponEditor.ShowDialog(this);
         }
 
         private void bAddWeapon_Click(object sender, EventArgs e)
         {
-            //WeaponEditor weaponEditor = new WeaponEditor(null, EditorState.ADD);
-            //weaponEditor.FormClosing += weaponEditorClosingListener;
-            //weaponEditor.ShowDialog(this);
+            WeaponForm weaponEditor = new WeaponForm(null, EditorState.ADD);
+            weaponEditor.FormClosing += weaponEditorClosingListener;
+            weaponEditor.ShowDialog(this);
         }
 
         private void weaponEditorClosingListener(object sender, FormClosingEventArgs e)
         {
-            //WeaponEditor weaponEditor = sender as WeaponEditor;
-            //if (weaponEditor != null)
-            //{
-            //    BindingList<Weapon> weapons = lWeapons.DataSource as BindingList<Weapon>;
-            //    Weapon oldWeapon = weaponEditor.oldWeapon;
-            //    Weapon newWeapon = weaponEditor.newWeapon;
+            WeaponForm weaponEditor = sender as WeaponForm;
+            if (weaponEditor != null)
+            {
+                BindingList<Weapon> weapons = lWeapons.DataSource as BindingList<Weapon>;
+                Weapon oldWeapon = weaponEditor.oldWeapon;
+                Weapon newWeapon = weaponEditor.newWeapon;
 
-            //    if (weaponEditor.editorState == EditorState.CANCEL)
-            //    {
-            //        return;
-            //    }
-            //    else if (weaponEditor.editorState == EditorState.ADD)
-            //    {
-            //        weapons.Add(newWeapon);
-            //        lWeapons.DataSource = weapons;
-            //    }
-            //    else if (weaponEditor.editorState == EditorState.EDIT)
-            //    {
-            //        int index = weapons.IndexOf(oldWeapon);
+                if (weaponEditor.editorState == EditorState.CANCEL)
+                {
+                    return;
+                }
+                else if (weaponEditor.editorState == EditorState.ADD)
+                {
+                    weapons.Add(newWeapon);
+                    lWeapons.DataSource = weapons;
+                }
+                else if (weaponEditor.editorState == EditorState.EDIT)
+                {
+                    int index = weapons.IndexOf(oldWeapon);
 
-            //        if (index == -1)
-            //        {
-            //            weapons.Add(newWeapon);
-            //        }
-            //        else
-            //        {
-            //            weapons[index] = newWeapon;
-            //        }
+                    if (index == -1)
+                    {
+                        weapons.Add(newWeapon);
+                    }
+                    else
+                    {
+                        weapons[index] = newWeapon;
+                    }
 
-            //        lWeapons.DataSource = weapons;
-            //    }
-            //}
+                    lWeapons.DataSource = weapons;
+                }
+            }
         }
 
         private void bDeleteWeapon_Click(object sender, EventArgs e)
