@@ -728,5 +728,15 @@ namespace Xcom2ClassManager.Forms
             SoldierClass newClass = ProjectState.copyOpenSoldierClass();
             cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(newClass);
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

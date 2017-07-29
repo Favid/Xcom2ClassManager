@@ -121,6 +121,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -136,6 +137,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\XCOM2_rank_brigadier.png" />
+    <Content Include="Images\XCOM2_rank_captain.png" />
+    <Content Include="Images\XCOM2_rank_colonel.png" />
+    <Content Include="Images\XCOM2_rank_commander.png" />
+    <Content Include="Images\XCOM2_rank_lieutenant.png" />
+    <Content Include="Images\XCOM2_rank_major.png" />
+    <Content Include="Images\XCOM2_rank_sergeant.png" />
+    <Content Include="Images\XCOM2_rank_squaddie.png" />
+    <None Include="Resources\XCOM2_rank_squaddie.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
