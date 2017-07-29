@@ -23,25 +23,29 @@ namespace Xcom2ClassManager.Forms
             previousSelectedSoldierClassIndex = -1;
         }
 
-        private void TabbedPrototype_Load(object sender, EventArgs e)
+        private void OverviewForm_Load(object sender, EventArgs e)
         {
             initAbilitiesDataSources();
             chDragAndDrop.Checked = false;
 
-            if(!string.IsNullOrEmpty(Properties.Settings.Default.ClassPackFilePath))
+            if(isDefaultClassPackPathValid())
             {
                 FileStream myStream = new FileStream(Properties.Settings.Default.ClassPackFilePath, FileMode.Open);
                 ClassPack classPack = ClassPackManager.loadClassPack(myStream);
                 Properties.Settings.Default.ClassPackFilePath = classPack.filePath;
                 loadClassPack(classPack);
             }
-            
+            else
+            {
+                // TODO handle state where no class pack is selected
+            }
+        }
 
-            //SoldierClass openSoldierCLass = ProjectState.getOpenSoldierClass();
-            //if (openSoldierCLass != null)
-            //{
-            //    open(ProjectState.getOpenSoldierClass());
-            //}
+        private bool isDefaultClassPackPathValid()
+        {
+            return !string.IsNullOrEmpty(Properties.Settings.Default.ClassPackFilePath)
+                && Directory.Exists(Properties.Settings.Default.ClassPackFilePath)
+                && File.Exists(Properties.Settings.Default.ClassPackFilePath);
         }
 
         private void initAbilitiesDataSources()
@@ -91,12 +95,7 @@ namespace Xcom2ClassManager.Forms
             combo.DataSource = abilities;
         }
 
-        private void menuItemOpenSoldierClass_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            SoldierClass soldierClass = (SoldierClass)item.Tag;
-            open(soldierClass);
-        }
+        #region Open Class
 
         private void open(SoldierClass soldierClass)
         {
@@ -119,6 +118,140 @@ namespace Xcom2ClassManager.Forms
             openSoldierStats(soldierClass);
             openSoldierAbilities(soldierClass);
         }
+
+        private void openSoldierStats(SoldierClass soldierClass)
+        {
+            tSquaddieHp.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.HP);
+            tCorporalHp.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.HP);
+            tSergeantHp.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.HP);
+            tLieutenantHp.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.HP);
+            tCaptainHp.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.HP);
+            tMajorHp.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.HP);
+            tColonelHp.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.HP);
+            tBrigadierHp.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.HP);
+
+            tSquaddieAim.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Aim);
+            tCorporalAim.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Aim);
+            tSergeantAim.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Aim);
+            tLieutenantAim.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Aim);
+            tCaptainAim.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Aim);
+            tMajorAim.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Aim);
+            tColonelAim.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Aim);
+            tBrigadierAim.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Aim);
+
+            tSquaddieStrength.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Strength);
+            tCorporalStrength.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Strength);
+            tSergeantStrength.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Strength);
+            tLieutenantStrength.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Strength);
+            tCaptainStrength.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Strength);
+            tMajorStrength.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Strength);
+            tColonelStrength.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Strength);
+            tBrigadierStrength.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Strength);
+
+            tSquaddieHacking.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Hacking);
+            tCorporalHacking.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Hacking);
+            tSergeantHacking.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Hacking);
+            tLieutenantHacking.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Hacking);
+            tCaptainHacking.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Hacking);
+            tMajorHacking.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Hacking);
+            tColonelHacking.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Hacking);
+            tBrigadierHacking.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Hacking);
+
+            tSquaddiePsi.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Psi);
+            tCorporalPsi.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Psi);
+            tSergeantPsi.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Psi);
+            tLieutenantPsi.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Psi);
+            tCaptainPsi.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Psi);
+            tMajorPsi.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Psi);
+            tColonelPsi.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Psi);
+            tBrigadierPsi.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Psi);
+
+            tSquaddieMobility.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Mobility);
+            tCorporalMobility.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Mobility);
+            tSergeantMobility.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Mobility);
+            tLieutenantMobility.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Mobility);
+            tCaptainMobility.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Mobility);
+            tMajorMobility.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Mobility);
+            tColonelMobility.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Mobility);
+            tBrigadierMobility.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Mobility);
+
+            tSquaddieWill.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Will);
+            tCorporalWill.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Will);
+            tSergeantWill.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Will);
+            tLieutenantWill.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Will);
+            tCaptainWill.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Will);
+            tMajorWill.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Will);
+            tColonelWill.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Will);
+            tBrigadierWill.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Will);
+
+            tSquaddieDodge.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Dodge);
+            tCorporalDodge.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Dodge);
+            tSergeantDodge.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Dodge);
+            tLieutenantDodge.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Dodge);
+            tCaptainDodge.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Dodge);
+            tMajorDodge.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Dodge);
+            tColonelDodge.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Dodge);
+            tBrigadierDodge.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Dodge);
+        }
+
+        private void openSoldierAbilities(SoldierClass soldierClass)
+        {
+            setCombo(soldierClass, cSquaddie1, SoldierRank.Squaddie, 1);
+            setCombo(soldierClass, cSquaddie2, SoldierRank.Squaddie, 2);
+            setCombo(soldierClass, cSquaddie3, SoldierRank.Squaddie, 3);
+            setCombo(soldierClass, cSquaddie4, SoldierRank.Squaddie, 4);
+            setCombo(soldierClass, cSquaddie5, SoldierRank.Squaddie, 5);
+            setCombo(soldierClass, cSquaddie6, SoldierRank.Squaddie, 6);
+
+            setCombo(soldierClass, cCorporal1, SoldierRank.Corporal, 1);
+            setCombo(soldierClass, cCorporal2, SoldierRank.Corporal, 2);
+            setCombo(soldierClass, cCorporal3, SoldierRank.Corporal, 3);
+
+            setCombo(soldierClass, cSergeant1, SoldierRank.Sergeant, 1);
+            setCombo(soldierClass, cSergeant2, SoldierRank.Sergeant, 2);
+            setCombo(soldierClass, cSergeant3, SoldierRank.Sergeant, 3);
+
+            setCombo(soldierClass, cLieutenant1, SoldierRank.Lieutenant, 1);
+            setCombo(soldierClass, cLieutenant2, SoldierRank.Lieutenant, 2);
+            setCombo(soldierClass, cLieutenant3, SoldierRank.Lieutenant, 3);
+
+            setCombo(soldierClass, cCaptain1, SoldierRank.Captain, 1);
+            setCombo(soldierClass, cCaptain2, SoldierRank.Captain, 2);
+            setCombo(soldierClass, cCaptain3, SoldierRank.Captain, 3);
+
+            setCombo(soldierClass, cMajor1, SoldierRank.Major, 1);
+            setCombo(soldierClass, cMajor2, SoldierRank.Major, 2);
+            setCombo(soldierClass, cMajor3, SoldierRank.Major, 3);
+
+            setCombo(soldierClass, cColonel1, SoldierRank.Colonel, 1);
+            setCombo(soldierClass, cColonel2, SoldierRank.Colonel, 2);
+            setCombo(soldierClass, cColonel3, SoldierRank.Colonel, 3);
+
+            setCombo(soldierClass, cBrigadier1, SoldierRank.Brigadier, 1);
+            setCombo(soldierClass, cBrigadier2, SoldierRank.Brigadier, 2);
+            setCombo(soldierClass, cBrigadier3, SoldierRank.Brigadier, 3);
+        }
+
+        private void setCombo(SoldierClass soldierClass, ComboBox combo, SoldierRank rank, int slot)
+        {
+            combo.SelectedIndex = combo.Items.IndexOf(getAbilityForCombo(soldierClass, rank, slot));
+        }
+
+        private Ability getAbilityForCombo(SoldierClass soldierClass, SoldierRank rank, int slot)
+        {
+            SoldierClassAbility soldierAbility = soldierClass.getSoldierAbility(rank, slot);
+
+            if (soldierAbility != null)
+            {
+                return soldierAbility.getAbility();
+            }
+
+            return new Ability();
+        }
+
+        #endregion Open Class
+
+        #region Build Class From Form
 
         private SoldierClass buildSoldierClass()
         {
@@ -294,23 +427,9 @@ namespace Xcom2ClassManager.Forms
             return soldierAbility;
         }
 
-        private void selectClassToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        #endregion Save Class
 
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // TODO make sure rest of data can be saved first
-
-            //SoldierClass soldierClass = ProjectState.saveClass(buildSoldierClass());
-            //open(soldierClass);
-        }
+        #region Rename Class
 
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -333,24 +452,24 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
+        #endregion Rename Class
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //SoldierClass newClass = ProjectState.addClass();
-            //open(newClass);
-        }
+        #region Delete Class
 
         private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             previousSelectedSoldierClassIndex = -1;
             ProjectState.deleteOpenSoldierClass();
-            //ProjectState.deleteClass();
-            //open(ProjectState.getOpenSoldierClass());
         }
+
+        #endregion Delete Class
+
+        #region Modify Weapons
 
         private void bEditWeapon_Click(object sender, EventArgs e)
         {
@@ -408,140 +527,14 @@ namespace Xcom2ClassManager.Forms
             weapons.Remove(lWeapons.SelectedItem as Weapon);
         }
 
+        #endregion Modify Weapons
+
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void openSoldierStats(SoldierClass soldierClass)
-        {
-            tSquaddieHp.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.HP);
-            tCorporalHp.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.HP);
-            tSergeantHp.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.HP);
-            tLieutenantHp.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.HP);
-            tCaptainHp.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.HP);
-            tMajorHp.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.HP);
-            tColonelHp.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.HP);
-            tBrigadierHp.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.HP);
-
-            tSquaddieAim.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Aim);
-            tCorporalAim.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Aim);
-            tSergeantAim.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Aim);
-            tLieutenantAim.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Aim);
-            tCaptainAim.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Aim);
-            tMajorAim.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Aim);
-            tColonelAim.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Aim);
-            tBrigadierAim.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Aim);
-
-            tSquaddieStrength.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Strength);
-            tCorporalStrength.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Strength);
-            tSergeantStrength.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Strength);
-            tLieutenantStrength.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Strength);
-            tCaptainStrength.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Strength);
-            tMajorStrength.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Strength);
-            tColonelStrength.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Strength);
-            tBrigadierStrength.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Strength);
-
-            tSquaddieHacking.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Hacking);
-            tCorporalHacking.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Hacking);
-            tSergeantHacking.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Hacking);
-            tLieutenantHacking.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Hacking);
-            tCaptainHacking.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Hacking);
-            tMajorHacking.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Hacking);
-            tColonelHacking.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Hacking);
-            tBrigadierHacking.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Hacking);
-
-            tSquaddiePsi.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Psi);
-            tCorporalPsi.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Psi);
-            tSergeantPsi.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Psi);
-            tLieutenantPsi.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Psi);
-            tCaptainPsi.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Psi);
-            tMajorPsi.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Psi);
-            tColonelPsi.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Psi);
-            tBrigadierPsi.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Psi);
-
-            tSquaddieMobility.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Mobility);
-            tCorporalMobility.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Mobility);
-            tSergeantMobility.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Mobility);
-            tLieutenantMobility.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Mobility);
-            tCaptainMobility.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Mobility);
-            tMajorMobility.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Mobility);
-            tColonelMobility.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Mobility);
-            tBrigadierMobility.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Mobility);
-
-            tSquaddieWill.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Will);
-            tCorporalWill.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Will);
-            tSergeantWill.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Will);
-            tLieutenantWill.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Will);
-            tCaptainWill.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Will);
-            tMajorWill.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Will);
-            tColonelWill.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Will);
-            tBrigadierWill.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Will);
-
-            tSquaddieDodge.Text = soldierClass.getStatValueText(SoldierRank.Squaddie, Stat.Dodge);
-            tCorporalDodge.Text = soldierClass.getStatValueText(SoldierRank.Corporal, Stat.Dodge);
-            tSergeantDodge.Text = soldierClass.getStatValueText(SoldierRank.Sergeant, Stat.Dodge);
-            tLieutenantDodge.Text = soldierClass.getStatValueText(SoldierRank.Lieutenant, Stat.Dodge);
-            tCaptainDodge.Text = soldierClass.getStatValueText(SoldierRank.Captain, Stat.Dodge);
-            tMajorDodge.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Dodge);
-            tColonelDodge.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Dodge);
-            tBrigadierDodge.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Dodge);
-        }
-
-        private void openSoldierAbilities(SoldierClass soldierClass)
-        {
-            setCombo(soldierClass, cSquaddie1, SoldierRank.Squaddie, 1);
-            setCombo(soldierClass, cSquaddie2, SoldierRank.Squaddie, 2);
-            setCombo(soldierClass, cSquaddie3, SoldierRank.Squaddie, 3);
-            setCombo(soldierClass, cSquaddie4, SoldierRank.Squaddie, 4);
-            setCombo(soldierClass, cSquaddie5, SoldierRank.Squaddie, 5);
-            setCombo(soldierClass, cSquaddie6, SoldierRank.Squaddie, 6);
-
-            setCombo(soldierClass, cCorporal1, SoldierRank.Corporal, 1);
-            setCombo(soldierClass, cCorporal2, SoldierRank.Corporal, 2);
-            setCombo(soldierClass, cCorporal3, SoldierRank.Corporal, 3);
-
-            setCombo(soldierClass, cSergeant1, SoldierRank.Sergeant, 1);
-            setCombo(soldierClass, cSergeant2, SoldierRank.Sergeant, 2);
-            setCombo(soldierClass, cSergeant3, SoldierRank.Sergeant, 3);
-
-            setCombo(soldierClass, cLieutenant1, SoldierRank.Lieutenant, 1);
-            setCombo(soldierClass, cLieutenant2, SoldierRank.Lieutenant, 2);
-            setCombo(soldierClass, cLieutenant3, SoldierRank.Lieutenant, 3);
-
-            setCombo(soldierClass, cCaptain1, SoldierRank.Captain, 1);
-            setCombo(soldierClass, cCaptain2, SoldierRank.Captain, 2);
-            setCombo(soldierClass, cCaptain3, SoldierRank.Captain, 3);
-
-            setCombo(soldierClass, cMajor1, SoldierRank.Major, 1);
-            setCombo(soldierClass, cMajor2, SoldierRank.Major, 2);
-            setCombo(soldierClass, cMajor3, SoldierRank.Major, 3);
-
-            setCombo(soldierClass, cColonel1, SoldierRank.Colonel, 1);
-            setCombo(soldierClass, cColonel2, SoldierRank.Colonel, 2);
-            setCombo(soldierClass, cColonel3, SoldierRank.Colonel, 3);
-
-            setCombo(soldierClass, cBrigadier1, SoldierRank.Brigadier, 1);
-            setCombo(soldierClass, cBrigadier2, SoldierRank.Brigadier, 2);
-            setCombo(soldierClass, cBrigadier3, SoldierRank.Brigadier, 3);
-        }
-
-        private void setCombo(SoldierClass soldierClass, ComboBox combo, SoldierRank rank, int slot)
-        {
-            combo.SelectedIndex = combo.Items.IndexOf(getAbilityForCombo(soldierClass, rank, slot));
-        }
-
-        private Ability getAbilityForCombo(SoldierClass soldierClass, SoldierRank rank, int slot)
-        {
-            SoldierClassAbility soldierAbility = soldierClass.getSoldierAbility(rank, slot);
-
-            if (soldierAbility != null)
-            {
-                return soldierAbility.getAbility();
-            }
-
-            return new Ability();
-        }
+        #region Ability Events
 
         private void cAbility_MouseDown(object sender, MouseEventArgs e)
         {
@@ -565,18 +558,6 @@ namespace Xcom2ClassManager.Forms
             Object temp = comboSender.SelectedItem;
             comboSender.SelectedIndex = comboSender.Items.IndexOf(comboDragged.SelectedItem);
             comboDragged.SelectedIndex = comboDragged.Items.IndexOf(temp);
-        }
-
-        private void abilitiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ImportAbilitiesForm dialog = new ImportAbilitiesForm(ProjectState.getAbilities());
-            dialog.ShowDialog();
-        }
-
-        private void classesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //ImportClasses dialog = new ImportClasses();
-            //dialog.ShowDialog();
         }
 
         private void cAbility_SelectedIndexChanged(object sender, EventArgs e)
@@ -609,13 +590,21 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
+        #endregion Ability Events
+
+        private void abilitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportAbilitiesForm dialog = new ImportAbilitiesForm(ProjectState.getAbilities());
+            dialog.ShowDialog();
+        }
+
         private void updateHelpText(string text)
         {
             laHelp.Text = text;
         }
 
         // new class pack
-        private void newToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClassPack classPack = new ClassPack();
 
@@ -635,8 +624,7 @@ namespace Xcom2ClassManager.Forms
             SoldierClass soldierClass = classPack.soldierClasses.First();
             cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(soldierClass);
         }
-
-        // open class pack
+        
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Stream myStream = null;
@@ -668,9 +656,8 @@ namespace Xcom2ClassManager.Forms
                 }
             }
         }
-
-        // save class pack
-        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClassPack classPack = ProjectState.getClassPack();
             if(!string.IsNullOrEmpty(classPack.filePath))
@@ -680,11 +667,9 @@ namespace Xcom2ClassManager.Forms
                 stream.Close();
             }
         }
-
-        // save as class pack
+        
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // open file browser and let user select a location
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -742,11 +727,6 @@ namespace Xcom2ClassManager.Forms
         {
             SoldierClass newClass = ProjectState.copyOpenSoldierClass();
             cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(newClass);
-        }
-
-        private void rangerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
