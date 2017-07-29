@@ -531,7 +531,8 @@ namespace Xcom2ClassManager.Forms
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ClassPackExportForm classPackExportForm = new ClassPackExportForm(ProjectState.getClassPack());
+            classPackExportForm.ShowDialog();
         }
 
         #region Ability Events
@@ -602,8 +603,7 @@ namespace Xcom2ClassManager.Forms
         {
             laHelp.Text = text;
         }
-
-        // new class pack
+        
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClassPack classPack = new ClassPack();

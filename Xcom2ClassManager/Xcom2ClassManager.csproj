@@ -54,6 +54,7 @@
     <Compile Include="DataObjects\ClassPack.cs" />
     <Compile Include="DataObjects\ProjectState.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ExportForXcom\ClassExportManager.cs" />
     <Compile Include="FileManagers\AbilityManager.cs" />
     <Compile Include="FileManagers\ClassPackManager.cs" />
     <Compile Include="Form1.cs">
@@ -61,6 +62,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ClassPackExportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClassPackExportForm.Designer.cs">
+      <DependentUpon>ClassPackExportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ImportAbilitiesForm.cs">
       <SubType>Form</SubType>
@@ -97,6 +104,9 @@
     <Compile Include="DataObjects\Weapon.cs" />
     <Compile Include="Structs.cs" />
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="Forms\ClassPackExportForm.resx">
+      <DependentUpon>ClassPackExportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\OverviewForm.resx">
       <DependentUpon>OverviewForm.cs</DependentUpon>
     </EmbeddedResource>

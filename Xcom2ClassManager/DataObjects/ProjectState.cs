@@ -20,8 +20,6 @@ namespace Xcom2ClassManager.DataObjects
         {
             AbilityManager abilityManager = new AbilityManager();
             abilities = abilityManager.read();
-
-            //classPack = ClassPackManager.loadClassPack(DEFAULT_CLASS_PACK_PATH);
         }
 
         private static ProjectState getInstance()
