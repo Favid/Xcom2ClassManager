@@ -15,15 +15,27 @@ namespace Xcom2ClassManager.Forms
 {
     public partial class OverviewForm : Form
     {
+        private int previousSelectedSoldierClassIndex;
+
         public OverviewForm()
         {
             InitializeComponent();
+            previousSelectedSoldierClassIndex = -1;
         }
 
         private void TabbedPrototype_Load(object sender, EventArgs e)
         {
             initAbilitiesDataSources();
             chDragAndDrop.Checked = false;
+
+            if(!string.IsNullOrEmpty(Properties.Settings.Default.ClassPackFilePath))
+            {
+                FileStream myStream = new FileStream(Properties.Settings.Default.ClassPackFilePath, FileMode.Open);
+                ClassPack classPack = ClassPackManager.loadClassPack(myStream);
+                Properties.Settings.Default.ClassPackFilePath = classPack.filePath;
+                loadClassPack(classPack);
+            }
+            
 
             //SoldierClass openSoldierCLass = ProjectState.getOpenSoldierClass();
             //if (openSoldierCLass != null)
@@ -125,27 +137,25 @@ namespace Xcom2ClassManager.Forms
 
         private SoldierClass buildSoldierClass()
         {
-            //SoldierClass soldierClass = new SoldierClass();
+            SoldierClass soldierClass = new SoldierClass();
 
-            //soldierClass.metadata.internalName = ProjectState.getOpenSoldierClass().metadata.internalName;
-            //soldierClass.metadata.displayName = tDisplayName.Text;
-            //soldierClass.metadata.description = tDescription.Text;
-            //soldierClass.metadata.iconString = tIconString.Text;
+            soldierClass.metadata.internalName = ProjectState.getOpenSoldierClass().metadata.internalName;
+            soldierClass.metadata.displayName = tDisplayName.Text;
+            soldierClass.metadata.description = tDescription.Text;
+            soldierClass.metadata.iconString = tIconString.Text;
 
-            //soldierClass.experience.numberInForcedDeck = int.Parse(tNumInForcedDeck.Text);
-            //soldierClass.experience.numberInDeck = int.Parse(tNumInDeck.Text);
-            //soldierClass.experience.killAssistsPerKill = int.Parse(tKillAssistsPerKill.Text);
+            soldierClass.experience.numberInForcedDeck = int.Parse(tNumInForcedDeck.Text);
+            soldierClass.experience.numberInDeck = int.Parse(tNumInDeck.Text);
+            soldierClass.experience.killAssistsPerKill = int.Parse(tKillAssistsPerKill.Text);
 
-            //soldierClass.equipment.squaddieLoadout = tSquaddieLoadout.Text;
-            //soldierClass.equipment.allowedArmors = tAllowedArmor.Text;
-            //soldierClass.equipment.weapons = (lWeapons.DataSource as BindingList<Weapon>).ToList();
+            soldierClass.equipment.squaddieLoadout = tSquaddieLoadout.Text;
+            soldierClass.equipment.allowedArmors = tAllowedArmor.Text;
+            soldierClass.equipment.weapons = (lWeapons.DataSource as BindingList<Weapon>).ToList();
 
-            //soldierClass.stats = buildSoldierClassStats();
-            //soldierClass.soldierAbilities = buildSoldierClassAbilities();
+            soldierClass.stats = buildSoldierClassStats();
+            soldierClass.soldierAbilities = buildSoldierClassAbilities();
 
-            //return soldierClass;
-
-            return null;
+            return soldierClass;
         }
 
         private List<SoldierClassStat> buildSoldierClassStats()
@@ -229,15 +239,13 @@ namespace Xcom2ClassManager.Forms
 
         private SoldierClassStat buildSoldierStatFromControl(TextBox control, SoldierRank rank, Stat stat)
         {
-            //SoldierClassStat soldierStat = new SoldierClassStat();
+            SoldierClassStat soldierStat = new SoldierClassStat();
 
-            //soldierStat.rank = rank;
-            //soldierStat.stat = stat;
-            //soldierStat.value = Utils.parseStringToInt(control.Text);
+            soldierStat.rank = rank;
+            soldierStat.stat = stat;
+            soldierStat.value = Utils.parseStringToInt(control.Text);
 
-            //return soldierStat;
-
-            return null;
+            return soldierStat;
         }
 
         private List<SoldierClassAbility> buildSoldierClassAbilities()
@@ -352,6 +360,8 @@ namespace Xcom2ClassManager.Forms
 
         private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            previousSelectedSoldierClassIndex = -1;
+            ProjectState.deleteOpenSoldierClass();
             //ProjectState.deleteClass();
             //open(ProjectState.getOpenSoldierClass());
         }
@@ -597,18 +607,6 @@ namespace Xcom2ClassManager.Forms
             //dialog.ShowDialog();
         }
 
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //SoldierClass classToCopy = ProjectState.getOpenSoldierClass();
-            //SoldierClass newClass = new SoldierClass(classToCopy);
-
-            //// TODO actually validate the name
-            //newClass.metadata.internalName += "New";
-            //newClass = ProjectState.addClass(newClass);
-
-            //open(newClass);
-        }
-
         private void cAbility_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox combo = sender as ComboBox;
@@ -648,14 +646,22 @@ namespace Xcom2ClassManager.Forms
         private void newToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ClassPack classPack = new ClassPack();
+
+            // TODO once the overview form has a state for no loaded class, remove this
+            SoldierClass soldierClass = new SoldierClass();
+            soldierClass.metadata.internalName = "NewClass";
+            classPack.soldierClasses.Add(soldierClass);
+
             ProjectState.setClassPack(classPack);
             loadClassPack(classPack);
         }
 
         private void loadClassPack(ClassPack classPack)
         {
+            ProjectState.setClassPack(classPack);
+            cSoldierClass.DataSource = ProjectState.getClassPack().soldierClasses;
             SoldierClass soldierClass = classPack.soldierClasses.First();
-            open(soldierClass);
+            cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(soldierClass);
         }
 
         // open class pack
@@ -667,7 +673,7 @@ namespace Xcom2ClassManager.Forms
             openFileDialog1.Filter = "xml files (*.xml)|*.xml";
             openFileDialog1.FilterIndex = 0;
             openFileDialog1.RestoreDirectory = true;
-
+            
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -677,6 +683,9 @@ namespace Xcom2ClassManager.Forms
                         using (myStream)
                         {
                             ClassPack classPack = ClassPackManager.loadClassPack(myStream);
+                            classPack.filePath = openFileDialog1.FileName;
+                            Properties.Settings.Default.ClassPackFilePath = classPack.filePath;
+                            Properties.Settings.Default.Save();
                             loadClassPack(classPack);
                         }
                     }
@@ -691,7 +700,13 @@ namespace Xcom2ClassManager.Forms
         // save class pack
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            ClassPack classPack = ProjectState.getClassPack();
+            if(!string.IsNullOrEmpty(classPack.filePath))
+            {
+                FileStream stream = new FileStream(classPack.filePath, FileMode.Open);
+                ClassPackManager.saveClassPack(ProjectState.getClassPack(), stream);
+                stream.Close();
+            }
         }
 
         // save as class pack
@@ -713,6 +728,52 @@ namespace Xcom2ClassManager.Forms
                     myStream.Close();
                 }
             }
+
+        }
+
+        private void cSoldierClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox combo = sender as ComboBox;
+            
+            if (combo != null)
+            {
+                SoldierClass soldierClass = combo.SelectedItem as SoldierClass;
+
+                if (previousSelectedSoldierClassIndex > -1)
+                {
+                    saveOpenClass();
+                }
+
+                combo.SelectedItem = soldierClass;
+
+                if (soldierClass != null)
+                {
+                    open(soldierClass);
+                    previousSelectedSoldierClassIndex = combo.SelectedIndex;
+                }
+            }
+        }
+
+        private void saveOpenClass()
+        {
+            SoldierClass soldierClass = buildSoldierClass();
+            ProjectState.updateClassPackSoldierClass(soldierClass);
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SoldierClass newClass = ProjectState.addNewClassPackSoldierClass();
+            cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(newClass);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SoldierClass newClass = ProjectState.copyOpenSoldierClass();
+            cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(newClass);
+        }
+
+        private void rangerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }

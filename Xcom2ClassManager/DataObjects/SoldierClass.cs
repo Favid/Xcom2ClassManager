@@ -77,5 +77,10 @@ namespace Xcom2ClassManager
 
             return soldierAbility;
         }
+
+        public override string ToString()
+        {
+            return metadata.internalName;
+        }
     }
 }

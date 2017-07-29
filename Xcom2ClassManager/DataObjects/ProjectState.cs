@@ -49,6 +49,45 @@ namespace Xcom2ClassManager.DataObjects
             getInstance().classPack = classPack;
         }
 
+        public static SoldierClass addNewClassPackSoldierClass()
+        {
+            SoldierClass soldierClass = new SoldierClass();
+            soldierClass.metadata.internalName = generateNewClassName("NewClass");
+            instance.classPack.soldierClasses.Add(soldierClass);
+            return soldierClass;
+        }
+
+        public static SoldierClass copyOpenSoldierClass()
+        {
+            SoldierClass classToCopy = ProjectState.getOpenSoldierClass();
+            SoldierClass newClass = new SoldierClass(classToCopy);
+            newClass.metadata.internalName = generateNewClassName(classToCopy.metadata.internalName);
+            
+            instance.classPack.soldierClasses.Add(newClass);
+            return newClass;
+        }
+
+        private static string generateNewClassName(string baseName)
+        {
+            string name = baseName;
+            int appendedNumber = 1;
+
+            while(getInstance().classPack.soldierClasses.Where(x => x.metadata.internalName.Equals(name)).Count() > 0)
+            {
+                name = baseName + appendedNumber.ToString();
+                appendedNumber++;
+            }
+
+            return name;
+        }
+
+        public static void updateClassPackSoldierClass(SoldierClass soldierClass)
+        {
+            SoldierClass classToReplace = getClassPack().soldierClasses.Where(x => x.metadata.internalName.Equals(soldierClass.metadata.internalName)).First();
+            int indexToReplace = getClassPack().soldierClasses.IndexOf(classToReplace);
+            instance.classPack.soldierClasses[indexToReplace] = soldierClass;
+        }
+
         public static SoldierClass getOpenSoldierClass()
         {
             return getInstance().openSoldierClass;
@@ -57,6 +96,11 @@ namespace Xcom2ClassManager.DataObjects
         public static void setOpenSoldierClass(SoldierClass soldierClass)
         {
             getInstance().openSoldierClass = soldierClass;
+        }
+
+        public static void deleteOpenSoldierClass()
+        {
+            instance.classPack.soldierClasses.Remove(getOpenSoldierClass());
         }
     }
 }

@@ -197,6 +197,8 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cSoldierClass = new System.Windows.Forms.ComboBox();
             this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
@@ -226,7 +228,7 @@
             this.tabControl1.Controls.Add(this.tabGeneral);
             this.tabControl1.Controls.Add(this.tabStats);
             this.tabControl1.Controls.Add(this.tabAbilities);
-            this.tabControl1.Location = new System.Drawing.Point(12, 39);
+            this.tabControl1.Location = new System.Drawing.Point(12, 61);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(536, 497);
@@ -1227,6 +1229,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(490, 348);
             this.tableLayoutPanel1.TabIndex = 108;
             // 
@@ -1827,9 +1830,9 @@
             this.laHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.laHelp.Location = new System.Drawing.Point(13, 540);
+            this.laHelp.Location = new System.Drawing.Point(13, 561);
             this.laHelp.Name = "laHelp";
-            this.laHelp.Size = new System.Drawing.Size(531, 34);
+            this.laHelp.Size = new System.Drawing.Size(531, 41);
             this.laHelp.TabIndex = 17;
             this.laHelp.Text = "Click a parameter label for more details about what each item does.";
             // 
@@ -1879,13 +1882,14 @@
             // rangerToolStripMenuItem
             // 
             this.rangerToolStripMenuItem.Name = "rangerToolStripMenuItem";
-            this.rangerToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.rangerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.rangerToolStripMenuItem.Text = "Ranger";
+            this.rangerToolStripMenuItem.Click += new System.EventHandler(this.rangerToolStripMenuItem_Click);
             // 
             // specialistToolStripMenuItem
             // 
             this.specialistToolStripMenuItem.Name = "specialistToolStripMenuItem";
-            this.specialistToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.specialistToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.specialistToolStripMenuItem.Text = "Specialist";
             // 
             // saveToolStripMenuItem
@@ -1937,29 +1941,30 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.renameToolStripMenuItem,
             this.deleteToolStripMenuItem1,
-            this.copyToolStripMenuItem});
+            this.copyToolStripMenuItem,
+            this.addToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.editToolStripMenuItem.Text = "Class";
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem1.Text = "Delete";
             this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -1976,21 +1981,21 @@
             // newToolStripMenuItem1
             // 
             this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            this.newToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.newToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem1.Text = "New";
             this.newToolStripMenuItem1.Click += new System.EventHandler(this.newToolStripMenuItem1_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
@@ -2001,6 +2006,25 @@
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // cSoldierClass
+            // 
+            this.cSoldierClass.AllowDrop = true;
+            this.cSoldierClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cSoldierClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cSoldierClass.FormattingEnabled = true;
+            this.cSoldierClass.Location = new System.Drawing.Point(12, 34);
+            this.cSoldierClass.Name = "cSoldierClass";
+            this.cSoldierClass.Size = new System.Drawing.Size(532, 21);
+            this.cSoldierClass.TabIndex = 100;
+            this.cSoldierClass.SelectedIndexChanged += new System.EventHandler(this.cSoldierClass_SelectedIndexChanged);
+            // 
             // soldierClassAbilityBindingSource
             // 
             this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
@@ -2009,7 +2033,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 583);
+            this.ClientSize = new System.Drawing.Size(560, 611);
+            this.Controls.Add(this.cSoldierClass);
             this.Controls.Add(this.laHelp);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.laClass);
@@ -2211,5 +2236,7 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cSoldierClass;
     }
 }

@@ -77,6 +77,7 @@
     <Compile Include="DataObjects\SoldierClassMetadata.cs" />
     <Compile Include="DataObjects\SoldierClassStat.cs" />
     <Compile Include="DataObjects\Weapon.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\OverviewForm.resx">
       <DependentUpon>OverviewForm.cs</DependentUpon>
     </EmbeddedResource>
