@@ -81,11 +81,22 @@ namespace Xcom2ClassManager.DataObjects
             return name;
         }
 
-        public static void updateClassPackSoldierClass(SoldierClass soldierClass)
+        public static void renameOpenClass(string newName)
         {
-            SoldierClass classToReplace = getClassPack().soldierClasses.Where(x => x.metadata.internalName.Equals(soldierClass.metadata.internalName)).First();
-            int indexToReplace = getClassPack().soldierClasses.IndexOf(classToReplace);
-            instance.classPack.soldierClasses[indexToReplace] = soldierClass;
+            SoldierClass classToUpdate = getOpenSoldierClass();
+            int indexToReplace = getClassPack().soldierClasses.IndexOf(classToUpdate);
+            instance.classPack.soldierClasses[indexToReplace].metadata.internalName = newName;
+        }
+
+        public static void updateClassPackSoldierClass(string internalName, SoldierClass soldierClass)
+        {
+            SoldierClass classToReplace = getClassPack().soldierClasses.Where(x => x.metadata.internalName.Equals(internalName)).FirstOrDefault();
+            if(classToReplace != null)
+            {
+                int indexToReplace = getClassPack().soldierClasses.IndexOf(classToReplace);
+                instance.classPack.soldierClasses[indexToReplace] = soldierClass;
+            }
+            
         }
 
         public static SoldierClass getOpenSoldierClass()

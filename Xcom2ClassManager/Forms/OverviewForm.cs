@@ -91,20 +91,6 @@ namespace Xcom2ClassManager.Forms
             combo.DataSource = abilities;
         }
 
-        private void setupMenuItemOpen()
-        {
-            //menuItemOpen.DropDownItems.Clear();
-
-            //List<SoldierClass> soldierClasses = ProjectState.getSoldierClasses();
-            //foreach (SoldierClass soldierClass in soldierClasses)
-            //{
-            //    ToolStripMenuItem item = new ToolStripMenuItem(soldierClass.metadata.internalName);
-            //    item.Tag = soldierClass;
-            //    item.Click += new System.EventHandler(this.menuItemOpenSoldierClass_Click);
-            //    menuItemOpen.DropDownItems.Add(item);
-            //}
-        }
-
         private void menuItemOpenSoldierClass_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -115,7 +101,6 @@ namespace Xcom2ClassManager.Forms
         private void open(SoldierClass soldierClass)
         {
             ProjectState.setOpenSoldierClass(soldierClass);
-            setupMenuItemOpen();
 
             tDisplayName.Text = soldierClass.metadata.displayName;
             tDescription.Text = soldierClass.metadata.description;
@@ -329,22 +314,23 @@ namespace Xcom2ClassManager.Forms
 
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Rename rename = new Rename(ProjectState.getOpenSoldierClass().metadata.internalName);
-            //rename.FormClosing += renameClosingListener;
-            //rename.ShowDialog(this);
+            RenameForm rename = new RenameForm(ProjectState.getOpenSoldierClass().metadata.internalName);
+            rename.FormClosing += renameClosingListener;
+            rename.ShowDialog(this);
         }
 
         private void renameClosingListener(object sender, FormClosingEventArgs e)
         {
-            //Rename renameForm = sender as Rename;
-            //if (renameForm != null)
-            //{
-            //    if (!renameForm.getNewName().Equals(ProjectState.getOpenSoldierClassInternalName()))
-            //    {
-            //        ProjectState.renameClass(renameForm.getNewName());
-            //        setupMenuItemOpen();
-            //    }
-            //}
+            RenameForm renameForm = sender as RenameForm;
+            if (renameForm != null)
+            {
+                if (!renameForm.getNewName().Equals(ProjectState.getOpenSoldierClass().metadata.internalName))
+                {
+                    SoldierClass soldierClass = buildSoldierClass();
+                    soldierClass.metadata.internalName = renameForm.getNewName();
+                    ProjectState.updateClassPackSoldierClass(renameForm.getOldName(), soldierClass);
+                }
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -757,7 +743,7 @@ namespace Xcom2ClassManager.Forms
         private void saveOpenClass()
         {
             SoldierClass soldierClass = buildSoldierClass();
-            ProjectState.updateClassPackSoldierClass(soldierClass);
+            ProjectState.updateClassPackSoldierClass(soldierClass.metadata.internalName, soldierClass);
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
