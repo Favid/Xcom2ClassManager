@@ -94,7 +94,7 @@ namespace Xcom2ClassManager.Forms
             combo.DataSource = abilities;
         }
 
-        #region Open Class
+        #region Populate Form With Class
 
         private void open(SoldierClass soldierClass)
         {
@@ -113,6 +113,9 @@ namespace Xcom2ClassManager.Forms
 
             BindingList<Weapon> weapons = new BindingList<Weapon>(soldierClass.equipment.weapons);
             lWeapons.DataSource = weapons;
+
+            tLeftTree.Text = soldierClass.leftTreeName;
+            tRightTree.Text = soldierClass.rightTreeName;
 
             openSoldierStats(soldierClass);
             openSoldierAbilities(soldierClass);
@@ -271,6 +274,9 @@ namespace Xcom2ClassManager.Forms
 
             soldierClass.stats = buildSoldierClassStats();
             soldierClass.soldierAbilities = buildSoldierClassAbilities();
+
+            soldierClass.leftTreeName = tLeftTree.Text;
+            soldierClass.rightTreeName = tRightTree.Text;
 
             return soldierClass;
         }

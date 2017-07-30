@@ -198,6 +198,8 @@
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tLeftTree = new System.Windows.Forms.TextBox();
+            this.tRightTree = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -248,7 +250,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 61);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(570, 480);
+            this.tabControl1.Size = new System.Drawing.Size(570, 525);
             this.tabControl1.TabIndex = 16;
             // 
             // tabGeneral
@@ -502,7 +504,7 @@
             this.tabStats.Controls.Add(this.tableLayoutPanel2);
             this.tabStats.Location = new System.Drawing.Point(4, 22);
             this.tabStats.Name = "tabStats";
-            this.tabStats.Size = new System.Drawing.Size(562, 454);
+            this.tabStats.Size = new System.Drawing.Size(562, 499);
             this.tabStats.TabIndex = 7;
             this.tabStats.Text = "Stats";
             this.tabStats.UseVisualStyleBackColor = true;
@@ -510,7 +512,7 @@
             // tBrigadierDodge
             // 
             this.tBrigadierDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierDodge.Location = new System.Drawing.Point(449, 319);
+            this.tBrigadierDodge.Location = new System.Drawing.Point(453, 319);
             this.tBrigadierDodge.Name = "tBrigadierDodge";
             this.tBrigadierDodge.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierDodge.TabIndex = 78;
@@ -518,7 +520,7 @@
             // tColonelDodge
             // 
             this.tColonelDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelDodge.Location = new System.Drawing.Point(449, 278);
+            this.tColonelDodge.Location = new System.Drawing.Point(453, 278);
             this.tColonelDodge.Name = "tColonelDodge";
             this.tColonelDodge.Size = new System.Drawing.Size(28, 20);
             this.tColonelDodge.TabIndex = 68;
@@ -526,7 +528,7 @@
             // tMajorDodge
             // 
             this.tMajorDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorDodge.Location = new System.Drawing.Point(449, 237);
+            this.tMajorDodge.Location = new System.Drawing.Point(453, 237);
             this.tMajorDodge.Name = "tMajorDodge";
             this.tMajorDodge.Size = new System.Drawing.Size(28, 20);
             this.tMajorDodge.TabIndex = 58;
@@ -534,7 +536,7 @@
             // tCaptainDodge
             // 
             this.tCaptainDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainDodge.Location = new System.Drawing.Point(449, 196);
+            this.tCaptainDodge.Location = new System.Drawing.Point(453, 196);
             this.tCaptainDodge.Name = "tCaptainDodge";
             this.tCaptainDodge.Size = new System.Drawing.Size(28, 20);
             this.tCaptainDodge.TabIndex = 48;
@@ -542,7 +544,7 @@
             // tLieutenantDodge
             // 
             this.tLieutenantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantDodge.Location = new System.Drawing.Point(449, 155);
+            this.tLieutenantDodge.Location = new System.Drawing.Point(453, 155);
             this.tLieutenantDodge.Name = "tLieutenantDodge";
             this.tLieutenantDodge.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantDodge.TabIndex = 38;
@@ -550,7 +552,7 @@
             // tSergeantDodge
             // 
             this.tSergeantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantDodge.Location = new System.Drawing.Point(449, 114);
+            this.tSergeantDodge.Location = new System.Drawing.Point(453, 114);
             this.tSergeantDodge.Name = "tSergeantDodge";
             this.tSergeantDodge.Size = new System.Drawing.Size(28, 20);
             this.tSergeantDodge.TabIndex = 28;
@@ -558,7 +560,7 @@
             // tCorporalDodge
             // 
             this.tCorporalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalDodge.Location = new System.Drawing.Point(449, 73);
+            this.tCorporalDodge.Location = new System.Drawing.Point(453, 73);
             this.tCorporalDodge.Name = "tCorporalDodge";
             this.tCorporalDodge.Size = new System.Drawing.Size(28, 20);
             this.tCorporalDodge.TabIndex = 18;
@@ -566,7 +568,7 @@
             // tSquaddieDodge
             // 
             this.tSquaddieDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieDodge.Location = new System.Drawing.Point(449, 32);
+            this.tSquaddieDodge.Location = new System.Drawing.Point(453, 32);
             this.tSquaddieDodge.Name = "tSquaddieDodge";
             this.tSquaddieDodge.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieDodge.TabIndex = 8;
@@ -575,7 +577,7 @@
             // 
             this.label49.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(443, 4);
+            this.label49.Location = new System.Drawing.Point(448, 4);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(39, 13);
             this.label49.TabIndex = 230;
@@ -1105,7 +1107,7 @@
             this.tabAbilities.Controls.Add(this.chDragAndDrop);
             this.tabAbilities.Location = new System.Drawing.Point(4, 22);
             this.tabAbilities.Name = "tabAbilities";
-            this.tabAbilities.Size = new System.Drawing.Size(562, 454);
+            this.tabAbilities.Size = new System.Drawing.Size(562, 499);
             this.tabAbilities.TabIndex = 8;
             this.tabAbilities.Text = "Abilities";
             this.tabAbilities.UseVisualStyleBackColor = true;
@@ -1119,44 +1121,46 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.77778F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.77778F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.77778F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.cSquaddie1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cSquaddie2, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cBrigadier3, 3, 8);
-            this.tableLayoutPanel1.Controls.Add(this.cSquaddie5, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.cBrigadier2, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.cSquaddie6, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.cBrigadier1, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.cSquaddie3, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cColonel3, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.cCorporal1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.cColonel2, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.cCorporal2, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.cColonel1, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.cCorporal3, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.cMajor3, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.cSergeant1, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.cMajor2, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.cSergeant2, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.cMajor1, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.cSergeant3, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.cCaptain3, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.cLieutenant1, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.cCaptain2, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.cLieutenant2, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.cCaptain1, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.cLieutenant3, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.cSquaddie4, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox5, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox6, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox7, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox8, 0, 8);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(22, 36);
+            this.tableLayoutPanel1.Controls.Add(this.tRightTree, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cSquaddie1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cSquaddie2, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cBrigadier3, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.cSquaddie5, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cBrigadier2, 2, 9);
+            this.tableLayoutPanel1.Controls.Add(this.cSquaddie6, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cBrigadier1, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.cSquaddie3, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cColonel3, 3, 8);
+            this.tableLayoutPanel1.Controls.Add(this.cCorporal1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cColonel2, 2, 8);
+            this.tableLayoutPanel1.Controls.Add(this.cCorporal2, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cColonel1, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.cCorporal3, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cMajor3, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cSergeant1, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cMajor2, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cSergeant2, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cMajor1, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cSergeant3, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cCaptain3, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cLieutenant1, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.cCaptain2, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cLieutenant2, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.cCaptain1, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cLieutenant3, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.cSquaddie4, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox4, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox5, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox6, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox7, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox8, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.tLeftTree, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(22, 14);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -1166,7 +1170,9 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(490, 369);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(490, 412);
             this.tableLayoutPanel1.TabIndex = 108;
             // 
             // cSquaddie1
@@ -1178,7 +1184,7 @@
             this.cSquaddie1.DisplayMember = "internalName";
             this.cSquaddie1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie1.FormattingEnabled = true;
-            this.cSquaddie1.Location = new System.Drawing.Point(85, 10);
+            this.cSquaddie1.Location = new System.Drawing.Point(85, 51);
             this.cSquaddie1.Name = "cSquaddie1";
             this.cSquaddie1.Size = new System.Drawing.Size(128, 21);
             this.cSquaddie1.TabIndex = 101;
@@ -1198,7 +1204,7 @@
             this.cSquaddie2.DisplayMember = "internalName";
             this.cSquaddie2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie2.FormattingEnabled = true;
-            this.cSquaddie2.Location = new System.Drawing.Point(220, 10);
+            this.cSquaddie2.Location = new System.Drawing.Point(220, 51);
             this.cSquaddie2.Name = "cSquaddie2";
             this.cSquaddie2.Size = new System.Drawing.Size(128, 21);
             this.cSquaddie2.TabIndex = 102;
@@ -1218,7 +1224,7 @@
             this.cBrigadier3.DisplayMember = "internalName";
             this.cBrigadier3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier3.FormattingEnabled = true;
-            this.cBrigadier3.Location = new System.Drawing.Point(355, 338);
+            this.cBrigadier3.Location = new System.Drawing.Point(355, 380);
             this.cBrigadier3.Name = "cBrigadier3";
             this.cBrigadier3.Size = new System.Drawing.Size(131, 21);
             this.cBrigadier3.TabIndex = 99;
@@ -1238,7 +1244,7 @@
             this.cSquaddie5.DisplayMember = "internalName";
             this.cSquaddie5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie5.FormattingEnabled = true;
-            this.cSquaddie5.Location = new System.Drawing.Point(220, 51);
+            this.cSquaddie5.Location = new System.Drawing.Point(220, 92);
             this.cSquaddie5.Name = "cSquaddie5";
             this.cSquaddie5.Size = new System.Drawing.Size(128, 21);
             this.cSquaddie5.TabIndex = 105;
@@ -1258,7 +1264,7 @@
             this.cBrigadier2.DisplayMember = "internalName";
             this.cBrigadier2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier2.FormattingEnabled = true;
-            this.cBrigadier2.Location = new System.Drawing.Point(220, 338);
+            this.cBrigadier2.Location = new System.Drawing.Point(220, 380);
             this.cBrigadier2.Name = "cBrigadier2";
             this.cBrigadier2.Size = new System.Drawing.Size(128, 21);
             this.cBrigadier2.TabIndex = 98;
@@ -1278,7 +1284,7 @@
             this.cSquaddie6.DisplayMember = "internalName";
             this.cSquaddie6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie6.FormattingEnabled = true;
-            this.cSquaddie6.Location = new System.Drawing.Point(355, 51);
+            this.cSquaddie6.Location = new System.Drawing.Point(355, 92);
             this.cSquaddie6.Name = "cSquaddie6";
             this.cSquaddie6.Size = new System.Drawing.Size(131, 21);
             this.cSquaddie6.TabIndex = 106;
@@ -1298,7 +1304,7 @@
             this.cBrigadier1.DisplayMember = "internalName";
             this.cBrigadier1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier1.FormattingEnabled = true;
-            this.cBrigadier1.Location = new System.Drawing.Point(85, 338);
+            this.cBrigadier1.Location = new System.Drawing.Point(85, 380);
             this.cBrigadier1.Name = "cBrigadier1";
             this.cBrigadier1.Size = new System.Drawing.Size(128, 21);
             this.cBrigadier1.TabIndex = 97;
@@ -1318,7 +1324,7 @@
             this.cSquaddie3.DisplayMember = "internalName";
             this.cSquaddie3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie3.FormattingEnabled = true;
-            this.cSquaddie3.Location = new System.Drawing.Point(355, 10);
+            this.cSquaddie3.Location = new System.Drawing.Point(355, 51);
             this.cSquaddie3.Name = "cSquaddie3";
             this.cSquaddie3.Size = new System.Drawing.Size(131, 21);
             this.cSquaddie3.TabIndex = 103;
@@ -1338,7 +1344,7 @@
             this.cColonel3.DisplayMember = "internalName";
             this.cColonel3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cColonel3.FormattingEnabled = true;
-            this.cColonel3.Location = new System.Drawing.Point(355, 297);
+            this.cColonel3.Location = new System.Drawing.Point(355, 338);
             this.cColonel3.Name = "cColonel3";
             this.cColonel3.Size = new System.Drawing.Size(131, 21);
             this.cColonel3.TabIndex = 96;
@@ -1358,7 +1364,7 @@
             this.cCorporal1.DisplayMember = "internalName";
             this.cCorporal1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCorporal1.FormattingEnabled = true;
-            this.cCorporal1.Location = new System.Drawing.Point(85, 92);
+            this.cCorporal1.Location = new System.Drawing.Point(85, 133);
             this.cCorporal1.Name = "cCorporal1";
             this.cCorporal1.Size = new System.Drawing.Size(128, 21);
             this.cCorporal1.TabIndex = 79;
@@ -1378,7 +1384,7 @@
             this.cColonel2.DisplayMember = "internalName";
             this.cColonel2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cColonel2.FormattingEnabled = true;
-            this.cColonel2.Location = new System.Drawing.Point(220, 297);
+            this.cColonel2.Location = new System.Drawing.Point(220, 338);
             this.cColonel2.Name = "cColonel2";
             this.cColonel2.Size = new System.Drawing.Size(128, 21);
             this.cColonel2.TabIndex = 95;
@@ -1398,7 +1404,7 @@
             this.cCorporal2.DisplayMember = "internalName";
             this.cCorporal2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCorporal2.FormattingEnabled = true;
-            this.cCorporal2.Location = new System.Drawing.Point(220, 92);
+            this.cCorporal2.Location = new System.Drawing.Point(220, 133);
             this.cCorporal2.Name = "cCorporal2";
             this.cCorporal2.Size = new System.Drawing.Size(128, 21);
             this.cCorporal2.TabIndex = 80;
@@ -1418,7 +1424,7 @@
             this.cColonel1.DisplayMember = "internalName";
             this.cColonel1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cColonel1.FormattingEnabled = true;
-            this.cColonel1.Location = new System.Drawing.Point(85, 297);
+            this.cColonel1.Location = new System.Drawing.Point(85, 338);
             this.cColonel1.Name = "cColonel1";
             this.cColonel1.Size = new System.Drawing.Size(128, 21);
             this.cColonel1.TabIndex = 94;
@@ -1438,7 +1444,7 @@
             this.cCorporal3.DisplayMember = "internalName";
             this.cCorporal3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCorporal3.FormattingEnabled = true;
-            this.cCorporal3.Location = new System.Drawing.Point(355, 92);
+            this.cCorporal3.Location = new System.Drawing.Point(355, 133);
             this.cCorporal3.Name = "cCorporal3";
             this.cCorporal3.Size = new System.Drawing.Size(131, 21);
             this.cCorporal3.TabIndex = 81;
@@ -1458,7 +1464,7 @@
             this.cMajor3.DisplayMember = "internalName";
             this.cMajor3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cMajor3.FormattingEnabled = true;
-            this.cMajor3.Location = new System.Drawing.Point(355, 256);
+            this.cMajor3.Location = new System.Drawing.Point(355, 297);
             this.cMajor3.Name = "cMajor3";
             this.cMajor3.Size = new System.Drawing.Size(131, 21);
             this.cMajor3.TabIndex = 93;
@@ -1478,7 +1484,7 @@
             this.cSergeant1.DisplayMember = "internalName";
             this.cSergeant1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSergeant1.FormattingEnabled = true;
-            this.cSergeant1.Location = new System.Drawing.Point(85, 133);
+            this.cSergeant1.Location = new System.Drawing.Point(85, 174);
             this.cSergeant1.Name = "cSergeant1";
             this.cSergeant1.Size = new System.Drawing.Size(128, 21);
             this.cSergeant1.TabIndex = 82;
@@ -1498,7 +1504,7 @@
             this.cMajor2.DisplayMember = "internalName";
             this.cMajor2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cMajor2.FormattingEnabled = true;
-            this.cMajor2.Location = new System.Drawing.Point(220, 256);
+            this.cMajor2.Location = new System.Drawing.Point(220, 297);
             this.cMajor2.Name = "cMajor2";
             this.cMajor2.Size = new System.Drawing.Size(128, 21);
             this.cMajor2.TabIndex = 92;
@@ -1518,7 +1524,7 @@
             this.cSergeant2.DisplayMember = "internalName";
             this.cSergeant2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSergeant2.FormattingEnabled = true;
-            this.cSergeant2.Location = new System.Drawing.Point(220, 133);
+            this.cSergeant2.Location = new System.Drawing.Point(220, 174);
             this.cSergeant2.Name = "cSergeant2";
             this.cSergeant2.Size = new System.Drawing.Size(128, 21);
             this.cSergeant2.TabIndex = 83;
@@ -1538,7 +1544,7 @@
             this.cMajor1.DisplayMember = "internalName";
             this.cMajor1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cMajor1.FormattingEnabled = true;
-            this.cMajor1.Location = new System.Drawing.Point(85, 256);
+            this.cMajor1.Location = new System.Drawing.Point(85, 297);
             this.cMajor1.Name = "cMajor1";
             this.cMajor1.Size = new System.Drawing.Size(128, 21);
             this.cMajor1.TabIndex = 91;
@@ -1558,7 +1564,7 @@
             this.cSergeant3.DisplayMember = "internalName";
             this.cSergeant3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSergeant3.FormattingEnabled = true;
-            this.cSergeant3.Location = new System.Drawing.Point(355, 133);
+            this.cSergeant3.Location = new System.Drawing.Point(355, 174);
             this.cSergeant3.Name = "cSergeant3";
             this.cSergeant3.Size = new System.Drawing.Size(131, 21);
             this.cSergeant3.TabIndex = 84;
@@ -1578,7 +1584,7 @@
             this.cCaptain3.DisplayMember = "internalName";
             this.cCaptain3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCaptain3.FormattingEnabled = true;
-            this.cCaptain3.Location = new System.Drawing.Point(355, 215);
+            this.cCaptain3.Location = new System.Drawing.Point(355, 256);
             this.cCaptain3.Name = "cCaptain3";
             this.cCaptain3.Size = new System.Drawing.Size(131, 21);
             this.cCaptain3.TabIndex = 90;
@@ -1598,7 +1604,7 @@
             this.cLieutenant1.DisplayMember = "internalName";
             this.cLieutenant1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cLieutenant1.FormattingEnabled = true;
-            this.cLieutenant1.Location = new System.Drawing.Point(85, 174);
+            this.cLieutenant1.Location = new System.Drawing.Point(85, 215);
             this.cLieutenant1.Name = "cLieutenant1";
             this.cLieutenant1.Size = new System.Drawing.Size(128, 21);
             this.cLieutenant1.TabIndex = 85;
@@ -1618,7 +1624,7 @@
             this.cCaptain2.DisplayMember = "internalName";
             this.cCaptain2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCaptain2.FormattingEnabled = true;
-            this.cCaptain2.Location = new System.Drawing.Point(220, 215);
+            this.cCaptain2.Location = new System.Drawing.Point(220, 256);
             this.cCaptain2.Name = "cCaptain2";
             this.cCaptain2.Size = new System.Drawing.Size(128, 21);
             this.cCaptain2.TabIndex = 89;
@@ -1638,7 +1644,7 @@
             this.cLieutenant2.DisplayMember = "internalName";
             this.cLieutenant2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cLieutenant2.FormattingEnabled = true;
-            this.cLieutenant2.Location = new System.Drawing.Point(220, 174);
+            this.cLieutenant2.Location = new System.Drawing.Point(220, 215);
             this.cLieutenant2.Name = "cLieutenant2";
             this.cLieutenant2.Size = new System.Drawing.Size(128, 21);
             this.cLieutenant2.TabIndex = 86;
@@ -1658,7 +1664,7 @@
             this.cCaptain1.DisplayMember = "internalName";
             this.cCaptain1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cCaptain1.FormattingEnabled = true;
-            this.cCaptain1.Location = new System.Drawing.Point(85, 215);
+            this.cCaptain1.Location = new System.Drawing.Point(85, 256);
             this.cCaptain1.Name = "cCaptain1";
             this.cCaptain1.Size = new System.Drawing.Size(128, 21);
             this.cCaptain1.TabIndex = 88;
@@ -1678,7 +1684,7 @@
             this.cLieutenant3.DisplayMember = "internalName";
             this.cLieutenant3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cLieutenant3.FormattingEnabled = true;
-            this.cLieutenant3.Location = new System.Drawing.Point(355, 174);
+            this.cLieutenant3.Location = new System.Drawing.Point(355, 215);
             this.cLieutenant3.Name = "cLieutenant3";
             this.cLieutenant3.Size = new System.Drawing.Size(131, 21);
             this.cLieutenant3.TabIndex = 87;
@@ -1698,7 +1704,7 @@
             this.cSquaddie4.DisplayMember = "internalName";
             this.cSquaddie4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSquaddie4.FormattingEnabled = true;
-            this.cSquaddie4.Location = new System.Drawing.Point(85, 51);
+            this.cSquaddie4.Location = new System.Drawing.Point(85, 92);
             this.cSquaddie4.Name = "cSquaddie4";
             this.cSquaddie4.Size = new System.Drawing.Size(128, 21);
             this.cSquaddie4.TabIndex = 104;
@@ -1712,7 +1718,7 @@
             // chDragAndDrop
             // 
             this.chDragAndDrop.AutoSize = true;
-            this.chDragAndDrop.Location = new System.Drawing.Point(17, 411);
+            this.chDragAndDrop.Location = new System.Drawing.Point(22, 471);
             this.chDragAndDrop.Name = "chDragAndDrop";
             this.chDragAndDrop.Size = new System.Drawing.Size(96, 17);
             this.chDragAndDrop.TabIndex = 107;
@@ -1724,9 +1730,9 @@
             this.laHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.laHelp.Location = new System.Drawing.Point(13, 544);
+            this.laHelp.Location = new System.Drawing.Point(13, 589);
             this.laHelp.Name = "laHelp";
-            this.laHelp.Size = new System.Drawing.Size(565, 38);
+            this.laHelp.Size = new System.Drawing.Size(565, 57);
             this.laHelp.TabIndex = 17;
             this.laHelp.Text = "Click a parameter label for more details about what each item does.";
             // 
@@ -1875,7 +1881,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(4, 86);
+            this.panel2.Location = new System.Drawing.Point(4, 127);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(74, 34);
             this.panel2.TabIndex = 110;
@@ -1898,7 +1904,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(4, 168);
+            this.pictureBox2.Location = new System.Drawing.Point(4, 209);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(74, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1910,7 +1916,7 @@
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.InitialImage = null;
-            this.pictureBox4.Location = new System.Drawing.Point(4, 127);
+            this.pictureBox4.Location = new System.Drawing.Point(4, 168);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(74, 34);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1922,7 +1928,7 @@
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(4, 45);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(74, 34);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1934,7 +1940,7 @@
             this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.InitialImage = null;
-            this.pictureBox5.Location = new System.Drawing.Point(4, 209);
+            this.pictureBox5.Location = new System.Drawing.Point(4, 250);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(74, 34);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1946,7 +1952,7 @@
             this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.InitialImage = null;
-            this.pictureBox6.Location = new System.Drawing.Point(4, 250);
+            this.pictureBox6.Location = new System.Drawing.Point(4, 291);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(74, 34);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1958,7 +1964,7 @@
             this.pictureBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
             this.pictureBox7.InitialImage = null;
-            this.pictureBox7.Location = new System.Drawing.Point(4, 291);
+            this.pictureBox7.Location = new System.Drawing.Point(4, 332);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(74, 34);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1970,9 +1976,9 @@
             this.pictureBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.InitialImage = null;
-            this.pictureBox8.Location = new System.Drawing.Point(4, 332);
+            this.pictureBox8.Location = new System.Drawing.Point(4, 373);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(74, 34);
+            this.pictureBox8.Size = new System.Drawing.Size(74, 35);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox8.TabIndex = 116;
             this.pictureBox8.TabStop = false;
@@ -1991,7 +1997,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox9, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label49, 8, 0);
             this.tableLayoutPanel2.Controls.Add(this.tBrigadierDodge, 8, 8);
@@ -2195,11 +2201,29 @@
             // 
             this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
             // 
+            // tLeftTree
+            // 
+            this.tLeftTree.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tLeftTree.Location = new System.Drawing.Point(85, 11);
+            this.tLeftTree.Name = "tLeftTree";
+            this.tLeftTree.Size = new System.Drawing.Size(128, 20);
+            this.tLeftTree.TabIndex = 117;
+            this.tLeftTree.WordWrap = false;
+            // 
+            // tRightTree
+            // 
+            this.tRightTree.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tRightTree.Location = new System.Drawing.Point(356, 11);
+            this.tRightTree.Name = "tRightTree";
+            this.tRightTree.Size = new System.Drawing.Size(128, 20);
+            this.tRightTree.TabIndex = 118;
+            this.tRightTree.WordWrap = false;
+            // 
             // OverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 591);
+            this.ClientSize = new System.Drawing.Size(594, 655);
             this.Controls.Add(this.cSoldierClass);
             this.Controls.Add(this.laHelp);
             this.Controls.Add(this.tabControl1);
@@ -2222,6 +2246,7 @@
             this.tabAbilities.ResumeLayout(false);
             this.tabAbilities.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -2420,5 +2445,7 @@
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.TextBox tRightTree;
+        private System.Windows.Forms.TextBox tLeftTree;
     }
 }

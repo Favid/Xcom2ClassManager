@@ -11,6 +11,9 @@ namespace Xcom2ClassManager
         public List<SoldierClassAbility> soldierAbilities { get; set; }
         public List<SoldierClassStat> stats { get; set; }
 
+        public string leftTreeName { get; set; }
+        public string rightTreeName { get; set; }
+
         public SoldierClass()
         {
             metadata = new SoldierClassMetadata();
@@ -18,6 +21,9 @@ namespace Xcom2ClassManager
             equipment = new SoldierClassEquipment();
             soldierAbilities = new List<SoldierClassAbility>();
             stats = new List<SoldierClassStat>();
+
+            leftTreeName = "";
+            rightTreeName = "";
         }
 
         public SoldierClass(SoldierClass other)
@@ -37,6 +43,9 @@ namespace Xcom2ClassManager
             {
                 stats.Add(new SoldierClassStat(stat));
             }
+
+            leftTreeName = other.leftTreeName;
+            rightTreeName = other.rightTreeName;
         }
 
         public string getInternalName()
