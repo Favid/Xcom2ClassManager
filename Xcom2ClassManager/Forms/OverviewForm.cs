@@ -107,6 +107,7 @@ namespace Xcom2ClassManager.Forms
             tNumInForcedDeck.Text = soldierClass.experience.numberInForcedDeck.ToString();
             tNumInDeck.Text = soldierClass.experience.numberInDeck.ToString();
             tKillAssistsPerKill.Text = soldierClass.experience.killAssistsPerKill.ToString();
+            tMissionExperienceWeight.Text = soldierClass.experience.missionExperienceWeight.ToString();
 
             tSquaddieLoadout.Text = soldierClass.equipment.squaddieLoadout;
             tAllowedArmor.Text = soldierClass.equipment.allowedArmors;
@@ -267,6 +268,7 @@ namespace Xcom2ClassManager.Forms
             soldierClass.experience.numberInForcedDeck = int.Parse(tNumInForcedDeck.Text);
             soldierClass.experience.numberInDeck = int.Parse(tNumInDeck.Text);
             soldierClass.experience.killAssistsPerKill = int.Parse(tKillAssistsPerKill.Text);
+            soldierClass.experience.missionExperienceWeight = double.Parse(tMissionExperienceWeight.Text);
 
             soldierClass.equipment.squaddieLoadout = tSquaddieLoadout.Text;
             soldierClass.equipment.allowedArmors = tAllowedArmor.Text;

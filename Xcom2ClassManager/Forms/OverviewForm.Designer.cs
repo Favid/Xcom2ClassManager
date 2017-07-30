@@ -197,9 +197,11 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tLeftTree = new System.Windows.Forms.TextBox();
             this.tRightTree = new System.Windows.Forms.TextBox();
+            this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.laMissionExperienceWeight = new System.Windows.Forms.Label();
+            this.tMissionExperienceWeight = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -260,7 +262,7 @@
             this.tabGeneral.Controls.Add(this.groupBox1);
             this.tabGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabGeneral.Name = "tabGeneral";
-            this.tabGeneral.Size = new System.Drawing.Size(562, 454);
+            this.tabGeneral.Size = new System.Drawing.Size(562, 499);
             this.tabGeneral.TabIndex = 6;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
@@ -276,7 +278,7 @@
             this.groupBox3.Controls.Add(this.lWeapons);
             this.groupBox3.Controls.Add(this.bEditWeapon);
             this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Location = new System.Drawing.Point(9, 259);
+            this.groupBox3.Location = new System.Drawing.Point(9, 294);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(499, 192);
             this.groupBox3.TabIndex = 95;
@@ -368,6 +370,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.laMissionExperienceWeight);
+            this.groupBox2.Controls.Add(this.tMissionExperienceWeight);
             this.groupBox2.Controls.Add(this.tNumInForcedDeck);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label22);
@@ -376,14 +380,14 @@
             this.groupBox2.Controls.Add(this.tKillAssistsPerKill);
             this.groupBox2.Location = new System.Drawing.Point(9, 153);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(499, 100);
+            this.groupBox2.Size = new System.Drawing.Size(499, 135);
             this.groupBox2.TabIndex = 94;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Experience";
             // 
             // tNumInForcedDeck
             // 
-            this.tNumInForcedDeck.Location = new System.Drawing.Point(136, 20);
+            this.tNumInForcedDeck.Location = new System.Drawing.Point(150, 20);
             this.tNumInForcedDeck.Name = "tNumInForcedDeck";
             this.tNumInForcedDeck.Size = new System.Drawing.Size(29, 20);
             this.tNumInForcedDeck.TabIndex = 34;
@@ -418,7 +422,7 @@
             // 
             // tNumInDeck
             // 
-            this.tNumInDeck.Location = new System.Drawing.Point(136, 46);
+            this.tNumInDeck.Location = new System.Drawing.Point(150, 46);
             this.tNumInDeck.Name = "tNumInDeck";
             this.tNumInDeck.Size = new System.Drawing.Size(29, 20);
             this.tNumInDeck.TabIndex = 35;
@@ -426,7 +430,7 @@
             // 
             // tKillAssistsPerKill
             // 
-            this.tKillAssistsPerKill.Location = new System.Drawing.Point(136, 72);
+            this.tKillAssistsPerKill.Location = new System.Drawing.Point(150, 72);
             this.tKillAssistsPerKill.Name = "tKillAssistsPerKill";
             this.tKillAssistsPerKill.Size = new System.Drawing.Size(29, 20);
             this.tKillAssistsPerKill.TabIndex = 36;
@@ -1997,7 +2001,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox9, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label49, 8, 0);
             this.tableLayoutPanel2.Controls.Add(this.tBrigadierDodge, 8, 8);
@@ -2197,10 +2201,6 @@
             this.pictureBox16.TabIndex = 116;
             this.pictureBox16.TabStop = false;
             // 
-            // soldierClassAbilityBindingSource
-            // 
-            this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
-            // 
             // tLeftTree
             // 
             this.tLeftTree.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -2218,6 +2218,27 @@
             this.tRightTree.Size = new System.Drawing.Size(128, 20);
             this.tRightTree.TabIndex = 118;
             this.tRightTree.WordWrap = false;
+            // 
+            // soldierClassAbilityBindingSource
+            // 
+            this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
+            // 
+            // laMissionExperienceWeight
+            // 
+            this.laMissionExperienceWeight.AutoSize = true;
+            this.laMissionExperienceWeight.Location = new System.Drawing.Point(6, 101);
+            this.laMissionExperienceWeight.Name = "laMissionExperienceWeight";
+            this.laMissionExperienceWeight.Size = new System.Drawing.Size(138, 13);
+            this.laMissionExperienceWeight.TabIndex = 37;
+            this.laMissionExperienceWeight.Text = "Mission Experience Weight:";
+            // 
+            // tMissionExperienceWeight
+            // 
+            this.tMissionExperienceWeight.Location = new System.Drawing.Point(150, 98);
+            this.tMissionExperienceWeight.Name = "tMissionExperienceWeight";
+            this.tMissionExperienceWeight.Size = new System.Drawing.Size(29, 20);
+            this.tMissionExperienceWeight.TabIndex = 38;
+            this.tMissionExperienceWeight.Text = "5";
             // 
             // OverviewForm
             // 
@@ -2447,5 +2468,7 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.TextBox tRightTree;
         private System.Windows.Forms.TextBox tLeftTree;
+        private System.Windows.Forms.Label laMissionExperienceWeight;
+        private System.Windows.Forms.TextBox tMissionExperienceWeight;
     }
 }

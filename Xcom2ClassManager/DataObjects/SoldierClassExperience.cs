@@ -5,12 +5,14 @@
         public int? numberInForcedDeck { get; set; }
         public int? numberInDeck { get; set; }
         public int? killAssistsPerKill { get; set; }
+        public double? missionExperienceWeight { get; set; }
 
         public SoldierClassExperience()
         {
             numberInForcedDeck = 1;
             numberInDeck = 1;
             killAssistsPerKill = 1;
+            missionExperienceWeight = 5.7;
         }
 
         public SoldierClassExperience(SoldierClassExperience other)
@@ -18,6 +20,7 @@
             numberInForcedDeck = other.numberInForcedDeck;
             numberInDeck = other.numberInDeck;
             killAssistsPerKill = other.killAssistsPerKill;
+            missionExperienceWeight = other.missionExperienceWeight;
         }
 
         public override bool Equals(object obj)
@@ -39,6 +42,11 @@
             }
 
             if (killAssistsPerKill != other.killAssistsPerKill)
+            {
+                return false;
+            }
+
+            if (missionExperienceWeight != other.missionExperienceWeight)
             {
                 return false;
             }
