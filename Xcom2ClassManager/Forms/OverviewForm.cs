@@ -44,7 +44,6 @@ namespace Xcom2ClassManager.Forms
         private bool isDefaultClassPackPathValid()
         {
             return !string.IsNullOrEmpty(Properties.Settings.Default.ClassPackFilePath)
-                && Directory.Exists(Properties.Settings.Default.ClassPackFilePath)
                 && File.Exists(Properties.Settings.Default.ClassPackFilePath);
         }
 
