@@ -1866,9 +1866,9 @@
             this.cSoldierClass.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cSoldierClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cSoldierClass.FormattingEnabled = true;
-            this.cSoldierClass.Location = new System.Drawing.Point(12, 34);
+            this.cSoldierClass.Location = new System.Drawing.Point(16, 34);
             this.cSoldierClass.Name = "cSoldierClass";
-            this.cSoldierClass.Size = new System.Drawing.Size(566, 21);
+            this.cSoldierClass.Size = new System.Drawing.Size(562, 21);
             this.cSoldierClass.TabIndex = 100;
             this.cSoldierClass.SelectedIndexChanged += new System.EventHandler(this.cSoldierClass_SelectedIndexChanged);
             // 

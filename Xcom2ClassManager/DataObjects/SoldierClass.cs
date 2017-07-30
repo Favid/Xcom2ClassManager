@@ -78,6 +78,20 @@ namespace Xcom2ClassManager
             return soldierAbility;
         }
 
+        public List<string> getRequiredMods()
+        {
+            List<string> requiredMods = new List<string>();
+            foreach(SoldierClassAbility soldierAbility in soldierAbilities)
+            {
+                if(!string.IsNullOrEmpty(soldierAbility.requiredMod) && !requiredMods.Contains(soldierAbility.requiredMod))
+                {
+                    requiredMods.Add(soldierAbility.requiredMod);
+                }
+            }
+
+            return requiredMods;
+        }
+
         public override string ToString()
         {
             return metadata.internalName;

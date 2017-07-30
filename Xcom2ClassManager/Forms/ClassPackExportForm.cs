@@ -29,5 +29,48 @@ namespace Xcom2ClassManager.Forms
                 chlClasses.Items.Add(soldierClass, true);
             }
         }
+
+        private void chlClasses_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if(chlClasses.CheckedItems.Count <=1 && e.NewValue == CheckState.Unchecked)
+            {
+                lRequiredMods.Items.Clear();
+                return;
+            }
+
+            List<SoldierClass> checkedItems = new List<SoldierClass>();
+            for (int i = 0; i < chlClasses.CheckedItems.Count; i++)
+            {
+                if(e.NewValue == CheckState.Unchecked && i == e.Index)
+                {
+                    continue;
+                }
+
+                checkedItems.Add((SoldierClass)chlClasses.CheckedItems[i]);
+            }
+            
+            if (e.NewValue == CheckState.Checked)
+            {
+                checkedItems.Add((SoldierClass)chlClasses.Items[e.Index]);
+            }
+
+            List<string> requiredMods = new List<string>();
+            foreach (SoldierClass soldierClass in checkedItems)
+            {
+                List<string> classRequiredMods = soldierClass.getRequiredMods();
+                foreach(string classRequiredMod in classRequiredMods)
+                {
+                    if(!requiredMods.Contains(classRequiredMod))
+                    {
+                        requiredMods.Add(classRequiredMod);
+                    }
+                }
+            }
+
+            requiredMods.Sort();
+
+            lRequiredMods.Items.Clear();
+            lRequiredMods.Items.AddRange(requiredMods.ToArray());
+        }
     }
 }

@@ -40,6 +40,7 @@
             this.chXcomLwOverhaulIni = new System.Windows.Forms.CheckBox();
             this.chForceVanilla = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lRequiredMods = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             this.chlClasses.Name = "chlClasses";
             this.chlClasses.Size = new System.Drawing.Size(377, 124);
             this.chlClasses.TabIndex = 0;
+            this.chlClasses.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chlClasses_ItemCheck);
             // 
             // laDestination
             // 
@@ -157,11 +159,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Export Options";
             // 
+            // lRequiredMods
+            // 
+            this.lRequiredMods.FormattingEnabled = true;
+            this.lRequiredMods.Location = new System.Drawing.Point(396, 13);
+            this.lRequiredMods.Name = "lRequiredMods";
+            this.lRequiredMods.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.lRequiredMods.Size = new System.Drawing.Size(321, 121);
+            this.lRequiredMods.TabIndex = 45;
+            // 
             // ClassPackExportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 402);
+            this.ClientSize = new System.Drawing.Size(797, 402);
+            this.Controls.Add(this.lRequiredMods);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bClose);
@@ -196,5 +208,6 @@
         private System.Windows.Forms.CheckBox chXcomLwOverhaulIni;
         private System.Windows.Forms.CheckBox chForceVanilla;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox lRequiredMods;
     }
 }
