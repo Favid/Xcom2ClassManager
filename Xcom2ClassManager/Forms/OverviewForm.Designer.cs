@@ -579,7 +579,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox9, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label49, 8, 0);
             this.tableLayoutPanel2.Controls.Add(this.tBrigadierDodge, 8, 8);
@@ -682,7 +682,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(493, 417);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(487, 387);
             this.tableLayoutPanel2.TabIndex = 231;
             // 
             // pictureBox9
@@ -701,7 +701,7 @@
             // 
             this.label49.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(451, 4);
+            this.label49.Location = new System.Drawing.Point(442, 4);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(39, 13);
             this.label49.TabIndex = 230;
@@ -710,7 +710,7 @@
             // tBrigadierDodge
             // 
             this.tBrigadierDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierDodge.Location = new System.Drawing.Point(456, 319);
+            this.tBrigadierDodge.Location = new System.Drawing.Point(447, 319);
             this.tBrigadierDodge.Name = "tBrigadierDodge";
             this.tBrigadierDodge.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierDodge.TabIndex = 78;
@@ -945,7 +945,7 @@
             // tColonelDodge
             // 
             this.tColonelDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelDodge.Location = new System.Drawing.Point(456, 278);
+            this.tColonelDodge.Location = new System.Drawing.Point(447, 278);
             this.tColonelDodge.Name = "tColonelDodge";
             this.tColonelDodge.Size = new System.Drawing.Size(28, 20);
             this.tColonelDodge.TabIndex = 68;
@@ -983,7 +983,7 @@
             // tMajorDodge
             // 
             this.tMajorDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorDodge.Location = new System.Drawing.Point(456, 237);
+            this.tMajorDodge.Location = new System.Drawing.Point(447, 237);
             this.tMajorDodge.Name = "tMajorDodge";
             this.tMajorDodge.Size = new System.Drawing.Size(28, 20);
             this.tMajorDodge.TabIndex = 58;
@@ -1085,7 +1085,7 @@
             // tCaptainDodge
             // 
             this.tCaptainDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainDodge.Location = new System.Drawing.Point(456, 196);
+            this.tCaptainDodge.Location = new System.Drawing.Point(447, 196);
             this.tCaptainDodge.Name = "tCaptainDodge";
             this.tCaptainDodge.Size = new System.Drawing.Size(28, 20);
             this.tCaptainDodge.TabIndex = 48;
@@ -1124,7 +1124,7 @@
             // tLieutenantDodge
             // 
             this.tLieutenantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantDodge.Location = new System.Drawing.Point(456, 155);
+            this.tLieutenantDodge.Location = new System.Drawing.Point(447, 155);
             this.tLieutenantDodge.Name = "tLieutenantDodge";
             this.tLieutenantDodge.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantDodge.TabIndex = 38;
@@ -1163,7 +1163,7 @@
             // tSergeantDodge
             // 
             this.tSergeantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantDodge.Location = new System.Drawing.Point(456, 114);
+            this.tSergeantDodge.Location = new System.Drawing.Point(447, 114);
             this.tSergeantDodge.Name = "tSergeantDodge";
             this.tSergeantDodge.Size = new System.Drawing.Size(28, 20);
             this.tSergeantDodge.TabIndex = 28;
@@ -1220,7 +1220,7 @@
             // tCorporalDodge
             // 
             this.tCorporalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalDodge.Location = new System.Drawing.Point(456, 73);
+            this.tCorporalDodge.Location = new System.Drawing.Point(447, 73);
             this.tCorporalDodge.Name = "tCorporalDodge";
             this.tCorporalDodge.Size = new System.Drawing.Size(28, 20);
             this.tCorporalDodge.TabIndex = 18;
@@ -1241,7 +1241,7 @@
             // tSquaddieDodge
             // 
             this.tSquaddieDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieDodge.Location = new System.Drawing.Point(456, 32);
+            this.tSquaddieDodge.Location = new System.Drawing.Point(447, 32);
             this.tSquaddieDodge.Name = "tSquaddieDodge";
             this.tSquaddieDodge.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieDodge.TabIndex = 8;
@@ -1449,7 +1449,7 @@
             // 
             this.laTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotal.AutoSize = true;
-            this.laTotal.Location = new System.Drawing.Point(5, 376);
+            this.laTotal.Location = new System.Drawing.Point(5, 363);
             this.laTotal.Name = "laTotal";
             this.laTotal.Size = new System.Drawing.Size(31, 13);
             this.laTotal.TabIndex = 231;
@@ -1459,7 +1459,7 @@
             // 
             this.laTotalHp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalHp.AutoSize = true;
-            this.laTotalHp.Location = new System.Drawing.Point(63, 376);
+            this.laTotalHp.Location = new System.Drawing.Point(63, 363);
             this.laTotalHp.Name = "laTotalHp";
             this.laTotalHp.Size = new System.Drawing.Size(13, 13);
             this.laTotalHp.TabIndex = 232;
@@ -1469,7 +1469,7 @@
             // 
             this.laTotalAim.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalAim.AutoSize = true;
-            this.laTotalAim.Location = new System.Drawing.Point(119, 376);
+            this.laTotalAim.Location = new System.Drawing.Point(119, 363);
             this.laTotalAim.Name = "laTotalAim";
             this.laTotalAim.Size = new System.Drawing.Size(13, 13);
             this.laTotalAim.TabIndex = 233;
@@ -1479,7 +1479,7 @@
             // 
             this.laTotalStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalStrength.AutoSize = true;
-            this.laTotalStrength.Location = new System.Drawing.Point(175, 376);
+            this.laTotalStrength.Location = new System.Drawing.Point(175, 363);
             this.laTotalStrength.Name = "laTotalStrength";
             this.laTotalStrength.Size = new System.Drawing.Size(13, 13);
             this.laTotalStrength.TabIndex = 234;
@@ -1489,7 +1489,7 @@
             // 
             this.laTotalHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalHacking.AutoSize = true;
-            this.laTotalHacking.Location = new System.Drawing.Point(231, 376);
+            this.laTotalHacking.Location = new System.Drawing.Point(231, 363);
             this.laTotalHacking.Name = "laTotalHacking";
             this.laTotalHacking.Size = new System.Drawing.Size(13, 13);
             this.laTotalHacking.TabIndex = 235;
@@ -1499,7 +1499,7 @@
             // 
             this.laTotalPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalPsi.AutoSize = true;
-            this.laTotalPsi.Location = new System.Drawing.Point(287, 376);
+            this.laTotalPsi.Location = new System.Drawing.Point(287, 363);
             this.laTotalPsi.Name = "laTotalPsi";
             this.laTotalPsi.Size = new System.Drawing.Size(13, 13);
             this.laTotalPsi.TabIndex = 236;
@@ -1509,7 +1509,7 @@
             // 
             this.laTotalMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalMobility.AutoSize = true;
-            this.laTotalMobility.Location = new System.Drawing.Point(343, 376);
+            this.laTotalMobility.Location = new System.Drawing.Point(343, 363);
             this.laTotalMobility.Name = "laTotalMobility";
             this.laTotalMobility.Size = new System.Drawing.Size(13, 13);
             this.laTotalMobility.TabIndex = 237;
@@ -1519,7 +1519,7 @@
             // 
             this.laTotalWill.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalWill.AutoSize = true;
-            this.laTotalWill.Location = new System.Drawing.Point(399, 376);
+            this.laTotalWill.Location = new System.Drawing.Point(399, 363);
             this.laTotalWill.Name = "laTotalWill";
             this.laTotalWill.Size = new System.Drawing.Size(13, 13);
             this.laTotalWill.TabIndex = 238;
@@ -1529,7 +1529,7 @@
             // 
             this.laTotalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalDodge.AutoSize = true;
-            this.laTotalDodge.Location = new System.Drawing.Point(464, 376);
+            this.laTotalDodge.Location = new System.Drawing.Point(455, 363);
             this.laTotalDodge.Name = "laTotalDodge";
             this.laTotalDodge.Size = new System.Drawing.Size(13, 13);
             this.laTotalDodge.TabIndex = 239;
