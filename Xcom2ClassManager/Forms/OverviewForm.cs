@@ -27,6 +27,7 @@ namespace Xcom2ClassManager.Forms
         {
             initAbilitiesDataSources();
             chDragAndDrop.Checked = false;
+            cNicknameGender.SelectedIndex = 0;
 
             if(isDefaultClassPackPathValid())
             {
@@ -120,6 +121,7 @@ namespace Xcom2ClassManager.Forms
 
             openSoldierStats(soldierClass);
             openSoldierAbilities(soldierClass);
+            openSoldierNicknames(soldierClass);
         }
 
         private void openSoldierStats(SoldierClass soldierClass)
@@ -254,6 +256,16 @@ namespace Xcom2ClassManager.Forms
             return new Ability();
         }
 
+        private void openSoldierNicknames(SoldierClass soldierClass)
+        {
+            lvUnisexNicknames.Items.Clear();
+            foreach (ClassNickname nickname in soldierClass.nicknames)
+            {
+                ListViewItem item = new ListViewItem(nickname.getListViewStringArray());
+                lvUnisexNicknames.Items.Add(item);
+            }
+        }
+
         #endregion Open Class
 
         #region Build Class From Form
@@ -281,6 +293,8 @@ namespace Xcom2ClassManager.Forms
 
             soldierClass.leftTreeName = tLeftTree.Text;
             soldierClass.rightTreeName = tRightTree.Text;
+
+            soldierClass.nicknames = buildSoldierClassNicknames();
 
             return soldierClass;
         }
@@ -434,6 +448,17 @@ namespace Xcom2ClassManager.Forms
             }
 
             return soldierAbility;
+        }
+
+        private List<ClassNickname> buildSoldierClassNicknames()
+        {
+            List<ClassNickname> nicknames = new List<ClassNickname>();
+            foreach(ListViewItem item in lvUnisexNicknames.Items)
+            {
+                nicknames.Add(new ClassNickname(item.SubItems[0].Text, item.SubItems[1].Text));
+            }
+
+            return nicknames;
         }
 
         #endregion Save Class
@@ -944,5 +969,48 @@ namespace Xcom2ClassManager.Forms
         }
 
         #endregion Stat Totals
+
+        private void bAddUnisexNickname_Click(object sender, EventArgs e)
+        {
+            if(addName())
+            {
+                tNewUnisexNickname.Text = "";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem eachItem in lvUnisexNicknames.SelectedItems)
+            {
+                lvUnisexNicknames.Items.Remove(eachItem);
+            }
+        }
+
+        private void tNewUnisexNickname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                if (addName())
+                {
+                    tNewUnisexNickname.Text = "";
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private bool addName()
+        {
+            bool success = false;
+            string newUnisexNickname = tNewUnisexNickname.Text;
+
+            if (!string.IsNullOrEmpty(newUnisexNickname))
+            {
+                ListViewItem x = new ListViewItem(new ClassNickname(newUnisexNickname, (string)cNicknameGender.SelectedItem).getListViewStringArray());
+                lvUnisexNicknames.Items.Add(x);
+                success = true;
+            }
+
+            return success;
+        }
     }
 }

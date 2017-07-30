@@ -88,4 +88,16 @@ namespace Xcom2ClassManager
         EDIT,
         CANCEL
     }
+
+    public enum NicknameGender
+    {
+        [Description("Unisex")]
+        Unisex = 0,
+
+        [Description("Male")]
+        Male = 1,
+
+        [Description("Female")]
+        Female = 2
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Xcom2ClassManager.DataObjects;
 
 namespace Xcom2ClassManager
 {
@@ -14,6 +15,8 @@ namespace Xcom2ClassManager
         public string leftTreeName { get; set; }
         public string rightTreeName { get; set; }
 
+        public List<ClassNickname> nicknames { get; set; }
+
         public SoldierClass()
         {
             metadata = new SoldierClassMetadata();
@@ -24,6 +27,8 @@ namespace Xcom2ClassManager
 
             leftTreeName = "";
             rightTreeName = "";
+
+            nicknames = new List<ClassNickname>();
         }
 
         public SoldierClass(SoldierClass other)
@@ -46,6 +51,12 @@ namespace Xcom2ClassManager
 
             leftTreeName = other.leftTreeName;
             rightTreeName = other.rightTreeName;
+
+            nicknames = new List<ClassNickname>();
+            foreach (ClassNickname nickname in other.nicknames)
+            {
+                nicknames.Add(new ClassNickname(nickname));
+            }
         }
 
         public string getInternalName()

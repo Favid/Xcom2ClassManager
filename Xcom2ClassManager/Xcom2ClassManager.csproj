@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="DataObjects\Ability.cs" />
     <Compile Include="DataObjects\ClassPack.cs" />
+    <Compile Include="DataObjects\ClassNickname.cs" />
     <Compile Include="DataObjects\ProjectState.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ExportForXcom\ClassExportManager.cs" />

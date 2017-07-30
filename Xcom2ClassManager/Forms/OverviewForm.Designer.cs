@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OverviewForm));
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Test");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Test2");
             this.laClass = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
@@ -210,6 +212,14 @@
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cSoldierClass = new System.Windows.Forms.ComboBox();
+            this.tabNicknames = new System.Windows.Forms.TabPage();
+            this.lvUnisexNicknames = new System.Windows.Forms.ListView();
+            this.bAddNickname = new System.Windows.Forms.Button();
+            this.bRemoveNickname = new System.Windows.Forms.Button();
+            this.tNewUnisexNickname = new System.Windows.Forms.TextBox();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cNicknameGender = new System.Windows.Forms.ComboBox();
             this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
@@ -243,6 +253,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.menu.SuspendLayout();
+            this.tabNicknames.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -262,6 +273,7 @@
             this.tabControl1.Controls.Add(this.tabGeneral);
             this.tabControl1.Controls.Add(this.tabStats);
             this.tabControl1.Controls.Add(this.tabAbilities);
+            this.tabControl1.Controls.Add(this.tabNicknames);
             this.tabControl1.Location = new System.Drawing.Point(12, 61);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -579,7 +591,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox9, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label49, 8, 0);
             this.tableLayoutPanel2.Controls.Add(this.tBrigadierDodge, 8, 8);
@@ -701,7 +713,7 @@
             // 
             this.label49.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(442, 4);
+            this.label49.Location = new System.Drawing.Point(449, 4);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(39, 13);
             this.label49.TabIndex = 230;
@@ -710,7 +722,7 @@
             // tBrigadierDodge
             // 
             this.tBrigadierDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierDodge.Location = new System.Drawing.Point(447, 319);
+            this.tBrigadierDodge.Location = new System.Drawing.Point(454, 319);
             this.tBrigadierDodge.Name = "tBrigadierDodge";
             this.tBrigadierDodge.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierDodge.TabIndex = 78;
@@ -945,7 +957,7 @@
             // tColonelDodge
             // 
             this.tColonelDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelDodge.Location = new System.Drawing.Point(447, 278);
+            this.tColonelDodge.Location = new System.Drawing.Point(454, 278);
             this.tColonelDodge.Name = "tColonelDodge";
             this.tColonelDodge.Size = new System.Drawing.Size(28, 20);
             this.tColonelDodge.TabIndex = 68;
@@ -983,7 +995,7 @@
             // tMajorDodge
             // 
             this.tMajorDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorDodge.Location = new System.Drawing.Point(447, 237);
+            this.tMajorDodge.Location = new System.Drawing.Point(454, 237);
             this.tMajorDodge.Name = "tMajorDodge";
             this.tMajorDodge.Size = new System.Drawing.Size(28, 20);
             this.tMajorDodge.TabIndex = 58;
@@ -1085,7 +1097,7 @@
             // tCaptainDodge
             // 
             this.tCaptainDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainDodge.Location = new System.Drawing.Point(447, 196);
+            this.tCaptainDodge.Location = new System.Drawing.Point(454, 196);
             this.tCaptainDodge.Name = "tCaptainDodge";
             this.tCaptainDodge.Size = new System.Drawing.Size(28, 20);
             this.tCaptainDodge.TabIndex = 48;
@@ -1124,7 +1136,7 @@
             // tLieutenantDodge
             // 
             this.tLieutenantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantDodge.Location = new System.Drawing.Point(447, 155);
+            this.tLieutenantDodge.Location = new System.Drawing.Point(454, 155);
             this.tLieutenantDodge.Name = "tLieutenantDodge";
             this.tLieutenantDodge.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantDodge.TabIndex = 38;
@@ -1163,7 +1175,7 @@
             // tSergeantDodge
             // 
             this.tSergeantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantDodge.Location = new System.Drawing.Point(447, 114);
+            this.tSergeantDodge.Location = new System.Drawing.Point(454, 114);
             this.tSergeantDodge.Name = "tSergeantDodge";
             this.tSergeantDodge.Size = new System.Drawing.Size(28, 20);
             this.tSergeantDodge.TabIndex = 28;
@@ -1220,7 +1232,7 @@
             // tCorporalDodge
             // 
             this.tCorporalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalDodge.Location = new System.Drawing.Point(447, 73);
+            this.tCorporalDodge.Location = new System.Drawing.Point(454, 73);
             this.tCorporalDodge.Name = "tCorporalDodge";
             this.tCorporalDodge.Size = new System.Drawing.Size(28, 20);
             this.tCorporalDodge.TabIndex = 18;
@@ -1241,7 +1253,7 @@
             // tSquaddieDodge
             // 
             this.tSquaddieDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieDodge.Location = new System.Drawing.Point(447, 32);
+            this.tSquaddieDodge.Location = new System.Drawing.Point(454, 32);
             this.tSquaddieDodge.Name = "tSquaddieDodge";
             this.tSquaddieDodge.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieDodge.TabIndex = 8;
@@ -1529,7 +1541,7 @@
             // 
             this.laTotalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalDodge.AutoSize = true;
-            this.laTotalDodge.Location = new System.Drawing.Point(455, 363);
+            this.laTotalDodge.Location = new System.Drawing.Point(462, 363);
             this.laTotalDodge.Name = "laTotalDodge";
             this.laTotalDodge.Size = new System.Drawing.Size(13, 13);
             this.laTotalDodge.TabIndex = 239;
@@ -2435,6 +2447,89 @@
             this.cSoldierClass.TabIndex = 100;
             this.cSoldierClass.SelectedIndexChanged += new System.EventHandler(this.cSoldierClass_SelectedIndexChanged);
             // 
+            // tabNicknames
+            // 
+            this.tabNicknames.Controls.Add(this.cNicknameGender);
+            this.tabNicknames.Controls.Add(this.tNewUnisexNickname);
+            this.tabNicknames.Controls.Add(this.bRemoveNickname);
+            this.tabNicknames.Controls.Add(this.bAddNickname);
+            this.tabNicknames.Controls.Add(this.lvUnisexNicknames);
+            this.tabNicknames.Location = new System.Drawing.Point(4, 22);
+            this.tabNicknames.Name = "tabNicknames";
+            this.tabNicknames.Padding = new System.Windows.Forms.Padding(3);
+            this.tabNicknames.Size = new System.Drawing.Size(562, 499);
+            this.tabNicknames.TabIndex = 9;
+            this.tabNicknames.Text = "Nicknames";
+            this.tabNicknames.UseVisualStyleBackColor = true;
+            // 
+            // lvUnisexNicknames
+            // 
+            this.lvUnisexNicknames.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvUnisexNicknames.FullRowSelect = true;
+            this.lvUnisexNicknames.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem3,
+            listViewItem4});
+            this.lvUnisexNicknames.LabelEdit = true;
+            this.lvUnisexNicknames.Location = new System.Drawing.Point(6, 6);
+            this.lvUnisexNicknames.Name = "lvUnisexNicknames";
+            this.lvUnisexNicknames.Size = new System.Drawing.Size(550, 165);
+            this.lvUnisexNicknames.TabIndex = 0;
+            this.lvUnisexNicknames.UseCompatibleStateImageBehavior = false;
+            this.lvUnisexNicknames.View = System.Windows.Forms.View.Details;
+            // 
+            // bAddNickname
+            // 
+            this.bAddNickname.Location = new System.Drawing.Point(161, 177);
+            this.bAddNickname.Name = "bAddNickname";
+            this.bAddNickname.Size = new System.Drawing.Size(149, 23);
+            this.bAddNickname.TabIndex = 1;
+            this.bAddNickname.Text = "Add Nickname";
+            this.bAddNickname.UseVisualStyleBackColor = true;
+            this.bAddNickname.Click += new System.EventHandler(this.bAddUnisexNickname_Click);
+            // 
+            // bRemoveNickname
+            // 
+            this.bRemoveNickname.Location = new System.Drawing.Point(316, 177);
+            this.bRemoveNickname.Name = "bRemoveNickname";
+            this.bRemoveNickname.Size = new System.Drawing.Size(149, 23);
+            this.bRemoveNickname.TabIndex = 2;
+            this.bRemoveNickname.Text = "Remove Nickname";
+            this.bRemoveNickname.UseVisualStyleBackColor = true;
+            this.bRemoveNickname.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // tNewUnisexNickname
+            // 
+            this.tNewUnisexNickname.Location = new System.Drawing.Point(6, 177);
+            this.tNewUnisexNickname.Name = "tNewUnisexNickname";
+            this.tNewUnisexNickname.Size = new System.Drawing.Size(149, 20);
+            this.tNewUnisexNickname.TabIndex = 3;
+            this.tNewUnisexNickname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tNewUnisexNickname_KeyPress);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Nickname";
+            this.columnHeader1.Width = 276;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Gender";
+            this.columnHeader2.Width = 146;
+            // 
+            // cNicknameGender
+            // 
+            this.cNicknameGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cNicknameGender.FormattingEnabled = true;
+            this.cNicknameGender.Items.AddRange(new object[] {
+            "Unisex",
+            "Male",
+            "Female"});
+            this.cNicknameGender.Location = new System.Drawing.Point(6, 203);
+            this.cNicknameGender.Name = "cNicknameGender";
+            this.cNicknameGender.Size = new System.Drawing.Size(149, 21);
+            this.cNicknameGender.TabIndex = 4;
+            // 
             // soldierClassAbilityBindingSource
             // 
             this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
@@ -2493,6 +2588,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.tabNicknames.ResumeLayout(false);
+            this.tabNicknames.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2682,5 +2779,13 @@
         private System.Windows.Forms.Label laTotalMobility;
         private System.Windows.Forms.Label laTotalWill;
         private System.Windows.Forms.Label laTotalDodge;
+        private System.Windows.Forms.TabPage tabNicknames;
+        private System.Windows.Forms.ListView lvUnisexNicknames;
+        private System.Windows.Forms.Button bRemoveNickname;
+        private System.Windows.Forms.Button bAddNickname;
+        private System.Windows.Forms.TextBox tNewUnisexNickname;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ComboBox cNicknameGender;
     }
 }
