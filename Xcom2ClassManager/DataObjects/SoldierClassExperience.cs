@@ -2,16 +2,16 @@
 {
     public class SoldierClassExperience
     {
-        public int? numberInForcedDeck { get; set; }
-        public int? numberInDeck { get; set; }
-        public int? killAssistsPerKill { get; set; }
-        public double? missionExperienceWeight { get; set; }
+        public int numberInForcedDeck { get; set; }
+        public int numberInDeck { get; set; }
+        public int killAssistsPerKill { get; set; }
+        public double missionExperienceWeight { get; set; }
 
         public SoldierClassExperience()
         {
             numberInForcedDeck = 1;
-            numberInDeck = 1;
-            killAssistsPerKill = 1;
+            numberInDeck = 4;
+            killAssistsPerKill = 5;
             missionExperienceWeight = 5.7;
         }
 

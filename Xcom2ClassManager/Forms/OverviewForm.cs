@@ -103,11 +103,11 @@ namespace Xcom2ClassManager.Forms
             tDisplayName.Text = soldierClass.metadata.displayName;
             tDescription.Text = soldierClass.metadata.description;
             tIconString.Text = soldierClass.metadata.iconString;
-
-            tNumInForcedDeck.Text = soldierClass.experience.numberInForcedDeck.ToString();
-            tNumInDeck.Text = soldierClass.experience.numberInDeck.ToString();
-            tKillAssistsPerKill.Text = soldierClass.experience.killAssistsPerKill.ToString();
-            tMissionExperienceWeight.Text = soldierClass.experience.missionExperienceWeight.ToString();
+            
+            nNumInForcedDeck.Value = soldierClass.experience.numberInForcedDeck;
+            nNumInDeck.Value = soldierClass.experience.numberInDeck;
+            nKillAssistsPerKill.Value = soldierClass.experience.killAssistsPerKill;
+            nMissionExperienceWeight.Value = (decimal)soldierClass.experience.missionExperienceWeight;
 
             tSquaddieLoadout.Text = soldierClass.equipment.squaddieLoadout;
             tAllowedArmor.Text = soldierClass.equipment.allowedArmors;
@@ -264,11 +264,11 @@ namespace Xcom2ClassManager.Forms
             soldierClass.metadata.displayName = tDisplayName.Text;
             soldierClass.metadata.description = tDescription.Text;
             soldierClass.metadata.iconString = tIconString.Text;
-
-            soldierClass.experience.numberInForcedDeck = int.Parse(tNumInForcedDeck.Text);
-            soldierClass.experience.numberInDeck = int.Parse(tNumInDeck.Text);
-            soldierClass.experience.killAssistsPerKill = int.Parse(tKillAssistsPerKill.Text);
-            soldierClass.experience.missionExperienceWeight = double.Parse(tMissionExperienceWeight.Text);
+            
+            soldierClass.experience.numberInForcedDeck = (int)nNumInForcedDeck.Value;
+            soldierClass.experience.numberInDeck = (int)nNumInDeck.Value;
+            soldierClass.experience.killAssistsPerKill = (int)nKillAssistsPerKill.Value;
+            soldierClass.experience.missionExperienceWeight = (double)nMissionExperienceWeight.Value;
 
             soldierClass.equipment.squaddieLoadout = tSquaddieLoadout.Text;
             soldierClass.equipment.allowedArmors = tAllowedArmor.Text;

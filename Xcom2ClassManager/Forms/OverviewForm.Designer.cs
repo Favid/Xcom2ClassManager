@@ -44,12 +44,9 @@
             this.bEditWeapon = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tNumInForcedDeck = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.tNumInDeck = new System.Windows.Forms.TextBox();
-            this.tKillAssistsPerKill = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -199,9 +196,12 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.tLeftTree = new System.Windows.Forms.TextBox();
             this.tRightTree = new System.Windows.Forms.TextBox();
-            this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.laMissionExperienceWeight = new System.Windows.Forms.Label();
-            this.tMissionExperienceWeight = new System.Windows.Forms.TextBox();
+            this.nNumInForcedDeck = new System.Windows.Forms.NumericUpDown();
+            this.nNumInDeck = new System.Windows.Forms.NumericUpDown();
+            this.nKillAssistsPerKill = new System.Windows.Forms.NumericUpDown();
+            this.nMissionExperienceWeight = new System.Windows.Forms.NumericUpDown();
+            this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -230,6 +230,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNumInForcedDeck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNumInDeck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nKillAssistsPerKill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nMissionExperienceWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -370,14 +374,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.nMissionExperienceWeight);
+            this.groupBox2.Controls.Add(this.nKillAssistsPerKill);
+            this.groupBox2.Controls.Add(this.nNumInDeck);
+            this.groupBox2.Controls.Add(this.nNumInForcedDeck);
             this.groupBox2.Controls.Add(this.laMissionExperienceWeight);
-            this.groupBox2.Controls.Add(this.tMissionExperienceWeight);
-            this.groupBox2.Controls.Add(this.tNumInForcedDeck);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.tNumInDeck);
-            this.groupBox2.Controls.Add(this.tKillAssistsPerKill);
             this.groupBox2.Location = new System.Drawing.Point(9, 153);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(499, 135);
@@ -385,18 +389,10 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Experience";
             // 
-            // tNumInForcedDeck
-            // 
-            this.tNumInForcedDeck.Location = new System.Drawing.Point(150, 20);
-            this.tNumInForcedDeck.Name = "tNumInForcedDeck";
-            this.tNumInForcedDeck.Size = new System.Drawing.Size(29, 20);
-            this.tNumInForcedDeck.TabIndex = 34;
-            this.tNumInForcedDeck.Text = "2";
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 27);
+            this.label23.Location = new System.Drawing.Point(6, 22);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(109, 13);
             this.label23.TabIndex = 24;
@@ -405,7 +401,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 53);
+            this.label22.Location = new System.Drawing.Point(6, 46);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(73, 13);
             this.label22.TabIndex = 25;
@@ -414,27 +410,11 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 79);
+            this.label21.Location = new System.Drawing.Point(6, 70);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(93, 13);
             this.label21.TabIndex = 26;
             this.label21.Text = "Kill Assists Per Kill:";
-            // 
-            // tNumInDeck
-            // 
-            this.tNumInDeck.Location = new System.Drawing.Point(150, 46);
-            this.tNumInDeck.Name = "tNumInDeck";
-            this.tNumInDeck.Size = new System.Drawing.Size(29, 20);
-            this.tNumInDeck.TabIndex = 35;
-            this.tNumInDeck.Text = "4";
-            // 
-            // tKillAssistsPerKill
-            // 
-            this.tKillAssistsPerKill.Location = new System.Drawing.Point(150, 72);
-            this.tKillAssistsPerKill.Name = "tKillAssistsPerKill";
-            this.tKillAssistsPerKill.Size = new System.Drawing.Size(29, 20);
-            this.tKillAssistsPerKill.TabIndex = 36;
-            this.tKillAssistsPerKill.Text = "5";
             // 
             // groupBox1
             // 
@@ -2219,26 +2199,72 @@
             this.tRightTree.TabIndex = 118;
             this.tRightTree.WordWrap = false;
             // 
-            // soldierClassAbilityBindingSource
-            // 
-            this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
-            // 
             // laMissionExperienceWeight
             // 
             this.laMissionExperienceWeight.AutoSize = true;
-            this.laMissionExperienceWeight.Location = new System.Drawing.Point(6, 101);
+            this.laMissionExperienceWeight.Location = new System.Drawing.Point(6, 94);
             this.laMissionExperienceWeight.Name = "laMissionExperienceWeight";
             this.laMissionExperienceWeight.Size = new System.Drawing.Size(138, 13);
             this.laMissionExperienceWeight.TabIndex = 37;
             this.laMissionExperienceWeight.Text = "Mission Experience Weight:";
             // 
-            // tMissionExperienceWeight
+            // nNumInForcedDeck
             // 
-            this.tMissionExperienceWeight.Location = new System.Drawing.Point(150, 98);
-            this.tMissionExperienceWeight.Name = "tMissionExperienceWeight";
-            this.tMissionExperienceWeight.Size = new System.Drawing.Size(29, 20);
-            this.tMissionExperienceWeight.TabIndex = 38;
-            this.tMissionExperienceWeight.Text = "5";
+            this.nNumInForcedDeck.Location = new System.Drawing.Point(150, 20);
+            this.nNumInForcedDeck.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.nNumInForcedDeck.Name = "nNumInForcedDeck";
+            this.nNumInForcedDeck.Size = new System.Drawing.Size(51, 20);
+            this.nNumInForcedDeck.TabIndex = 39;
+            // 
+            // nNumInDeck
+            // 
+            this.nNumInDeck.Location = new System.Drawing.Point(150, 44);
+            this.nNumInDeck.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.nNumInDeck.Name = "nNumInDeck";
+            this.nNumInDeck.Size = new System.Drawing.Size(51, 20);
+            this.nNumInDeck.TabIndex = 40;
+            // 
+            // nKillAssistsPerKill
+            // 
+            this.nKillAssistsPerKill.Location = new System.Drawing.Point(150, 68);
+            this.nKillAssistsPerKill.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.nKillAssistsPerKill.Name = "nKillAssistsPerKill";
+            this.nKillAssistsPerKill.Size = new System.Drawing.Size(51, 20);
+            this.nKillAssistsPerKill.TabIndex = 41;
+            // 
+            // nMissionExperienceWeight
+            // 
+            this.nMissionExperienceWeight.DecimalPlaces = 3;
+            this.nMissionExperienceWeight.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nMissionExperienceWeight.Location = new System.Drawing.Point(150, 92);
+            this.nMissionExperienceWeight.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.nMissionExperienceWeight.Name = "nMissionExperienceWeight";
+            this.nMissionExperienceWeight.Size = new System.Drawing.Size(51, 20);
+            this.nMissionExperienceWeight.TabIndex = 42;
+            // 
+            // soldierClassAbilityBindingSource
+            // 
+            this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
             // 
             // OverviewForm
             // 
@@ -2290,6 +2316,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNumInForcedDeck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNumInDeck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nKillAssistsPerKill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nMissionExperienceWeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2310,9 +2340,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox tAllowedArmor;
         private System.Windows.Forms.TextBox tSquaddieLoadout;
-        private System.Windows.Forms.TextBox tKillAssistsPerKill;
-        private System.Windows.Forms.TextBox tNumInDeck;
-        private System.Windows.Forms.TextBox tNumInForcedDeck;
         private System.Windows.Forms.ListBox lWeapons;
         private System.Windows.Forms.Button bDeleteWeapon;
         private System.Windows.Forms.Button bAddWeapon;
@@ -2469,6 +2496,9 @@
         private System.Windows.Forms.TextBox tRightTree;
         private System.Windows.Forms.TextBox tLeftTree;
         private System.Windows.Forms.Label laMissionExperienceWeight;
-        private System.Windows.Forms.TextBox tMissionExperienceWeight;
+        private System.Windows.Forms.NumericUpDown nNumInForcedDeck;
+        private System.Windows.Forms.NumericUpDown nMissionExperienceWeight;
+        private System.Windows.Forms.NumericUpDown nKillAssistsPerKill;
+        private System.Windows.Forms.NumericUpDown nNumInDeck;
     }
 }
