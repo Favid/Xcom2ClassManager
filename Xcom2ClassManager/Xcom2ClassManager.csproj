@@ -58,6 +58,7 @@
     <Compile Include="ExportForXcom\ClassExportManager.cs" />
     <Compile Include="FileManagers\AbilityManager.cs" />
     <Compile Include="FileManagers\ClassPackManager.cs" />
+    <Compile Include="FileManagers\NicknameManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +76,12 @@
     </Compile>
     <Compile Include="Forms\ImportAbilitiesForm.Designer.cs">
       <DependentUpon>ImportAbilitiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImportNicknamesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportNicknamesForm.Designer.cs">
+      <DependentUpon>ImportNicknamesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\OverviewForm.cs">
       <SubType>Form</SubType>
@@ -107,6 +114,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\ClassPackExportForm.resx">
       <DependentUpon>ClassPackExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportNicknamesForm.resx">
+      <DependentUpon>ImportNicknamesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OverviewForm.resx">
       <DependentUpon>OverviewForm.cs</DependentUpon>

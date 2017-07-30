@@ -1012,5 +1012,11 @@ namespace Xcom2ClassManager.Forms
 
             return success;
         }
+
+        private void nicknamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportNicknamesForm form = new ImportNicknamesForm(ProjectState.getClassPack());
+            form.ShowDialog();
+        }
     }
 }
