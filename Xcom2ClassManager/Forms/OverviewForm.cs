@@ -195,6 +195,8 @@ namespace Xcom2ClassManager.Forms
             tMajorDodge.Text = soldierClass.getStatValueText(SoldierRank.Major, Stat.Dodge);
             tColonelDodge.Text = soldierClass.getStatValueText(SoldierRank.Colonel, Stat.Dodge);
             tBrigadierDodge.Text = soldierClass.getStatValueText(SoldierRank.Brigadier, Stat.Dodge);
+
+            updateStatTotals();
         }
 
         private void openSoldierAbilities(SoldierClass soldierClass)
@@ -745,5 +747,202 @@ namespace Xcom2ClassManager.Forms
         {
 
         }
+
+        #region Stat Totals
+
+        private void updateStatTotals()
+        {
+            updateTotalHp();
+            updateTotalAim();
+            updateTotalStrength();
+            updateTotalHacking();
+            updateTotalPsi();
+            updateTotalMobility();
+            updateTotalWill();
+            updateTotalDodge();
+        }
+
+        private void tHp_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalHp();
+        }
+
+        private void updateTotalHp()
+        {
+            int totalHp = 0;
+
+            totalHp += getStatValueForAddition(tSquaddieHp);
+            totalHp += getStatValueForAddition(tCorporalHp);
+            totalHp += getStatValueForAddition(tSergeantHp);
+            totalHp += getStatValueForAddition(tLieutenantHp);
+            totalHp += getStatValueForAddition(tCaptainHp);
+            totalHp += getStatValueForAddition(tMajorHp);
+            totalHp += getStatValueForAddition(tColonelHp);
+            totalHp += getStatValueForAddition(tBrigadierHp);
+
+            laTotalHp.Text = totalHp.ToString();
+        }
+
+        private void tAim_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalAim();
+        }
+
+        private void updateTotalAim()
+        {
+            int totalAim = 0;
+
+            totalAim += getStatValueForAddition(tSquaddieAim);
+            totalAim += getStatValueForAddition(tCorporalAim);
+            totalAim += getStatValueForAddition(tSergeantAim);
+            totalAim += getStatValueForAddition(tLieutenantAim);
+            totalAim += getStatValueForAddition(tCaptainAim);
+            totalAim += getStatValueForAddition(tMajorAim);
+            totalAim += getStatValueForAddition(tColonelAim);
+            totalAim += getStatValueForAddition(tBrigadierAim);
+
+            laTotalAim.Text = totalAim.ToString();
+        }
+
+        private void tStrength_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalStrength();
+        }
+
+        private void updateTotalStrength()
+        {
+            int totalStrength = 0;
+
+            totalStrength += getStatValueForAddition(tSquaddieStrength);
+            totalStrength += getStatValueForAddition(tCorporalStrength);
+            totalStrength += getStatValueForAddition(tSergeantStrength);
+            totalStrength += getStatValueForAddition(tLieutenantStrength);
+            totalStrength += getStatValueForAddition(tCaptainStrength);
+            totalStrength += getStatValueForAddition(tMajorStrength);
+            totalStrength += getStatValueForAddition(tColonelStrength);
+            totalStrength += getStatValueForAddition(tBrigadierStrength);
+
+            laTotalStrength.Text = totalStrength.ToString();
+        }
+
+        private void tHacking_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalHacking();
+        }
+
+        private void updateTotalHacking()
+        {
+            int totalHacking = 0;
+
+            totalHacking += getStatValueForAddition(tSquaddieHacking);
+            totalHacking += getStatValueForAddition(tCorporalHacking);
+            totalHacking += getStatValueForAddition(tSergeantHacking);
+            totalHacking += getStatValueForAddition(tLieutenantHacking);
+            totalHacking += getStatValueForAddition(tCaptainHacking);
+            totalHacking += getStatValueForAddition(tMajorHacking);
+            totalHacking += getStatValueForAddition(tColonelHacking);
+            totalHacking += getStatValueForAddition(tBrigadierHacking);
+
+            laTotalHacking.Text = totalHacking.ToString();
+        }
+
+        private void tPsi_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalPsi();
+        }
+
+        private void updateTotalPsi()
+        {
+            int totalPsi = 0;
+
+            totalPsi += getStatValueForAddition(tSquaddiePsi);
+            totalPsi += getStatValueForAddition(tCorporalPsi);
+            totalPsi += getStatValueForAddition(tSergeantPsi);
+            totalPsi += getStatValueForAddition(tLieutenantPsi);
+            totalPsi += getStatValueForAddition(tCaptainPsi);
+            totalPsi += getStatValueForAddition(tMajorPsi);
+            totalPsi += getStatValueForAddition(tColonelPsi);
+            totalPsi += getStatValueForAddition(tBrigadierPsi);
+
+            laTotalPsi.Text = totalPsi.ToString();
+        }
+
+        private void tMobility_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalMobility();
+        }
+
+        private void updateTotalMobility()
+        {
+            int totalMobility = 0;
+
+            totalMobility += getStatValueForAddition(tSquaddieMobility);
+            totalMobility += getStatValueForAddition(tCorporalMobility);
+            totalMobility += getStatValueForAddition(tSergeantMobility);
+            totalMobility += getStatValueForAddition(tLieutenantMobility);
+            totalMobility += getStatValueForAddition(tCaptainMobility);
+            totalMobility += getStatValueForAddition(tMajorMobility);
+            totalMobility += getStatValueForAddition(tColonelMobility);
+            totalMobility += getStatValueForAddition(tBrigadierMobility);
+
+            laTotalMobility.Text = totalMobility.ToString();
+        }
+
+        private void tWill_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalWill();
+        }
+
+        private void updateTotalWill()
+        {
+            int totalWill = 0;
+
+            totalWill += getStatValueForAddition(tSquaddieWill);
+            totalWill += getStatValueForAddition(tCorporalWill);
+            totalWill += getStatValueForAddition(tSergeantWill);
+            totalWill += getStatValueForAddition(tLieutenantWill);
+            totalWill += getStatValueForAddition(tCaptainWill);
+            totalWill += getStatValueForAddition(tMajorWill);
+            totalWill += getStatValueForAddition(tColonelWill);
+            totalWill += getStatValueForAddition(tBrigadierWill);
+
+            laTotalWill.Text = totalWill.ToString();
+        }
+
+        private void tDodge_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalDodge();
+        }
+
+        private void updateTotalDodge()
+        {
+            int totalDodge = 0;
+
+            totalDodge += getStatValueForAddition(tSquaddieDodge);
+            totalDodge += getStatValueForAddition(tCorporalDodge);
+            totalDodge += getStatValueForAddition(tSergeantDodge);
+            totalDodge += getStatValueForAddition(tLieutenantDodge);
+            totalDodge += getStatValueForAddition(tCaptainDodge);
+            totalDodge += getStatValueForAddition(tMajorDodge);
+            totalDodge += getStatValueForAddition(tColonelDodge);
+            totalDodge += getStatValueForAddition(tBrigadierDodge);
+
+            laTotalDodge.Text = totalDodge.ToString();
+        }
+
+        private int getStatValueForAddition(TextBox textbox)
+        {
+            int? intValue = Utils.parseStringToInt(textbox.Text);
+            if(intValue == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return intValue.Value;
+            }
+        }
+
+        #endregion Stat Totals
     }
 }
