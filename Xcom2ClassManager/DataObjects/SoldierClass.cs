@@ -16,6 +16,7 @@ namespace Xcom2ClassManager
         public string rightTreeName { get; set; }
 
         public List<ClassNickname> nicknames { get; set; }
+        public List<string> loadoutItems { get; set; }
 
         public SoldierClass()
         {
@@ -29,6 +30,7 @@ namespace Xcom2ClassManager
             rightTreeName = "";
 
             nicknames = new List<ClassNickname>();
+            loadoutItems = new List<string>();
         }
 
         public SoldierClass(SoldierClass other)
@@ -56,6 +58,12 @@ namespace Xcom2ClassManager
             foreach (ClassNickname nickname in other.nicknames)
             {
                 nicknames.Add(new ClassNickname(nickname));
+            }
+
+            loadoutItems = new List<string>();
+            foreach (string loadoutItem in other.loadoutItems)
+            {
+                loadoutItems.Add(loadoutItem);
             }
         }
 

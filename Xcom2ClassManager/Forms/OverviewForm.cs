@@ -122,6 +122,7 @@ namespace Xcom2ClassManager.Forms
             openSoldierStats(soldierClass);
             openSoldierAbilities(soldierClass);
             openSoldierNicknames(soldierClass);
+            openSoldierLoadout(soldierClass);
         }
 
         private void openSoldierStats(SoldierClass soldierClass)
@@ -266,6 +267,15 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
+        private void openSoldierLoadout(SoldierClass soldierClass)
+        {
+            lvSquaddieLoadout.Items.Clear();
+            foreach (string loadoutItem in soldierClass.loadoutItems)
+            {
+                lvSquaddieLoadout.Items.Add(loadoutItem);
+            }
+        }
+        
         #endregion Open Class
 
         #region Build Class From Form
@@ -295,6 +305,7 @@ namespace Xcom2ClassManager.Forms
             soldierClass.rightTreeName = tRightTree.Text;
 
             soldierClass.nicknames = buildSoldierClassNicknames();
+            soldierClass.loadoutItems = buildSoldierClassLoadout();
 
             return soldierClass;
         }
@@ -461,6 +472,17 @@ namespace Xcom2ClassManager.Forms
             return nicknames;
         }
 
+        private List<string> buildSoldierClassLoadout()
+        {
+            List<string> loadoutItems = new List<string>();
+            foreach (ListViewItem item in lvSquaddieLoadout.Items)
+            {
+                loadoutItems.Add(item.Text);
+            }
+
+            return loadoutItems;
+        }
+        
         #endregion Save Class
 
         #region Rename Class
@@ -1017,6 +1039,49 @@ namespace Xcom2ClassManager.Forms
         {
             ImportNicknamesForm form = new ImportNicknamesForm(ProjectState.getClassPack());
             form.ShowDialog();
+        }
+
+        private void bAddLoadout_Click(object sender, EventArgs e)
+        {
+            if (addLoadoutItem())
+            {
+                tNewLoadout.Text = "";
+            }
+        }
+
+        private void tNewLoadout_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (addLoadoutItem())
+                {
+                    tNewLoadout.Text = "";
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private bool addLoadoutItem()
+        {
+            bool success = false;
+            string newLoadoutItem = tNewLoadout.Text;
+
+            if (!string.IsNullOrEmpty(newLoadoutItem))
+            {
+                ListViewItem x = new ListViewItem(newLoadoutItem);
+                lvSquaddieLoadout.Items.Add(x);
+                success = true;
+            }
+
+            return success;
+        }
+
+        private void bRemoveLoadout_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem eachItem in lvSquaddieLoadout.SelectedItems)
+            {
+                lvSquaddieLoadout.Items.Remove(eachItem);
+            }
         }
     }
 }
