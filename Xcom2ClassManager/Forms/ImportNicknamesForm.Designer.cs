@@ -84,6 +84,7 @@
             this.tvClassNicknames.Name = "tvClassNicknames";
             this.tvClassNicknames.Size = new System.Drawing.Size(464, 207);
             this.tvClassNicknames.TabIndex = 42;
+            this.tvClassNicknames.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvClassNicknames_AfterCheck);
             // 
             // label1
             // 

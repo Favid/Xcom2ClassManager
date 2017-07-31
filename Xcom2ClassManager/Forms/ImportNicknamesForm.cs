@@ -226,5 +226,41 @@ namespace Xcom2ClassManager.Forms
 
             return nicknames;
         }
+
+        private void tvClassNicknames_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if(e.Node.Checked)
+            {
+                foreach (TreeNode childNode in e.Node.Nodes)
+                {
+                    childNode.Checked = true;
+                }
+            }
+            else
+            {
+                if(allNodesChecked(e.Node.Nodes))
+                {
+                    foreach (TreeNode childNode in e.Node.Nodes)
+                    {
+                        childNode.Checked = false;
+                    }
+                }
+            }
+        }
+
+        private bool allNodesChecked(TreeNodeCollection treeNodes)
+        {
+            foreach(TreeNode treeNode in treeNodes)
+            {
+                if(!treeNode.Checked)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
     }
 }
