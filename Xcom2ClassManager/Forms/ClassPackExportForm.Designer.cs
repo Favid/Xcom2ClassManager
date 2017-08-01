@@ -71,6 +71,7 @@
             this.bBrowse.TabIndex = 39;
             this.bBrowse.Text = "Browse";
             this.bBrowse.UseVisualStyleBackColor = true;
+            this.bBrowse.Click += new System.EventHandler(this.bBrowse_Click);
             // 
             // tDestination
             // 
@@ -87,6 +88,7 @@
             this.bExport.TabIndex = 41;
             this.bExport.Text = "Export";
             this.bExport.UseVisualStyleBackColor = true;
+            this.bExport.Click += new System.EventHandler(this.bExport_Click);
             // 
             // bClose
             // 
@@ -96,6 +98,7 @@
             this.bClose.TabIndex = 42;
             this.bClose.Text = "Close";
             this.bClose.UseVisualStyleBackColor = true;
+            this.bClose.Click += new System.EventHandler(this.bClose_Click);
             // 
             // groupBox1
             // 

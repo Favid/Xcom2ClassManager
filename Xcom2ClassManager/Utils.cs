@@ -29,5 +29,10 @@ namespace Xcom2ClassManager
         {
             return "\"" + str + "\"";
         }
+
+        public static string getIndexString(int index)
+        {
+            return "[" + index.ToString() + "]";
+        }
     }
 }

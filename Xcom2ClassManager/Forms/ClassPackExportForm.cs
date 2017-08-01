@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Xcom2ClassManager.DataObjects;
+using Xcom2ClassManager.Exporters;
 
 namespace Xcom2ClassManager.Forms
 {
@@ -71,6 +73,39 @@ namespace Xcom2ClassManager.Forms
 
             lRequiredMods.Items.Clear();
             lRequiredMods.Items.AddRange(requiredMods.ToArray());
+        }
+
+        private void bBrowse_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                tDestination.Text = dialog.SelectedPath;
+            }
+        }
+
+        private void bExport_Click(object sender, EventArgs e)
+        {
+            string destination = tDestination.Text;
+            List<SoldierClass> soldiersToExport = chlClasses.CheckedItems.Cast<SoldierClass>().ToList();
+
+            if (chXcomClassDataIni.Checked)
+            {
+                XComClassDataIniExporter exporter = new XComClassDataIniExporter(destination, soldiersToExport);
+                exporter.export();
+            }
+
+            if(chXcomGameInt.Checked)
+            {
+                XComGameIntExporter exporter = new XComGameIntExporter(destination, soldiersToExport);
+                exporter.export();
+            }
+
+        }
+
+        private void bClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

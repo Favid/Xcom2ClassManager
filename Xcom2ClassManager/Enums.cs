@@ -91,13 +91,32 @@ namespace Xcom2ClassManager
 
     public enum NicknameGender
     {
-        [Description("Unisex")]
+        [Description("RandomNickNames")]
         Unisex = 0,
 
-        [Description("Male")]
+        [Description("RandomNicknames_Male")]
         Male = 1,
 
-        [Description("Female")]
+        [Description("RandomNicknames_Female")]
         Female = 2
     }
+
+    public static class Enums
+    {
+        public static T getAttributeOfType<T>(this Enum enumVal) where T : System.Attribute
+        {
+            var type = enumVal.GetType();
+            var memInfo = type.GetMember(enumVal.ToString());
+            var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
+            return (attributes.Length > 0) ? (T)attributes[0] : null;
+        }
+
+        public static string getDescription(Enum enumValue)
+        {
+            DescriptionAttribute description = Enums.getAttributeOfType<DescriptionAttribute>(enumValue);
+            return description.Description;
+        }
+    }
+
+    
 }

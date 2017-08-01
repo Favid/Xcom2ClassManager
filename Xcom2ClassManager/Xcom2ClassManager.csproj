@@ -55,6 +55,8 @@
     <Compile Include="DataObjects\ClassNickname.cs" />
     <Compile Include="DataObjects\ProjectState.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Exporters\XComClassDataIniExporter.cs" />
+    <Compile Include="Exporters\XComGameIntExporter.cs" />
     <Compile Include="ExportForXcom\ClassExportManager.cs" />
     <Compile Include="FileManagers\AbilityManager.cs" />
     <Compile Include="FileManagers\ClassPackManager.cs" />
