@@ -41,6 +41,8 @@
             this.chForceVanilla = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lRequiredMods = new System.Windows.Forms.ListBox();
+            this.chXcomGameDataIni = new System.Windows.Forms.CheckBox();
+            this.chDebugClasses = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +104,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chXcomGameDataIni);
             this.groupBox1.Controls.Add(this.chXcomLwOverhaulIni);
             this.groupBox1.Controls.Add(this.chXcomGameInt);
             this.groupBox1.Controls.Add(this.chXcomClassDataIni);
@@ -154,6 +157,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chDebugClasses);
             this.groupBox2.Controls.Add(this.chForceVanilla);
             this.groupBox2.Location = new System.Drawing.Point(12, 301);
             this.groupBox2.Name = "groupBox2";
@@ -170,6 +174,26 @@
             this.lRequiredMods.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lRequiredMods.Size = new System.Drawing.Size(321, 121);
             this.lRequiredMods.TabIndex = 45;
+            // 
+            // chXcomGameDataIni
+            // 
+            this.chXcomGameDataIni.AutoSize = true;
+            this.chXcomGameDataIni.Location = new System.Drawing.Point(158, 66);
+            this.chXcomGameDataIni.Name = "chXcomGameDataIni";
+            this.chXcomGameDataIni.Size = new System.Drawing.Size(118, 17);
+            this.chXcomGameDataIni.TabIndex = 3;
+            this.chXcomGameDataIni.Text = "XComGameData.ini";
+            this.chXcomGameDataIni.UseVisualStyleBackColor = true;
+            // 
+            // chDebugClasses
+            // 
+            this.chDebugClasses.AutoSize = true;
+            this.chDebugClasses.Location = new System.Drawing.Point(158, 19);
+            this.chDebugClasses.Name = "chDebugClasses";
+            this.chDebugClasses.Size = new System.Drawing.Size(185, 17);
+            this.chDebugClasses.TabIndex = 4;
+            this.chDebugClasses.Text = "Include in Debug Starting Classes";
+            this.chDebugClasses.UseVisualStyleBackColor = true;
             // 
             // ClassPackExportForm
             // 
@@ -212,5 +236,7 @@
         private System.Windows.Forms.CheckBox chForceVanilla;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox lRequiredMods;
+        private System.Windows.Forms.CheckBox chXcomGameDataIni;
+        private System.Windows.Forms.CheckBox chDebugClasses;
     }
 }
