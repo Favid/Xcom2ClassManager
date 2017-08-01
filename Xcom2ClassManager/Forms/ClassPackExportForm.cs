@@ -101,6 +101,12 @@ namespace Xcom2ClassManager.Forms
                 exporter.export();
             }
 
+            if (chXcomLwOverhaulIni.Checked)
+            {
+                XComLWOverhaulIniExporter exporter = new XComLWOverhaulIniExporter(destination, soldiersToExport);
+                exporter.export();
+            }
+
         }
 
         private void bClose_Click(object sender, EventArgs e)
