@@ -17,6 +17,10 @@ namespace Xcom2ClassManager.Forms
     {
         private int previousSelectedSoldierClassIndex;
 
+        private const int NICKNAME_COLUMN_NAME = 0;
+        private const int NICKNAME_COLUMN_GENDER = 1;
+        private bool nicknameSortAscending = true;
+
         public OverviewForm()
         {
             InitializeComponent();
@@ -34,11 +38,12 @@ namespace Xcom2ClassManager.Forms
                 FileStream myStream = new FileStream(Properties.Settings.Default.ClassPackFilePath, FileMode.Open);
                 ClassPack classPack = ClassPackManager.loadClassPack(myStream);
                 Properties.Settings.Default.ClassPackFilePath = classPack.filePath;
+
                 loadClassPack(classPack);
             }
             else
             {
-                // TODO handle state where no class pack is selected
+                unloadClassPack();
             }
         }
 
@@ -47,6 +52,326 @@ namespace Xcom2ClassManager.Forms
             return !string.IsNullOrEmpty(Properties.Settings.Default.ClassPackFilePath)
                 && File.Exists(Properties.Settings.Default.ClassPackFilePath);
         }
+
+        #region Initialize Controls
+
+        private void initAcceptableControls()
+        {
+            cSoldierClass.Enabled = true;
+
+            tDisplayName.Enabled = true;
+            tDescription.Enabled = true;
+            tIconString.Enabled = true;
+
+            nNumInForcedDeck.Enabled = true;
+            nNumInDeck.Enabled = true;
+            nKillAssistsPerKill.Enabled = true;
+            nMissionExperienceWeight.Enabled = true;
+
+            tSquaddieHp.Enabled = true;
+            tCorporalHp.Enabled = true;
+            tSergeantHp.Enabled = true;
+            tLieutenantHp.Enabled = true;
+            tCaptainHp.Enabled = true;
+            tMajorHp.Enabled = true;
+            tColonelHp.Enabled = true;
+            tBrigadierHp.Enabled = true;
+
+            tSquaddieAim.Enabled = true;
+            tCorporalAim.Enabled = true;
+            tSergeantAim.Enabled = true;
+            tLieutenantAim.Enabled = true;
+            tCaptainAim.Enabled = true;
+            tMajorAim.Enabled = true;
+            tColonelAim.Enabled = true;
+            tBrigadierAim.Enabled = true;
+
+            tSquaddieStrength.Enabled = true;
+            tCorporalStrength.Enabled = true;
+            tSergeantStrength.Enabled = true;
+            tLieutenantStrength.Enabled = true;
+            tCaptainStrength.Enabled = true;
+            tMajorStrength.Enabled = true;
+            tColonelStrength.Enabled = true;
+            tBrigadierStrength.Enabled = true;
+
+            tSquaddieHacking.Enabled = true;
+            tCorporalHacking.Enabled = true;
+            tSergeantHacking.Enabled = true;
+            tLieutenantHacking.Enabled = true;
+            tCaptainHacking.Enabled = true;
+            tMajorHacking.Enabled = true;
+            tColonelHacking.Enabled = true;
+            tBrigadierHacking.Enabled = true;
+
+            tSquaddiePsi.Enabled = true;
+            tCorporalPsi.Enabled = true;
+            tSergeantPsi.Enabled = true;
+            tLieutenantPsi.Enabled = true;
+            tCaptainPsi.Enabled = true;
+            tMajorPsi.Enabled = true;
+            tColonelPsi.Enabled = true;
+            tBrigadierPsi.Enabled = true;
+
+            tSquaddieMobility.Enabled = true;
+            tCorporalMobility.Enabled = true;
+            tSergeantMobility.Enabled = true;
+            tLieutenantMobility.Enabled = true;
+            tCaptainMobility.Enabled = true;
+            tMajorMobility.Enabled = true;
+            tColonelMobility.Enabled = true;
+            tBrigadierMobility.Enabled = true;
+
+            tSquaddieWill.Enabled = true;
+            tCorporalWill.Enabled = true;
+            tSergeantWill.Enabled = true;
+            tLieutenantWill.Enabled = true;
+            tCaptainWill.Enabled = true;
+            tMajorWill.Enabled = true;
+            tColonelWill.Enabled = true;
+            tBrigadierWill.Enabled = true;
+
+            tSquaddieDodge.Enabled = true;
+            tCorporalDodge.Enabled = true;
+            tSergeantDodge.Enabled = true;
+            tLieutenantDodge.Enabled = true;
+            tCaptainDodge.Enabled = true;
+            tMajorDodge.Enabled = true;
+            tColonelDodge.Enabled = true;
+            tBrigadierDodge.Enabled = true;
+
+            tLeftTree.Enabled = true;
+            tRightTree.Enabled = true;
+
+            cSquaddie1.Enabled = true;
+            cSquaddie2.Enabled = true;
+            cSquaddie3.Enabled = true;
+            cSquaddie4.Enabled = true;
+            cSquaddie5.Enabled = true;
+            cSquaddie6.Enabled = true;
+
+            cCorporal1.Enabled = true;
+            cCorporal2.Enabled = true;
+            cCorporal3.Enabled = true;
+
+            cSergeant1.Enabled = true;
+            cSergeant2.Enabled = true;
+            cSergeant3.Enabled = true;
+
+            cLieutenant1.Enabled = true;
+            cLieutenant2.Enabled = true;
+            cLieutenant3.Enabled = true;
+
+            cCaptain1.Enabled = true;
+            cCaptain2.Enabled = true;
+            cCaptain3.Enabled = true;
+
+            cMajor1.Enabled = true;
+            cMajor2.Enabled = true;
+            cMajor3.Enabled = true;
+
+            cColonel1.Enabled = true;
+            cColonel2.Enabled = true;
+            cColonel3.Enabled = true;
+
+            cBrigadier1.Enabled = true;
+            cBrigadier2.Enabled = true;
+            cBrigadier3.Enabled = true;
+
+            chDragAndDrop.Enabled = true;
+
+            lvUnisexNicknames.Enabled = true;
+            cNicknameGender.Enabled = true;
+            tNewUnisexNickname.Enabled = true;
+            bAddNickname.Enabled = false;
+            bRemoveNickname.Enabled = false;
+
+            tAllowedArmor.Enabled = true;
+
+            tSquaddieLoadout.Enabled = true;
+            lvSquaddieLoadout.Enabled = true;
+            tNewLoadout.Enabled = true;
+            bAddLoadout.Enabled = false;
+            bRemoveLoadout.Enabled = false;
+        }
+
+        private void disableAllControls()
+        {
+            cSoldierClass.Enabled = false;
+
+            tDisplayName.Enabled = false;
+            tDescription.Enabled = false;
+            tIconString.Enabled = false;
+
+            nNumInForcedDeck.Enabled = false;
+            nNumInDeck.Enabled = false;
+            nKillAssistsPerKill.Enabled = false;
+            nMissionExperienceWeight.Enabled = false;
+
+            tSquaddieHp.Enabled = false;
+            tCorporalHp.Enabled = false;
+            tSergeantHp.Enabled = false;
+            tLieutenantHp.Enabled = false;
+            tCaptainHp.Enabled = false;
+            tMajorHp.Enabled = false;
+            tColonelHp.Enabled = false;
+            tBrigadierHp.Enabled = false;
+
+            tSquaddieAim.Enabled = false;
+            tCorporalAim.Enabled = false;
+            tSergeantAim.Enabled = false;
+            tLieutenantAim.Enabled = false;
+            tCaptainAim.Enabled = false;
+            tMajorAim.Enabled = false;
+            tColonelAim.Enabled = false;
+            tBrigadierAim.Enabled = false;
+
+            tSquaddieStrength.Enabled = false;
+            tCorporalStrength.Enabled = false;
+            tSergeantStrength.Enabled = false;
+            tLieutenantStrength.Enabled = false;
+            tCaptainStrength.Enabled = false;
+            tMajorStrength.Enabled = false;
+            tColonelStrength.Enabled = false;
+            tBrigadierStrength.Enabled = false;
+
+            tSquaddieHacking.Enabled = false;
+            tCorporalHacking.Enabled = false;
+            tSergeantHacking.Enabled = false;
+            tLieutenantHacking.Enabled = false;
+            tCaptainHacking.Enabled = false;
+            tMajorHacking.Enabled = false;
+            tColonelHacking.Enabled = false;
+            tBrigadierHacking.Enabled = false;
+
+            tSquaddiePsi.Enabled = false;
+            tCorporalPsi.Enabled = false;
+            tSergeantPsi.Enabled = false;
+            tLieutenantPsi.Enabled = false;
+            tCaptainPsi.Enabled = false;
+            tMajorPsi.Enabled = false;
+            tColonelPsi.Enabled = false;
+            tBrigadierPsi.Enabled = false;
+
+            tSquaddieMobility.Enabled = false;
+            tCorporalMobility.Enabled = false;
+            tSergeantMobility.Enabled = false;
+            tLieutenantMobility.Enabled = false;
+            tCaptainMobility.Enabled = false;
+            tMajorMobility.Enabled = false;
+            tColonelMobility.Enabled = false;
+            tBrigadierMobility.Enabled = false;
+
+            tSquaddieWill.Enabled = false;
+            tCorporalWill.Enabled = false;
+            tSergeantWill.Enabled = false;
+            tLieutenantWill.Enabled = false;
+            tCaptainWill.Enabled = false;
+            tMajorWill.Enabled = false;
+            tColonelWill.Enabled = false;
+            tBrigadierWill.Enabled = false;
+
+            tSquaddieDodge.Enabled = false;
+            tCorporalDodge.Enabled = false;
+            tSergeantDodge.Enabled = false;
+            tLieutenantDodge.Enabled = false;
+            tCaptainDodge.Enabled = false;
+            tMajorDodge.Enabled = false;
+            tColonelDodge.Enabled = false;
+            tBrigadierDodge.Enabled = false;
+
+            tLeftTree.Enabled = false;
+            tRightTree.Enabled = false;
+
+            cSquaddie1.Enabled = false;
+            cSquaddie2.Enabled = false;
+            cSquaddie3.Enabled = false;
+            cSquaddie4.Enabled = false;
+            cSquaddie5.Enabled = false;
+            cSquaddie6.Enabled = false;
+
+            cCorporal1.Enabled = false;
+            cCorporal2.Enabled = false;
+            cCorporal3.Enabled = false;
+
+            cSergeant1.Enabled = false;
+            cSergeant2.Enabled = false;
+            cSergeant3.Enabled = false;
+
+            cLieutenant1.Enabled = false;
+            cLieutenant2.Enabled = false;
+            cLieutenant3.Enabled = false;
+
+            cCaptain1.Enabled = false;
+            cCaptain2.Enabled = false;
+            cCaptain3.Enabled = false;
+
+            cMajor1.Enabled = false;
+            cMajor2.Enabled = false;
+            cMajor3.Enabled = false;
+
+            cColonel1.Enabled = false;
+            cColonel2.Enabled = false;
+            cColonel3.Enabled = false;
+
+            cBrigadier1.Enabled = false;
+            cBrigadier2.Enabled = false;
+            cBrigadier3.Enabled = false;
+
+            chDragAndDrop.Enabled = false;
+
+            lvUnisexNicknames.Enabled = false;
+            cNicknameGender.Enabled = false;
+            tNewUnisexNickname.Enabled = false;
+            bAddNickname.Enabled = false;
+            bRemoveNickname.Enabled = false;
+
+            tAllowedArmor.Enabled = false;
+
+            tSquaddieLoadout.Enabled = false;
+            lvSquaddieLoadout.Enabled = false;
+            tNewLoadout.Enabled = false;
+            bAddLoadout.Enabled = false;
+            bRemoveLoadout.Enabled = false;
+        }
+
+        private void clearAllControls()
+        {
+            clearControl(this);
+
+            laHelp.Text = "";
+        }
+
+        private void clearControl(Control control)
+        {
+            foreach(Control childControl in control.Controls)
+            {
+                clearControl(childControl);
+            }
+
+            if (control is TextBox)
+            {
+                control.Text = "";
+            }
+            else if (control is NumericUpDown)
+            {
+                control.Text = "";
+            }
+            else if (control is ComboBox)
+            {
+                ((ComboBox)control).SelectedIndex = -1;
+            }
+            else if (control is CheckBox)
+            {
+                ((CheckBox)control).Checked = false;
+            }
+            else if (control is ListView)
+            {
+                ((ListView)control).Items.Clear();
+            }
+        }
+
+        #endregion Initialize Controls
 
         private void initAbilitiesDataSources()
         {
@@ -679,6 +1004,14 @@ namespace Xcom2ClassManager.Forms
             cSoldierClass.DataSource = ProjectState.getClassPack().soldierClasses;
             SoldierClass soldierClass = classPack.soldierClasses.First();
             cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(soldierClass);
+
+            initAcceptableControls();
+        }
+
+        private void unloadClassPack()
+        {
+            disableAllControls();
+            clearAllControls();
         }
         
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1082,6 +1415,73 @@ namespace Xcom2ClassManager.Forms
             {
                 lvSquaddieLoadout.Items.Remove(eachItem);
             }
+        }
+
+        private void tStat_Leave(object sender, EventArgs e)
+        {
+            TextBox statTextbox = sender as TextBox;
+            
+            if(!string.IsNullOrEmpty(statTextbox.Text))
+            {
+                int intStat;
+                if(!int.TryParse(statTextbox.Text, out intStat))
+                {
+                    statTextbox.Text = "";
+                }
+            }
+        }
+
+        private void lvUnisexNicknames_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if(lvUnisexNicknames.SelectedIndices.Count > 0)
+            {
+                bRemoveNickname.Enabled = true;
+            }
+            else
+            {
+                bRemoveNickname.Enabled = false;
+            }
+        }
+
+        private void tNewUnisexNickname_TextChanged(object sender, EventArgs e)
+        {
+            if(tNewUnisexNickname.Text.Length > 0)
+            {
+                bAddNickname.Enabled = true;
+            }
+            else
+            {
+                bAddNickname.Enabled = false;
+            }
+        }
+
+        private void lvSquaddieLoadout_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (lvSquaddieLoadout.SelectedIndices.Count > 0)
+            {
+                bRemoveLoadout.Enabled = true;
+            }
+            else
+            {
+                bRemoveLoadout.Enabled = false;
+            }
+        }
+
+        private void tNewLoadout_TextChanged(object sender, EventArgs e)
+        {
+            if (tNewLoadout.Text.Length > 0)
+            {
+                bAddLoadout.Enabled = true;
+            }
+            else
+            {
+                bAddLoadout.Enabled = false;
+            }
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            unloadClassPack();
         }
     }
 }

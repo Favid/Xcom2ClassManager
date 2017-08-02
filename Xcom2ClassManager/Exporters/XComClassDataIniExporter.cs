@@ -60,11 +60,11 @@ namespace Xcom2ClassManager.Exporters
             lines.Add("[" + soldier.metadata.internalName + " X2SoldierClassTemplate]");
             lines.Add("+bMultiplayerOnly=0");
             lines.Add("+ClassPoints=4");
-            lines.Add("+IconImage=" + soldier.metadata.iconString);
+            lines.Add("+IconImage=" + Utils.encaseStringInQuotes(soldier.metadata.iconString));
             lines.Add("+NumInForcedDeck=" + soldier.experience.numberInForcedDeck);
             lines.Add("+NumInDeck=" + soldier.experience.numberInDeck);
             lines.Add("+KillAssistsPerKill=" + soldier.experience.killAssistsPerKill);
-            lines.Add("+SquaddieLoadout=" + soldier.equipment.squaddieLoadout);
+            lines.Add("+SquaddieLoadout=" + Utils.encaseStringInQuotes(soldier.equipment.squaddieLoadout));
             lines.Add("+bAllowAWCAbilities=1");
 
             writeClassWeapons(soldier);
