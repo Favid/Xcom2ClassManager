@@ -58,11 +58,39 @@ namespace Xcom2ClassManager.Forms
         private void defaultEnableControls()
         {
             setControlEnable(this, true);
+
+            bAddNickname.Enabled = false;
+            bRemoveNickname.Enabled = false;
+            
+            bAddLoadout.Enabled = false;
+            bRemoveLoadout.Enabled = false;
+
+            closeToolStripMenuItem.Enabled = true;
+            saveToolStripMenuItem.Enabled = true;
+            saveAsToolStripMenuItem.Enabled = true;
+            nicknamesToolStripMenuItem.Enabled = true;
+            exportToolStripMenuItem.Enabled = true;
+
+            addToolStripMenuItem.Enabled = true;
+            copyToolStripMenuItem.Enabled = true;
+            renameToolStripMenuItem.Enabled = true;
+            deleteToolStripMenuItem.Enabled = true;
         }
 
         private void disableAllControls()
         {
             setControlEnable(this, false);
+
+            closeToolStripMenuItem.Enabled = false;
+            saveToolStripMenuItem.Enabled = false;
+            saveAsToolStripMenuItem.Enabled = false;
+            nicknamesToolStripMenuItem.Enabled = false;
+            exportToolStripMenuItem.Enabled = false;
+
+            addToolStripMenuItem.Enabled = false;
+            copyToolStripMenuItem.Enabled = false;
+            renameToolStripMenuItem.Enabled = false;
+            deleteToolStripMenuItem.Enabled = false;
         }
 
         private void setControlEnable(Control control, bool enable)

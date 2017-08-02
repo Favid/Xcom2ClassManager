@@ -212,7 +212,8 @@
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abilitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -223,10 +224,8 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSoldierClass = new System.Windows.Forms.ComboBox();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
@@ -496,7 +495,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox9, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label49, 8, 0);
             this.tableLayoutPanel2.Controls.Add(this.tBrigadierDodge, 8, 8);
@@ -618,7 +617,7 @@
             // 
             this.label49.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(446, 4);
+            this.label49.Location = new System.Drawing.Point(447, 4);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(39, 13);
             this.label49.TabIndex = 230;
@@ -627,7 +626,7 @@
             // tBrigadierDodge
             // 
             this.tBrigadierDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierDodge.Location = new System.Drawing.Point(451, 319);
+            this.tBrigadierDodge.Location = new System.Drawing.Point(452, 319);
             this.tBrigadierDodge.Name = "tBrigadierDodge";
             this.tBrigadierDodge.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierDodge.TabIndex = 78;
@@ -879,7 +878,7 @@
             // tColonelDodge
             // 
             this.tColonelDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelDodge.Location = new System.Drawing.Point(451, 278);
+            this.tColonelDodge.Location = new System.Drawing.Point(452, 278);
             this.tColonelDodge.Name = "tColonelDodge";
             this.tColonelDodge.Size = new System.Drawing.Size(28, 20);
             this.tColonelDodge.TabIndex = 68;
@@ -919,7 +918,7 @@
             // tMajorDodge
             // 
             this.tMajorDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorDodge.Location = new System.Drawing.Point(451, 237);
+            this.tMajorDodge.Location = new System.Drawing.Point(452, 237);
             this.tMajorDodge.Name = "tMajorDodge";
             this.tMajorDodge.Size = new System.Drawing.Size(28, 20);
             this.tMajorDodge.TabIndex = 58;
@@ -1031,7 +1030,7 @@
             // tCaptainDodge
             // 
             this.tCaptainDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainDodge.Location = new System.Drawing.Point(451, 196);
+            this.tCaptainDodge.Location = new System.Drawing.Point(452, 196);
             this.tCaptainDodge.Name = "tCaptainDodge";
             this.tCaptainDodge.Size = new System.Drawing.Size(28, 20);
             this.tCaptainDodge.TabIndex = 48;
@@ -1073,7 +1072,7 @@
             // tLieutenantDodge
             // 
             this.tLieutenantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantDodge.Location = new System.Drawing.Point(451, 155);
+            this.tLieutenantDodge.Location = new System.Drawing.Point(452, 155);
             this.tLieutenantDodge.Name = "tLieutenantDodge";
             this.tLieutenantDodge.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantDodge.TabIndex = 38;
@@ -1115,7 +1114,7 @@
             // tSergeantDodge
             // 
             this.tSergeantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantDodge.Location = new System.Drawing.Point(451, 114);
+            this.tSergeantDodge.Location = new System.Drawing.Point(452, 114);
             this.tSergeantDodge.Name = "tSergeantDodge";
             this.tSergeantDodge.Size = new System.Drawing.Size(28, 20);
             this.tSergeantDodge.TabIndex = 28;
@@ -1177,7 +1176,7 @@
             // tCorporalDodge
             // 
             this.tCorporalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalDodge.Location = new System.Drawing.Point(451, 73);
+            this.tCorporalDodge.Location = new System.Drawing.Point(452, 73);
             this.tCorporalDodge.Name = "tCorporalDodge";
             this.tCorporalDodge.Size = new System.Drawing.Size(28, 20);
             this.tCorporalDodge.TabIndex = 18;
@@ -1199,7 +1198,7 @@
             // tSquaddieDodge
             // 
             this.tSquaddieDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieDodge.Location = new System.Drawing.Point(451, 32);
+            this.tSquaddieDodge.Location = new System.Drawing.Point(452, 32);
             this.tSquaddieDodge.Name = "tSquaddieDodge";
             this.tSquaddieDodge.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieDodge.TabIndex = 8;
@@ -1510,7 +1509,7 @@
             // 
             this.laTotalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalDodge.AutoSize = true;
-            this.laTotalDodge.Location = new System.Drawing.Point(459, 363);
+            this.laTotalDodge.Location = new System.Drawing.Point(460, 363);
             this.laTotalDodge.Name = "laTotalDodge";
             this.laTotalDodge.Size = new System.Drawing.Size(13, 13);
             this.laTotalDodge.TabIndex = 239;
@@ -2513,8 +2512,7 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemFile,
-            this.editToolStripMenuItem,
-            this.toolStripMenuItem1});
+            this.editToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(594, 24);
@@ -2527,7 +2525,7 @@
             this.newToolStripMenuItem1,
             this.openToolStripMenuItem,
             this.closeToolStripMenuItem,
-            this.saveToolStripMenuItem1,
+            this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.importToolStripMenuItem,
             this.exportToolStripMenuItem,
@@ -2550,12 +2548,19 @@
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // saveToolStripMenuItem1
+            // closeToolStripMenuItem
             // 
-            this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem1.Text = "Save";
-            this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
@@ -2607,7 +2612,7 @@
             this.addToolStripMenuItem,
             this.copyToolStripMenuItem,
             this.renameToolStripMenuItem,
-            this.deleteToolStripMenuItem1});
+            this.deleteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.editToolStripMenuItem.Text = "Class";
@@ -2633,17 +2638,12 @@
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
-            // deleteToolStripMenuItem1
+            // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.deleteToolStripMenuItem1.Text = "Delete";
-            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
             // cSoldierClass
             // 
@@ -2659,13 +2659,6 @@
             this.cSoldierClass.Size = new System.Drawing.Size(562, 21);
             this.cSoldierClass.TabIndex = 100;
             this.cSoldierClass.SelectedIndexChanged += new System.EventHandler(this.cSoldierClass_SelectedIndexChanged);
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // soldierClassAbilityBindingSource
             // 
@@ -2748,7 +2741,7 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.TextBox tIconString;
         private System.Windows.Forms.TextBox tDescription;
         private System.Windows.Forms.TextBox tDisplayName;
@@ -2864,10 +2857,9 @@
         private System.Windows.Forms.BindingSource soldierClassAbilityBindingSource;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ComboBox cSoldierClass;
