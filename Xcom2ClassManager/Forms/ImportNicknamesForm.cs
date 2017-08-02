@@ -82,102 +82,109 @@ namespace Xcom2ClassManager.Forms
                 return;
             }
 
-            List<Ability> foundAbilities = new List<Ability>();
+            List<string> lines = File.ReadAllLines(tFile.Text).ToList();
+            List<int> classIndices = lines.Select((x, index) => new { Line = x, Index = index })
+                .Where(x => x.Line.Contains(" X2SoldierClassTemplate]"))
+                .Select(x => x.Index)
+                .ToList();
 
-            int counter = 0;
-            string line;
-            
-            StreamReader file = new StreamReader(tFile.Text);
-            while ((line = file.ReadLine()) != null)
+            // loop through classes
+            for(int i = 0; i < classIndices.Count; i++)
             {
-                if (line.Contains(" X2SoldierClassTemplate]"))
+                int startIndex = classIndices[i];
+                int stopIndex = 0;
+                if (i == (classIndices.Count - 1))
                 {
-                    string className = line.Substring(1, line.IndexOf(' ') - 1);
-                    
-                    List<ClassNickname> classNicknames = importClassNicknames(file, line);
-
-                    List<TreeNode> unisexChildren = new List<TreeNode>();
-                    List<ClassNickname> unisexNicknames = classNicknames.Where(x => x.gender == NicknameGender.Unisex).ToList();
-                    foreach(ClassNickname unisexNickname in unisexNicknames)
-                    {
-                        unisexChildren.Add(new TreeNode(unisexNickname.nickname));
-                    }
-                    TreeNode unisexNode = new TreeNode("Unisex", unisexChildren.ToArray());
-
-                    List<TreeNode> maleChildren = new List<TreeNode>();
-                    List<ClassNickname> maleNicknames = classNicknames.Where(x => x.gender == NicknameGender.Male).ToList();
-                    foreach (ClassNickname maleNickname in maleNicknames)
-                    {
-                        maleChildren.Add(new TreeNode(maleNickname.nickname));
-                    }
-                    TreeNode maleNode = new TreeNode("Male", maleChildren.ToArray());
-
-                    List<TreeNode> femaleChildren = new List<TreeNode>();
-                    List<ClassNickname> femaleNicknames = classNicknames.Where(x => x.gender == NicknameGender.Female).ToList();
-                    foreach (ClassNickname femaleNickname in femaleNicknames)
-                    {
-                        femaleChildren.Add(new TreeNode(femaleNickname.nickname));
-                    }
-                    TreeNode femaleNode = new TreeNode("Female", femaleChildren.ToArray());
-
-                    List<TreeNode> classChildren = new List<TreeNode>();
-                    classChildren.Add(unisexNode);
-                    classChildren.Add(maleNode);
-                    classChildren.Add(femaleNode);
-
-                    TreeNode classNode = new TreeNode(className, classChildren.ToArray());
-                    tvClassNicknames.Nodes.Add(classNode);
+                    stopIndex = lines.Count;
                 }
-                counter++;
-            }
+                else
+                {
+                    stopIndex = classIndices[i + 1];
+                }
+                
+                string className = lines[startIndex].Substring(1, lines[startIndex].IndexOf(' ') - 1);
 
-            file.Close();
+                int workingIndex = startIndex;
+                List<ClassNickname> nicknames = new List<ClassNickname>();
+                while (workingIndex < stopIndex)
+                {
+                    ClassNickname nickname = getNicknameFromLine(lines[workingIndex]);
+                    if(nickname != null)
+                    {
+                        nicknames.Add(nickname);
+                    }
+
+                    workingIndex++;
+                }
+
+                populateTree(nicknames, className);
+            }
         }
 
-        private List<ClassNickname> importClassNicknames(StreamReader file, string startingLine)
+        private ClassNickname getNicknameFromLine(string line)
         {
-            List<ClassNickname> classNicknames = new List<ClassNickname>();
-            
-            string nextLine = file.ReadLine();
-            while (!(nextLine.Equals("") && classNicknames.Count > 0))
+            if(!line.StartsWith("RandomNickNames", StringComparison.OrdinalIgnoreCase))
             {
-                if (nextLine.StartsWith("RandomNickNames[", StringComparison.OrdinalIgnoreCase))
-                {
-                    ClassNickname nickname = new ClassNickname();
-                    int startIndex = nextLine.IndexOf('"') + 1;
-                    int endIndex = nextLine.LastIndexOf('"');
-                    nickname.nickname = nextLine.Substring(startIndex, endIndex - startIndex);
-                    nickname.gender = NicknameGender.Unisex;
-                    classNicknames.Add(nickname);
-                }
-                else if (nextLine.StartsWith("RandomNickNames_Male[", StringComparison.OrdinalIgnoreCase))
-                {
-                    ClassNickname nickname = new ClassNickname();
-                    int startIndex = nextLine.IndexOf('"') + 1;
-                    int endIndex = nextLine.LastIndexOf('"');
-                    nickname.nickname = nextLine.Substring(startIndex, endIndex - startIndex);
-                    nickname.gender = NicknameGender.Male;
-                    classNicknames.Add(nickname);
-                }
-                else if (nextLine.StartsWith("RandomNicknames_Female[", StringComparison.OrdinalIgnoreCase))
-                {
-                    ClassNickname nickname = new ClassNickname();
-                    int startIndex = nextLine.IndexOf('"') + 1;
-                    int endIndex = nextLine.LastIndexOf('"');
-                    nickname.nickname = nextLine.Substring(startIndex, endIndex - startIndex);
-                    nickname.gender = NicknameGender.Female;
-                    classNicknames.Add(nickname);
-                }
-
-                nextLine = file.ReadLine();
-
-                if(nextLine == null)
-                {
-                    break;
-                }
+                return null;
             }
 
-            return classNicknames;
+            ClassNickname nickname = new ClassNickname();
+
+            int startIndex = line.IndexOf('"') + 1;
+            int endIndex = line.LastIndexOf('"');
+
+            if (line.StartsWith("RandomNickNames[", StringComparison.OrdinalIgnoreCase))
+            {
+                nickname.nickname = line.Substring(startIndex, endIndex - startIndex);
+                nickname.gender = NicknameGender.Unisex;
+            }
+            else if (line.StartsWith("RandomNickNames_Male[", StringComparison.OrdinalIgnoreCase))
+            {
+                nickname.nickname = line.Substring(startIndex, endIndex - startIndex);
+                nickname.gender = NicknameGender.Male;
+            }
+            else if (line.StartsWith("RandomNicknames_Female[", StringComparison.OrdinalIgnoreCase))
+            {
+                nickname.nickname = line.Substring(startIndex, endIndex - startIndex);
+                nickname.gender = NicknameGender.Female;
+            }
+
+            return nickname;
+        }
+
+        private void populateTree(List<ClassNickname> nicknames, string className)
+        {
+            List<TreeNode> unisexChildren = new List<TreeNode>();
+            List<ClassNickname> unisexNicknames = nicknames.Where(x => x.gender == NicknameGender.Unisex).ToList();
+            foreach (ClassNickname unisexNickname in unisexNicknames)
+            {
+                unisexChildren.Add(new TreeNode(unisexNickname.nickname));
+            }
+            TreeNode unisexNode = new TreeNode("Unisex", unisexChildren.ToArray());
+
+            List<TreeNode> maleChildren = new List<TreeNode>();
+            List<ClassNickname> maleNicknames = nicknames.Where(x => x.gender == NicknameGender.Male).ToList();
+            foreach (ClassNickname maleNickname in maleNicknames)
+            {
+                maleChildren.Add(new TreeNode(maleNickname.nickname));
+            }
+            TreeNode maleNode = new TreeNode("Male", maleChildren.ToArray());
+
+            List<TreeNode> femaleChildren = new List<TreeNode>();
+            List<ClassNickname> femaleNicknames = nicknames.Where(x => x.gender == NicknameGender.Female).ToList();
+            foreach (ClassNickname femaleNickname in femaleNicknames)
+            {
+                femaleChildren.Add(new TreeNode(femaleNickname.nickname));
+            }
+            TreeNode femaleNode = new TreeNode("Female", femaleChildren.ToArray());
+
+            List<TreeNode> classChildren = new List<TreeNode>();
+            classChildren.Add(unisexNode);
+            classChildren.Add(maleNode);
+            classChildren.Add(femaleNode);
+
+            TreeNode classNode = new TreeNode(className, classChildren.ToArray());
+            tvClassNicknames.Nodes.Add(classNode);
         }
 
         private void bSave_Click(object sender, EventArgs e)
