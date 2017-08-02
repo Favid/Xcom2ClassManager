@@ -25,6 +25,14 @@ namespace Xcom2ClassManager.Forms
         {
             InitializeComponent();
             previousSelectedSoldierClassIndex = -1;
+            initTooltips();
+        }
+
+        private void initTooltips()
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(laDisplayName, "The name displayed everywhere.");
+            toolTip.SetToolTip(gbExperience, "Experience stuff.");
         }
 
         private void OverviewForm_Load(object sender, EventArgs e)
