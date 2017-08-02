@@ -131,7 +131,7 @@ namespace Xcom2ClassManager.Forms
             }
             else if (control is NumericUpDown)
             {
-                control.Text = "";
+                ((NumericUpDown)control).Value = 0;
             }
             else if (control is ComboBox)
             {
@@ -861,7 +861,7 @@ namespace Xcom2ClassManager.Forms
             {
                 SoldierClass soldierClass = combo.SelectedItem as SoldierClass;
 
-                if (previousSelectedSoldierClassIndex > -1)
+                if (previousSelectedSoldierClassIndex > -1 && previousSelectedSoldierClassIndex != cSoldierClass.SelectedIndex && soldierClass != null)
                 {
                     saveOpenClass();
                 }
