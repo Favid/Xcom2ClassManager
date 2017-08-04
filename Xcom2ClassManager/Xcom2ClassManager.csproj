@@ -119,6 +119,9 @@
     <EmbeddedResource Include="Forms\ClassPackExportForm.resx">
       <DependentUpon>ClassPackExportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportAbilitiesForm.resx">
+      <DependentUpon>ImportAbilitiesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportNicknamesForm.resx">
       <DependentUpon>ImportNicknamesForm.cs</DependentUpon>
     </EmbeddedResource>

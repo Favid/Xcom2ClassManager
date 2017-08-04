@@ -103,7 +103,13 @@ namespace Xcom2ClassManager
 
     public static class Enums
     {
-        public static T getAttributeOfType<T>(this Enum enumVal) where T : System.Attribute
+        public static string getDescription(Enum enumValue)
+        {
+            DescriptionAttribute description = Enums.getAttributeOfType<DescriptionAttribute>(enumValue);
+            return description.Description;
+        }
+
+        private static T getAttributeOfType<T>(this Enum enumVal) where T : System.Attribute
         {
             var type = enumVal.GetType();
             var memInfo = type.GetMember(enumVal.ToString());
@@ -111,10 +117,9 @@ namespace Xcom2ClassManager
             return (attributes.Length > 0) ? (T)attributes[0] : null;
         }
 
-        public static string getDescription(Enum enumValue)
+        public static T getEnumWithName<T>(string name)
         {
-            DescriptionAttribute description = Enums.getAttributeOfType<DescriptionAttribute>(enumValue);
-            return description.Description;
+            return (T)Enum.Parse(typeof(T), name);
         }
     }
 

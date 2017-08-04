@@ -78,17 +78,20 @@ namespace Xcom2ClassManager.Forms
         {
             Ability ability = new Ability();
             ability.internalName = startingLine.Substring(1, startingLine.IndexOf(' ') - 1);
-
+            
             string nextLine = file.ReadLine();
             while (!string.IsNullOrEmpty(nextLine))
             {
-                if (nextLine.StartsWith("LocFriendlyName="))
+                int startIndex = nextLine.IndexOf('"') + 1;
+                int endIndex = nextLine.LastIndexOf('"');
+
+                if (nextLine.Contains("LocFriendlyName="))
                 {
-                    ability.displayName = nextLine.Substring(nextLine.IndexOf('=') + 2, nextLine.Length - 18);
+                    ability.displayName = nextLine.Substring(startIndex, endIndex - startIndex);
                 }
-                else if (nextLine.StartsWith("LocLongDescription="))
+                else if (nextLine.Contains("LocLongDescription="))
                 {
-                    ability.description = nextLine.Substring(nextLine.IndexOf('=') + 2, nextLine.Length - 21);
+                    ability.description = nextLine.Substring(startIndex, endIndex - startIndex);
                 }
 
                 nextLine = file.ReadLine();

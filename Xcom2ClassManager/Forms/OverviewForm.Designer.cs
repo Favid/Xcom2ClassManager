@@ -193,17 +193,23 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabEquipment = new System.Windows.Forms.TabPage();
-            this.tNewLoadout = new System.Windows.Forms.TextBox();
-            this.bRemoveLoadout = new System.Windows.Forms.Button();
-            this.bAddLoadout = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tSquaddieLoadout = new System.Windows.Forms.TextBox();
             this.lvSquaddieLoadout = new System.Windows.Forms.ListView();
             this.colItem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.bDeleteWeapon = new System.Windows.Forms.Button();
-            this.tAllowedArmor = new System.Windows.Forms.TextBox();
+            this.bAddLoadout = new System.Windows.Forms.Button();
+            this.tNewLoadout = new System.Windows.Forms.TextBox();
+            this.bRemoveLoadout = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lvWeapons = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cWeaponSlot = new System.Windows.Forms.ComboBox();
+            this.tNewWeapon = new System.Windows.Forms.TextBox();
             this.bAddWeapon = new System.Windows.Forms.Button();
-            this.lWeapons = new System.Windows.Forms.ListBox();
-            this.bEditWeapon = new System.Windows.Forms.Button();
-            this.tSquaddieLoadout = new System.Windows.Forms.TextBox();
+            this.bDeleteWeapon = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tAllowedArmor = new System.Windows.Forms.TextBox();
             this.laHelp = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -223,9 +229,6 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSoldierClass = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
@@ -259,10 +262,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabNicknames.SuspendLayout();
             this.tabEquipment.SuspendLayout();
-            this.menu.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -609,9 +612,9 @@
             this.pictureBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
             this.pictureBox9.InitialImage = null;
-            this.pictureBox9.Location = new System.Drawing.Point(4, 24);
+            this.pictureBox9.Location = new System.Drawing.Point(4, 25);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(46, 33);
+            this.pictureBox9.Size = new System.Drawing.Size(46, 34);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox9.TabIndex = 112;
             this.pictureBox9.TabStop = false;
@@ -629,7 +632,7 @@
             // tBrigadierDodge
             // 
             this.tBrigadierDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierDodge.Location = new System.Drawing.Point(440, 310);
+            this.tBrigadierDodge.Location = new System.Drawing.Point(440, 319);
             this.tBrigadierDodge.Name = "tBrigadierDodge";
             this.tBrigadierDodge.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierDodge.TabIndex = 78;
@@ -649,7 +652,7 @@
             // tLieutenantWill
             // 
             this.tLieutenantWill.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantWill.Location = new System.Drawing.Point(384, 150);
+            this.tLieutenantWill.Location = new System.Drawing.Point(384, 155);
             this.tLieutenantWill.Name = "tLieutenantWill";
             this.tLieutenantWill.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantWill.TabIndex = 37;
@@ -669,7 +672,7 @@
             // tLieutenantMobility
             // 
             this.tLieutenantMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantMobility.Location = new System.Drawing.Point(331, 150);
+            this.tLieutenantMobility.Location = new System.Drawing.Point(331, 155);
             this.tLieutenantMobility.Name = "tLieutenantMobility";
             this.tLieutenantMobility.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantMobility.TabIndex = 36;
@@ -689,7 +692,7 @@
             // tLieutenantHp
             // 
             this.tLieutenantHp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantHp.Location = new System.Drawing.Point(66, 150);
+            this.tLieutenantHp.Location = new System.Drawing.Point(66, 155);
             this.tLieutenantHp.Name = "tLieutenantHp";
             this.tLieutenantHp.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantHp.TabIndex = 31;
@@ -702,14 +705,14 @@
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(218, 1);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(41, 19);
+            this.label40.Size = new System.Drawing.Size(41, 20);
             this.label40.TabIndex = 170;
             this.label40.Text = "Hacking";
             // 
             // tLieutenantAim
             // 
             this.tLieutenantAim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantAim.Location = new System.Drawing.Point(119, 150);
+            this.tLieutenantAim.Location = new System.Drawing.Point(119, 155);
             this.tLieutenantAim.Name = "tLieutenantAim";
             this.tLieutenantAim.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantAim.TabIndex = 32;
@@ -722,14 +725,14 @@
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(165, 1);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(41, 19);
+            this.label39.Size = new System.Drawing.Size(41, 20);
             this.label39.TabIndex = 169;
             this.label39.Text = "Strength";
             // 
             // tLieutenantStrength
             // 
             this.tLieutenantStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantStrength.Location = new System.Drawing.Point(172, 150);
+            this.tLieutenantStrength.Location = new System.Drawing.Point(172, 155);
             this.tLieutenantStrength.Name = "tLieutenantStrength";
             this.tLieutenantStrength.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantStrength.TabIndex = 33;
@@ -749,7 +752,7 @@
             // tLieutenantHacking
             // 
             this.tLieutenantHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantHacking.Location = new System.Drawing.Point(225, 150);
+            this.tLieutenantHacking.Location = new System.Drawing.Point(225, 155);
             this.tLieutenantHacking.Name = "tLieutenantHacking";
             this.tLieutenantHacking.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantHacking.TabIndex = 34;
@@ -769,7 +772,7 @@
             // tLieutenantPsi
             // 
             this.tLieutenantPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantPsi.Location = new System.Drawing.Point(278, 150);
+            this.tLieutenantPsi.Location = new System.Drawing.Point(278, 155);
             this.tLieutenantPsi.Name = "tLieutenantPsi";
             this.tLieutenantPsi.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantPsi.TabIndex = 35;
@@ -779,7 +782,7 @@
             // tCaptainWill
             // 
             this.tCaptainWill.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainWill.Location = new System.Drawing.Point(384, 190);
+            this.tCaptainWill.Location = new System.Drawing.Point(384, 196);
             this.tCaptainWill.Name = "tCaptainWill";
             this.tCaptainWill.Size = new System.Drawing.Size(28, 20);
             this.tCaptainWill.TabIndex = 47;
@@ -789,7 +792,7 @@
             // tSergeantWill
             // 
             this.tSergeantWill.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantWill.Location = new System.Drawing.Point(384, 110);
+            this.tSergeantWill.Location = new System.Drawing.Point(384, 114);
             this.tSergeantWill.Name = "tSergeantWill";
             this.tSergeantWill.Size = new System.Drawing.Size(28, 20);
             this.tSergeantWill.TabIndex = 27;
@@ -799,7 +802,7 @@
             // tMajorWill
             // 
             this.tMajorWill.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorWill.Location = new System.Drawing.Point(384, 230);
+            this.tMajorWill.Location = new System.Drawing.Point(384, 237);
             this.tMajorWill.Name = "tMajorWill";
             this.tMajorWill.Size = new System.Drawing.Size(28, 20);
             this.tMajorWill.TabIndex = 57;
@@ -809,7 +812,7 @@
             // tColonelWill
             // 
             this.tColonelWill.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelWill.Location = new System.Drawing.Point(384, 270);
+            this.tColonelWill.Location = new System.Drawing.Point(384, 278);
             this.tColonelWill.Name = "tColonelWill";
             this.tColonelWill.Size = new System.Drawing.Size(28, 20);
             this.tColonelWill.TabIndex = 67;
@@ -819,7 +822,7 @@
             // tBrigadierWill
             // 
             this.tBrigadierWill.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierWill.Location = new System.Drawing.Point(384, 310);
+            this.tBrigadierWill.Location = new System.Drawing.Point(384, 319);
             this.tBrigadierWill.Name = "tBrigadierWill";
             this.tBrigadierWill.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierWill.TabIndex = 77;
@@ -829,7 +832,7 @@
             // tSergeantMobility
             // 
             this.tSergeantMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantMobility.Location = new System.Drawing.Point(331, 110);
+            this.tSergeantMobility.Location = new System.Drawing.Point(331, 114);
             this.tSergeantMobility.Name = "tSergeantMobility";
             this.tSergeantMobility.Size = new System.Drawing.Size(28, 20);
             this.tSergeantMobility.TabIndex = 26;
@@ -841,9 +844,9 @@
             this.pictureBox10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
             this.pictureBox10.InitialImage = null;
-            this.pictureBox10.Location = new System.Drawing.Point(4, 144);
+            this.pictureBox10.Location = new System.Drawing.Point(4, 148);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(46, 33);
+            this.pictureBox10.Size = new System.Drawing.Size(46, 34);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox10.TabIndex = 109;
             this.pictureBox10.TabStop = false;
@@ -851,7 +854,7 @@
             // tCaptainMobility
             // 
             this.tCaptainMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainMobility.Location = new System.Drawing.Point(331, 190);
+            this.tCaptainMobility.Location = new System.Drawing.Point(331, 196);
             this.tCaptainMobility.Name = "tCaptainMobility";
             this.tCaptainMobility.Size = new System.Drawing.Size(28, 20);
             this.tCaptainMobility.TabIndex = 46;
@@ -861,7 +864,7 @@
             // tMajorMobility
             // 
             this.tMajorMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorMobility.Location = new System.Drawing.Point(331, 230);
+            this.tMajorMobility.Location = new System.Drawing.Point(331, 237);
             this.tMajorMobility.Name = "tMajorMobility";
             this.tMajorMobility.Size = new System.Drawing.Size(28, 20);
             this.tMajorMobility.TabIndex = 56;
@@ -871,7 +874,7 @@
             // tSergeantPsi
             // 
             this.tSergeantPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantPsi.Location = new System.Drawing.Point(278, 110);
+            this.tSergeantPsi.Location = new System.Drawing.Point(278, 114);
             this.tSergeantPsi.Name = "tSergeantPsi";
             this.tSergeantPsi.Size = new System.Drawing.Size(28, 20);
             this.tSergeantPsi.TabIndex = 25;
@@ -881,7 +884,7 @@
             // tColonelDodge
             // 
             this.tColonelDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelDodge.Location = new System.Drawing.Point(440, 270);
+            this.tColonelDodge.Location = new System.Drawing.Point(440, 278);
             this.tColonelDodge.Name = "tColonelDodge";
             this.tColonelDodge.Size = new System.Drawing.Size(28, 20);
             this.tColonelDodge.TabIndex = 68;
@@ -892,9 +895,9 @@
             // 
             this.panel1.Controls.Add(this.pictureBox11);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 64);
+            this.panel1.Location = new System.Drawing.Point(4, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(46, 33);
+            this.panel1.Size = new System.Drawing.Size(46, 34);
             this.panel1.TabIndex = 110;
             // 
             // pictureBox11
@@ -904,7 +907,7 @@
             this.pictureBox11.InitialImage = null;
             this.pictureBox11.Location = new System.Drawing.Point(0, 0);
             this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(46, 33);
+            this.pictureBox11.Size = new System.Drawing.Size(46, 34);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox11.TabIndex = 108;
             this.pictureBox11.TabStop = false;
@@ -912,7 +915,7 @@
             // tSergeantHacking
             // 
             this.tSergeantHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantHacking.Location = new System.Drawing.Point(225, 110);
+            this.tSergeantHacking.Location = new System.Drawing.Point(225, 114);
             this.tSergeantHacking.Name = "tSergeantHacking";
             this.tSergeantHacking.Size = new System.Drawing.Size(28, 20);
             this.tSergeantHacking.TabIndex = 24;
@@ -922,7 +925,7 @@
             // tMajorDodge
             // 
             this.tMajorDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorDodge.Location = new System.Drawing.Point(440, 230);
+            this.tMajorDodge.Location = new System.Drawing.Point(440, 237);
             this.tMajorDodge.Name = "tMajorDodge";
             this.tMajorDodge.Size = new System.Drawing.Size(28, 20);
             this.tMajorDodge.TabIndex = 58;
@@ -932,7 +935,7 @@
             // tCaptainPsi
             // 
             this.tCaptainPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainPsi.Location = new System.Drawing.Point(278, 190);
+            this.tCaptainPsi.Location = new System.Drawing.Point(278, 196);
             this.tCaptainPsi.Name = "tCaptainPsi";
             this.tCaptainPsi.Size = new System.Drawing.Size(28, 20);
             this.tCaptainPsi.TabIndex = 45;
@@ -942,7 +945,7 @@
             // tSergeantStrength
             // 
             this.tSergeantStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantStrength.Location = new System.Drawing.Point(172, 110);
+            this.tSergeantStrength.Location = new System.Drawing.Point(172, 114);
             this.tSergeantStrength.Name = "tSergeantStrength";
             this.tSergeantStrength.Size = new System.Drawing.Size(28, 20);
             this.tSergeantStrength.TabIndex = 23;
@@ -952,7 +955,7 @@
             // tMajorPsi
             // 
             this.tMajorPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorPsi.Location = new System.Drawing.Point(278, 230);
+            this.tMajorPsi.Location = new System.Drawing.Point(278, 237);
             this.tMajorPsi.Name = "tMajorPsi";
             this.tMajorPsi.Size = new System.Drawing.Size(28, 20);
             this.tMajorPsi.TabIndex = 55;
@@ -964,9 +967,9 @@
             this.pictureBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
             this.pictureBox12.InitialImage = null;
-            this.pictureBox12.Location = new System.Drawing.Point(4, 104);
+            this.pictureBox12.Location = new System.Drawing.Point(4, 107);
             this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(46, 33);
+            this.pictureBox12.Size = new System.Drawing.Size(46, 34);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox12.TabIndex = 111;
             this.pictureBox12.TabStop = false;
@@ -974,7 +977,7 @@
             // tSergeantAim
             // 
             this.tSergeantAim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantAim.Location = new System.Drawing.Point(119, 110);
+            this.tSergeantAim.Location = new System.Drawing.Point(119, 114);
             this.tSergeantAim.Name = "tSergeantAim";
             this.tSergeantAim.Size = new System.Drawing.Size(28, 20);
             this.tSergeantAim.TabIndex = 22;
@@ -984,7 +987,7 @@
             // tColonelMobility
             // 
             this.tColonelMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelMobility.Location = new System.Drawing.Point(331, 270);
+            this.tColonelMobility.Location = new System.Drawing.Point(331, 278);
             this.tColonelMobility.Name = "tColonelMobility";
             this.tColonelMobility.Size = new System.Drawing.Size(28, 20);
             this.tColonelMobility.TabIndex = 66;
@@ -994,7 +997,7 @@
             // tCaptainHacking
             // 
             this.tCaptainHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainHacking.Location = new System.Drawing.Point(225, 190);
+            this.tCaptainHacking.Location = new System.Drawing.Point(225, 196);
             this.tCaptainHacking.Name = "tCaptainHacking";
             this.tCaptainHacking.Size = new System.Drawing.Size(28, 20);
             this.tCaptainHacking.TabIndex = 44;
@@ -1004,7 +1007,7 @@
             // tSergeantHp
             // 
             this.tSergeantHp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantHp.Location = new System.Drawing.Point(66, 110);
+            this.tSergeantHp.Location = new System.Drawing.Point(66, 114);
             this.tSergeantHp.Name = "tSergeantHp";
             this.tSergeantHp.Size = new System.Drawing.Size(28, 20);
             this.tSergeantHp.TabIndex = 21;
@@ -1014,7 +1017,7 @@
             // tMajorHacking
             // 
             this.tMajorHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorHacking.Location = new System.Drawing.Point(225, 230);
+            this.tMajorHacking.Location = new System.Drawing.Point(225, 237);
             this.tMajorHacking.Name = "tMajorHacking";
             this.tMajorHacking.Size = new System.Drawing.Size(28, 20);
             this.tMajorHacking.TabIndex = 54;
@@ -1024,7 +1027,7 @@
             // tBrigadierMobility
             // 
             this.tBrigadierMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierMobility.Location = new System.Drawing.Point(331, 310);
+            this.tBrigadierMobility.Location = new System.Drawing.Point(331, 319);
             this.tBrigadierMobility.Name = "tBrigadierMobility";
             this.tBrigadierMobility.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierMobility.TabIndex = 76;
@@ -1034,7 +1037,7 @@
             // tCaptainDodge
             // 
             this.tCaptainDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainDodge.Location = new System.Drawing.Point(440, 190);
+            this.tCaptainDodge.Location = new System.Drawing.Point(440, 196);
             this.tCaptainDodge.Name = "tCaptainDodge";
             this.tCaptainDodge.Size = new System.Drawing.Size(28, 20);
             this.tCaptainDodge.TabIndex = 48;
@@ -1044,7 +1047,7 @@
             // tCaptainStrength
             // 
             this.tCaptainStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainStrength.Location = new System.Drawing.Point(172, 190);
+            this.tCaptainStrength.Location = new System.Drawing.Point(172, 196);
             this.tCaptainStrength.Name = "tCaptainStrength";
             this.tCaptainStrength.Size = new System.Drawing.Size(28, 20);
             this.tCaptainStrength.TabIndex = 43;
@@ -1054,7 +1057,7 @@
             // tMajorStrength
             // 
             this.tMajorStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorStrength.Location = new System.Drawing.Point(172, 230);
+            this.tMajorStrength.Location = new System.Drawing.Point(172, 237);
             this.tMajorStrength.Name = "tMajorStrength";
             this.tMajorStrength.Size = new System.Drawing.Size(28, 20);
             this.tMajorStrength.TabIndex = 53;
@@ -1066,9 +1069,9 @@
             this.pictureBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
             this.pictureBox13.InitialImage = null;
-            this.pictureBox13.Location = new System.Drawing.Point(4, 184);
+            this.pictureBox13.Location = new System.Drawing.Point(4, 189);
             this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(46, 33);
+            this.pictureBox13.Size = new System.Drawing.Size(46, 34);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox13.TabIndex = 113;
             this.pictureBox13.TabStop = false;
@@ -1076,7 +1079,7 @@
             // tLieutenantDodge
             // 
             this.tLieutenantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tLieutenantDodge.Location = new System.Drawing.Point(440, 150);
+            this.tLieutenantDodge.Location = new System.Drawing.Point(440, 155);
             this.tLieutenantDodge.Name = "tLieutenantDodge";
             this.tLieutenantDodge.Size = new System.Drawing.Size(28, 20);
             this.tLieutenantDodge.TabIndex = 38;
@@ -1086,7 +1089,7 @@
             // tCaptainAim
             // 
             this.tCaptainAim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainAim.Location = new System.Drawing.Point(119, 190);
+            this.tCaptainAim.Location = new System.Drawing.Point(119, 196);
             this.tCaptainAim.Name = "tCaptainAim";
             this.tCaptainAim.Size = new System.Drawing.Size(28, 20);
             this.tCaptainAim.TabIndex = 42;
@@ -1096,7 +1099,7 @@
             // tMajorAim
             // 
             this.tMajorAim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorAim.Location = new System.Drawing.Point(119, 230);
+            this.tMajorAim.Location = new System.Drawing.Point(119, 237);
             this.tMajorAim.Name = "tMajorAim";
             this.tMajorAim.Size = new System.Drawing.Size(28, 20);
             this.tMajorAim.TabIndex = 52;
@@ -1108,9 +1111,9 @@
             this.pictureBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
             this.pictureBox14.InitialImage = null;
-            this.pictureBox14.Location = new System.Drawing.Point(4, 224);
+            this.pictureBox14.Location = new System.Drawing.Point(4, 230);
             this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(46, 33);
+            this.pictureBox14.Size = new System.Drawing.Size(46, 34);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox14.TabIndex = 114;
             this.pictureBox14.TabStop = false;
@@ -1118,7 +1121,7 @@
             // tSergeantDodge
             // 
             this.tSergeantDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSergeantDodge.Location = new System.Drawing.Point(440, 110);
+            this.tSergeantDodge.Location = new System.Drawing.Point(440, 114);
             this.tSergeantDodge.Name = "tSergeantDodge";
             this.tSergeantDodge.Size = new System.Drawing.Size(28, 20);
             this.tSergeantDodge.TabIndex = 28;
@@ -1128,7 +1131,7 @@
             // tCaptainHp
             // 
             this.tCaptainHp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCaptainHp.Location = new System.Drawing.Point(66, 190);
+            this.tCaptainHp.Location = new System.Drawing.Point(66, 196);
             this.tCaptainHp.Name = "tCaptainHp";
             this.tCaptainHp.Size = new System.Drawing.Size(28, 20);
             this.tCaptainHp.TabIndex = 41;
@@ -1138,7 +1141,7 @@
             // tMajorHp
             // 
             this.tMajorHp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tMajorHp.Location = new System.Drawing.Point(66, 230);
+            this.tMajorHp.Location = new System.Drawing.Point(66, 237);
             this.tMajorHp.Name = "tMajorHp";
             this.tMajorHp.Size = new System.Drawing.Size(28, 20);
             this.tMajorHp.TabIndex = 51;
@@ -1148,7 +1151,7 @@
             // tColonelPsi
             // 
             this.tColonelPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelPsi.Location = new System.Drawing.Point(278, 270);
+            this.tColonelPsi.Location = new System.Drawing.Point(278, 278);
             this.tColonelPsi.Name = "tColonelPsi";
             this.tColonelPsi.Size = new System.Drawing.Size(28, 20);
             this.tColonelPsi.TabIndex = 65;
@@ -1158,7 +1161,7 @@
             // tBrigadierPsi
             // 
             this.tBrigadierPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierPsi.Location = new System.Drawing.Point(278, 310);
+            this.tBrigadierPsi.Location = new System.Drawing.Point(278, 319);
             this.tBrigadierPsi.Name = "tBrigadierPsi";
             this.tBrigadierPsi.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierPsi.TabIndex = 75;
@@ -1170,9 +1173,9 @@
             this.pictureBox15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
             this.pictureBox15.InitialImage = null;
-            this.pictureBox15.Location = new System.Drawing.Point(4, 264);
+            this.pictureBox15.Location = new System.Drawing.Point(4, 271);
             this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(46, 33);
+            this.pictureBox15.Size = new System.Drawing.Size(46, 34);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox15.TabIndex = 115;
             this.pictureBox15.TabStop = false;
@@ -1180,7 +1183,7 @@
             // tCorporalDodge
             // 
             this.tCorporalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalDodge.Location = new System.Drawing.Point(440, 70);
+            this.tCorporalDodge.Location = new System.Drawing.Point(440, 73);
             this.tCorporalDodge.Name = "tCorporalDodge";
             this.tCorporalDodge.Size = new System.Drawing.Size(28, 20);
             this.tCorporalDodge.TabIndex = 18;
@@ -1192,9 +1195,9 @@
             this.pictureBox16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
             this.pictureBox16.InitialImage = null;
-            this.pictureBox16.Location = new System.Drawing.Point(4, 304);
+            this.pictureBox16.Location = new System.Drawing.Point(4, 312);
             this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(46, 33);
+            this.pictureBox16.Size = new System.Drawing.Size(46, 34);
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox16.TabIndex = 116;
             this.pictureBox16.TabStop = false;
@@ -1202,7 +1205,7 @@
             // tSquaddieDodge
             // 
             this.tSquaddieDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieDodge.Location = new System.Drawing.Point(440, 30);
+            this.tSquaddieDodge.Location = new System.Drawing.Point(440, 32);
             this.tSquaddieDodge.Name = "tSquaddieDodge";
             this.tSquaddieDodge.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieDodge.TabIndex = 8;
@@ -1212,7 +1215,7 @@
             // tColonelHacking
             // 
             this.tColonelHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelHacking.Location = new System.Drawing.Point(225, 270);
+            this.tColonelHacking.Location = new System.Drawing.Point(225, 278);
             this.tColonelHacking.Name = "tColonelHacking";
             this.tColonelHacking.Size = new System.Drawing.Size(28, 20);
             this.tColonelHacking.TabIndex = 64;
@@ -1222,7 +1225,7 @@
             // tBrigadierHacking
             // 
             this.tBrigadierHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierHacking.Location = new System.Drawing.Point(225, 310);
+            this.tBrigadierHacking.Location = new System.Drawing.Point(225, 319);
             this.tBrigadierHacking.Name = "tBrigadierHacking";
             this.tBrigadierHacking.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierHacking.TabIndex = 74;
@@ -1232,7 +1235,7 @@
             // tSquaddieHp
             // 
             this.tSquaddieHp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieHp.Location = new System.Drawing.Point(66, 30);
+            this.tSquaddieHp.Location = new System.Drawing.Point(66, 32);
             this.tSquaddieHp.Name = "tSquaddieHp";
             this.tSquaddieHp.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieHp.TabIndex = 1;
@@ -1242,7 +1245,7 @@
             // tSquaddieAim
             // 
             this.tSquaddieAim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieAim.Location = new System.Drawing.Point(119, 30);
+            this.tSquaddieAim.Location = new System.Drawing.Point(119, 32);
             this.tSquaddieAim.Name = "tSquaddieAim";
             this.tSquaddieAim.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieAim.TabIndex = 2;
@@ -1252,7 +1255,7 @@
             // tSquaddieStrength
             // 
             this.tSquaddieStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieStrength.Location = new System.Drawing.Point(172, 30);
+            this.tSquaddieStrength.Location = new System.Drawing.Point(172, 32);
             this.tSquaddieStrength.Name = "tSquaddieStrength";
             this.tSquaddieStrength.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieStrength.TabIndex = 3;
@@ -1262,7 +1265,7 @@
             // tSquaddieHacking
             // 
             this.tSquaddieHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieHacking.Location = new System.Drawing.Point(225, 30);
+            this.tSquaddieHacking.Location = new System.Drawing.Point(225, 32);
             this.tSquaddieHacking.Name = "tSquaddieHacking";
             this.tSquaddieHacking.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieHacking.TabIndex = 4;
@@ -1272,7 +1275,7 @@
             // tColonelStrength
             // 
             this.tColonelStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelStrength.Location = new System.Drawing.Point(172, 270);
+            this.tColonelStrength.Location = new System.Drawing.Point(172, 278);
             this.tColonelStrength.Name = "tColonelStrength";
             this.tColonelStrength.Size = new System.Drawing.Size(28, 20);
             this.tColonelStrength.TabIndex = 63;
@@ -1282,7 +1285,7 @@
             // tBrigadierStrength
             // 
             this.tBrigadierStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierStrength.Location = new System.Drawing.Point(172, 310);
+            this.tBrigadierStrength.Location = new System.Drawing.Point(172, 319);
             this.tBrigadierStrength.Name = "tBrigadierStrength";
             this.tBrigadierStrength.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierStrength.TabIndex = 73;
@@ -1292,7 +1295,7 @@
             // tSquaddiePsi
             // 
             this.tSquaddiePsi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddiePsi.Location = new System.Drawing.Point(278, 30);
+            this.tSquaddiePsi.Location = new System.Drawing.Point(278, 32);
             this.tSquaddiePsi.Name = "tSquaddiePsi";
             this.tSquaddiePsi.Size = new System.Drawing.Size(28, 20);
             this.tSquaddiePsi.TabIndex = 5;
@@ -1302,7 +1305,7 @@
             // tSquaddieMobility
             // 
             this.tSquaddieMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieMobility.Location = new System.Drawing.Point(331, 30);
+            this.tSquaddieMobility.Location = new System.Drawing.Point(331, 32);
             this.tSquaddieMobility.Name = "tSquaddieMobility";
             this.tSquaddieMobility.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieMobility.TabIndex = 6;
@@ -1312,7 +1315,7 @@
             // tCorporalWill
             // 
             this.tCorporalWill.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalWill.Location = new System.Drawing.Point(384, 70);
+            this.tCorporalWill.Location = new System.Drawing.Point(384, 73);
             this.tCorporalWill.Name = "tCorporalWill";
             this.tCorporalWill.Size = new System.Drawing.Size(28, 20);
             this.tCorporalWill.TabIndex = 17;
@@ -1322,7 +1325,7 @@
             // tSquaddieWill
             // 
             this.tSquaddieWill.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSquaddieWill.Location = new System.Drawing.Point(384, 30);
+            this.tSquaddieWill.Location = new System.Drawing.Point(384, 32);
             this.tSquaddieWill.Name = "tSquaddieWill";
             this.tSquaddieWill.Size = new System.Drawing.Size(28, 20);
             this.tSquaddieWill.TabIndex = 7;
@@ -1332,7 +1335,7 @@
             // tColonelAim
             // 
             this.tColonelAim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelAim.Location = new System.Drawing.Point(119, 270);
+            this.tColonelAim.Location = new System.Drawing.Point(119, 278);
             this.tColonelAim.Name = "tColonelAim";
             this.tColonelAim.Size = new System.Drawing.Size(28, 20);
             this.tColonelAim.TabIndex = 62;
@@ -1342,7 +1345,7 @@
             // tBrigadierAim
             // 
             this.tBrigadierAim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierAim.Location = new System.Drawing.Point(119, 310);
+            this.tBrigadierAim.Location = new System.Drawing.Point(119, 319);
             this.tBrigadierAim.Name = "tBrigadierAim";
             this.tBrigadierAim.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierAim.TabIndex = 72;
@@ -1352,7 +1355,7 @@
             // tCorporalHp
             // 
             this.tCorporalHp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalHp.Location = new System.Drawing.Point(66, 70);
+            this.tCorporalHp.Location = new System.Drawing.Point(66, 73);
             this.tCorporalHp.Name = "tCorporalHp";
             this.tCorporalHp.Size = new System.Drawing.Size(28, 20);
             this.tCorporalHp.TabIndex = 11;
@@ -1362,7 +1365,7 @@
             // tCorporalAim
             // 
             this.tCorporalAim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalAim.Location = new System.Drawing.Point(119, 70);
+            this.tCorporalAim.Location = new System.Drawing.Point(119, 73);
             this.tCorporalAim.Name = "tCorporalAim";
             this.tCorporalAim.Size = new System.Drawing.Size(28, 20);
             this.tCorporalAim.TabIndex = 12;
@@ -1372,7 +1375,7 @@
             // tCorporalStrength
             // 
             this.tCorporalStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalStrength.Location = new System.Drawing.Point(172, 70);
+            this.tCorporalStrength.Location = new System.Drawing.Point(172, 73);
             this.tCorporalStrength.Name = "tCorporalStrength";
             this.tCorporalStrength.Size = new System.Drawing.Size(28, 20);
             this.tCorporalStrength.TabIndex = 13;
@@ -1382,7 +1385,7 @@
             // tCorporalHacking
             // 
             this.tCorporalHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalHacking.Location = new System.Drawing.Point(225, 70);
+            this.tCorporalHacking.Location = new System.Drawing.Point(225, 73);
             this.tCorporalHacking.Name = "tCorporalHacking";
             this.tCorporalHacking.Size = new System.Drawing.Size(28, 20);
             this.tCorporalHacking.TabIndex = 14;
@@ -1392,7 +1395,7 @@
             // tColonelHp
             // 
             this.tColonelHp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tColonelHp.Location = new System.Drawing.Point(66, 270);
+            this.tColonelHp.Location = new System.Drawing.Point(66, 278);
             this.tColonelHp.Name = "tColonelHp";
             this.tColonelHp.Size = new System.Drawing.Size(28, 20);
             this.tColonelHp.TabIndex = 61;
@@ -1402,7 +1405,7 @@
             // tBrigadierHp
             // 
             this.tBrigadierHp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBrigadierHp.Location = new System.Drawing.Point(66, 310);
+            this.tBrigadierHp.Location = new System.Drawing.Point(66, 319);
             this.tBrigadierHp.Name = "tBrigadierHp";
             this.tBrigadierHp.Size = new System.Drawing.Size(28, 20);
             this.tBrigadierHp.TabIndex = 71;
@@ -1412,7 +1415,7 @@
             // tCorporalPsi
             // 
             this.tCorporalPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalPsi.Location = new System.Drawing.Point(278, 70);
+            this.tCorporalPsi.Location = new System.Drawing.Point(278, 73);
             this.tCorporalPsi.Name = "tCorporalPsi";
             this.tCorporalPsi.Size = new System.Drawing.Size(28, 20);
             this.tCorporalPsi.TabIndex = 15;
@@ -1422,7 +1425,7 @@
             // tCorporalMobility
             // 
             this.tCorporalMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCorporalMobility.Location = new System.Drawing.Point(331, 70);
+            this.tCorporalMobility.Location = new System.Drawing.Point(331, 73);
             this.tCorporalMobility.Name = "tCorporalMobility";
             this.tCorporalMobility.Size = new System.Drawing.Size(28, 20);
             this.tCorporalMobility.TabIndex = 16;
@@ -1433,7 +1436,7 @@
             // 
             this.laTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotal.AutoSize = true;
-            this.laTotal.Location = new System.Drawing.Point(11, 357);
+            this.laTotal.Location = new System.Drawing.Point(11, 356);
             this.laTotal.Name = "laTotal";
             this.laTotal.Size = new System.Drawing.Size(31, 13);
             this.laTotal.TabIndex = 231;
@@ -1443,7 +1446,7 @@
             // 
             this.laTotalHp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalHp.AutoSize = true;
-            this.laTotalHp.Location = new System.Drawing.Point(73, 357);
+            this.laTotalHp.Location = new System.Drawing.Point(73, 356);
             this.laTotalHp.Name = "laTotalHp";
             this.laTotalHp.Size = new System.Drawing.Size(13, 13);
             this.laTotalHp.TabIndex = 232;
@@ -1453,7 +1456,7 @@
             // 
             this.laTotalAim.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalAim.AutoSize = true;
-            this.laTotalAim.Location = new System.Drawing.Point(126, 357);
+            this.laTotalAim.Location = new System.Drawing.Point(126, 356);
             this.laTotalAim.Name = "laTotalAim";
             this.laTotalAim.Size = new System.Drawing.Size(13, 13);
             this.laTotalAim.TabIndex = 233;
@@ -1463,7 +1466,7 @@
             // 
             this.laTotalStrength.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalStrength.AutoSize = true;
-            this.laTotalStrength.Location = new System.Drawing.Point(179, 357);
+            this.laTotalStrength.Location = new System.Drawing.Point(179, 356);
             this.laTotalStrength.Name = "laTotalStrength";
             this.laTotalStrength.Size = new System.Drawing.Size(13, 13);
             this.laTotalStrength.TabIndex = 234;
@@ -1473,7 +1476,7 @@
             // 
             this.laTotalHacking.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalHacking.AutoSize = true;
-            this.laTotalHacking.Location = new System.Drawing.Point(232, 357);
+            this.laTotalHacking.Location = new System.Drawing.Point(232, 356);
             this.laTotalHacking.Name = "laTotalHacking";
             this.laTotalHacking.Size = new System.Drawing.Size(13, 13);
             this.laTotalHacking.TabIndex = 235;
@@ -1483,7 +1486,7 @@
             // 
             this.laTotalPsi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalPsi.AutoSize = true;
-            this.laTotalPsi.Location = new System.Drawing.Point(285, 357);
+            this.laTotalPsi.Location = new System.Drawing.Point(285, 356);
             this.laTotalPsi.Name = "laTotalPsi";
             this.laTotalPsi.Size = new System.Drawing.Size(13, 13);
             this.laTotalPsi.TabIndex = 236;
@@ -1493,7 +1496,7 @@
             // 
             this.laTotalMobility.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalMobility.AutoSize = true;
-            this.laTotalMobility.Location = new System.Drawing.Point(338, 357);
+            this.laTotalMobility.Location = new System.Drawing.Point(338, 356);
             this.laTotalMobility.Name = "laTotalMobility";
             this.laTotalMobility.Size = new System.Drawing.Size(13, 13);
             this.laTotalMobility.TabIndex = 237;
@@ -1503,7 +1506,7 @@
             // 
             this.laTotalWill.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalWill.AutoSize = true;
-            this.laTotalWill.Location = new System.Drawing.Point(391, 357);
+            this.laTotalWill.Location = new System.Drawing.Point(391, 356);
             this.laTotalWill.Name = "laTotalWill";
             this.laTotalWill.Size = new System.Drawing.Size(13, 13);
             this.laTotalWill.TabIndex = 238;
@@ -1513,7 +1516,7 @@
             // 
             this.laTotalDodge.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.laTotalDodge.AutoSize = true;
-            this.laTotalDodge.Location = new System.Drawing.Point(447, 357);
+            this.laTotalDodge.Location = new System.Drawing.Point(447, 356);
             this.laTotalDodge.Name = "laTotalDodge";
             this.laTotalDodge.Size = new System.Drawing.Size(13, 13);
             this.laTotalDodge.TabIndex = 239;
@@ -2363,34 +2366,27 @@
             this.tabEquipment.Text = "Equipment";
             this.tabEquipment.UseVisualStyleBackColor = true;
             // 
-            // tNewLoadout
+            // groupBox5
             // 
-            this.tNewLoadout.Location = new System.Drawing.Point(6, 189);
-            this.tNewLoadout.Name = "tNewLoadout";
-            this.tNewLoadout.Size = new System.Drawing.Size(149, 20);
-            this.tNewLoadout.TabIndex = 103;
-            this.tNewLoadout.TextChanged += new System.EventHandler(this.tNewLoadout_TextChanged);
-            this.tNewLoadout.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tNewLoadout_KeyPress);
+            this.groupBox5.Controls.Add(this.tSquaddieLoadout);
+            this.groupBox5.Controls.Add(this.lvSquaddieLoadout);
+            this.groupBox5.Controls.Add(this.bAddLoadout);
+            this.groupBox5.Controls.Add(this.tNewLoadout);
+            this.groupBox5.Controls.Add(this.bRemoveLoadout);
+            this.groupBox5.Location = new System.Drawing.Point(4, 281);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(555, 215);
+            this.groupBox5.TabIndex = 106;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "SquaddieLoadout";
             // 
-            // bRemoveLoadout
+            // tSquaddieLoadout
             // 
-            this.bRemoveLoadout.Location = new System.Drawing.Point(400, 186);
-            this.bRemoveLoadout.Name = "bRemoveLoadout";
-            this.bRemoveLoadout.Size = new System.Drawing.Size(149, 23);
-            this.bRemoveLoadout.TabIndex = 102;
-            this.bRemoveLoadout.Text = "Remove Loadout";
-            this.bRemoveLoadout.UseVisualStyleBackColor = true;
-            this.bRemoveLoadout.Click += new System.EventHandler(this.bRemoveLoadout_Click);
-            // 
-            // bAddLoadout
-            // 
-            this.bAddLoadout.Location = new System.Drawing.Point(161, 186);
-            this.bAddLoadout.Name = "bAddLoadout";
-            this.bAddLoadout.Size = new System.Drawing.Size(149, 23);
-            this.bAddLoadout.TabIndex = 101;
-            this.bAddLoadout.Text = "Add Loadout";
-            this.bAddLoadout.UseVisualStyleBackColor = true;
-            this.bAddLoadout.Click += new System.EventHandler(this.bAddLoadout_Click);
+            this.tSquaddieLoadout.Location = new System.Drawing.Point(6, 19);
+            this.tSquaddieLoadout.Name = "tSquaddieLoadout";
+            this.tSquaddieLoadout.Size = new System.Drawing.Size(543, 20);
+            this.tSquaddieLoadout.TabIndex = 39;
+            this.tSquaddieLoadout.Text = "SquaddieRanger";
             // 
             // lvSquaddieLoadout
             // 
@@ -2411,6 +2407,105 @@
             this.colItem.Text = "Item";
             this.colItem.Width = 539;
             // 
+            // bAddLoadout
+            // 
+            this.bAddLoadout.Location = new System.Drawing.Point(161, 186);
+            this.bAddLoadout.Name = "bAddLoadout";
+            this.bAddLoadout.Size = new System.Drawing.Size(149, 23);
+            this.bAddLoadout.TabIndex = 101;
+            this.bAddLoadout.Text = "Add Loadout";
+            this.bAddLoadout.UseVisualStyleBackColor = true;
+            this.bAddLoadout.Click += new System.EventHandler(this.bAddLoadout_Click);
+            // 
+            // tNewLoadout
+            // 
+            this.tNewLoadout.Location = new System.Drawing.Point(6, 189);
+            this.tNewLoadout.Name = "tNewLoadout";
+            this.tNewLoadout.Size = new System.Drawing.Size(149, 20);
+            this.tNewLoadout.TabIndex = 103;
+            this.tNewLoadout.TextChanged += new System.EventHandler(this.tNewLoadout_TextChanged);
+            this.tNewLoadout.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tNewLoadout_KeyPress);
+            // 
+            // bRemoveLoadout
+            // 
+            this.bRemoveLoadout.Location = new System.Drawing.Point(400, 186);
+            this.bRemoveLoadout.Name = "bRemoveLoadout";
+            this.bRemoveLoadout.Size = new System.Drawing.Size(149, 23);
+            this.bRemoveLoadout.TabIndex = 102;
+            this.bRemoveLoadout.Text = "Remove Loadout";
+            this.bRemoveLoadout.UseVisualStyleBackColor = true;
+            this.bRemoveLoadout.Click += new System.EventHandler(this.bRemoveLoadout_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.lvWeapons);
+            this.groupBox4.Controls.Add(this.cWeaponSlot);
+            this.groupBox4.Controls.Add(this.tNewWeapon);
+            this.groupBox4.Controls.Add(this.bAddWeapon);
+            this.groupBox4.Controls.Add(this.bDeleteWeapon);
+            this.groupBox4.Location = new System.Drawing.Point(4, 66);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(555, 208);
+            this.groupBox4.TabIndex = 105;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Allowed Weapons";
+            // 
+            // lvWeapons
+            // 
+            this.lvWeapons.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lvWeapons.FullRowSelect = true;
+            this.lvWeapons.Location = new System.Drawing.Point(6, 20);
+            this.lvWeapons.Name = "lvWeapons";
+            this.lvWeapons.Size = new System.Drawing.Size(543, 155);
+            this.lvWeapons.TabIndex = 102;
+            this.lvWeapons.UseCompatibleStateImageBehavior = false;
+            this.lvWeapons.View = System.Windows.Forms.View.Details;
+            this.lvWeapons.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvWeapons_ItemSelectionChanged);
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Weapon";
+            this.columnHeader3.Width = 195;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Slot";
+            this.columnHeader4.Width = 179;
+            // 
+            // cWeaponSlot
+            // 
+            this.cWeaponSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cWeaponSlot.FormattingEnabled = true;
+            this.cWeaponSlot.Items.AddRange(new object[] {
+            "Primary",
+            "Secondary",
+            "Heavy"});
+            this.cWeaponSlot.Location = new System.Drawing.Point(6, 181);
+            this.cWeaponSlot.Name = "cWeaponSlot";
+            this.cWeaponSlot.Size = new System.Drawing.Size(109, 21);
+            this.cWeaponSlot.TabIndex = 101;
+            // 
+            // tNewWeapon
+            // 
+            this.tNewWeapon.Location = new System.Drawing.Point(121, 182);
+            this.tNewWeapon.Name = "tNewWeapon";
+            this.tNewWeapon.Size = new System.Drawing.Size(149, 20);
+            this.tNewWeapon.TabIndex = 100;
+            this.tNewWeapon.TextChanged += new System.EventHandler(this.tNewWeapon_TextChanged);
+            this.tNewWeapon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tNewWeapon_KeyPress);
+            // 
+            // bAddWeapon
+            // 
+            this.bAddWeapon.Location = new System.Drawing.Point(276, 182);
+            this.bAddWeapon.Name = "bAddWeapon";
+            this.bAddWeapon.Size = new System.Drawing.Size(75, 21);
+            this.bAddWeapon.TabIndex = 98;
+            this.bAddWeapon.Text = "Add";
+            this.bAddWeapon.UseVisualStyleBackColor = true;
+            this.bAddWeapon.Click += new System.EventHandler(this.bAddWeapon_Click);
+            // 
             // bDeleteWeapon
             // 
             this.bDeleteWeapon.Location = new System.Drawing.Point(474, 181);
@@ -2419,6 +2514,17 @@
             this.bDeleteWeapon.TabIndex = 99;
             this.bDeleteWeapon.Text = "Delete";
             this.bDeleteWeapon.UseVisualStyleBackColor = true;
+            this.bDeleteWeapon.Click += new System.EventHandler(this.bDeleteWeapon_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.tAllowedArmor);
+            this.groupBox3.Location = new System.Drawing.Point(4, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(555, 55);
+            this.groupBox3.TabIndex = 104;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Allowed Armor";
             // 
             // tAllowedArmor
             // 
@@ -2427,42 +2533,6 @@
             this.tAllowedArmor.Size = new System.Drawing.Size(543, 20);
             this.tAllowedArmor.TabIndex = 96;
             this.tAllowedArmor.Text = "soldier";
-            // 
-            // bAddWeapon
-            // 
-            this.bAddWeapon.Location = new System.Drawing.Point(6, 181);
-            this.bAddWeapon.Name = "bAddWeapon";
-            this.bAddWeapon.Size = new System.Drawing.Size(75, 21);
-            this.bAddWeapon.TabIndex = 98;
-            this.bAddWeapon.Text = "Add";
-            this.bAddWeapon.UseVisualStyleBackColor = true;
-            // 
-            // lWeapons
-            // 
-            this.lWeapons.DisplayMember = "weaponName";
-            this.lWeapons.FormattingEnabled = true;
-            this.lWeapons.Location = new System.Drawing.Point(6, 23);
-            this.lWeapons.Name = "lWeapons";
-            this.lWeapons.Size = new System.Drawing.Size(543, 147);
-            this.lWeapons.TabIndex = 97;
-            this.lWeapons.ValueMember = "weaponName";
-            // 
-            // bEditWeapon
-            // 
-            this.bEditWeapon.Location = new System.Drawing.Point(87, 181);
-            this.bEditWeapon.Name = "bEditWeapon";
-            this.bEditWeapon.Size = new System.Drawing.Size(75, 21);
-            this.bEditWeapon.TabIndex = 93;
-            this.bEditWeapon.Text = "Edit";
-            this.bEditWeapon.UseVisualStyleBackColor = true;
-            // 
-            // tSquaddieLoadout
-            // 
-            this.tSquaddieLoadout.Location = new System.Drawing.Point(6, 19);
-            this.tSquaddieLoadout.Name = "tSquaddieLoadout";
-            this.tSquaddieLoadout.Size = new System.Drawing.Size(543, 20);
-            this.tSquaddieLoadout.TabIndex = 39;
-            this.tSquaddieLoadout.Text = "SquaddieRanger";
             // 
             // laHelp
             // 
@@ -2587,28 +2657,28 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
@@ -2626,43 +2696,6 @@
             this.cSoldierClass.Size = new System.Drawing.Size(562, 21);
             this.cSoldierClass.TabIndex = 100;
             this.cSoldierClass.SelectedIndexChanged += new System.EventHandler(this.cSoldierClass_SelectedIndexChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.tAllowedArmor);
-            this.groupBox3.Location = new System.Drawing.Point(4, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(555, 55);
-            this.groupBox3.TabIndex = 104;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Allowed Armor";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.lWeapons);
-            this.groupBox4.Controls.Add(this.bEditWeapon);
-            this.groupBox4.Controls.Add(this.bAddWeapon);
-            this.groupBox4.Controls.Add(this.bDeleteWeapon);
-            this.groupBox4.Location = new System.Drawing.Point(4, 66);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(555, 208);
-            this.groupBox4.TabIndex = 105;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Allowed Weapons";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.tSquaddieLoadout);
-            this.groupBox5.Controls.Add(this.lvSquaddieLoadout);
-            this.groupBox5.Controls.Add(this.bAddLoadout);
-            this.groupBox5.Controls.Add(this.tNewLoadout);
-            this.groupBox5.Controls.Add(this.bRemoveLoadout);
-            this.groupBox5.Location = new System.Drawing.Point(4, 281);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(555, 215);
-            this.groupBox5.TabIndex = 106;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "SquaddieLoadout";
             // 
             // soldierClassAbilityBindingSource
             // 
@@ -2721,13 +2754,14 @@
             this.tabNicknames.ResumeLayout(false);
             this.tabNicknames.PerformLayout();
             this.tabEquipment.ResumeLayout(false);
-            this.menu.ResumeLayout(false);
-            this.menu.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2919,8 +2953,6 @@
         private System.Windows.Forms.Button bDeleteWeapon;
         private System.Windows.Forms.TextBox tAllowedArmor;
         private System.Windows.Forms.Button bAddWeapon;
-        private System.Windows.Forms.ListBox lWeapons;
-        private System.Windows.Forms.Button bEditWeapon;
         private System.Windows.Forms.TextBox tSquaddieLoadout;
         private System.Windows.Forms.TextBox tNewLoadout;
         private System.Windows.Forms.Button bRemoveLoadout;
@@ -2931,5 +2963,10 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox cWeaponSlot;
+        private System.Windows.Forms.TextBox tNewWeapon;
+        private System.Windows.Forms.ListView lvWeapons;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

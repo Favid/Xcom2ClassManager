@@ -17,6 +17,18 @@
             weaponSlot = other.weaponSlot;
         }
 
+        public Weapon(string weaponName, WeaponSlot weaponSlot)
+        {
+            this.weaponName = weaponName;
+            this.weaponSlot = weaponSlot;
+        }
+
+        public Weapon(string weaponName, string weaponSlot)
+        {
+            this.weaponName = weaponName;
+            this.weaponSlot = Enums.getEnumWithName<WeaponSlot>(weaponSlot);
+        }
+
         public string toString()
         {
             return weaponName + " " + weaponSlot;
@@ -46,6 +58,11 @@
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public string[] getListViewStringArray()
+        {
+            return new string[2] { weaponName, weaponSlot.ToString() };
         }
     }
 }

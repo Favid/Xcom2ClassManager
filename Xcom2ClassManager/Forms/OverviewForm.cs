@@ -40,8 +40,9 @@ namespace Xcom2ClassManager.Forms
             initAbilitiesDataSources();
             chDragAndDrop.Checked = false;
             cNicknameGender.SelectedIndex = 0;
+            cWeaponSlot.SelectedIndex = 0;
 
-            if(isDefaultClassPackPathValid())
+            if (isDefaultClassPackPathValid())
             {
                 FileStream myStream = new FileStream(Properties.Settings.Default.ClassPackFilePath, FileMode.Open);
                 ClassPack classPack = ClassPackManager.loadClassPack(myStream);
@@ -72,6 +73,9 @@ namespace Xcom2ClassManager.Forms
             
             bAddLoadout.Enabled = false;
             bRemoveLoadout.Enabled = false;
+
+            bAddWeapon.Enabled = false;
+            bDeleteWeapon.Enabled = false;
 
             closeToolStripMenuItem.Enabled = true;
             saveToolStripMenuItem.Enabled = true;
@@ -221,10 +225,7 @@ namespace Xcom2ClassManager.Forms
 
             tSquaddieLoadout.Text = soldierClass.equipment.squaddieLoadout;
             tAllowedArmor.Text = soldierClass.equipment.allowedArmors;
-
-            BindingList<Weapon> weapons = new BindingList<Weapon>(soldierClass.equipment.weapons);
-            lWeapons.DataSource = weapons;
-
+            
             tLeftTree.Text = soldierClass.leftTreeName;
             tRightTree.Text = soldierClass.rightTreeName;
 
@@ -232,6 +233,7 @@ namespace Xcom2ClassManager.Forms
             openSoldierAbilities(soldierClass);
             openSoldierNicknames(soldierClass);
             openSoldierLoadout(soldierClass);
+            openSoldierWeapons(soldierClass);
         }
 
         private void openSoldierStats(SoldierClass soldierClass)
@@ -384,7 +386,17 @@ namespace Xcom2ClassManager.Forms
                 lvSquaddieLoadout.Items.Add(loadoutItem);
             }
         }
-        
+
+        private void openSoldierWeapons(SoldierClass soldierClass)
+        {
+            lvWeapons.Items.Clear();
+            foreach (Weapon weapon in soldierClass.equipment.weapons)
+            {
+                ListViewItem item = new ListViewItem(weapon.getListViewStringArray());
+                lvWeapons.Items.Add(item);
+            }
+        }
+
         #endregion Open Class
 
         #region Build Class From Form
@@ -405,7 +417,7 @@ namespace Xcom2ClassManager.Forms
 
             soldierClass.equipment.squaddieLoadout = tSquaddieLoadout.Text;
             soldierClass.equipment.allowedArmors = tAllowedArmor.Text;
-            soldierClass.equipment.weapons = (lWeapons.DataSource as BindingList<Weapon>).ToList();
+            soldierClass.equipment.weapons = buildSoldierClassWeapons();
 
             soldierClass.stats = buildSoldierClassStats();
             soldierClass.soldierAbilities = buildSoldierClassAbilities();
@@ -570,6 +582,17 @@ namespace Xcom2ClassManager.Forms
             return soldierAbility;
         }
 
+        private List<Weapon> buildSoldierClassWeapons()
+        {
+            List<Weapon> weapons = new List<Weapon>();
+            foreach (ListViewItem item in lvWeapons.Items)
+            {
+                weapons.Add(new Weapon(item.SubItems[0].Text, item.SubItems[1].Text));
+            }
+
+            return weapons;
+        }
+
         private List<ClassNickname> buildSoldierClassNicknames()
         {
             List<ClassNickname> nicknames = new List<ClassNickname>();
@@ -635,61 +658,72 @@ namespace Xcom2ClassManager.Forms
         #endregion Delete Class
 
         #region Modify Weapons
-
-        private void bEditWeapon_Click(object sender, EventArgs e)
-        {
-            WeaponForm weaponEditor = new WeaponForm(lWeapons.SelectedItem as Weapon, EditorState.EDIT);
-            weaponEditor.FormClosing += weaponEditorClosingListener;
-            weaponEditor.ShowDialog(this);
-        }
-
+        
         private void bAddWeapon_Click(object sender, EventArgs e)
         {
-            WeaponForm weaponEditor = new WeaponForm(null, EditorState.ADD);
-            weaponEditor.FormClosing += weaponEditorClosingListener;
-            weaponEditor.ShowDialog(this);
+            if (addWeapon())
+            {
+                tNewWeapon.Text = "";
+            }
         }
 
-        private void weaponEditorClosingListener(object sender, FormClosingEventArgs e)
+        private void tNewWeapon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            WeaponForm weaponEditor = sender as WeaponForm;
-            if (weaponEditor != null)
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                BindingList<Weapon> weapons = lWeapons.DataSource as BindingList<Weapon>;
-                Weapon oldWeapon = weaponEditor.oldWeapon;
-                Weapon newWeapon = weaponEditor.newWeapon;
-
-                if (weaponEditor.editorState == EditorState.CANCEL)
+                if (addWeapon())
                 {
-                    return;
-                }
-                else if (weaponEditor.editorState == EditorState.ADD)
-                {
-                    weapons.Add(newWeapon);
-                    lWeapons.DataSource = weapons;
-                }
-                else if (weaponEditor.editorState == EditorState.EDIT)
-                {
-                    int index = weapons.IndexOf(oldWeapon);
-
-                    if (index == -1)
-                    {
-                        weapons.Add(newWeapon);
-                    }
-                    else
-                    {
-                        weapons[index] = newWeapon;
-                    }
-
-                    lWeapons.DataSource = weapons;
+                    tNewWeapon.Text = "";
+                    e.Handled = true;
                 }
             }
         }
 
+        private bool addWeapon()
+        {
+            bool success = false;
+            string newWeapon = tNewWeapon.Text;
+
+            if (!string.IsNullOrEmpty(newWeapon))
+            {
+                ListViewItem x = new ListViewItem(new Weapon(newWeapon, (string)cWeaponSlot.SelectedItem).getListViewStringArray());
+                lvWeapons.Items.Add(x);
+                success = true;
+            }
+
+            return success;
+        }
+
         private void bDeleteWeapon_Click(object sender, EventArgs e)
         {
-            BindingList<Weapon> weapons = lWeapons.DataSource as BindingList<Weapon>;
-            weapons.Remove(lWeapons.SelectedItem as Weapon);
+            foreach (ListViewItem eachItem in lvWeapons.SelectedItems)
+            {
+                lvWeapons.Items.Remove(eachItem);
+            }
+        }
+
+        private void lvWeapons_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (lvWeapons.SelectedIndices.Count > 0)
+            {
+                bDeleteWeapon.Enabled = true;
+            }
+            else
+            {
+                bDeleteWeapon.Enabled = false;
+            }
+        }
+
+        private void tNewWeapon_TextChanged(object sender, EventArgs e)
+        {
+            if (tNewWeapon.Text.Length > 0)
+            {
+                bAddWeapon.Enabled = true;
+            }
+            else
+            {
+                bAddWeapon.Enabled = false;
+            }
         }
 
         #endregion Modify Weapons
