@@ -234,6 +234,8 @@ namespace Xcom2ClassManager.Forms
             openSoldierNicknames(soldierClass);
             openSoldierLoadout(soldierClass);
             openSoldierWeapons(soldierClass);
+
+            refreshDependantControls();
         }
 
         private void openSoldierStats(SoldierClass soldierClass)
@@ -704,26 +706,12 @@ namespace Xcom2ClassManager.Forms
 
         private void lvWeapons_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if (lvWeapons.SelectedIndices.Count > 0)
-            {
-                bDeleteWeapon.Enabled = true;
-            }
-            else
-            {
-                bDeleteWeapon.Enabled = false;
-            }
+            refreshRemoveWeaponButton();
         }
 
         private void tNewWeapon_TextChanged(object sender, EventArgs e)
         {
-            if (tNewWeapon.Text.Length > 0)
-            {
-                bAddWeapon.Enabled = true;
-            }
-            else
-            {
-                bAddWeapon.Enabled = false;
-            }
+            refreshNewWeaponButton();
         }
 
         #endregion Modify Weapons
@@ -1251,7 +1239,66 @@ namespace Xcom2ClassManager.Forms
 
         private void lvUnisexNicknames_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if(lvUnisexNicknames.SelectedIndices.Count > 0)
+            refreshRemoveNicknameButton();
+        }
+
+        private void tNewUnisexNickname_TextChanged(object sender, EventArgs e)
+        {
+            refreshNewNicknameButton();
+        }
+
+        private void lvSquaddieLoadout_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            refreshRemoveLoadoutButton();
+        }
+
+        private void tNewLoadout_TextChanged(object sender, EventArgs e)
+        {
+            refreshNewLoadoutButton();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            unloadClassPack();
+        }
+
+        private void refreshDependantControls()
+        {
+            refreshRemoveNicknameButton();
+            refreshNewNicknameButton();
+            refreshRemoveLoadoutButton();
+            refreshNewLoadoutButton();
+            refreshRemoveWeaponButton();
+            refreshNewWeaponButton();
+        }
+
+        private void refreshRemoveWeaponButton()
+        {
+            if (lvWeapons.SelectedIndices.Count > 0)
+            {
+                bDeleteWeapon.Enabled = true;
+            }
+            else
+            {
+                bDeleteWeapon.Enabled = false;
+            }
+        }
+
+        private void refreshNewWeaponButton()
+        {
+            if (tNewWeapon.Text.Length > 0)
+            {
+                bAddWeapon.Enabled = true;
+            }
+            else
+            {
+                bAddWeapon.Enabled = false;
+            }
+        }
+
+        private void refreshRemoveNicknameButton()
+        {
+            if (lvUnisexNicknames.SelectedIndices.Count > 0)
             {
                 bRemoveNickname.Enabled = true;
             }
@@ -1261,9 +1308,9 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
-        private void tNewUnisexNickname_TextChanged(object sender, EventArgs e)
+        private void refreshNewNicknameButton()
         {
-            if(tNewUnisexNickname.Text.Length > 0)
+            if (tNewUnisexNickname.Text.Length > 0)
             {
                 bAddNickname.Enabled = true;
             }
@@ -1273,7 +1320,7 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
-        private void lvSquaddieLoadout_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void refreshRemoveLoadoutButton()
         {
             if (lvSquaddieLoadout.SelectedIndices.Count > 0)
             {
@@ -1285,7 +1332,7 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
-        private void tNewLoadout_TextChanged(object sender, EventArgs e)
+        private void refreshNewLoadoutButton()
         {
             if (tNewLoadout.Text.Length > 0)
             {
@@ -1295,11 +1342,6 @@ namespace Xcom2ClassManager.Forms
             {
                 bAddLoadout.Enabled = false;
             }
-        }
-
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            unloadClassPack();
         }
     }
 }
