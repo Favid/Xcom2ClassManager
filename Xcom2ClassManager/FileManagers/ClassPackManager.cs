@@ -14,6 +14,8 @@ namespace Xcom2ClassManager.FileManagers
         public static void saveClassPack(ClassPack classPack, Stream stream)
         {
             XmlSerializer xs = new XmlSerializer(typeof(ClassPack));
+            stream.SetLength(0);
+            
             TextWriter tw = new StreamWriter(stream);
             xs.Serialize(tw, classPack);
         }
