@@ -144,6 +144,11 @@ namespace Xcom2ClassManager.Exporters
 
             string fullStat = "";
 
+            if (rank == SoldierRank.Squaddie)
+            {
+                fullStat = "(StatType=eStat_CombatSims,StatAmount=1)";
+            }
+
             foreach (SoldierClassStat squaddieStat in rankStats)
             {
                 if (squaddieStat.value > 0)
