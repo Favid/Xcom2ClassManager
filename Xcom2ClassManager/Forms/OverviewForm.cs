@@ -603,6 +603,7 @@ namespace Xcom2ClassManager.Forms
 
             if (comboAbility != null)
             {
+                soldierAbility.id = comboAbility.id;
                 soldierAbility.internalName = comboAbility.internalName;
                 soldierAbility.displayName = comboAbility.displayName;
                 soldierAbility.description = comboAbility.description;

@@ -91,6 +91,11 @@ namespace Xcom2ClassManager.DataObjects
             return name;
         }
 
+        internal static int getNextAbilityId()
+        {
+            return instance.abilities.Max(x => x.id) + 1;
+        }
+
         public static void renameOpenClass(string newName)
         {
             SoldierClass classToUpdate = getOpenSoldierClass();

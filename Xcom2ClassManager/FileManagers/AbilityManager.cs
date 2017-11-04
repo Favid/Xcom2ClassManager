@@ -14,11 +14,12 @@ namespace Xcom2ClassManager.FileManagers
 
         private const int ROW_START = 2;
 
-        private const int COLUMN_INTERNAL_NAME = 1;
-        private const int COLUMN_DISPLAY_NAME = 2;
-        private const int COLUMN_DESCRIPTION = 3;
-        private const int COLUMN_WEAPON_SLOT = 4;
-        private const int COLUMN_REQUIRED_MOD = 5;
+        private const int COLUMN_ID = 1;
+        private const int COLUMN_INTERNAL_NAME = 2;
+        private const int COLUMN_DISPLAY_NAME = 3;
+        private const int COLUMN_DESCRIPTION = 4;
+        private const int COLUMN_WEAPON_SLOT = 5;
+        private const int COLUMN_REQUIRED_MOD = 6;
 
         public AbilityManager()
         {
@@ -40,6 +41,7 @@ namespace Xcom2ClassManager.FileManagers
             for (int row = ROW_START; row <= workSheet.Dimension.End.Row; row++)
             {
                 Ability ability = new Ability();
+                ability.id = int.Parse(workSheet.Cells[row, COLUMN_ID].Value.ToString());
                 ability.internalName = workSheet.Cells[row, COLUMN_INTERNAL_NAME].Value.ToString();
                 ability.displayName = workSheet.Cells[row, COLUMN_DISPLAY_NAME].Value.ToString();
                 ability.description = workSheet.Cells[row, COLUMN_DESCRIPTION].Value.ToString();
@@ -81,6 +83,7 @@ namespace Xcom2ClassManager.FileManagers
             int insertionRow = workSheet.Dimension.End.Row + 1;
             foreach (Ability ability in abilities)
             {
+                workSheet.Cells[insertionRow, COLUMN_ID].Value = ability.id;
                 workSheet.Cells[insertionRow, COLUMN_INTERNAL_NAME].Value = ability.internalName;
                 workSheet.Cells[insertionRow, COLUMN_DISPLAY_NAME].Value = ability.displayName;
                 workSheet.Cells[insertionRow, COLUMN_DESCRIPTION].Value = ability.description;

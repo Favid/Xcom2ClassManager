@@ -77,6 +77,7 @@ namespace Xcom2ClassManager.Forms
         private Ability importAbility(StreamReader file, string startingLine)
         {
             Ability ability = new Ability();
+            ability.id = ProjectState.getNextAbilityId();
             ability.internalName = startingLine.Substring(1, startingLine.IndexOf(' ') - 1);
             
             string nextLine = file.ReadLine();
