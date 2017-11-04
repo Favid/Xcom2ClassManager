@@ -43,6 +43,12 @@ namespace Xcom2ClassManager.DataObjects
             return getInstance().abilities;
         }
 
+        public static Ability getAbility(string abilityName)
+        {
+            Ability ability = instance.abilities.Where(x => x.internalName.Equals(abilityName)).FirstOrDefault();
+            return ability;
+        }
+
         public static ClassPack getClassPack()
         {
             return getInstance().classPack;

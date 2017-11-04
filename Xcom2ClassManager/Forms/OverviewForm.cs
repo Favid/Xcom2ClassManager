@@ -40,7 +40,8 @@ namespace Xcom2ClassManager.Forms
             initAbilitiesDataSources();
             chDragAndDrop.Checked = false;
             cNicknameGender.SelectedIndex = 0;
-            cWeaponSlot.SelectedIndex = 0;
+            cWeaponSlot.SelectedIndex = 1;
+            cExcludeAbility.SelectedIndex = 0;
 
             if (isDefaultClassPackPathValid())
             {
@@ -197,15 +198,27 @@ namespace Xcom2ClassManager.Forms
             initAbilityDataSource(cBrigadier1);
             initAbilityDataSource(cBrigadier2);
             initAbilityDataSource(cBrigadier3);
+
+            initAbilityDataSource(cExcludeAbility, false);
+        }
+
+        private void initAbilityDataSource(ComboBox combo, bool includeEmptyOption)
+        {
+            List<Ability> abilities = new List<Ability>(ProjectState.getAbilities());
+
+            if(includeEmptyOption)
+            {
+                abilities.Add(new Ability());
+            }
+            
+            abilities = abilities.OrderBy(x => x.internalName).ToList();
+
+            combo.DataSource = abilities;
         }
 
         private void initAbilityDataSource(ComboBox combo)
         {
-            List<Ability> abilities = new List<Ability>(ProjectState.getAbilities());
-            abilities.Add(new Ability());
-            abilities = abilities.OrderBy(x => x.internalName).ToList();
-
-            combo.DataSource = abilities;
+            initAbilityDataSource(combo, true);
         }
 
         #region Populate Form With Class
@@ -234,6 +247,7 @@ namespace Xcom2ClassManager.Forms
             openSoldierNicknames(soldierClass);
             openSoldierLoadout(soldierClass);
             openSoldierWeapons(soldierClass);
+            openSoldierAwcExcludeSettings(soldierClass);
 
             refreshDependantControls();
         }
@@ -399,6 +413,19 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
+        private void openSoldierAwcExcludeSettings(SoldierClass soldierClass)
+        {
+            bAllowAwc.Checked = soldierClass.allowAwcAbilities;
+            nBaseAbilityPointsPerPromotion.Value = soldierClass.baseAbilityPointsPerPromotion;
+
+            lvAwcExcludeAbilities.Items.Clear();
+            foreach (Ability ability in soldierClass.awcExcludeAbilities)
+            {
+                ListViewItem item = new ListViewItem(ability.getListViewStringArray());
+                lvAwcExcludeAbilities.Items.Add(item);
+            }
+        }
+
         #endregion Open Class
 
         #region Build Class From Form
@@ -429,6 +456,10 @@ namespace Xcom2ClassManager.Forms
 
             soldierClass.nicknames = buildSoldierClassNicknames();
             soldierClass.loadoutItems = buildSoldierClassLoadout();
+
+            soldierClass.allowAwcAbilities = bAllowAwc.Checked;
+            soldierClass.baseAbilityPointsPerPromotion = (int)nBaseAbilityPointsPerPromotion.Value;
+            soldierClass.awcExcludeAbilities = buildAwcExcludeAbilities();
 
             return soldierClass;
         }
@@ -616,7 +647,22 @@ namespace Xcom2ClassManager.Forms
 
             return loadoutItems;
         }
-        
+
+        private List<Ability> buildAwcExcludeAbilities()
+        {
+            List<Ability> awcExcludeAbilities = new List<Ability>();
+            foreach (ListViewItem item in lvAwcExcludeAbilities.Items)
+            {
+                Ability ability = ProjectState.getAbility(item.Text);
+                if(ability != null)
+                {
+                    awcExcludeAbilities.Add(ability);
+                }
+            }
+
+            return awcExcludeAbilities;
+        }
+
         #endregion Save Class
 
         #region Rename Class
@@ -1262,6 +1308,34 @@ namespace Xcom2ClassManager.Forms
             unloadClassPack();
         }
 
+        private void bAddExcludeAbility_Click(object sender, EventArgs e)
+        {
+            addExcludeAbility();
+        }
+
+        private bool addExcludeAbility()
+        {
+            bool success = false;
+            Ability newAwcExcludeAbility = cExcludeAbility.SelectedItem as Ability;
+
+            if (newAwcExcludeAbility != null)
+            {
+                ListViewItem x = new ListViewItem(newAwcExcludeAbility.getListViewStringArray());
+                lvAwcExcludeAbilities.Items.Add(x);
+                success = true;
+            }
+
+            return success;
+        }
+
+        private void bRemoveExcludeAbility_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem eachItem in lvAwcExcludeAbilities.SelectedItems)
+            {
+                lvAwcExcludeAbilities.Items.Remove(eachItem);
+            }
+        }
+
         private void refreshDependantControls()
         {
             refreshRemoveNicknameButton();
@@ -1270,6 +1344,8 @@ namespace Xcom2ClassManager.Forms
             refreshNewLoadoutButton();
             refreshRemoveWeaponButton();
             refreshNewWeaponButton();
+            refreshRemoveAwcExlucdeAbilityButton();
+            refreshNewAwcExlucdeAbilityButton();
         }
 
         private void refreshRemoveWeaponButton()
@@ -1342,6 +1418,40 @@ namespace Xcom2ClassManager.Forms
             {
                 bAddLoadout.Enabled = false;
             }
+        }
+
+        private void refreshRemoveAwcExlucdeAbilityButton()
+        {
+            if (lvAwcExcludeAbilities.SelectedIndices.Count > 0)
+            {
+                bRemoveExcludeAbility.Enabled = true;
+            }
+            else
+            {
+                bRemoveExcludeAbility.Enabled = false;
+            }
+        }
+
+        private void refreshNewAwcExlucdeAbilityButton()
+        {
+            if (cExcludeAbility.SelectedItem != null)
+            {
+                bAddExcludeAbility.Enabled = true;
+            }
+            else
+            {
+                bAddExcludeAbility.Enabled = false;
+            }
+        }
+
+        private void lvAwcExcludeAbilities_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            refreshRemoveAwcExlucdeAbilityButton();
+        }
+
+        private void cExcludeAbility_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refreshNewAwcExlucdeAbilityButton();
         }
     }
 }

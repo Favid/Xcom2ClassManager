@@ -84,5 +84,10 @@
         {
             return internalName;
         }
+
+        public string[] getListViewStringArray()
+        {
+            return new string[2] { internalName, displayName };
+        }
     }
 }

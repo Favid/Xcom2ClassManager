@@ -210,6 +210,17 @@
             this.bDeleteWeapon = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tAllowedArmor = new System.Windows.Forms.TextBox();
+            this.tabAwc = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.bRemoveExcludeAbility = new System.Windows.Forms.Button();
+            this.bAddExcludeAbility = new System.Windows.Forms.Button();
+            this.cExcludeAbility = new System.Windows.Forms.ComboBox();
+            this.lvAwcExcludeAbilities = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nBaseAbilityPointsPerPromotion = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bAllowAwc = new System.Windows.Forms.CheckBox();
             this.laHelp = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -229,6 +240,7 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSoldierClass = new System.Windows.Forms.ComboBox();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
@@ -265,6 +277,10 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabAwc.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nBaseAbilityPointsPerPromotion)).BeginInit();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -287,6 +303,7 @@
             this.tabControl1.Controls.Add(this.tabAbilities);
             this.tabControl1.Controls.Add(this.tabNicknames);
             this.tabControl1.Controls.Add(this.tabEquipment);
+            this.tabControl1.Controls.Add(this.tabAwc);
             this.tabControl1.Location = new System.Drawing.Point(12, 61);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -2550,6 +2567,119 @@
             this.tAllowedArmor.TabIndex = 96;
             this.tAllowedArmor.Text = "soldier";
             // 
+            // tabAwc
+            // 
+            this.tabAwc.Controls.Add(this.groupBox6);
+            this.tabAwc.Controls.Add(this.groupBox2);
+            this.tabAwc.Location = new System.Drawing.Point(4, 22);
+            this.tabAwc.Name = "tabAwc";
+            this.tabAwc.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAwc.Size = new System.Drawing.Size(562, 499);
+            this.tabAwc.TabIndex = 11;
+            this.tabAwc.Text = "AWC";
+            this.tabAwc.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.bRemoveExcludeAbility);
+            this.groupBox6.Controls.Add(this.bAddExcludeAbility);
+            this.groupBox6.Controls.Add(this.cExcludeAbility);
+            this.groupBox6.Controls.Add(this.lvAwcExcludeAbilities);
+            this.groupBox6.Location = new System.Drawing.Point(7, 96);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(549, 397);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Exclude AWC Abilities";
+            // 
+            // bRemoveExcludeAbility
+            // 
+            this.bRemoveExcludeAbility.Location = new System.Drawing.Point(423, 369);
+            this.bRemoveExcludeAbility.Name = "bRemoveExcludeAbility";
+            this.bRemoveExcludeAbility.Size = new System.Drawing.Size(116, 21);
+            this.bRemoveExcludeAbility.TabIndex = 7;
+            this.bRemoveExcludeAbility.Text = "Remove Ability";
+            this.bRemoveExcludeAbility.UseVisualStyleBackColor = true;
+            this.bRemoveExcludeAbility.Click += new System.EventHandler(this.bRemoveExcludeAbility_Click);
+            // 
+            // bAddExcludeAbility
+            // 
+            this.bAddExcludeAbility.Location = new System.Drawing.Point(121, 370);
+            this.bAddExcludeAbility.Name = "bAddExcludeAbility";
+            this.bAddExcludeAbility.Size = new System.Drawing.Size(109, 21);
+            this.bAddExcludeAbility.TabIndex = 6;
+            this.bAddExcludeAbility.Text = "Add Ability";
+            this.bAddExcludeAbility.UseVisualStyleBackColor = true;
+            this.bAddExcludeAbility.Click += new System.EventHandler(this.bAddExcludeAbility_Click);
+            // 
+            // cExcludeAbility
+            // 
+            this.cExcludeAbility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cExcludeAbility.FormattingEnabled = true;
+            this.cExcludeAbility.Location = new System.Drawing.Point(6, 370);
+            this.cExcludeAbility.Name = "cExcludeAbility";
+            this.cExcludeAbility.Size = new System.Drawing.Size(109, 21);
+            this.cExcludeAbility.TabIndex = 5;
+            this.cExcludeAbility.SelectedIndexChanged += new System.EventHandler(this.cExcludeAbility_SelectedIndexChanged);
+            // 
+            // lvAwcExcludeAbilities
+            // 
+            this.lvAwcExcludeAbilities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lvAwcExcludeAbilities.FullRowSelect = true;
+            this.lvAwcExcludeAbilities.LabelEdit = true;
+            this.lvAwcExcludeAbilities.Location = new System.Drawing.Point(6, 19);
+            this.lvAwcExcludeAbilities.Name = "lvAwcExcludeAbilities";
+            this.lvAwcExcludeAbilities.Size = new System.Drawing.Size(534, 344);
+            this.lvAwcExcludeAbilities.TabIndex = 1;
+            this.lvAwcExcludeAbilities.UseCompatibleStateImageBehavior = false;
+            this.lvAwcExcludeAbilities.View = System.Windows.Forms.View.Details;
+            this.lvAwcExcludeAbilities.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvAwcExcludeAbilities_ItemSelectionChanged);
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Internal Name";
+            this.columnHeader5.Width = 170;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.nBaseAbilityPointsPerPromotion);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.bAllowAwc);
+            this.groupBox2.Location = new System.Drawing.Point(7, 7);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(549, 82);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "AWC Settings";
+            // 
+            // nBaseAbilityPointsPerPromotion
+            // 
+            this.nBaseAbilityPointsPerPromotion.Location = new System.Drawing.Point(178, 42);
+            this.nBaseAbilityPointsPerPromotion.Name = "nBaseAbilityPointsPerPromotion";
+            this.nBaseAbilityPointsPerPromotion.Size = new System.Drawing.Size(43, 20);
+            this.nBaseAbilityPointsPerPromotion.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(165, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Base Ability Points Per Promotion:";
+            // 
+            // bAllowAwc
+            // 
+            this.bAllowAwc.AutoSize = true;
+            this.bAllowAwc.Location = new System.Drawing.Point(7, 20);
+            this.bAllowAwc.Name = "bAllowAwc";
+            this.bAllowAwc.Size = new System.Drawing.Size(117, 17);
+            this.bAllowAwc.TabIndex = 0;
+            this.bAllowAwc.Text = "Allow AWC Abilities";
+            this.bAllowAwc.UseVisualStyleBackColor = true;
+            // 
             // laHelp
             // 
             this.laHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2713,6 +2843,11 @@
             this.cSoldierClass.TabIndex = 100;
             this.cSoldierClass.SelectedIndexChanged += new System.EventHandler(this.cSoldierClass_SelectedIndexChanged);
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Display Name";
+            this.columnHeader6.Width = 199;
+            // 
             // soldierClassAbilityBindingSource
             // 
             this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
@@ -2776,6 +2911,11 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabAwc.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nBaseAbilityPointsPerPromotion)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).EndInit();
@@ -2984,5 +3124,17 @@
         private System.Windows.Forms.ListView lvWeapons;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.TabPage tabAwc;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox bAllowAwc;
+        private System.Windows.Forms.NumericUpDown nBaseAbilityPointsPerPromotion;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ComboBox cExcludeAbility;
+        private System.Windows.Forms.ListView lvAwcExcludeAbilities;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Button bRemoveExcludeAbility;
+        private System.Windows.Forms.Button bAddExcludeAbility;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

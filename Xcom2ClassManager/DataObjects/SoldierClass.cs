@@ -18,6 +18,10 @@ namespace Xcom2ClassManager
         public List<ClassNickname> nicknames { get; set; }
         public List<string> loadoutItems { get; set; }
 
+        public bool allowAwcAbilities { get; set; }
+        public int baseAbilityPointsPerPromotion { get; set; }
+        public List<Ability> awcExcludeAbilities { get; set; }
+
         public SoldierClass()
         {
             metadata = new SoldierClassMetadata();
@@ -31,6 +35,10 @@ namespace Xcom2ClassManager
 
             nicknames = new List<ClassNickname>();
             loadoutItems = new List<string>();
+
+            allowAwcAbilities = true;
+            baseAbilityPointsPerPromotion = 4;
+            awcExcludeAbilities = new List<Ability>();
         }
 
         public SoldierClass(SoldierClass other)
@@ -64,6 +72,15 @@ namespace Xcom2ClassManager
             foreach (string loadoutItem in other.loadoutItems)
             {
                 loadoutItems.Add(loadoutItem);
+            }
+
+            allowAwcAbilities = other.allowAwcAbilities;
+            baseAbilityPointsPerPromotion = other.baseAbilityPointsPerPromotion;
+
+            awcExcludeAbilities = new List<Ability>();
+            foreach (Ability excludeAbility in other.awcExcludeAbilities)
+            {
+                awcExcludeAbilities.Add(excludeAbility);
             }
         }
 
