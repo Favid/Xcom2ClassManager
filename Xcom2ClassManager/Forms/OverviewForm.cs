@@ -422,6 +422,7 @@ namespace Xcom2ClassManager.Forms
             foreach (Ability ability in soldierClass.awcExcludeAbilities)
             {
                 ListViewItem item = new ListViewItem(ability.getListViewStringArray());
+                item.Tag = ability;
                 lvAwcExcludeAbilities.Items.Add(item);
             }
         }
@@ -654,7 +655,7 @@ namespace Xcom2ClassManager.Forms
             List<Ability> awcExcludeAbilities = new List<Ability>();
             foreach (ListViewItem item in lvAwcExcludeAbilities.Items)
             {
-                Ability ability = ProjectState.getAbility(item.Text);
+                Ability ability = item.Tag as Ability;
                 if(ability != null)
                 {
                     awcExcludeAbilities.Add(ability);
@@ -1321,8 +1322,9 @@ namespace Xcom2ClassManager.Forms
 
             if (newAwcExcludeAbility != null)
             {
-                ListViewItem x = new ListViewItem(newAwcExcludeAbility.getListViewStringArray());
-                lvAwcExcludeAbilities.Items.Add(x);
+                ListViewItem item = new ListViewItem(newAwcExcludeAbility.getListViewStringArray());
+                item.Tag = newAwcExcludeAbility;
+                lvAwcExcludeAbilities.Items.Add(item);
                 success = true;
             }
 
