@@ -6,13 +6,13 @@ namespace Xcom2ClassManager
     public class SoldierClassEquipment
     {
         public string squaddieLoadout { get; set; }
-        public string allowedArmors { get; set; }
+        public List<string> allowedArmors { get; set; }
         public List<Weapon> weapons { get; set; }
 
         public SoldierClassEquipment()
         {
             squaddieLoadout = "";
-            allowedArmors = "soldier";
+            allowedArmors = new List<string>();
             weapons = new List<Weapon>();
         }
 
@@ -41,7 +41,7 @@ namespace Xcom2ClassManager
                 return false;
             }
 
-            if (!string.Equals(allowedArmors, other.allowedArmors))
+            if (!allowedArmors.SequenceEqual(other.allowedArmors))
             {
                 return false;
             }

@@ -68,8 +68,11 @@ namespace Xcom2ClassManager.Exporters
             lines.Add("+bAllowAWCAbilities=1");
 
             writeClassWeapons(soldier);
-            
-            lines.Add(String.Format("+AllowedArmors=\"{0}\"", soldier.equipment.allowedArmors));
+
+            foreach (string armor in soldier.equipment.allowedArmors)
+            {
+                lines.Add(String.Format("+AllowedArmors=\"{0}\"", armor));
+            }
         }
 
         private void writeClassWeapons(SoldierClass soldier)

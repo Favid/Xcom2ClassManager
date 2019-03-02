@@ -78,6 +78,9 @@ namespace Xcom2ClassManager.Forms
             bAddWeapon.Enabled = false;
             bDeleteWeapon.Enabled = false;
 
+            bAddArmor.Enabled = false;
+            bDeleteArmor.Enabled = false;
+
             closeToolStripMenuItem.Enabled = true;
             saveToolStripMenuItem.Enabled = true;
             saveAsToolStripMenuItem.Enabled = true;
@@ -237,7 +240,6 @@ namespace Xcom2ClassManager.Forms
             nMissionExperienceWeight.Value = (decimal)soldierClass.experience.missionExperienceWeight;
 
             tSquaddieLoadout.Text = soldierClass.equipment.squaddieLoadout;
-            tAllowedArmor.Text = soldierClass.equipment.allowedArmors;
             
             tLeftTree.Text = soldierClass.leftTreeName;
             tRightTree.Text = soldierClass.rightTreeName;
@@ -247,6 +249,7 @@ namespace Xcom2ClassManager.Forms
             openSoldierNicknames(soldierClass);
             openSoldierLoadout(soldierClass);
             openSoldierWeapons(soldierClass);
+            openSoldierArmors(soldierClass);
             openSoldierAwcExcludeSettings(soldierClass);
 
             refreshDependantControls();
@@ -403,6 +406,16 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
+        private void openSoldierArmors(SoldierClass soldierClass)
+        {
+            lvArmors.Items.Clear();
+            foreach (string armor in soldierClass.equipment.allowedArmors)
+            {
+                ListViewItem item = new ListViewItem(armor);
+                lvArmors.Items.Add(item);
+            }
+        }
+
         private void openSoldierWeapons(SoldierClass soldierClass)
         {
             lvWeapons.Items.Clear();
@@ -446,7 +459,7 @@ namespace Xcom2ClassManager.Forms
             soldierClass.experience.missionExperienceWeight = (double)nMissionExperienceWeight.Value;
 
             soldierClass.equipment.squaddieLoadout = tSquaddieLoadout.Text;
-            soldierClass.equipment.allowedArmors = tAllowedArmor.Text;
+            soldierClass.equipment.allowedArmors = buildSoldierClassArmors();
             soldierClass.equipment.weapons = buildSoldierClassWeapons();
 
             soldierClass.stats = buildSoldierClassStats();
@@ -628,6 +641,17 @@ namespace Xcom2ClassManager.Forms
             return weapons;
         }
 
+        private List<string> buildSoldierClassArmors()
+        {
+            List<string> armors = new List<string>();
+            foreach (ListViewItem item in lvArmors.Items)
+            {
+                armors.Add(item.SubItems[0].Text);
+            }
+
+            return armors;
+        }
+
         private List<ClassNickname> buildSoldierClassNicknames()
         {
             List<ClassNickname> nicknames = new List<ClassNickname>();
@@ -763,6 +787,63 @@ namespace Xcom2ClassManager.Forms
         }
 
         #endregion Modify Weapons
+        
+        #region Modify Armor
+
+        private void bAddArmor_Click(object sender, EventArgs e)
+        {
+            if (addArmor())
+            {
+                tNewArmor.Text = "";
+            }
+        }
+
+        private void tNewArmor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (addArmor())
+                {
+                    tNewArmor.Text = "";
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private bool addArmor()
+        {
+            bool success = false;
+            string newArmor = tNewArmor.Text;
+
+            if (!string.IsNullOrEmpty(newArmor))
+            {
+                ListViewItem x = new ListViewItem(newArmor);
+                lvArmors.Items.Add(x);
+                success = true;
+            }
+
+            return success;
+        }
+
+        private void bDeleteArmor_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem eachItem in lvArmors.SelectedItems)
+            {
+                lvArmors.Items.Remove(eachItem);
+            }
+        }
+
+        private void lvArmors_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            refreshRemoveArmorButton();
+        }
+
+        private void tNewAmor_TextChanged(object sender, EventArgs e)
+        {
+            refreshNewArmorButton();
+        }
+
+        #endregion Modify Armor
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1346,7 +1427,9 @@ namespace Xcom2ClassManager.Forms
             refreshRemoveLoadoutButton();
             refreshNewLoadoutButton();
             refreshRemoveWeaponButton();
+            refreshRemoveArmorButton();
             refreshNewWeaponButton();
+            refreshNewArmorButton();
             refreshRemoveAwcExlucdeAbilityButton();
             refreshNewAwcExlucdeAbilityButton();
         }
@@ -1363,6 +1446,18 @@ namespace Xcom2ClassManager.Forms
             }
         }
 
+        private void refreshRemoveArmorButton()
+        {
+            if (lvArmors.SelectedIndices.Count > 0)
+            {
+                bDeleteArmor.Enabled = true;
+            }
+            else
+            {
+                bDeleteArmor.Enabled = false;
+            }
+        }
+
         private void refreshNewWeaponButton()
         {
             if (tNewWeapon.Text.Length > 0)
@@ -1372,6 +1467,18 @@ namespace Xcom2ClassManager.Forms
             else
             {
                 bAddWeapon.Enabled = false;
+            }
+        }
+
+        private void refreshNewArmorButton()
+        {
+            if (tNewArmor.Text.Length > 0)
+            {
+                bAddArmor.Enabled = true;
+            }
+            else
+            {
+                bAddArmor.Enabled = false;
             }
         }
 
