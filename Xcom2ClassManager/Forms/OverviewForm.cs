@@ -69,9 +69,12 @@ namespace Xcom2ClassManager.Forms
         {
             setControlEnable(this, true);
 
+            bAddUnfavoredClass.Enabled = false;
+            bDeleteUnfavoredClass.Enabled = false;
+
             bAddNickname.Enabled = false;
             bRemoveNickname.Enabled = false;
-            
+
             bAddLoadout.Enabled = false;
             bRemoveLoadout.Enabled = false;
 
@@ -233,6 +236,8 @@ namespace Xcom2ClassManager.Forms
             tDisplayName.Text = soldierClass.metadata.displayName;
             tDescription.Text = soldierClass.metadata.description;
             tIconString.Text = soldierClass.metadata.iconString;
+
+            openSoldierBonds(soldierClass);
             
             nNumInForcedDeck.Value = soldierClass.experience.numberInForcedDeck;
             nNumInDeck.Value = soldierClass.experience.numberInDeck;
@@ -253,6 +258,18 @@ namespace Xcom2ClassManager.Forms
             openSoldierAwcExcludeSettings(soldierClass);
 
             refreshDependantControls();
+        }
+
+        private void openSoldierBonds(SoldierClass soldierClass)
+        {
+            chAllowBonds.Checked = soldierClass.metadata.allowBonds;
+
+            lvUnfavoredClasses.Items.Clear();
+            foreach (string unfavoredClass in soldierClass.metadata.unfavoredClasses)
+            {
+                ListViewItem item = new ListViewItem(unfavoredClass);
+                lvUnfavoredClasses.Items.Add(item);
+            }
         }
 
         private void openSoldierStats(SoldierClass soldierClass)
@@ -428,7 +445,7 @@ namespace Xcom2ClassManager.Forms
 
         private void openSoldierAwcExcludeSettings(SoldierClass soldierClass)
         {
-            bAllowAwc.Checked = soldierClass.allowAwcAbilities;
+            chAllowAwc.Checked = soldierClass.allowAwcAbilities;
             nBaseAbilityPointsPerPromotion.Value = soldierClass.baseAbilityPointsPerPromotion;
 
             lvAwcExcludeAbilities.Items.Clear();
@@ -452,6 +469,8 @@ namespace Xcom2ClassManager.Forms
             soldierClass.metadata.displayName = tDisplayName.Text;
             soldierClass.metadata.description = tDescription.Text;
             soldierClass.metadata.iconString = tIconString.Text;
+            soldierClass.metadata.allowBonds = chAllowBonds.Checked;
+            soldierClass.metadata.unfavoredClasses = buildSoldierClassUnfavoredClasses();
             
             soldierClass.experience.numberInForcedDeck = (int)nNumInForcedDeck.Value;
             soldierClass.experience.numberInDeck = (int)nNumInDeck.Value;
@@ -471,11 +490,22 @@ namespace Xcom2ClassManager.Forms
             soldierClass.nicknames = buildSoldierClassNicknames();
             soldierClass.loadoutItems = buildSoldierClassLoadout();
 
-            soldierClass.allowAwcAbilities = bAllowAwc.Checked;
+            soldierClass.allowAwcAbilities = chAllowAwc.Checked;
             soldierClass.baseAbilityPointsPerPromotion = (int)nBaseAbilityPointsPerPromotion.Value;
             soldierClass.awcExcludeAbilities = buildAwcExcludeAbilities();
 
             return soldierClass;
+        }
+
+        private List<string> buildSoldierClassUnfavoredClasses()
+        {
+            List<string> unfavoredClasses = new List<string>();
+            foreach (ListViewItem item in lvUnfavoredClasses.Items)
+            {
+                unfavoredClasses.Add(item.SubItems[0].Text);
+            }
+
+            return unfavoredClasses;
         }
 
         private List<SoldierClassStat> buildSoldierClassStats()
@@ -730,9 +760,66 @@ namespace Xcom2ClassManager.Forms
         }
 
         #endregion Delete Class
+        
+        #region Modify Unfavored Classes
+
+        private void bAddUnfavoredClass_Click(object sender, EventArgs e)
+        {
+            if (AddUnfavoredClass())
+            {
+                tNewUnfavoredClass.Text = "";
+            }
+        }
+
+        private void tNewUnfavoredClass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (AddUnfavoredClass())
+                {
+                    tNewUnfavoredClass.Text = "";
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private bool AddUnfavoredClass()
+        {
+            bool success = false;
+            string newUnfavoredClass = tNewUnfavoredClass.Text;
+
+            if (!string.IsNullOrEmpty(newUnfavoredClass))
+            {
+                ListViewItem x = new ListViewItem(newUnfavoredClass);
+                lvUnfavoredClasses.Items.Add(x);
+                success = true;
+            }
+
+            return success;
+        }
+
+        private void bDeleteUnfavoredClass_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem eachItem in lvArmors.SelectedItems)
+            {
+                lvArmors.Items.Remove(eachItem);
+            }
+        }
+
+        private void lvUnfavoredClasss_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            refreshRemoveUnfavoredClassButton();
+        }
+
+        private void tNewUnfavoredClass_TextChanged(object sender, EventArgs e)
+        {
+            refreshNewUnfavoredClassButton();
+        }
+
+        #endregion Modify Unfavored Classes
 
         #region Modify Weapons
-        
+
         private void bAddWeapon_Click(object sender, EventArgs e)
         {
             if (addWeapon())
@@ -1422,6 +1509,8 @@ namespace Xcom2ClassManager.Forms
 
         private void refreshDependantControls()
         {
+            refreshRemoveUnfavoredClassButton();
+            refreshNewUnfavoredClassButton();
             refreshRemoveNicknameButton();
             refreshNewNicknameButton();
             refreshRemoveLoadoutButton();
@@ -1432,6 +1521,30 @@ namespace Xcom2ClassManager.Forms
             refreshNewArmorButton();
             refreshRemoveAwcExlucdeAbilityButton();
             refreshNewAwcExlucdeAbilityButton();
+        }
+
+        private void refreshRemoveUnfavoredClassButton()
+        {
+            if (lvUnfavoredClasses.SelectedIndices.Count > 0)
+            {
+                bDeleteUnfavoredClass.Enabled = true;
+            }
+            else
+            {
+                bDeleteUnfavoredClass.Enabled = false;
+            }
+        }
+
+        private void refreshNewUnfavoredClassButton()
+        {
+            if (tNewUnfavoredClass.Text.Length > 0)
+            {
+                bAddUnfavoredClass.Enabled = true;
+            }
+            else
+            {
+                bAddUnfavoredClass.Enabled = false;
+            }
         }
 
         private void refreshRemoveWeaponButton()

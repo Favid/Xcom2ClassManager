@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Xcom2ClassManager
 {
@@ -8,6 +10,8 @@ namespace Xcom2ClassManager
         public string displayName { get; set; }
         public string description { get; set; }
         public string iconString { get; set; }
+        public bool allowBonds { get; set; }
+        public List<string> unfavoredClasses { get; set; }
 
         public SoldierClassMetadata()
         {
@@ -15,6 +19,8 @@ namespace Xcom2ClassManager
             displayName = "";
             description = "";
             iconString = "";
+            allowBonds = false;
+            unfavoredClasses = new List<string>();
         }
 
         public SoldierClassMetadata(SoldierClassMetadata other)
@@ -23,6 +29,13 @@ namespace Xcom2ClassManager
             displayName = other.displayName;
             description = other.description;
             iconString = other.iconString;
+            allowBonds = other.allowBonds;
+
+            unfavoredClasses = new List<string>();
+            foreach (string unfavoredClass in unfavoredClasses)
+            {
+                other.unfavoredClasses.Add(unfavoredClass);
+            }
         }
 
         public override string ToString()
@@ -54,6 +67,16 @@ namespace Xcom2ClassManager
             }
 
             if (!string.Equals(iconString, other.iconString))
+            {
+                return false;
+            }
+
+            if (allowBonds != other.allowBonds)
+            {
+                return false;
+            }
+
+            if (unfavoredClasses.SequenceEqual(other.unfavoredClasses))
             {
                 return false;
             }

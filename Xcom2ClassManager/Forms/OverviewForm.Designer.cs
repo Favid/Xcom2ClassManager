@@ -30,11 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OverviewForm));
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Test");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Test2");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Test");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Test2");
             this.laClass = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.chAllowBonds = new System.Windows.Forms.CheckBox();
+            this.lvUnfavoredClasses = new System.Windows.Forms.ListView();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tNewUnfavoredClass = new System.Windows.Forms.TextBox();
+            this.bAddUnfavoredClass = new System.Windows.Forms.Button();
+            this.bDeleteUnfavoredClass = new System.Windows.Forms.Button();
             this.gbExperience = new System.Windows.Forms.GroupBox();
             this.nMissionExperienceWeight = new System.Windows.Forms.NumericUpDown();
             this.nKillAssistsPerKill = new System.Windows.Forms.NumericUpDown();
@@ -193,6 +200,12 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabEquipment = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lvArmors = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tNewArmor = new System.Windows.Forms.TextBox();
+            this.bAddArmor = new System.Windows.Forms.Button();
+            this.bDeleteArmor = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tSquaddieLoadout = new System.Windows.Forms.TextBox();
             this.lvSquaddieLoadout = new System.Windows.Forms.ListView();
@@ -219,7 +232,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nBaseAbilityPointsPerPromotion = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.bAllowAwc = new System.Windows.Forms.CheckBox();
+            this.chAllowAwc = new System.Windows.Forms.CheckBox();
             this.laHelp = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -239,15 +252,10 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSoldierClass = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lvArmors = new System.Windows.Forms.ListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tNewArmor = new System.Windows.Forms.TextBox();
-            this.bAddArmor = new System.Windows.Forms.Button();
-            this.bDeleteArmor = new System.Windows.Forms.Button();
             this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.gbExperience.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nMissionExperienceWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nKillAssistsPerKill)).BeginInit();
@@ -278,6 +286,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabNicknames.SuspendLayout();
             this.tabEquipment.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabAwc.SuspendLayout();
@@ -285,7 +294,6 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nBaseAbilityPointsPerPromotion)).BeginInit();
             this.menu.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -316,6 +324,7 @@
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.groupBox7);
             this.tabGeneral.Controls.Add(this.gbExperience);
             this.tabGeneral.Controls.Add(this.groupBox1);
             this.tabGeneral.Location = new System.Drawing.Point(4, 22);
@@ -324,6 +333,77 @@
             this.tabGeneral.TabIndex = 6;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.chAllowBonds);
+            this.groupBox7.Controls.Add(this.lvUnfavoredClasses);
+            this.groupBox7.Controls.Add(this.tNewUnfavoredClass);
+            this.groupBox7.Controls.Add(this.bAddUnfavoredClass);
+            this.groupBox7.Controls.Add(this.bDeleteUnfavoredClass);
+            this.groupBox7.Location = new System.Drawing.Point(9, 285);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(555, 190);
+            this.groupBox7.TabIndex = 107;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Bonds";
+            // 
+            // chAllowBonds
+            // 
+            this.chAllowBonds.AutoSize = true;
+            this.chAllowBonds.Location = new System.Drawing.Point(6, 19);
+            this.chAllowBonds.Name = "chAllowBonds";
+            this.chAllowBonds.Size = new System.Drawing.Size(84, 17);
+            this.chAllowBonds.TabIndex = 103;
+            this.chAllowBonds.Text = "Allow Bonds";
+            this.chAllowBonds.UseVisualStyleBackColor = true;
+            // 
+            // lvUnfavoredClasses
+            // 
+            this.lvUnfavoredClasses.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader8});
+            this.lvUnfavoredClasses.FullRowSelect = true;
+            this.lvUnfavoredClasses.Location = new System.Drawing.Point(6, 42);
+            this.lvUnfavoredClasses.Name = "lvUnfavoredClasses";
+            this.lvUnfavoredClasses.Size = new System.Drawing.Size(543, 114);
+            this.lvUnfavoredClasses.TabIndex = 102;
+            this.lvUnfavoredClasses.UseCompatibleStateImageBehavior = false;
+            this.lvUnfavoredClasses.View = System.Windows.Forms.View.Details;
+            this.lvUnfavoredClasses.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvUnfavoredClasss_ItemSelectionChanged);
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Unfavored Bonding Classes";
+            this.columnHeader8.Width = 537;
+            // 
+            // tNewUnfavoredClass
+            // 
+            this.tNewUnfavoredClass.Location = new System.Drawing.Point(6, 162);
+            this.tNewUnfavoredClass.Name = "tNewUnfavoredClass";
+            this.tNewUnfavoredClass.Size = new System.Drawing.Size(149, 20);
+            this.tNewUnfavoredClass.TabIndex = 100;
+            this.tNewUnfavoredClass.TextChanged += new System.EventHandler(this.tNewUnfavoredClass_TextChanged);
+            this.tNewUnfavoredClass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tNewUnfavoredClass_KeyPress);
+            // 
+            // bAddUnfavoredClass
+            // 
+            this.bAddUnfavoredClass.Location = new System.Drawing.Point(161, 162);
+            this.bAddUnfavoredClass.Name = "bAddUnfavoredClass";
+            this.bAddUnfavoredClass.Size = new System.Drawing.Size(75, 21);
+            this.bAddUnfavoredClass.TabIndex = 98;
+            this.bAddUnfavoredClass.Text = "Add";
+            this.bAddUnfavoredClass.UseVisualStyleBackColor = true;
+            this.bAddUnfavoredClass.Click += new System.EventHandler(this.bAddUnfavoredClass_Click);
+            // 
+            // bDeleteUnfavoredClass
+            // 
+            this.bDeleteUnfavoredClass.Location = new System.Drawing.Point(473, 162);
+            this.bDeleteUnfavoredClass.Name = "bDeleteUnfavoredClass";
+            this.bDeleteUnfavoredClass.Size = new System.Drawing.Size(75, 21);
+            this.bDeleteUnfavoredClass.TabIndex = 99;
+            this.bDeleteUnfavoredClass.Text = "Delete";
+            this.bDeleteUnfavoredClass.UseVisualStyleBackColor = true;
+            this.bDeleteUnfavoredClass.Click += new System.EventHandler(this.bDeleteUnfavoredClass_Click);
             // 
             // gbExperience
             // 
@@ -2370,8 +2450,8 @@
             this.columnHeader2});
             this.lvUnisexNicknames.FullRowSelect = true;
             this.lvUnisexNicknames.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem9,
-            listViewItem10});
+            listViewItem13,
+            listViewItem14});
             this.lvUnisexNicknames.LabelEdit = true;
             this.lvUnisexNicknames.Location = new System.Drawing.Point(6, 6);
             this.lvUnisexNicknames.Name = "lvUnisexNicknames";
@@ -2402,6 +2482,66 @@
             this.tabEquipment.TabIndex = 10;
             this.tabEquipment.Text = "Equipment";
             this.tabEquipment.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lvArmors);
+            this.groupBox3.Controls.Add(this.tNewArmor);
+            this.groupBox3.Controls.Add(this.bAddArmor);
+            this.groupBox3.Controls.Add(this.bDeleteArmor);
+            this.groupBox3.Location = new System.Drawing.Point(3, 11);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(555, 152);
+            this.groupBox3.TabIndex = 106;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Allowed Armors";
+            // 
+            // lvArmors
+            // 
+            this.lvArmors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7});
+            this.lvArmors.FullRowSelect = true;
+            this.lvArmors.Location = new System.Drawing.Point(6, 20);
+            this.lvArmors.Name = "lvArmors";
+            this.lvArmors.Size = new System.Drawing.Size(543, 94);
+            this.lvArmors.TabIndex = 102;
+            this.lvArmors.UseCompatibleStateImageBehavior = false;
+            this.lvArmors.View = System.Windows.Forms.View.Details;
+            this.lvArmors.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvArmors_ItemSelectionChanged);
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Armor";
+            this.columnHeader7.Width = 537;
+            // 
+            // tNewArmor
+            // 
+            this.tNewArmor.Location = new System.Drawing.Point(6, 120);
+            this.tNewArmor.Name = "tNewArmor";
+            this.tNewArmor.Size = new System.Drawing.Size(149, 20);
+            this.tNewArmor.TabIndex = 100;
+            this.tNewArmor.TextChanged += new System.EventHandler(this.tNewAmor_TextChanged);
+            this.tNewArmor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tNewArmor_KeyPress);
+            // 
+            // bAddArmor
+            // 
+            this.bAddArmor.Location = new System.Drawing.Point(161, 120);
+            this.bAddArmor.Name = "bAddArmor";
+            this.bAddArmor.Size = new System.Drawing.Size(75, 21);
+            this.bAddArmor.TabIndex = 98;
+            this.bAddArmor.Text = "Add";
+            this.bAddArmor.UseVisualStyleBackColor = true;
+            this.bAddArmor.Click += new System.EventHandler(this.bAddArmor_Click);
+            // 
+            // bDeleteArmor
+            // 
+            this.bDeleteArmor.Location = new System.Drawing.Point(473, 120);
+            this.bDeleteArmor.Name = "bDeleteArmor";
+            this.bDeleteArmor.Size = new System.Drawing.Size(75, 21);
+            this.bDeleteArmor.TabIndex = 99;
+            this.bDeleteArmor.Text = "Delete";
+            this.bDeleteArmor.UseVisualStyleBackColor = true;
+            this.bDeleteArmor.Click += new System.EventHandler(this.bDeleteArmor_Click);
             // 
             // groupBox5
             // 
@@ -2637,7 +2777,7 @@
             // 
             this.groupBox2.Controls.Add(this.nBaseAbilityPointsPerPromotion);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.bAllowAwc);
+            this.groupBox2.Controls.Add(this.chAllowAwc);
             this.groupBox2.Location = new System.Drawing.Point(7, 7);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(549, 82);
@@ -2661,15 +2801,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Base Ability Points Per Promotion:";
             // 
-            // bAllowAwc
+            // chAllowAwc
             // 
-            this.bAllowAwc.AutoSize = true;
-            this.bAllowAwc.Location = new System.Drawing.Point(7, 20);
-            this.bAllowAwc.Name = "bAllowAwc";
-            this.bAllowAwc.Size = new System.Drawing.Size(117, 17);
-            this.bAllowAwc.TabIndex = 0;
-            this.bAllowAwc.Text = "Allow AWC Abilities";
-            this.bAllowAwc.UseVisualStyleBackColor = true;
+            this.chAllowAwc.AutoSize = true;
+            this.chAllowAwc.Location = new System.Drawing.Point(7, 20);
+            this.chAllowAwc.Name = "chAllowAwc";
+            this.chAllowAwc.Size = new System.Drawing.Size(117, 17);
+            this.chAllowAwc.TabIndex = 0;
+            this.chAllowAwc.Text = "Allow AWC Abilities";
+            this.chAllowAwc.UseVisualStyleBackColor = true;
             // 
             // laHelp
             // 
@@ -2834,66 +2974,6 @@
             this.cSoldierClass.TabIndex = 100;
             this.cSoldierClass.SelectedIndexChanged += new System.EventHandler(this.cSoldierClass_SelectedIndexChanged);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lvArmors);
-            this.groupBox3.Controls.Add(this.tNewArmor);
-            this.groupBox3.Controls.Add(this.bAddArmor);
-            this.groupBox3.Controls.Add(this.bDeleteArmor);
-            this.groupBox3.Location = new System.Drawing.Point(3, 11);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(555, 152);
-            this.groupBox3.TabIndex = 106;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Allowed Armors";
-            // 
-            // lvArmors
-            // 
-            this.lvArmors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7});
-            this.lvArmors.FullRowSelect = true;
-            this.lvArmors.Location = new System.Drawing.Point(6, 20);
-            this.lvArmors.Name = "lvArmors";
-            this.lvArmors.Size = new System.Drawing.Size(543, 94);
-            this.lvArmors.TabIndex = 102;
-            this.lvArmors.UseCompatibleStateImageBehavior = false;
-            this.lvArmors.View = System.Windows.Forms.View.Details;
-            this.lvArmors.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvArmors_ItemSelectionChanged);
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Amor";
-            this.columnHeader7.Width = 537;
-            // 
-            // tNewArmor
-            // 
-            this.tNewArmor.Location = new System.Drawing.Point(6, 120);
-            this.tNewArmor.Name = "tNewArmor";
-            this.tNewArmor.Size = new System.Drawing.Size(149, 20);
-            this.tNewArmor.TabIndex = 100;
-            this.tNewArmor.TextChanged += new System.EventHandler(this.tNewAmor_TextChanged);
-            this.tNewArmor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tNewArmor_KeyPress);
-            // 
-            // bAddArmor
-            // 
-            this.bAddArmor.Location = new System.Drawing.Point(161, 120);
-            this.bAddArmor.Name = "bAddArmor";
-            this.bAddArmor.Size = new System.Drawing.Size(75, 21);
-            this.bAddArmor.TabIndex = 98;
-            this.bAddArmor.Text = "Add";
-            this.bAddArmor.UseVisualStyleBackColor = true;
-            this.bAddArmor.Click += new System.EventHandler(this.bAddArmor_Click);
-            // 
-            // bDeleteAmor
-            // 
-            this.bDeleteArmor.Location = new System.Drawing.Point(473, 120);
-            this.bDeleteArmor.Name = "bDeleteAmor";
-            this.bDeleteArmor.Size = new System.Drawing.Size(75, 21);
-            this.bDeleteArmor.TabIndex = 99;
-            this.bDeleteArmor.Text = "Delete";
-            this.bDeleteArmor.UseVisualStyleBackColor = true;
-            this.bDeleteArmor.Click += new System.EventHandler(this.bDeleteArmor_Click);
-            // 
             // soldierClassAbilityBindingSource
             // 
             this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
@@ -2915,6 +2995,8 @@
             this.Load += new System.EventHandler(this.OverviewForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.gbExperience.ResumeLayout(false);
             this.gbExperience.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nMissionExperienceWeight)).EndInit();
@@ -2951,6 +3033,8 @@
             this.tabNicknames.ResumeLayout(false);
             this.tabNicknames.PerformLayout();
             this.tabEquipment.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -2962,8 +3046,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nBaseAbilityPointsPerPromotion)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierClassAbilityBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -3170,7 +3252,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TabPage tabAwc;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox bAllowAwc;
+        private System.Windows.Forms.CheckBox chAllowAwc;
         private System.Windows.Forms.NumericUpDown nBaseAbilityPointsPerPromotion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -3186,5 +3268,12 @@
         private System.Windows.Forms.TextBox tNewArmor;
         private System.Windows.Forms.Button bAddArmor;
         private System.Windows.Forms.Button bDeleteArmor;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.CheckBox chAllowBonds;
+        private System.Windows.Forms.ListView lvUnfavoredClasses;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.TextBox tNewUnfavoredClass;
+        private System.Windows.Forms.Button bAddUnfavoredClass;
+        private System.Windows.Forms.Button bDeleteUnfavoredClass;
     }
 }
