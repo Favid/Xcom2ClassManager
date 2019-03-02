@@ -33,7 +33,7 @@
             this.bImport = new System.Windows.Forms.Button();
             this.bBrowse = new System.Windows.Forms.Button();
             this.tFile = new System.Windows.Forms.TextBox();
-            this.chListClasses = new System.Windows.Forms.CheckedListBox();
+            this.chListAbilities = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bUpdate = new System.Windows.Forms.Button();
             this.cWeaponSlot = new System.Windows.Forms.ComboBox();
@@ -98,12 +98,12 @@
             // 
             // chListClasses
             // 
-            this.chListClasses.FormattingEnabled = true;
-            this.chListClasses.Location = new System.Drawing.Point(15, 74);
-            this.chListClasses.Name = "chListClasses";
-            this.chListClasses.Size = new System.Drawing.Size(178, 289);
-            this.chListClasses.TabIndex = 33;
-            this.chListClasses.SelectedValueChanged += new System.EventHandler(this.chListClasses_SelectedValueChanged);
+            this.chListAbilities.FormattingEnabled = true;
+            this.chListAbilities.Location = new System.Drawing.Point(15, 74);
+            this.chListAbilities.Name = "chListClasses";
+            this.chListAbilities.Size = new System.Drawing.Size(178, 289);
+            this.chListAbilities.TabIndex = 33;
+            this.chListAbilities.SelectedValueChanged += new System.EventHandler(this.chListClasses_SelectedValueChanged);
             // 
             // groupBox1
             // 
@@ -240,7 +240,7 @@
             this.Controls.Add(this.bImport);
             this.Controls.Add(this.bBrowse);
             this.Controls.Add(this.tFile);
-            this.Controls.Add(this.chListClasses);
+            this.Controls.Add(this.chListAbilities);
             this.Name = "ImportAbilitiesForm";
             this.Text = "ImportAbilities";
             this.groupBox1.ResumeLayout(false);
@@ -257,7 +257,7 @@
         private System.Windows.Forms.Button bImport;
         private System.Windows.Forms.Button bBrowse;
         private System.Windows.Forms.TextBox tFile;
-        private System.Windows.Forms.CheckedListBox chListClasses;
+        private System.Windows.Forms.CheckedListBox chListAbilities;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label laDescription;
         private System.Windows.Forms.TextBox tDescription;

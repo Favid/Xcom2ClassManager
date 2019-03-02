@@ -70,7 +70,7 @@ namespace Xcom2ClassManager.Forms
             foundAbilities = foundAbilities.OrderBy(x => x.internalName).ToList();
             foreach (Ability foundAbility in foundAbilities)
             {
-                chListClasses.Items.Add(foundAbility);
+                chListAbilities.Items.Add(foundAbility);
             }
         }
 
@@ -169,19 +169,23 @@ namespace Xcom2ClassManager.Forms
 
         private void bSave_Click(object sender, EventArgs e)
         {
-            List<Ability> selectedAbilities = chListClasses.CheckedItems.OfType<Ability>().ToList();
+            List<Ability> selectedAbilities = chListAbilities.CheckedItems.OfType<Ability>().ToList();
+            int abilityIdIncrementor = 0;
+
             foreach (Ability ability in selectedAbilities)
             {
+                ability.id = ProjectState.getNextAbilityId() + abilityIdIncrementor;
+                abilityIdIncrementor++;
                 ability.requiredMod = tRequiredMod.Text;
             }
-            AbilityManager reader = new AbilityManager();
-            reader.addAbilities(selectedAbilities);
+            AbilityManager abilityManager = new AbilityManager();
+            abilityManager.addAbilities(selectedAbilities);
             ProjectState.reloadAbilities();
         }
 
         private void bUpdate_Click(object sender, EventArgs e)
         {
-            Ability selectedAbility = (Ability)chListClasses.SelectedItem;
+            Ability selectedAbility = (Ability)chListAbilities.SelectedItem;
             selectedAbility.internalName = tInternalName.Text;
             selectedAbility.displayName = tDisplayName.Text;
             selectedAbility.description = tDescription.Text;

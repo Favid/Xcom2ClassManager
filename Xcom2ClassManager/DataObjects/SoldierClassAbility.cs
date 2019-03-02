@@ -26,6 +26,7 @@
         public Ability getAbility()
         {
             Ability ability = new Ability();
+            ability.id = id;
             ability.internalName = internalName;
             ability.displayName = displayName;
             ability.description = description;

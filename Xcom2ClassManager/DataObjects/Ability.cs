@@ -2,6 +2,9 @@
 {
     public class Ability
     {
+        private const int BASE_ABILITY_ID = -1;
+
+        public int id { get; set; }
         public string internalName { get; set; }
         public string displayName { get; set; }
         public string description { get; set; }
@@ -10,6 +13,7 @@
 
         public Ability()
         {
+            id = BASE_ABILITY_ID;
             internalName = "";
             displayName = "";
             description = "";
@@ -19,6 +23,7 @@
 
         public Ability(Ability other)
         {
+            id = other.id;
             internalName = other.internalName;
             displayName = other.displayName;
             description = other.description;
@@ -43,6 +48,11 @@
         {
             Ability other = obj as Ability;
             if (other == null)
+            {
+                return false;
+            }
+
+            if(id != other.id)
             {
                 return false;
             }
@@ -85,6 +95,7 @@
             return internalName;
         }
 
+        // TODO move this
         public string[] getListViewStringArray()
         {
             return new string[2] { internalName, displayName };

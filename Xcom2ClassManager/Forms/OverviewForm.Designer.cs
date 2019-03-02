@@ -2865,7 +2865,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menu;
             this.Name = "OverviewForm";
-            this.Text = "TabbedPrototype";
+            this.Text = "XCOM 2 Class Manager";
             this.Load += new System.EventHandler(this.OverviewForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
