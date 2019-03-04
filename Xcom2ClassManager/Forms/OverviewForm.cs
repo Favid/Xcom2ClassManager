@@ -19,7 +19,6 @@ namespace Xcom2ClassManager.Forms
 
         private const int NICKNAME_COLUMN_NAME = 0;
         private const int NICKNAME_COLUMN_GENDER = 1;
-        private bool nicknameSortAscending = true;
 
         public OverviewForm()
         {
@@ -1675,6 +1674,12 @@ namespace Xcom2ClassManager.Forms
         private void cExcludeAbility_SelectedIndexChanged(object sender, EventArgs e)
         {
             refreshNewAwcExlucdeAbilityButton();
+        }
+
+        private void classesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportClassesForm dialog = new ImportClassesForm();
+            dialog.ShowDialog();
         }
     }
 }

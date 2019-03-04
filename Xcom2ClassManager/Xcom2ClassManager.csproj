@@ -61,6 +61,8 @@
     <Compile Include="Exporters\XComLWOverhaulIniExporter.cs" />
     <Compile Include="ExportForXcom\ClassExportManager.cs" />
     <Compile Include="FileManagers\AbilityManager.cs" />
+    <Compile Include="FileManagers\SoldierClassImporter.cs" />
+    <Compile Include="FileManagers\XmlSoldierClass.cs" />
     <Compile Include="FileManagers\ClassPackManager.cs" />
     <Compile Include="FileManagers\NicknameManager.cs" />
     <Compile Include="Form1.cs">
@@ -74,6 +76,12 @@
     </Compile>
     <Compile Include="Forms\ClassPackExportForm.Designer.cs">
       <DependentUpon>ClassPackExportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImportClassesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportClassesForm.Designer.cs">
+      <DependentUpon>ImportClassesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ImportAbilitiesForm.cs">
       <SubType>Form</SubType>
@@ -118,6 +126,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\ClassPackExportForm.resx">
       <DependentUpon>ClassPackExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportClassesForm.resx">
+      <DependentUpon>ImportClassesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportAbilitiesForm.resx">
       <DependentUpon>ImportAbilitiesForm.cs</DependentUpon>

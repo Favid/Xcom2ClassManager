@@ -45,7 +45,31 @@ namespace Xcom2ClassManager.DataObjects
 
         public static Ability getAbility(int id)
         {
-            Ability ability = instance.abilities.Where(x => x.id.Equals(id)).FirstOrDefault();
+            Ability ability = getInstance().abilities.Where(x => x.id.Equals(id)).FirstOrDefault();
+            return ability;
+        }
+
+        public static Ability getAbility(string name)
+        {
+            // note - unreliable because it just grabs the first one with a matching name
+            Ability ability = getInstance().abilities.Where(x => x.internalName == name).FirstOrDefault();
+            return ability;
+        }
+
+        public static Ability getClosestMatchingAbility(string name, WeaponSlot slot)
+        {
+            Ability ability = getInstance().abilities.Where(x => x.internalName.Equals(name, StringComparison.OrdinalIgnoreCase) && x.weaponSlot == slot).FirstOrDefault();
+
+            if (ability == null)
+            {
+                ability = getInstance().abilities.Where(x => x.internalName.Equals(name, StringComparison.OrdinalIgnoreCase) && x.weaponSlot == WeaponSlot.None).FirstOrDefault();
+
+                if (ability == null)
+                {
+                    ability = getInstance().abilities.Where(x => x.internalName.Equals(name, StringComparison.OrdinalIgnoreCase) && x.weaponSlot == WeaponSlot.Unknown).FirstOrDefault();
+                }
+            }
+
             return ability;
         }
 
@@ -59,11 +83,23 @@ namespace Xcom2ClassManager.DataObjects
             getInstance().classPack = classPack;
         }
 
+        public static bool addSoldierClass(SoldierClass soldierClass)
+        {
+            bool result = false;
+            if (soldierClass != null && !string.IsNullOrEmpty(soldierClass.metadata.internalName))
+            {
+                getInstance().classPack.soldierClasses.Add(soldierClass);
+                result = true;
+            }
+
+            return result;
+        }
+
         public static SoldierClass addNewClassPackSoldierClass()
         {
             SoldierClass soldierClass = new SoldierClass();
             soldierClass.metadata.internalName = generateNewClassName("NewClass");
-            instance.classPack.soldierClasses.Add(soldierClass);
+            getInstance().classPack.soldierClasses.Add(soldierClass);
             return soldierClass;
         }
 
@@ -72,8 +108,8 @@ namespace Xcom2ClassManager.DataObjects
             SoldierClass classToCopy = ProjectState.getOpenSoldierClass();
             SoldierClass newClass = new SoldierClass(classToCopy);
             newClass.metadata.internalName = generateNewClassName(classToCopy.metadata.internalName);
-            
-            instance.classPack.soldierClasses.Add(newClass);
+
+            getInstance().classPack.soldierClasses.Add(newClass);
             return newClass;
         }
 
@@ -93,14 +129,14 @@ namespace Xcom2ClassManager.DataObjects
 
         internal static int getNextAbilityId()
         {
-            return instance.abilities.Max(x => x.id) + 1;
+            return getInstance().abilities.Max(x => x.id) + 1;
         }
 
         public static void renameOpenClass(string newName)
         {
             SoldierClass classToUpdate = getOpenSoldierClass();
             int indexToReplace = getClassPack().soldierClasses.IndexOf(classToUpdate);
-            instance.classPack.soldierClasses[indexToReplace].metadata.internalName = newName;
+            getInstance().classPack.soldierClasses[indexToReplace].metadata.internalName = newName;
         }
 
         public static void updateClassPackSoldierClass(string internalName, SoldierClass soldierClass)
@@ -109,7 +145,7 @@ namespace Xcom2ClassManager.DataObjects
             if(classToReplace != null)
             {
                 int indexToReplace = getClassPack().soldierClasses.IndexOf(classToReplace);
-                instance.classPack.soldierClasses[indexToReplace] = soldierClass;
+                getInstance().classPack.soldierClasses[indexToReplace] = soldierClass;
             }
             
         }
@@ -126,7 +162,7 @@ namespace Xcom2ClassManager.DataObjects
 
         public static void deleteOpenSoldierClass()
         {
-            instance.classPack.soldierClasses.Remove(getOpenSoldierClass());
+            getInstance().classPack.soldierClasses.Remove(getOpenSoldierClass());
         }
     }
 }
