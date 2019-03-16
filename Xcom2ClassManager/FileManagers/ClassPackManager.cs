@@ -13,6 +13,11 @@ namespace Xcom2ClassManager.FileManagers
     {
         public static void saveClassPack(ClassPack classPack, Stream stream)
         {
+            if (stream is FileStream fileStream)
+            {
+                classPack.filePath = fileStream.Name;
+            }
+
             XmlSerializer xs = new XmlSerializer(typeof(ClassPack));
             stream.SetLength(0);
             
@@ -27,6 +32,11 @@ namespace Xcom2ClassManager.FileManagers
             using (var sr = new StreamReader(stream))
             {
                 classPack = (ClassPack)xs.Deserialize(sr);
+            }
+
+            if (stream is FileStream fileStream)
+            {
+                classPack.filePath = fileStream.Name;
             }
 
             return classPack;

@@ -720,7 +720,7 @@ namespace Xcom2ClassManager.Forms
             return awcExcludeAbilities;
         }
 
-        #endregion Save Class
+        #endregion Build Class From Form
 
         #region Rename Class
 
@@ -1029,6 +1029,8 @@ namespace Xcom2ClassManager.Forms
             cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(soldierClass);
 
             defaultEnableControls();
+
+            laFile.Text = "File: " + classPack.filePath;
         }
 
         private void unloadClassPack()
@@ -1077,6 +1079,8 @@ namespace Xcom2ClassManager.Forms
                 FileStream stream = new FileStream(classPack.filePath, FileMode.Open);
                 ClassPackManager.saveClassPack(ProjectState.getClassPack(), stream);
                 stream.Close();
+                
+                laFile.Text = "File: " + classPack.filePath;
             }
         }
         
@@ -1095,9 +1099,10 @@ namespace Xcom2ClassManager.Forms
                 {
                     ClassPackManager.saveClassPack(ProjectState.getClassPack(), myStream);
                     myStream.Close();
+
+                    laFile.Text = "File: " + ProjectState.getClassPack().filePath;
                 }
             }
-
         }
 
         private void cSoldierClass_SelectedIndexChanged(object sender, EventArgs e)
