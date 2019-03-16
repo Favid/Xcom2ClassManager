@@ -51,5 +51,31 @@ namespace Xcom2ClassManager.DataObjects
         {
             return new string[2] { nickname, gender.ToString() };
         }
+
+        public override bool Equals(object obj)
+        {
+            ClassNickname other = obj as ClassNickname;
+            if (other == null)
+            {
+                return false;
+            }
+
+            if (nickname != other.nickname)
+            {
+                return false;
+            }
+
+            if (gender != other.gender)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

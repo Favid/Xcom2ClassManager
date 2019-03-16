@@ -42,9 +42,84 @@ namespace Xcom2ClassManager.FileManagers
 
             importClassFile();
             importIntFile();
-            //importGameFile();
+            importGameFile();
+
+            padSoldierStats();
+            padSoldierAbilities();
 
             return soldierClasses;
+        }
+
+        private void padSoldierStats()
+        {
+            foreach (SoldierClass soldierClass in soldierClasses)
+            {
+                List<SoldierClassStat> newStats = new List<SoldierClassStat>();
+
+                foreach (Stat stat in Enum.GetValues(typeof(Stat)))
+                {
+                    foreach (SoldierRank rank in Enum.GetValues(typeof(SoldierRank)))
+                    {
+                        if (rank != SoldierRank.Rookie)
+                        {
+                            SoldierClassStat newStat = soldierClass.stats.Where(x => x.stat == stat && x.rank == rank).SingleOrDefault();
+                            if (newStat == null)
+                            {
+                                newStat = new SoldierClassStat();
+                                newStat.rank = rank;
+                                newStat.stat = stat;
+                                newStat.value = null;
+                            }
+
+                            newStats.Add(newStat);
+                        }
+                    }
+                }
+
+                soldierClass.stats = new List<SoldierClassStat>(newStats);
+            }
+        }
+
+        private void padSoldierAbilities()
+        {
+            foreach (SoldierClass soldierClass in soldierClasses)
+            {
+                List<SoldierClassAbility> newAbilities = new List<SoldierClassAbility>();
+                
+                for (int i = 1; i <= 6; i++)
+                {
+                    SoldierClassAbility newAbility = soldierClass.soldierAbilities.Where(x => x.slot == i && x.rank == SoldierRank.Squaddie).SingleOrDefault();
+                    if (newAbility == null)
+                    {
+                        newAbility = new SoldierClassAbility();
+                        newAbility.rank = SoldierRank.Squaddie;
+                        newAbility.slot = i;
+                    }
+
+                    newAbilities.Add(newAbility);
+                }
+
+                foreach (SoldierRank rank in Enum.GetValues(typeof(SoldierRank)))
+                {
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        if (rank > SoldierRank.Squaddie)
+                        {
+                            SoldierClassAbility newAbility = soldierClass.soldierAbilities.Where(x => x.slot == i && x.rank == rank).SingleOrDefault();
+                            if (newAbility == null)
+                            {
+                                newAbility = new SoldierClassAbility();
+                                newAbility.rank = rank;
+                                newAbility.slot = i;
+                            }
+
+                            newAbilities.Add(newAbility);
+                        }
+                    }
+                }
+
+                soldierClass.soldierAbilities = new List<SoldierClassAbility>(newAbilities);
+            }
         }
 
         private void importClassFile()
@@ -78,6 +153,7 @@ namespace Xcom2ClassManager.FileManagers
                     {
                         unsaved = false;
                         soldierClasses.Add(readingClass);
+                        readingClass = null;
                     }
 
                     if (classNames.Contains(className))
@@ -471,11 +547,93 @@ namespace Xcom2ClassManager.FileManagers
                 {
                     if (line.Contains("LoadoutName"))
                     {
+                        string className = getNextStringValue(line, line.IndexOf("LoadoutName"));
+                        SoldierClass soldierClass = soldierClasses.Where(x => x.metadata.internalName == className).FirstOrDefault();
+                        if (soldierClass != null)
+                        {
+                            int itemsIndex = 0;
+                            string loadoutItem = string.Empty;
+                            do
+                            {
+                                loadoutItem = getLoadoutItem(line, itemsIndex);
+                                if (loadoutItem != string.Empty)
+                                {
+                                    soldierClass.loadoutItems.Add(loadoutItem);
+                                }
 
+                                itemsIndex++;
+                            } while (loadoutItem != string.Empty);
+                        }
                     }
                 }
                 
             }
+        }
+
+        private string getLoadoutItem(string line, int itemsIndex)
+        {
+            string value = string.Empty;
+            string itemString = string.Format("Items[{0}]", itemsIndex.ToString());
+
+            if (line.Contains(itemString))
+            {
+                int startIndex = findStartingIndexOfNthOccurrence(line, itemString, 1, 0);
+
+                // find the second equals after this for the item name
+                startIndex = findStartingIndexOfNthOccurrence(line, "=", 2, startIndex);
+
+                value = getNextStringValue(line, startIndex);
+            }
+
+            return value;
+        }
+
+        private string getNextStringValue(string line, int startIndex)
+        {
+            string value = string.Empty;
+
+            int valueStartIndex = -1;
+            int valueEndIndex = -1;
+
+            int assignIndex = findStartingIndexOfNthOccurrence(line, "=", 1, startIndex);
+            if (assignIndex != -1)
+            {
+                int index = assignIndex + 1;
+                while (valueStartIndex == -1 && index < line.Length)
+                {
+                    if (line[index] != ' ' && line[index] != '\"')
+                    {
+                        valueStartIndex = index;
+                    }
+                    else
+                    {
+                        index++;
+                    }
+                }
+
+                if (valueStartIndex != -1)
+                {
+                    index = valueStartIndex + 1;
+                    while (valueEndIndex == -1 && index < line.Length)
+                    {
+                        if (line[index] == ' ' || line[index] == '\"' || line[index] == ')')
+                        {
+                            valueEndIndex = index;
+                        }
+                        else
+                        {
+                            index++;
+                        }
+                    }
+                }
+            }
+
+            if (valueStartIndex != -1 && valueEndIndex != -1)
+            {
+                value = line.Substring(valueStartIndex, valueEndIndex - valueStartIndex);
+            }
+
+            return value;
         }
 
         private int findStartingIndexOfNthOccurrence(string line, string substring, int n, int startIndex)

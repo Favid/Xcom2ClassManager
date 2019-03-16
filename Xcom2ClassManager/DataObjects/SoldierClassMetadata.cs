@@ -75,10 +75,18 @@ namespace Xcom2ClassManager
             {
                 return false;
             }
-
-            if (unfavoredClasses.SequenceEqual(other.unfavoredClasses))
+            
+            if (unfavoredClasses.Count() != other.unfavoredClasses.Count())
             {
                 return false;
+            }
+
+            for (int i = 0; i < unfavoredClasses.Count(); i++)
+            {
+                if (unfavoredClasses[i] != other.unfavoredClasses[i])
+                {
+                    return false;
+                }
             }
 
             return true;
