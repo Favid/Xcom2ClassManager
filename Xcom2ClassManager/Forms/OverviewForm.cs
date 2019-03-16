@@ -88,6 +88,7 @@ namespace Xcom2ClassManager.Forms
             saveAsToolStripMenuItem.Enabled = true;
             nicknamesToolStripMenuItem.Enabled = true;
             exportToolStripMenuItem.Enabled = true;
+            importToolStripMenuItem.Enabled = true;
 
             addToolStripMenuItem.Enabled = true;
             copyToolStripMenuItem.Enabled = true;
@@ -104,6 +105,7 @@ namespace Xcom2ClassManager.Forms
             saveAsToolStripMenuItem.Enabled = false;
             nicknamesToolStripMenuItem.Enabled = false;
             exportToolStripMenuItem.Enabled = false;
+            importToolStripMenuItem.Enabled = false;
 
             addToolStripMenuItem.Enabled = false;
             copyToolStripMenuItem.Enabled = false;

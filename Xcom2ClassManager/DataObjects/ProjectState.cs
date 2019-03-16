@@ -174,5 +174,10 @@ namespace Xcom2ClassManager.DataObjects
         {
             getInstance().classPack.soldierClasses.Remove(getOpenSoldierClass());
         }
+
+        public static bool soldierWithNameExists(string internalName)
+        {
+            return getInstance().classPack.soldierClasses.Any(x => x.metadata.internalName.ToLower() == internalName.ToLower());
+        }
     }
 }

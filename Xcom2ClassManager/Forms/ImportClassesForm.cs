@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Xcom2ClassManager.DataObjects;
 using Xcom2ClassManager.FileManagers;
@@ -15,9 +9,15 @@ namespace Xcom2ClassManager.Forms
 {
     public partial class ImportClassesForm : Form
     {
+        private bool imported;
+
         public ImportClassesForm()
         {
             InitializeComponent();
+
+            imported = false;
+
+            updateControls();
         }
 
         private void bImport_Click(object sender, EventArgs e)
@@ -33,112 +33,34 @@ namespace Xcom2ClassManager.Forms
             {
                 chListClasses.Items.Add(newClass, true);
             }
+
+            imported = true;
+
+            updateControls();
         }
 
         private void bBrowseClass_Click(object sender, EventArgs e)
         {
-            ValidationResult validFolder = new ValidationResult();
-            validFolder.valid = false;
-
-            OpenFileDialog dialog;
-
-            do
-            {
-                dialog = new OpenFileDialog();
-                DialogResult dialogResult = dialog.ShowDialog(this);
-
-                if (dialogResult == DialogResult.OK)
-                {
-                    validFolder = validateClassFile(dialog.FileName);
-
-                    if (!validFolder.valid)
-                    {
-                        MessageBox.Show(validFolder.message);
-                    }
-                }
-                else
-                {
-                    return;
-                }
-            } while (!validFolder.valid);
-
-            tFileClass.Text = dialog.FileName;
-        }
-
-        private ValidationResult validateClassFile(string fileName)
-        {
-            ValidationResult validFile = new ValidationResult();
-            validFile.valid = true;
-            validFile.message = "";
-
-            if (!fileName.EndsWith("XComClassData.ini", StringComparison.OrdinalIgnoreCase))
-            {
-                validFile.valid = false;
-                validFile.message += "Must select XComClassData.ini file.";
-                validFile.message += "\n";
-            }
-
-            if (!validFile.valid)
-            {
-                validFile.message += "Please choose a new file.";
-            }
-
-            return validFile;
+            tFileClass.Text = browse("XComClassData.ini");
+            updateControls();
         }
 
         private void bBrowseGame_Click(object sender, EventArgs e)
         {
-            ValidationResult validFolder = new ValidationResult();
-            validFolder.valid = false;
-
-            OpenFileDialog dialog;
-
-            do
-            {
-                dialog = new OpenFileDialog();
-                DialogResult dialogResult = dialog.ShowDialog(this);
-
-                if (dialogResult == DialogResult.OK)
-                {
-                    validFolder = validateGameFile(dialog.FileName);
-
-                    if (!validFolder.valid)
-                    {
-                        MessageBox.Show(validFolder.message);
-                    }
-                }
-                else
-                {
-                    return;
-                }
-            } while (!validFolder.valid);
-
-            tFileGame.Text = dialog.FileName;
-        }
-
-        private ValidationResult validateGameFile(string fileName)
-        {
-            ValidationResult validFile = new ValidationResult();
-            validFile.valid = true;
-            validFile.message = "";
-
-            if (!fileName.EndsWith("XComGameData.ini", StringComparison.OrdinalIgnoreCase))
-            {
-                validFile.valid = false;
-                validFile.message += "Must select XComGameData.ini file.";
-                validFile.message += "\n";
-            }
-
-            if (!validFile.valid)
-            {
-                validFile.message += "Please choose a new file.";
-            }
-
-            return validFile;
+            tFileGame.Text = browse("XComGameData.ini");
+            updateControls();
         }
 
         private void bBrowseInt_Click(object sender, EventArgs e)
         {
+            tFileInt.Text = browse("XComGame.INT");
+            updateControls();
+        }
+
+        private string browse(string expectedFileName)
+        {
+            string result = string.Empty;
+
             ValidationResult validFolder = new ValidationResult();
             validFolder.valid = false;
 
@@ -151,7 +73,7 @@ namespace Xcom2ClassManager.Forms
 
                 if (dialogResult == DialogResult.OK)
                 {
-                    validFolder = validateIntFile(dialog.FileName);
+                    validFolder = validateFile(dialog.FileName, expectedFileName);
 
                     if (!validFolder.valid)
                     {
@@ -160,32 +82,13 @@ namespace Xcom2ClassManager.Forms
                 }
                 else
                 {
-                    return;
+                    return result;
                 }
             } while (!validFolder.valid);
 
-            tFileInt.Text = dialog.FileName;
-        }
+            result = dialog.FileName;
 
-        private ValidationResult validateIntFile(string fileName)
-        {
-            ValidationResult validFile = new ValidationResult();
-            validFile.valid = true;
-            validFile.message = "";
-
-            if (!fileName.EndsWith("XComGame.INT", StringComparison.OrdinalIgnoreCase))
-            {
-                validFile.valid = false;
-                validFile.message += "Must select XComGame.INT file.";
-                validFile.message += "\n";
-            }
-
-            if (!validFile.valid)
-            {
-                validFile.message += "Please choose a new file.";
-            }
-
-            return validFile;
+            return result;
         }
 
         private void chListClasses_SelectedValueChanged(object sender, EventArgs e)
@@ -195,6 +98,8 @@ namespace Xcom2ClassManager.Forms
 
             tInternalName.Text = soldierClass.metadata.internalName;
             tDisplayName.Text = soldierClass.metadata.displayName;
+
+            updateControls();
         }
 
         private void bClose_Click(object sender, EventArgs e)
@@ -220,6 +125,66 @@ namespace Xcom2ClassManager.Forms
             
             soldierClass.metadata.internalName = tInternalName.Text;
             soldierClass.metadata.displayName = tDisplayName.Text;
+
+            chListClasses.Refresh();
+
+            updateControls();
+        }
+        
+        private ValidationResult validateFile(string fileName, string expectedFileName)
+        {
+            ValidationResult validFile = new ValidationResult();
+            validFile.valid = true;
+            validFile.message = "";
+
+            if (!fileName.EndsWith(expectedFileName, StringComparison.OrdinalIgnoreCase))
+            {
+                validFile.valid = false;
+                validFile.message += string.Format("Must select {0} file.", expectedFileName);
+                validFile.message += "\n";
+            }
+
+            if (!validFile.valid)
+            {
+                validFile.message += "Please choose a new file.";
+            }
+
+            return validFile;
+        }
+
+        private void updateControls()
+        {
+            bool filesSelected = (tFileClass.Text != string.Empty &&
+                                  tFileGame.Text != string.Empty &&
+                                  tFileInt.Text != string.Empty);
+
+            bImport.Enabled = !imported && filesSelected;
+            bBrowseClass.Enabled = !imported;
+            bBrowseGame.Enabled = !imported;
+            bBrowseInt.Enabled = !imported;
+
+            chListClasses.Enabled = imported;
+            tInternalName.Enabled = chListClasses.SelectedIndex >= 0;
+            tDisplayName.Enabled = chListClasses.SelectedIndex >= 0;
+            bUpdate.Enabled = chListClasses.SelectedIndex >= 0;
+
+            List<SoldierClass> selectedClasses = chListClasses.CheckedItems.OfType<SoldierClass>().ToList();
+
+            bool allNamesUnique = true;
+            foreach (SoldierClass soldierClass in selectedClasses)
+            {
+                if (ProjectState.soldierWithNameExists(soldierClass.metadata.internalName))
+                {
+                    allNamesUnique = false;
+                }
+            }
+
+            bSave.Enabled = allNamesUnique && imported && chListClasses.CheckedItems.Count > 0;
+        }
+
+        private void chListClasses_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            updateControls();
         }
     }
 }

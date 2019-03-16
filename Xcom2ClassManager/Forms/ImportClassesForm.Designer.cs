@@ -52,7 +52,7 @@
             // 
             // bClose
             // 
-            this.bClose.Location = new System.Drawing.Point(388, 372);
+            this.bClose.Location = new System.Drawing.Point(358, 286);
             this.bClose.Name = "bClose";
             this.bClose.Size = new System.Drawing.Size(75, 23);
             this.bClose.TabIndex = 38;
@@ -63,15 +63,15 @@
             // laFileInt
             // 
             this.laFileInt.AutoSize = true;
-            this.laFileInt.Location = new System.Drawing.Point(12, 18);
+            this.laFileInt.Location = new System.Drawing.Point(12, 15);
             this.laFileInt.Name = "laFileInt";
-            this.laFileInt.Size = new System.Drawing.Size(47, 13);
+            this.laFileInt.Size = new System.Drawing.Size(87, 13);
             this.laFileInt.TabIndex = 37;
-            this.laFileInt.Text = "INT File:";
+            this.laFileInt.Text = "XComGame.INT:";
             // 
             // bImport
             // 
-            this.bImport.Location = new System.Drawing.Point(335, 102);
+            this.bImport.Location = new System.Drawing.Point(439, 91);
             this.bImport.Name = "bImport";
             this.bImport.Size = new System.Drawing.Size(75, 23);
             this.bImport.TabIndex = 36;
@@ -81,7 +81,7 @@
             // 
             // bBrowseInt
             // 
-            this.bBrowseInt.Location = new System.Drawing.Point(416, 11);
+            this.bBrowseInt.Location = new System.Drawing.Point(439, 10);
             this.bBrowseInt.Name = "bBrowseInt";
             this.bBrowseInt.Size = new System.Drawing.Size(75, 23);
             this.bBrowseInt.TabIndex = 35;
@@ -91,18 +91,20 @@
             // 
             // tFileInt
             // 
-            this.tFileInt.Location = new System.Drawing.Point(120, 11);
+            this.tFileInt.Location = new System.Drawing.Point(120, 12);
             this.tFileInt.Name = "tFileInt";
-            this.tFileInt.Size = new System.Drawing.Size(290, 20);
+            this.tFileInt.ReadOnly = true;
+            this.tFileInt.Size = new System.Drawing.Size(313, 20);
             this.tFileInt.TabIndex = 34;
             // 
             // chListClasses
             // 
             this.chListClasses.FormattingEnabled = true;
-            this.chListClasses.Location = new System.Drawing.Point(15, 179);
+            this.chListClasses.Location = new System.Drawing.Point(15, 135);
             this.chListClasses.Name = "chListClasses";
-            this.chListClasses.Size = new System.Drawing.Size(178, 184);
+            this.chListClasses.Size = new System.Drawing.Size(178, 124);
             this.chListClasses.TabIndex = 33;
+            this.chListClasses.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chListClasses_ItemCheck);
             this.chListClasses.SelectedValueChanged += new System.EventHandler(this.chListClasses_SelectedValueChanged);
             // 
             // groupBox1
@@ -112,16 +114,16 @@
             this.groupBox1.Controls.Add(this.tDisplayName);
             this.groupBox1.Controls.Add(this.laInternalName);
             this.groupBox1.Controls.Add(this.tInternalName);
-            this.groupBox1.Location = new System.Drawing.Point(199, 179);
+            this.groupBox1.Location = new System.Drawing.Point(199, 135);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 119);
+            this.groupBox1.Size = new System.Drawing.Size(315, 124);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Class Metadata";
             // 
             // bUpdate
             // 
-            this.bUpdate.Location = new System.Drawing.Point(225, 82);
+            this.bUpdate.Location = new System.Drawing.Point(225, 95);
             this.bUpdate.Name = "bUpdate";
             this.bUpdate.Size = new System.Drawing.Size(75, 23);
             this.bUpdate.TabIndex = 41;
@@ -164,22 +166,23 @@
             // laFileClass
             // 
             this.laFileClass.AutoSize = true;
-            this.laFileClass.Location = new System.Drawing.Point(12, 42);
+            this.laFileClass.Location = new System.Drawing.Point(12, 41);
             this.laFileClass.Name = "laFileClass";
-            this.laFileClass.Size = new System.Drawing.Size(102, 13);
+            this.laFileClass.Size = new System.Drawing.Size(99, 13);
             this.laFileClass.TabIndex = 38;
-            this.laFileClass.Text = "XCOMClassData.ini:";
+            this.laFileClass.Text = "XComClassData.ini:";
             // 
             // tFileClass
             // 
-            this.tFileClass.Location = new System.Drawing.Point(120, 35);
+            this.tFileClass.Location = new System.Drawing.Point(120, 38);
             this.tFileClass.Name = "tFileClass";
-            this.tFileClass.Size = new System.Drawing.Size(290, 20);
+            this.tFileClass.ReadOnly = true;
+            this.tFileClass.Size = new System.Drawing.Size(313, 20);
             this.tFileClass.TabIndex = 37;
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(469, 372);
+            this.bSave.Location = new System.Drawing.Point(439, 286);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(75, 23);
             this.bSave.TabIndex = 40;
@@ -189,7 +192,7 @@
             // 
             // bBrowseClass
             // 
-            this.bBrowseClass.Location = new System.Drawing.Point(416, 32);
+            this.bBrowseClass.Location = new System.Drawing.Point(439, 36);
             this.bBrowseClass.Name = "bBrowseClass";
             this.bBrowseClass.Size = new System.Drawing.Size(75, 23);
             this.bBrowseClass.TabIndex = 41;
@@ -202,20 +205,21 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 42;
-            this.label1.Text = "XCOMGameData.ini:";
+            this.label1.Text = "XComGameData.ini:";
             // 
             // tFileGame
             // 
-            this.tFileGame.Location = new System.Drawing.Point(120, 61);
+            this.tFileGame.Location = new System.Drawing.Point(120, 64);
             this.tFileGame.Name = "tFileGame";
-            this.tFileGame.Size = new System.Drawing.Size(290, 20);
+            this.tFileGame.ReadOnly = true;
+            this.tFileGame.Size = new System.Drawing.Size(313, 20);
             this.tFileGame.TabIndex = 43;
             // 
             // bBrowseGame
             // 
-            this.bBrowseGame.Location = new System.Drawing.Point(416, 61);
+            this.bBrowseGame.Location = new System.Drawing.Point(439, 62);
             this.bBrowseGame.Name = "bBrowseGame";
             this.bBrowseGame.Size = new System.Drawing.Size(75, 23);
             this.bBrowseGame.TabIndex = 44;
@@ -227,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 407);
+            this.ClientSize = new System.Drawing.Size(560, 328);
             this.Controls.Add(this.bBrowseGame);
             this.Controls.Add(this.tFileGame);
             this.Controls.Add(this.label1);
@@ -243,7 +247,7 @@
             this.Controls.Add(this.tFileInt);
             this.Controls.Add(this.chListClasses);
             this.Name = "ImportClassesForm";
-            this.Text = "ImportAbilities";
+            this.Text = "Import Classes";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
