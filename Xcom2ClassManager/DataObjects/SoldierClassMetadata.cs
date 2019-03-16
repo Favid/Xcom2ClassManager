@@ -32,9 +32,9 @@ namespace Xcom2ClassManager
             allowBonds = other.allowBonds;
 
             unfavoredClasses = new List<string>();
-            foreach (string unfavoredClass in unfavoredClasses)
+            foreach (string unfavoredClass in other.unfavoredClasses)
             {
-                other.unfavoredClasses.Add(unfavoredClass);
+                unfavoredClasses.Add(unfavoredClass);
             }
         }
 

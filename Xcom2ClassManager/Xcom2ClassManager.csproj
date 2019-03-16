@@ -58,7 +58,6 @@
     <Compile Include="Exporters\XComClassDataIniExporter.cs" />
     <Compile Include="Exporters\XComGameDataIniExporter.cs" />
     <Compile Include="Exporters\XComGameIntExporter.cs" />
-    <Compile Include="Exporters\XComLWOverhaulIniExporter.cs" />
     <Compile Include="ExportForXcom\ClassExportManager.cs" />
     <Compile Include="FileManagers\AbilityManager.cs" />
     <Compile Include="FileManagers\SoldierClassImporter.cs" />

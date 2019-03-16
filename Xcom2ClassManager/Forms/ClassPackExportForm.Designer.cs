@@ -35,14 +35,13 @@
             this.bExport = new System.Windows.Forms.Button();
             this.bClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chXcomClassDataIni = new System.Windows.Forms.CheckBox();
+            this.chXcomGameDataIni = new System.Windows.Forms.CheckBox();
             this.chXcomGameInt = new System.Windows.Forms.CheckBox();
-            this.chXcomLwOverhaulIni = new System.Windows.Forms.CheckBox();
+            this.chXcomClassDataIni = new System.Windows.Forms.CheckBox();
             this.chForceVanilla = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lRequiredMods = new System.Windows.Forms.ListBox();
-            this.chXcomGameDataIni = new System.Windows.Forms.CheckBox();
             this.chDebugClasses = new System.Windows.Forms.CheckBox();
+            this.lRequiredMods = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +104,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chXcomGameDataIni);
-            this.groupBox1.Controls.Add(this.chXcomLwOverhaulIni);
             this.groupBox1.Controls.Add(this.chXcomGameInt);
             this.groupBox1.Controls.Add(this.chXcomClassDataIni);
             this.groupBox1.Location = new System.Drawing.Point(12, 188);
@@ -115,15 +113,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Export Files";
             // 
-            // chXcomClassDataIni
+            // chXcomGameDataIni
             // 
-            this.chXcomClassDataIni.AutoSize = true;
-            this.chXcomClassDataIni.Location = new System.Drawing.Point(7, 20);
-            this.chXcomClassDataIni.Name = "chXcomClassDataIni";
-            this.chXcomClassDataIni.Size = new System.Drawing.Size(115, 17);
-            this.chXcomClassDataIni.TabIndex = 0;
-            this.chXcomClassDataIni.Text = "XComClassData.ini";
-            this.chXcomClassDataIni.UseVisualStyleBackColor = true;
+            this.chXcomGameDataIni.AutoSize = true;
+            this.chXcomGameDataIni.Location = new System.Drawing.Point(7, 66);
+            this.chXcomGameDataIni.Name = "chXcomGameDataIni";
+            this.chXcomGameDataIni.Size = new System.Drawing.Size(118, 17);
+            this.chXcomGameDataIni.TabIndex = 3;
+            this.chXcomGameDataIni.Text = "XComGameData.ini";
+            this.chXcomGameDataIni.UseVisualStyleBackColor = true;
             // 
             // chXcomGameInt
             // 
@@ -135,15 +133,15 @@
             this.chXcomGameInt.Text = "XComGame.INT";
             this.chXcomGameInt.UseVisualStyleBackColor = true;
             // 
-            // chXcomLwOverhaulIni
+            // chXcomClassDataIni
             // 
-            this.chXcomLwOverhaulIni.AutoSize = true;
-            this.chXcomLwOverhaulIni.Location = new System.Drawing.Point(7, 66);
-            this.chXcomLwOverhaulIni.Name = "chXcomLwOverhaulIni";
-            this.chXcomLwOverhaulIni.Size = new System.Drawing.Size(133, 17);
-            this.chXcomLwOverhaulIni.TabIndex = 2;
-            this.chXcomLwOverhaulIni.Text = "XComLW_Overhaul.ini";
-            this.chXcomLwOverhaulIni.UseVisualStyleBackColor = true;
+            this.chXcomClassDataIni.AutoSize = true;
+            this.chXcomClassDataIni.Location = new System.Drawing.Point(7, 20);
+            this.chXcomClassDataIni.Name = "chXcomClassDataIni";
+            this.chXcomClassDataIni.Size = new System.Drawing.Size(115, 17);
+            this.chXcomClassDataIni.TabIndex = 0;
+            this.chXcomClassDataIni.Text = "XComClassData.ini";
+            this.chXcomClassDataIni.UseVisualStyleBackColor = true;
             // 
             // chForceVanilla
             // 
@@ -166,25 +164,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Export Options";
             // 
-            // lRequiredMods
-            // 
-            this.lRequiredMods.FormattingEnabled = true;
-            this.lRequiredMods.Location = new System.Drawing.Point(396, 13);
-            this.lRequiredMods.Name = "lRequiredMods";
-            this.lRequiredMods.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.lRequiredMods.Size = new System.Drawing.Size(321, 121);
-            this.lRequiredMods.TabIndex = 45;
-            // 
-            // chXcomGameDataIni
-            // 
-            this.chXcomGameDataIni.AutoSize = true;
-            this.chXcomGameDataIni.Location = new System.Drawing.Point(158, 66);
-            this.chXcomGameDataIni.Name = "chXcomGameDataIni";
-            this.chXcomGameDataIni.Size = new System.Drawing.Size(118, 17);
-            this.chXcomGameDataIni.TabIndex = 3;
-            this.chXcomGameDataIni.Text = "XComGameData.ini";
-            this.chXcomGameDataIni.UseVisualStyleBackColor = true;
-            // 
             // chDebugClasses
             // 
             this.chDebugClasses.AutoSize = true;
@@ -194,6 +173,15 @@
             this.chDebugClasses.TabIndex = 4;
             this.chDebugClasses.Text = "Include in Debug Starting Classes";
             this.chDebugClasses.UseVisualStyleBackColor = true;
+            // 
+            // lRequiredMods
+            // 
+            this.lRequiredMods.FormattingEnabled = true;
+            this.lRequiredMods.Location = new System.Drawing.Point(396, 13);
+            this.lRequiredMods.Name = "lRequiredMods";
+            this.lRequiredMods.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.lRequiredMods.Size = new System.Drawing.Size(321, 121);
+            this.lRequiredMods.TabIndex = 45;
             // 
             // ClassPackExportForm
             // 
@@ -232,7 +220,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chXcomGameInt;
         private System.Windows.Forms.CheckBox chXcomClassDataIni;
-        private System.Windows.Forms.CheckBox chXcomLwOverhaulIni;
         private System.Windows.Forms.CheckBox chForceVanilla;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox lRequiredMods;

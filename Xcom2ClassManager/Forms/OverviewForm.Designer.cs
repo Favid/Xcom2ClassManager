@@ -43,11 +43,9 @@
             this.bAddUnfavoredClass = new System.Windows.Forms.Button();
             this.bDeleteUnfavoredClass = new System.Windows.Forms.Button();
             this.gbExperience = new System.Windows.Forms.GroupBox();
-            this.nMissionExperienceWeight = new System.Windows.Forms.NumericUpDown();
             this.nKillAssistsPerKill = new System.Windows.Forms.NumericUpDown();
             this.nNumInDeck = new System.Windows.Forms.NumericUpDown();
             this.nNumInForcedDeck = new System.Windows.Forms.NumericUpDown();
-            this.laMissionExperienceWeight = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -253,13 +251,12 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cSoldierClass = new System.Windows.Forms.ComboBox();
-            this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.laFile = new System.Windows.Forms.Label();
+            this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.gbExperience.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nMissionExperienceWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nKillAssistsPerKill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nNumInDeck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nNumInForcedDeck)).BeginInit();
@@ -409,11 +406,9 @@
             // 
             // gbExperience
             // 
-            this.gbExperience.Controls.Add(this.nMissionExperienceWeight);
             this.gbExperience.Controls.Add(this.nKillAssistsPerKill);
             this.gbExperience.Controls.Add(this.nNumInDeck);
             this.gbExperience.Controls.Add(this.nNumInForcedDeck);
-            this.gbExperience.Controls.Add(this.laMissionExperienceWeight);
             this.gbExperience.Controls.Add(this.label23);
             this.gbExperience.Controls.Add(this.label22);
             this.gbExperience.Controls.Add(this.label21);
@@ -423,24 +418,6 @@
             this.gbExperience.TabIndex = 94;
             this.gbExperience.TabStop = false;
             this.gbExperience.Text = "Experience";
-            // 
-            // nMissionExperienceWeight
-            // 
-            this.nMissionExperienceWeight.DecimalPlaces = 3;
-            this.nMissionExperienceWeight.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nMissionExperienceWeight.Location = new System.Drawing.Point(150, 92);
-            this.nMissionExperienceWeight.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.nMissionExperienceWeight.Name = "nMissionExperienceWeight";
-            this.nMissionExperienceWeight.Size = new System.Drawing.Size(51, 20);
-            this.nMissionExperienceWeight.TabIndex = 42;
             // 
             // nKillAssistsPerKill
             // 
@@ -477,15 +454,6 @@
             this.nNumInForcedDeck.Name = "nNumInForcedDeck";
             this.nNumInForcedDeck.Size = new System.Drawing.Size(51, 20);
             this.nNumInForcedDeck.TabIndex = 39;
-            // 
-            // laMissionExperienceWeight
-            // 
-            this.laMissionExperienceWeight.AutoSize = true;
-            this.laMissionExperienceWeight.Location = new System.Drawing.Point(6, 94);
-            this.laMissionExperienceWeight.Name = "laMissionExperienceWeight";
-            this.laMissionExperienceWeight.Size = new System.Drawing.Size(138, 13);
-            this.laMissionExperienceWeight.TabIndex = 37;
-            this.laMissionExperienceWeight.Text = "Mission Experience Weight:";
             // 
             // label23
             // 
@@ -2853,35 +2821,35 @@
             // newToolStripMenuItem1
             // 
             this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            this.newToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
+            this.newToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem1.Text = "New";
             this.newToolStripMenuItem1.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -2892,7 +2860,7 @@
             this.nicknamesToolStripMenuItem,
             this.classesToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importToolStripMenuItem.Text = "Import";
             // 
             // abilitiesToolStripMenuItem
@@ -2919,14 +2887,14 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -2984,10 +2952,6 @@
             this.cSoldierClass.TabIndex = 100;
             this.cSoldierClass.SelectedIndexChanged += new System.EventHandler(this.cSoldierClass_SelectedIndexChanged);
             // 
-            // soldierClassAbilityBindingSource
-            // 
-            this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
-            // 
             // laFile
             // 
             this.laFile.AutoSize = true;
@@ -2996,6 +2960,10 @@
             this.laFile.Size = new System.Drawing.Size(55, 13);
             this.laFile.TabIndex = 101;
             this.laFile.Text = "File: None";
+            // 
+            // soldierClassAbilityBindingSource
+            // 
+            this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
             // 
             // OverviewForm
             // 
@@ -3019,7 +2987,6 @@
             this.groupBox7.PerformLayout();
             this.gbExperience.ResumeLayout(false);
             this.gbExperience.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nMissionExperienceWeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nKillAssistsPerKill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nNumInDeck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nNumInForcedDeck)).EndInit();
@@ -3230,9 +3197,7 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.TextBox tRightTree;
         private System.Windows.Forms.TextBox tLeftTree;
-        private System.Windows.Forms.Label laMissionExperienceWeight;
         private System.Windows.Forms.NumericUpDown nNumInForcedDeck;
-        private System.Windows.Forms.NumericUpDown nMissionExperienceWeight;
         private System.Windows.Forms.NumericUpDown nKillAssistsPerKill;
         private System.Windows.Forms.NumericUpDown nNumInDeck;
         private System.Windows.Forms.Label laTotal;
