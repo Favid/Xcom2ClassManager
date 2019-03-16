@@ -31,7 +31,7 @@ namespace Xcom2ClassManager.Forms
             List<SoldierClass> newClasses = importer.importSoldierClasses(tFileInt.Text, tFileClass.Text, tFileGame.Text);
             foreach (SoldierClass newClass in newClasses)
             {
-                chListClasses.Items.Add(newClass);
+                chListClasses.Items.Add(newClass, true);
             }
         }
 

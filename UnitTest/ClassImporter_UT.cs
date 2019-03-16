@@ -22,8 +22,7 @@ namespace UnitTest
             string intFile = "D:\\Dev\\X2CM Unit tests\\Test_LW2\\XComGame.int";
             string gameFile = "D:\\Dev\\X2CM Unit tests\\Test_LW2\\XComGameData.ini";
             List<SoldierClass> actual = importer.importSoldierClasses(intFile, classFile, gameFile);
-
-
+            
             string expectedFile = "D:\\Dev\\X2CM Unit tests\\Test_LW2\\LW2 import.xml";
             FileStream myStream = new FileStream(expectedFile, FileMode.Open);
             ClassPack classPack = ClassPackManager.loadClassPack(myStream);
@@ -34,49 +33,47 @@ namespace UnitTest
             {
                 AssertSoldierClassesEqual(expected[i], actual[i]);
             }
-
         }
 
-        private void AssertSoldierClassesEqual(SoldierClass a, SoldierClass b)
+        private void AssertSoldierClassesEqual(SoldierClass expected, SoldierClass actual)
         {
-            Assert.AreEqual(a.metadata, b.metadata);
-            Assert.AreEqual(a.allowAwcAbilities, b.allowAwcAbilities);
-            Assert.AreEqual(a.baseAbilityPointsPerPromotion, b.baseAbilityPointsPerPromotion);
-            Assert.AreEqual(a.experience, b.experience);
-            Assert.AreEqual(a.equipment, b.equipment);
-            Assert.AreEqual(a.leftTreeName, b.leftTreeName);
-            Assert.AreEqual(a.rightTreeName, b.rightTreeName);
+            Assert.AreEqual(expected.metadata, actual.metadata);
+            Assert.AreEqual(expected.allowAwcAbilities, actual.allowAwcAbilities);
+            Assert.AreEqual(expected.baseAbilityPointsPerPromotion, actual.baseAbilityPointsPerPromotion);
+            Assert.AreEqual(expected.experience, actual.experience);
+            Assert.AreEqual(expected.equipment, actual.equipment);
+            Assert.AreEqual(expected.leftTreeName, actual.leftTreeName);
+            Assert.AreEqual(expected.rightTreeName, actual.rightTreeName);
 
-            Assert.AreEqual(a.awcExcludeAbilities.Count(), b.awcExcludeAbilities.Count());
-            for(int i = 0; i < a.awcExcludeAbilities.Count(); i++)
+            Assert.AreEqual(expected.awcExcludeAbilities.Count(), actual.awcExcludeAbilities.Count());
+            for(int i = 0; i < expected.awcExcludeAbilities.Count(); i++)
             {
-                Assert.AreEqual(a.awcExcludeAbilities[i], b.awcExcludeAbilities[i]);
+                Assert.AreEqual(expected.awcExcludeAbilities[i], actual.awcExcludeAbilities[i]);
             }
 
-            Assert.AreEqual(a.loadoutItems.Count(), b.loadoutItems.Count());
-            for (int i = 0; i < a.loadoutItems.Count(); i++)
+            Assert.AreEqual(expected.loadoutItems.Count(), actual.loadoutItems.Count());
+            for (int i = 0; i < expected.loadoutItems.Count(); i++)
             {
-                Assert.AreEqual(a.loadoutItems[i], b.loadoutItems[i]);
+                Assert.AreEqual(expected.loadoutItems[i], actual.loadoutItems[i]);
             }
 
-            Assert.AreEqual(a.stats.Count(), b.stats.Count());
-            for (int i = 0; i < a.stats.Count(); i++)
+            Assert.AreEqual(expected.stats.Count(), actual.stats.Count());
+            for (int i = 0; i < expected.stats.Count(); i++)
             {
-                Assert.AreEqual(a.stats[i], b.stats[i]);
+                Assert.AreEqual(expected.stats[i], actual.stats[i]);
             }
 
-            Assert.AreEqual(a.nicknames.Count(), b.nicknames.Count());
-            for (int i = 0; i < a.nicknames.Count(); i++)
+            Assert.AreEqual(expected.nicknames.Count(), actual.nicknames.Count());
+            for (int i = 0; i < expected.nicknames.Count(); i++)
             {
-                Assert.AreEqual(a.nicknames[i], b.nicknames[i]);
+                Assert.AreEqual(expected.nicknames[i], actual.nicknames[i]);
             }
 
-            Assert.AreEqual(a.soldierAbilities.Count(), b.soldierAbilities.Count());
-            for (int i = 0; i < a.soldierAbilities.Count(); i++)
+            Assert.AreEqual(expected.soldierAbilities.Count(), actual.soldierAbilities.Count());
+            for (int i = 0; i < expected.soldierAbilities.Count(); i++)
             {
-                Assert.AreEqual(a.soldierAbilities[i], b.soldierAbilities[i]);
+                Assert.AreEqual(expected.soldierAbilities[i], actual.soldierAbilities[i]);
             }
-
         }
     }
 }

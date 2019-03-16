@@ -67,6 +67,16 @@ namespace Xcom2ClassManager.DataObjects
                 if (ability == null)
                 {
                     ability = getInstance().abilities.Where(x => x.internalName.Equals(name, StringComparison.OrdinalIgnoreCase) && x.weaponSlot == WeaponSlot.Unknown).FirstOrDefault();
+                    
+                    if (ability == null)
+                    {
+                        ability = getInstance().abilities.Where(x => x.internalName.Equals(name, StringComparison.OrdinalIgnoreCase) && x.weaponSlot == WeaponSlot.Primary).FirstOrDefault();
+                        
+                        if (ability == null)
+                        {
+                            ability = getInstance().abilities.Where(x => x.internalName.Equals(name, StringComparison.OrdinalIgnoreCase) && x.weaponSlot == WeaponSlot.Secondary).FirstOrDefault();
+                        }
+                    }
                 }
             }
 

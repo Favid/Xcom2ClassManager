@@ -21,6 +21,9 @@ namespace Xcom2ClassManager.FileManagers
             public int abilitySlot;
         }
 
+        private List<char> classDataDelimitters;
+        private List<char> intDelimitters;
+
         private List<SoldierClass> soldierClasses;
         private List<MissingAbilityEntry> missingAbilities;
         private string intFile;
@@ -29,7 +32,14 @@ namespace Xcom2ClassManager.FileManagers
 
         public SoldierClassImporter()
         {
+            classDataDelimitters = new List<char>();
+            classDataDelimitters.Add(' ');
+            classDataDelimitters.Add('\"');
+            classDataDelimitters.Add(')');
+            classDataDelimitters.Add(',');
 
+            intDelimitters = new List<char>();
+            intDelimitters.Add('\"');
         }
 
         public List<SoldierClass> importSoldierClasses(string intFile, string classFile, string gameFile)
@@ -50,78 +60,6 @@ namespace Xcom2ClassManager.FileManagers
             return soldierClasses;
         }
 
-        private void padSoldierStats()
-        {
-            foreach (SoldierClass soldierClass in soldierClasses)
-            {
-                List<SoldierClassStat> newStats = new List<SoldierClassStat>();
-
-                foreach (Stat stat in Enum.GetValues(typeof(Stat)))
-                {
-                    foreach (SoldierRank rank in Enum.GetValues(typeof(SoldierRank)))
-                    {
-                        if (rank != SoldierRank.Rookie)
-                        {
-                            SoldierClassStat newStat = soldierClass.stats.Where(x => x.stat == stat && x.rank == rank).SingleOrDefault();
-                            if (newStat == null)
-                            {
-                                newStat = new SoldierClassStat();
-                                newStat.rank = rank;
-                                newStat.stat = stat;
-                                newStat.value = null;
-                            }
-
-                            newStats.Add(newStat);
-                        }
-                    }
-                }
-
-                soldierClass.stats = new List<SoldierClassStat>(newStats);
-            }
-        }
-
-        private void padSoldierAbilities()
-        {
-            foreach (SoldierClass soldierClass in soldierClasses)
-            {
-                List<SoldierClassAbility> newAbilities = new List<SoldierClassAbility>();
-                
-                for (int i = 1; i <= 6; i++)
-                {
-                    SoldierClassAbility newAbility = soldierClass.soldierAbilities.Where(x => x.slot == i && x.rank == SoldierRank.Squaddie).SingleOrDefault();
-                    if (newAbility == null)
-                    {
-                        newAbility = new SoldierClassAbility();
-                        newAbility.rank = SoldierRank.Squaddie;
-                        newAbility.slot = i;
-                    }
-
-                    newAbilities.Add(newAbility);
-                }
-
-                foreach (SoldierRank rank in Enum.GetValues(typeof(SoldierRank)))
-                {
-                    for (int i = 1; i <= 3; i++)
-                    {
-                        if (rank > SoldierRank.Squaddie)
-                        {
-                            SoldierClassAbility newAbility = soldierClass.soldierAbilities.Where(x => x.slot == i && x.rank == rank).SingleOrDefault();
-                            if (newAbility == null)
-                            {
-                                newAbility = new SoldierClassAbility();
-                                newAbility.rank = rank;
-                                newAbility.slot = i;
-                            }
-
-                            newAbilities.Add(newAbility);
-                        }
-                    }
-                }
-
-                soldierClass.soldierAbilities = new List<SoldierClassAbility>(newAbilities);
-            }
-        }
-
         private void importClassFile()
         {
             StreamReader file = new StreamReader(classFile);
@@ -137,17 +75,16 @@ namespace Xcom2ClassManager.FileManagers
 
             while ((line = file.ReadLine()) != null)
             {
-                if (line.Contains("SoldierClasses=") && !line.Contains("-") && !line.Contains("."))
+                if (line.ToLower().Contains("SoldierClasses".ToLower()) && !line.Contains("-") && !line.Contains("."))
                 {
-                    int openQuote = line.IndexOf("\"");
-                    int closeQuote = line.LastIndexOf("\"");
-                    classNames.Add(line.Substring(openQuote + 1, closeQuote - openQuote - 1));
+                    string className = getNextStringValue(line, 0, classDataDelimitters);
+                    classNames.Add(className);
                 }
 
-                if (line.Contains("X2SoldierClassTemplate]"))
+                if (line.ToLower().Contains("X2SoldierClassTemplate]".ToLower()))
                 {
-                    int space = line.IndexOf(" ");
-                    string className = line.Substring(1, space - 1);
+                    int spaceIndex = line.IndexOf(" ");
+                    string className = line.Substring(1, spaceIndex - 1);
 
                     if (unsaved && readingClass != null)
                     {
@@ -169,41 +106,40 @@ namespace Xcom2ClassManager.FileManagers
 
                 if (readingClass != null)
                 {
-                    if (line.Contains("IconImage"))
+                    if (line.ToLower().Contains("IconImage".ToLower()))
                     {
-                        readingClass.metadata.iconString = getStringValue(line);
+                        readingClass.metadata.iconString = getNextStringValue(line, 0, classDataDelimitters);
                     }
 
-                    if (line.Contains("NumInForcedDeck"))
+                    if (line.ToLower().Contains("NumInForcedDeck".ToLower()))
                     {
                         readingClass.experience.numberInForcedDeck = getIntValue(line);
                     }
 
-                    if (line.Contains("NumInDeck"))
+                    if (line.ToLower().Contains("NumInDeck".ToLower()))
                     {
                         readingClass.experience.numberInDeck = getIntValue(line);
                     }
 
-                    if (line.Contains("KillAssistsPerKill"))
+                    if (line.ToLower().Contains("KillAssistsPerKill".ToLower()))
                     {
                         readingClass.experience.killAssistsPerKill = getIntValue(line);
                     }
 
-                    if (line.Contains("SquaddieLoadout"))
+                    if (line.ToLower().Contains("SquaddieLoadout".ToLower()))
                     {
-                        readingClass.equipment.squaddieLoadout = getStringValue(line);
+                        readingClass.equipment.squaddieLoadout = getNextStringValue(line, 0, classDataDelimitters);
                     }
 
-                    if (line.Contains("AllowedWeapons"))
+                    if (line.ToLower().Contains("AllowedWeapons".ToLower()))
                     {
                         int secondAssign = findStartingIndexOfNthOccurrence(line, "=", 2, 0);
                         int thirdAssign = findStartingIndexOfNthOccurrence(line, "=", 3, 0);
-                        int commaIndex = findStartingIndexOfNthOccurrence(line, ",", 1, 0);
 
-                        if (secondAssign > -1 && thirdAssign > -1 && commaIndex > -1)
+                        if (secondAssign > -1 && thirdAssign > -1)
                         {
-                            string slotStringValue = line.Substring(secondAssign + 1, commaIndex - secondAssign - 1);
-                            string weaponStringValue = line.Substring(thirdAssign + 2, line.Length - thirdAssign - 4); // +2 for quote, -2 for quote and paren
+                            string slotStringValue = getNextStringValue(line, secondAssign, classDataDelimitters);
+                            string weaponStringValue = getNextStringValue(line, thirdAssign, classDataDelimitters);
 
                             WeaponSlot weaponSlot = Enums.GetValueFromDescription<WeaponSlot>(slotStringValue);
                             Weapon weapon = new Weapon(weaponStringValue, weaponSlot);
@@ -211,19 +147,19 @@ namespace Xcom2ClassManager.FileManagers
                         }
                     }
 
-                    if (line.Contains("AllowedArmors"))
+                    if (line.ToLower().Contains("AllowedArmors".ToLower()))
                     {
-                        readingClass.equipment.allowedArmors.Add(getStringValue(line));
+                        readingClass.equipment.allowedArmors.Add(getNextStringValue(line, 0, classDataDelimitters));
                     }
 
-                    if (line.Contains("bAllowAWCAbilities"))
+                    if (line.ToLower().Contains("bAllowAWCAbilities".ToLower()))
                     {
-                        readingClass.allowAwcAbilities = (getIntValue(line) == 1 || getStringValue(line) == "true");
+                        readingClass.allowAwcAbilities = (getIntValue(line) == 1 || getNextStringValue(line, 0, classDataDelimitters) == "true");
                     }
 
-                    if (line.Contains("ExcludedAbilities"))
+                    if (line.ToLower().Contains("ExcludedAbilities".ToLower()))
                     {
-                        string abilityName = getStringValue(line);
+                        string abilityName = getNextStringValue(line, 0, classDataDelimitters);
                         Ability ability = ProjectState.getAbility(abilityName);
                         if (ability != null)
                         {
@@ -231,24 +167,24 @@ namespace Xcom2ClassManager.FileManagers
                         }
                     }
 
-                    if (line.Contains("bCanHaveBonds"))
+                    if (line.ToLower().Contains("bCanHaveBonds".ToLower()))
                     {
-                        readingClass.metadata.allowBonds = (getIntValue(line) == 1 || getStringValue(line) == "true");
+                        readingClass.metadata.allowBonds = (getIntValue(line) == 1 || getNextStringValue(line, 0, classDataDelimitters) == "true");
                     }
 
-                    if (line.Contains("UnfavoredClasses"))
+                    if (line.ToLower().Contains("UnfavoredClasses".ToLower()))
                     {
-                        readingClass.metadata.unfavoredClasses.Add(getStringValue(line));
+                        readingClass.metadata.unfavoredClasses.Add(getNextStringValue(line, 0, classDataDelimitters));
                     }
 
-                    if (line.Contains("BaseAbilityPointsPerPromotion"))
+                    if (line.ToLower().Contains("BaseAbilityPointsPerPromotion".ToLower()))
                     {
                         readingClass.baseAbilityPointsPerPromotion = getIntValue(line);
                     }
 
                     // Ranks
 
-                    if (line.Contains("SoldierRanks"))
+                    if (line.ToLower().Contains("SoldierRanks".ToLower()))
                     {
                         readingRank = readingRank + 1;
                         readingAbilitySlot = 1;
@@ -261,41 +197,16 @@ namespace Xcom2ClassManager.FileManagers
                         while (counter < numAbilityName)
                         {
                             counter++;
-                            int tagStartIndex = findStartingIndexOfNthOccurrence(line, "AbilityName", counter, 0);
-                            int startingIndex = findStartingIndexOfNthOccurrence(line, "\"", 1, tagStartIndex) + 1;
-                            int endingIndex = findStartingIndexOfNthOccurrence(line, "\"", 2, tagStartIndex);
 
-                            string abilityName = line.Substring(startingIndex, endingIndex - startingIndex);
+                            int tagStartIndex = findStartingIndexOfNthOccurrence(line, "AbilityName", counter, 0);
+                            string abilityName = getNextStringValue(line, tagStartIndex, classDataDelimitters);
                             WeaponSlot slot = WeaponSlot.None;
 
                             tagStartIndex = findStartingIndexOfNthOccurrence(line, "ApplyToWeaponSlot", counter, 0);
                             if (tagStartIndex > -1)
                             {
-                                startingIndex = findStartingIndexOfNthOccurrence(line, "eInvSlot", 1, tagStartIndex);
-
-                                // either a space or ) can signify the end
-                                int endingParenIndex = findStartingIndexOfNthOccurrence(line, ")", 1, tagStartIndex);
-                                int endingSpaceIndex = findStartingIndexOfNthOccurrence(line, " ", 1, tagStartIndex);
-
-                                if (endingParenIndex != -1 && endingSpaceIndex != -1)
-                                {
-                                    endingIndex = Math.Min(endingParenIndex, endingSpaceIndex);
-                                }
-                                else if (endingParenIndex == -1)
-                                {
-                                    endingIndex = endingSpaceIndex;
-                                }
-                                else if (endingSpaceIndex == -1)
-                                {
-                                    endingIndex = endingParenIndex;
-                                }
-
-                                if (endingIndex != -1)
-                                {
-                                    string slotString = line.Substring(startingIndex, endingIndex - startingIndex);
-                                    slot = Enums.GetValueFromDescription<WeaponSlot>(slotString);
-                                }
-
+                                string slotString = getNextStringValue(line, tagStartIndex, classDataDelimitters);
+                                slot = Enums.GetValueFromDescription<WeaponSlot>(slotString);
                             }
 
                             Ability ability = ProjectState.getClosestMatchingAbility(abilityName, slot);
@@ -331,20 +242,15 @@ namespace Xcom2ClassManager.FileManagers
                             if (tagStartIndex > -1)
                             {
                                 Stat? statType = null;
-
-                                int startingIndex = findStartingIndexOfNthOccurrence(line, "eStat", 1, tagStartIndex);
-                                int endingIndex = findStartingIndexOfNthOccurrence(line, ",", 1, startingIndex);
-
-                                string statTypeString = line.Substring(startingIndex, endingIndex - startingIndex);
+                                
+                                string statTypeString = getNextStringValue(line, tagStartIndex, classDataDelimitters);
                                 if (statTypeString != "eStat_CombatSims") // TODO handle this
                                 {
                                     statType = Enums.GetValueFromDescription<Stat>(statTypeString);
                                 }
-
-                                startingIndex = findStartingIndexOfNthOccurrence(line, "=", 1, endingIndex) + 1;
-                                endingIndex = findStartingIndexOfNthOccurrence(line, ")", 1, startingIndex);
-
-                                string statAmountString = line.Substring(startingIndex, endingIndex - startingIndex).Trim();
+                                
+                                tagStartIndex = findStartingIndexOfNthOccurrence(line, "StatAmount", counter, 0);
+                                string statAmountString = getNextStringValue(line, tagStartIndex, classDataDelimitters);
 
                                 if (int.TryParse(statAmountString, out int statAmount) && statType.HasValue)
                                 {
@@ -389,7 +295,7 @@ namespace Xcom2ClassManager.FileManagers
                         foundAbility = null;
                     }
 
-                    if (line.Contains(" X2AbilityTemplate]"))
+                    if (line.ToLower().Contains(" X2AbilityTemplate]".ToLower()))
                     {
                         string abilityName = line.Substring(1, line.IndexOf(' ') - 1);
                         // TODO Kind of a hack - Ignores abilities whose names already exist
@@ -408,7 +314,7 @@ namespace Xcom2ClassManager.FileManagers
                         foundClass = null;
                     }
 
-                    if (line.Contains(" X2SoldierClassTemplate]"))
+                    if (line.ToLower().Contains(" X2SoldierClassTemplate]".ToLower()))
                     {
                         foundClass = new SoldierClass();
                         foundClass.metadata.internalName = line.Substring(1, line.IndexOf(' ') - 1);
@@ -416,60 +322,48 @@ namespace Xcom2ClassManager.FileManagers
                 }
                 else if(foundAbility != null)
                 {
-                    int startIndex = line.IndexOf('"') + 1;
-                    int endIndex = line.LastIndexOf('"');
+                    string value = getNextStringValue(line, 0, intDelimitters);
 
-                    if (line.Contains("LocFriendlyName="))
+                    if (line.ToLower().Contains("LocFriendlyName".ToLower()))
                     {
-                        foundAbility.displayName = line.Substring(startIndex, endIndex - startIndex);
+                        foundAbility.displayName = value;
                     }
-                    else if (line.Contains("LocLongDescription="))
+                    else if (line.ToLower().Contains("LocLongDescription".ToLower()))
                     {
-                        foundAbility.description = line.Substring(startIndex, endIndex - startIndex);
+                        foundAbility.description = value;
                     }
                 }
                 else if (foundClass != null)
                 {
-                    int startIndex = line.IndexOf('"') + 1;
-                    int endIndex = line.LastIndexOf('"');
-
-                    if (startIndex <= 0)
+                    string value = getNextStringValue(line, 0, intDelimitters);
+                    
+                    if (line.ToLower().Contains("DisplayName".ToLower()))
                     {
-                        startIndex = line.IndexOf('=') + 1;
+                        foundClass.metadata.displayName = value;
                     }
-
-                    if (endIndex <= startIndex)
+                    else if (line.ToLower().Contains("ClassSummary".ToLower()))
                     {
-                        endIndex = line.Length;
+                        foundClass.metadata.description = value;
                     }
-
-                    if (line.Contains("DisplayName="))
+                    else if (line.ToLower().Contains("LeftAbilityTreeTitle".ToLower()) || line.ToLower().Contains("AbilityTreeTitles[0]".ToLower()))
                     {
-                        foundClass.metadata.displayName = line.Substring(startIndex, endIndex - startIndex);
+                        foundClass.leftTreeName = value;
                     }
-                    else if (line.Contains("ClassSummary="))
+                    else if (line.ToLower().Contains("RightAbilityTreeTitle".ToLower()) || line.ToLower().Contains("AbilityTreeTitles[2]".ToLower()))
                     {
-                        foundClass.metadata.description = line.Substring(startIndex, endIndex - startIndex);
+                        foundClass.rightTreeName = value;
                     }
-                    else if (line.Contains("LeftAbilityTreeTitle=") || line.Contains("AbilityTreeTitles[0]"))
+                    else if (line.ToLower().Contains("RandomNickNames[".ToLower()))
                     {
-                        foundClass.leftTreeName = line.Substring(startIndex, endIndex - startIndex);
+                        foundClass.nicknames.Add(new ClassNickname(value, NicknameGender.Unisex));
                     }
-                    else if (line.Contains("RightAbilityTreeTitle=") || line.Contains("AbilityTreeTitles[2]"))
+                    else if (line.ToLower().Contains("RandomNickNames_Male".ToLower()))
                     {
-                        foundClass.rightTreeName = line.Substring(startIndex, endIndex - startIndex);
+                        foundClass.nicknames.Add(new ClassNickname(value, NicknameGender.Male));
                     }
-                    else if (line.Contains("RandomNickNames["))
+                    else if (line.ToLower().Contains("RandomNickNames_Female".ToLower()))
                     {
-                        foundClass.nicknames.Add(new ClassNickname(line.Substring(startIndex, endIndex - startIndex), NicknameGender.Unisex));
-                    }
-                    else if (line.Contains("RandomNickNames_Male"))
-                    {
-                        foundClass.nicknames.Add(new ClassNickname(line.Substring(startIndex, endIndex - startIndex), NicknameGender.Male));
-                    }
-                    else if (line.Contains("RandomNicknames_Female"))
-                    {
-                        foundClass.nicknames.Add(new ClassNickname(line.Substring(startIndex, endIndex - startIndex), NicknameGender.Female));
+                        foundClass.nicknames.Add(new ClassNickname(value, NicknameGender.Female));
                     }
                 }
             }
@@ -510,6 +404,7 @@ namespace Xcom2ClassManager.FileManagers
                 }
             }
 
+            // update classes based on data gathered
             foreach(SoldierClass soldierClass in foundClasses)
             {
                 SoldierClass classToUpdate = soldierClasses.Where(x => x.metadata.internalName == soldierClass.metadata.internalName).FirstOrDefault();
@@ -541,14 +436,14 @@ namespace Xcom2ClassManager.FileManagers
             {
                 if (line.StartsWith("["))
                 {
-                    inLoadoutSection = line.Contains("[XComGame.X2ItemTemplateManager]");
+                    inLoadoutSection = line.ToLower().Contains("[XComGame.X2ItemTemplateManager]".ToLower());
                 }
                 else if (inLoadoutSection)
                 {
-                    if (line.Contains("LoadoutName"))
+                    if (line.ToLower().Contains("LoadoutName".ToLower()))
                     {
-                        string className = getNextStringValue(line, line.IndexOf("LoadoutName"));
-                        SoldierClass soldierClass = soldierClasses.Where(x => x.metadata.internalName == className).FirstOrDefault();
+                        string loadoutName = getNextStringValue(line, line.IndexOf("LoadoutName"), classDataDelimitters);
+                        SoldierClass soldierClass = soldierClasses.Where(x => x.equipment.squaddieLoadout == loadoutName).FirstOrDefault();
                         if (soldierClass != null)
                         {
                             int itemsIndex = 0;
@@ -573,22 +468,22 @@ namespace Xcom2ClassManager.FileManagers
         private string getLoadoutItem(string line, int itemsIndex)
         {
             string value = string.Empty;
-            string itemString = string.Format("Items[{0}]", itemsIndex.ToString());
+            string itemString = string.Format("Items[{0}]".ToLower(), itemsIndex.ToString());
 
-            if (line.Contains(itemString))
+            if (line.ToLower().Contains(itemString))
             {
                 int startIndex = findStartingIndexOfNthOccurrence(line, itemString, 1, 0);
 
                 // find the second equals after this for the item name
                 startIndex = findStartingIndexOfNthOccurrence(line, "=", 2, startIndex);
 
-                value = getNextStringValue(line, startIndex);
+                value = getNextStringValue(line, startIndex, classDataDelimitters);
             }
 
             return value;
         }
 
-        private string getNextStringValue(string line, int startIndex)
+        private string getNextStringValue(string line, int startIndex, List<char> delimitters)
         {
             string value = string.Empty;
 
@@ -598,33 +493,25 @@ namespace Xcom2ClassManager.FileManagers
             int assignIndex = findStartingIndexOfNthOccurrence(line, "=", 1, startIndex);
             if (assignIndex != -1)
             {
-                int index = assignIndex + 1;
-                while (valueStartIndex == -1 && index < line.Length)
+                valueStartIndex = assignIndex + 1;
+                while (valueStartIndex < line.Length &&
+                        (delimitters.Contains(line[valueStartIndex])))
                 {
-                    if (line[index] != ' ' && line[index] != '\"')
-                    {
-                        valueStartIndex = index;
-                    }
-                    else
-                    {
-                        index++;
-                    }
+                    valueStartIndex++;
                 }
+
+                valueStartIndex = Math.Min(valueStartIndex, line.Length);
 
                 if (valueStartIndex != -1)
                 {
-                    index = valueStartIndex + 1;
-                    while (valueEndIndex == -1 && index < line.Length)
+                    valueEndIndex = valueStartIndex + 1;
+                    while (valueEndIndex < line.Length &&
+                          !(delimitters.Contains(line[valueEndIndex])))
                     {
-                        if (line[index] == ' ' || line[index] == '\"' || line[index] == ')')
-                        {
-                            valueEndIndex = index;
-                        }
-                        else
-                        {
-                            index++;
-                        }
+                        valueEndIndex++;
                     }
+
+                    valueEndIndex = Math.Min(valueEndIndex, line.Length);
                 }
             }
 
@@ -643,7 +530,7 @@ namespace Xcom2ClassManager.FileManagers
             for(int i = startIndex; i < line.Length - substring.Length; i++)
             {
                 string check = line.Substring(i, substring.Length);
-                if (check == substring)
+                if (check.ToLower() == substring.ToLower())
                 {
                     numFound++;
 
@@ -657,35 +544,84 @@ namespace Xcom2ClassManager.FileManagers
             return -1;
         }
 
-        private string getStringValue(string line)
-        {
-            int assign = line.IndexOf("=");
-            if (line.Contains("\""))
-            {
-                assign++;
-            }
-
-            int end = line.Length - 1;
-            if (line.Contains("\""))
-            {
-                end--;
-            }
-
-            string stringValue = line.Substring(assign + 1, end - assign);
-            return stringValue;
-        }
-
         private int getIntValue(string line)
         {
-            int assign = line.IndexOf("=");
-            int end = line.Length - 1;
-
-            string stringValue = line.Substring(assign + 1, end - assign);
+            string stringValue = getNextStringValue(line, 0, classDataDelimitters);
             int.TryParse(stringValue, out int intValue);
 
             return intValue;
         }
 
+        private void padSoldierStats()
+        {
+            foreach (SoldierClass soldierClass in soldierClasses)
+            {
+                List<SoldierClassStat> newStats = new List<SoldierClassStat>();
 
+                foreach (Stat stat in Enum.GetValues(typeof(Stat)))
+                {
+                    foreach (SoldierRank rank in Enum.GetValues(typeof(SoldierRank)))
+                    {
+                        if (rank != SoldierRank.Rookie)
+                        {
+                            SoldierClassStat newStat = soldierClass.stats.Where(x => x.stat == stat && x.rank == rank).SingleOrDefault();
+                            if (newStat == null)
+                            {
+                                newStat = new SoldierClassStat();
+                                newStat.rank = rank;
+                                newStat.stat = stat;
+                                newStat.value = null;
+                            }
+
+                            newStats.Add(newStat);
+                        }
+                    }
+                }
+
+                soldierClass.stats = new List<SoldierClassStat>(newStats);
+            }
+        }
+
+        private void padSoldierAbilities()
+        {
+            foreach (SoldierClass soldierClass in soldierClasses)
+            {
+                List<SoldierClassAbility> newAbilities = new List<SoldierClassAbility>();
+
+                for (int i = 1; i <= 6; i++)
+                {
+                    SoldierClassAbility newAbility = soldierClass.soldierAbilities.Where(x => x.slot == i && x.rank == SoldierRank.Squaddie).SingleOrDefault();
+                    if (newAbility == null)
+                    {
+                        newAbility = new SoldierClassAbility();
+                        newAbility.rank = SoldierRank.Squaddie;
+                        newAbility.slot = i;
+                    }
+
+                    newAbilities.Add(newAbility);
+                }
+
+                foreach (SoldierRank rank in Enum.GetValues(typeof(SoldierRank)))
+                {
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        if (rank > SoldierRank.Squaddie)
+                        {
+                            SoldierClassAbility newAbility = soldierClass.soldierAbilities.Where(x => x.slot == i && x.rank == rank).SingleOrDefault();
+                            if (newAbility == null)
+                            {
+                                newAbility = new SoldierClassAbility();
+                                newAbility.rank = rank;
+                                newAbility.slot = i;
+                            }
+
+                            newAbilities.Add(newAbility);
+                        }
+                    }
+                }
+
+                soldierClass.soldierAbilities = new List<SoldierClassAbility>(newAbilities);
+            }
+        }
     }
 }
