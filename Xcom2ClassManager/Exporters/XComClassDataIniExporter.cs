@@ -58,14 +58,14 @@ namespace Xcom2ClassManager.Exporters
         private void writeClassGeneralData(SoldierClass soldier)
         {
             lines.Add("[" + soldier.metadata.internalName + " X2SoldierClassTemplate]");
-            lines.Add("+bMultiplayerOnly=0");
-            lines.Add("+ClassPoints=4");
-            lines.Add("+IconImage=" + Utils.encaseStringInQuotes(soldier.metadata.iconString));
-            lines.Add("+NumInForcedDeck=" + soldier.experience.numberInForcedDeck);
-            lines.Add("+NumInDeck=" + soldier.experience.numberInDeck);
-            lines.Add("+KillAssistsPerKill=" + soldier.experience.killAssistsPerKill);
-            lines.Add("+SquaddieLoadout=" + Utils.encaseStringInQuotes(soldier.equipment.squaddieLoadout));
-            lines.Add("+bAllowAWCAbilities=1");
+            lines.Add("bMultiplayerOnly=0");
+            lines.Add("ClassPoints=4");
+            lines.Add("IconImage=" + Utils.encaseStringInQuotes(soldier.metadata.iconString));
+            lines.Add("NumInForcedDeck=" + soldier.experience.numberInForcedDeck);
+            lines.Add("NumInDeck=" + soldier.experience.numberInDeck);
+            lines.Add("KillAssistsPerKill=" + soldier.experience.killAssistsPerKill);
+            lines.Add("SquaddieLoadout=" + Utils.encaseStringInQuotes(soldier.equipment.squaddieLoadout));
+            lines.Add("bAllowAWCAbilities=" + (soldier.allowAwcAbilities ? "1" : "0"));
 
             writeClassWeapons(soldier);
 
@@ -73,6 +73,15 @@ namespace Xcom2ClassManager.Exporters
             {
                 lines.Add(String.Format("+AllowedArmors=\"{0}\"", armor));
             }
+
+            lines.Add("bCanHaveBonds=" + soldier.metadata.allowBonds);
+
+            foreach (string unfavoredClass in soldier.metadata.unfavoredClasses)
+            {
+                lines.Add(String.Format("+UnfavoredClasses=\"{0}\"", unfavoredClass));
+            }
+
+            lines.Add("BaseAbilityPointsPerPromotion=" + soldier.baseAbilityPointsPerPromotion);
         }
 
         private void writeClassWeapons(SoldierClass soldier)
