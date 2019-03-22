@@ -23,16 +23,14 @@ namespace Xcom2ClassManager.FileManagers
 
         public AbilityManager()
         {
-            string currentDir = Environment.CurrentDirectory;
-            DirectoryInfo directory = new DirectoryInfo(currentDir);
-            DirectoryInfo root = directory.Parent.Parent; // TODO make this read same file as tool instead of a copy
-            FileInfo excelFile = new FileInfo(Path.Combine(root.FullName, "XComAbilityList.xlsx"));
-
             try
             {
+                string currentDir = Environment.CurrentDirectory;
+                DirectoryInfo directory = new DirectoryInfo(currentDir);
+                FileInfo excelFile = new FileInfo(Path.Combine(directory.FullName, "XComAbilityList.xlsx"));
                 package = new ExcelPackage(excelFile);
             }
-            catch(System.IO.IOException e)
+            catch(System.IO.IOException)
             {
                 // TODO this is bad
                 System.Windows.Forms.MessageBox.Show("Failed to load ability list from file. Please make sure the file is not in use by another program.");

@@ -82,9 +82,9 @@ namespace Xcom2ClassManager.Forms
 
             bAddArmor.Enabled = false;
             bDeleteArmor.Enabled = false;
-
+            
             closeToolStripMenuItem.Enabled = true;
-            saveToolStripMenuItem.Enabled = true;
+            saveToolStripMenuItem.Enabled = !string.IsNullOrEmpty(ProjectState.getClassPack().filePath);
             saveAsToolStripMenuItem.Enabled = true;
             nicknamesToolStripMenuItem.Enabled = true;
             exportToolStripMenuItem.Enabled = true;
@@ -1079,7 +1079,9 @@ namespace Xcom2ClassManager.Forms
                 FileStream stream = new FileStream(classPack.filePath, FileMode.Open);
                 ClassPackManager.saveClassPack(ProjectState.getClassPack(), stream);
                 stream.Close();
-                
+
+                defaultEnableControls();
+
                 laFile.Text = "File: " + classPack.filePath;
             }
         }
@@ -1099,6 +1101,8 @@ namespace Xcom2ClassManager.Forms
                 {
                     ClassPackManager.saveClassPack(ProjectState.getClassPack(), myStream);
                     myStream.Close();
+
+                    defaultEnableControls();
 
                     laFile.Text = "File: " + ProjectState.getClassPack().filePath;
                 }
