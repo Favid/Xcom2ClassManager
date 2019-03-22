@@ -1,50 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Xcom2ClassManager.Exporters
 {
-    public class XComGameIntExporter
+    public class XComGameIntExporterWOTC : XComGameIntExporter
     {
-        protected const string FILENAME = "XComGame.INT";
 
-        protected string folder { get; set; }
-        protected List<SoldierClass> soldiers { get; set; }
-        protected List<string> lines { get; set; }
-
-        public XComGameIntExporter(string folder, List<SoldierClass> soldiers)
+        public XComGameIntExporterWOTC(string folder, List<SoldierClass> soldiers) : base(folder, soldiers)
         {
-            this.folder = folder;
-            this.soldiers = soldiers;
-            this.lines = new List<string>();
+
         }
 
-        public void export()
-        {
-            foreach(SoldierClass soldier in soldiers)
-            {
-                writeClassInt(soldier);
-            }
-
-            string filepath = Path.Combine(@folder, FILENAME);
-
-            System.IO.File.WriteAllLines(@filepath, lines);
-        }
-
-        protected virtual void writeClassInt(SoldierClass soldier)
+        protected override void writeClassInt(SoldierClass soldier)
         {
             lines.Add("[" + soldier.metadata.internalName + " X2SoldierClassTemplate]");
             lines.Add("DisplayName=" + Utils.encaseStringInQuotes(soldier.metadata.displayName));
             lines.Add("ClassSummary=" + Utils.encaseStringInQuotes(soldier.metadata.description));
             lines.Add("LeftAbilityTreeTitle=" + Utils.encaseStringInQuotes(soldier.leftTreeName));
             lines.Add("RightAbilityTreeTitle=" + Utils.encaseStringInQuotes(soldier.rightTreeName));
+            lines.Add("+AbilityTreeTitles[0]=" + Utils.encaseStringInQuotes(soldier.leftTreeName));
+            lines.Add("+AbilityTreeTitles[1]=" + Utils.encaseStringInQuotes("TODO"));
+            lines.Add("+AbilityTreeTitles[2]=" + Utils.encaseStringInQuotes(soldier.rightTreeName));
             lines.Add("");
 
             List<string> unisexNicknames = soldier.nicknames.Where(x => x.gender == NicknameGender.Unisex).Select(x => x.nickname).ToList();
-            for(int i = 0; i < unisexNicknames.Count; i++)
+            for (int i = 0; i < unisexNicknames.Count; i++)
             {
                 lines.Add(Enums.getDescription(NicknameGender.Unisex) + Utils.getIndexString(i) + "=" + Utils.encaseStringInQuotes(unisexNicknames[i]));
             }
@@ -63,7 +46,8 @@ namespace Xcom2ClassManager.Exporters
 
             lines.Add("");
         }
+
+
+
     }
-
-
 }

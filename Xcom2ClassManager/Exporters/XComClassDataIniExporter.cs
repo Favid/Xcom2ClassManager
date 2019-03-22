@@ -9,11 +9,11 @@ namespace Xcom2ClassManager.Exporters
 {
     public class XComClassDataIniExporter
     {
-        private const string FILENAME = "XComClassData.ini";
-
-        private string folder { get; set; }
-        private List<SoldierClass> soldiers { get; set; }
-        private List<string> lines { get; set; }
+        protected const string FILENAME = "XComClassData.ini";
+        
+        protected string folder { get; set; }
+        protected List<SoldierClass> soldiers { get; set; }
+        protected List<string> lines { get; set; }
 
         public XComClassDataIniExporter(string folder, List<SoldierClass> soldiers)
         {
@@ -38,7 +38,7 @@ namespace Xcom2ClassManager.Exporters
             System.IO.File.WriteAllLines(@filepath, lines);
         }
 
-        private void writeDefaultClasses()
+        protected virtual void writeDefaultClasses()
         {
             lines.Add("[XComGame.X2SoldierClass_DefaultClasses]");
             foreach (SoldierClass soldier in soldiers)
@@ -49,13 +49,13 @@ namespace Xcom2ClassManager.Exporters
             lines.Add("");
         }
 
-        private void writeClass(SoldierClass soldier)
+        protected virtual void writeClass(SoldierClass soldier)
         {
             writeClassGeneralData(soldier);
             writeClassRanksData(soldier);
         }
 
-        private void writeClassGeneralData(SoldierClass soldier)
+        protected virtual void writeClassGeneralData(SoldierClass soldier)
         {
             lines.Add("[" + soldier.metadata.internalName + " X2SoldierClassTemplate]");
             lines.Add("bMultiplayerOnly=0");
@@ -65,7 +65,11 @@ namespace Xcom2ClassManager.Exporters
             lines.Add("NumInDeck=" + soldier.experience.numberInDeck);
             lines.Add("KillAssistsPerKill=" + soldier.experience.killAssistsPerKill);
             lines.Add("SquaddieLoadout=" + Utils.encaseStringInQuotes(soldier.equipment.squaddieLoadout));
-            lines.Add("bAllowAWCAbilities=" + (soldier.allowAwcAbilities ? "1" : "0"));
+
+            foreach (Ability ability in soldier.awcExcludeAbilities)
+            {
+                lines.Add(String.Format("+ExcludedAbilities=\"{0}\"", ability.internalName));
+            }
 
             writeClassWeapons(soldier);
 
@@ -74,17 +78,10 @@ namespace Xcom2ClassManager.Exporters
                 lines.Add(String.Format("+AllowedArmors=\"{0}\"", armor));
             }
 
-            lines.Add("bCanHaveBonds=" + soldier.metadata.allowBonds);
-
-            foreach (string unfavoredClass in soldier.metadata.unfavoredClasses)
-            {
-                lines.Add(String.Format("+UnfavoredClasses=\"{0}\"", unfavoredClass));
-            }
-
-            lines.Add("BaseAbilityPointsPerPromotion=" + soldier.baseAbilityPointsPerPromotion);
+            lines.Add("bAllowAWCAbilities=" + (soldier.allowAwcAbilities ? "1" : "0"));
         }
 
-        private void writeClassWeapons(SoldierClass soldier)
+        protected virtual void writeClassWeapons(SoldierClass soldier)
         {
             foreach(Weapon weapon in soldier.equipment.weapons)
             {
@@ -92,7 +89,7 @@ namespace Xcom2ClassManager.Exporters
             }
         }
 
-        private void writeClassRanksData(SoldierClass soldier)
+        protected virtual void writeClassRanksData(SoldierClass soldier)
         {
             writeClassRankData(soldier, SoldierRank.Squaddie);
             writeClassRankData(soldier, SoldierRank.Corporal);
@@ -104,7 +101,7 @@ namespace Xcom2ClassManager.Exporters
             writeClassRankData(soldier, SoldierRank.Brigadier);
         }
 
-        private void writeClassRankData(SoldierClass soldier, SoldierRank rank)
+        protected virtual void writeClassRankData(SoldierClass soldier, SoldierRank rank)
         {
             string rankString = "+SoldierRanks=";
 
@@ -116,7 +113,7 @@ namespace Xcom2ClassManager.Exporters
             lines.Add("");
         }
 
-        private string getClassAbilityData(SoldierClass soldier, SoldierRank rank)
+        protected virtual string getClassAbilityData(SoldierClass soldier, SoldierRank rank)
         {
             List<SoldierClassAbility> rankSoldierAbilities = soldier.soldierAbilities.Where(x => x.rank == rank).OrderBy(x => x.slot).ToList();
 
@@ -150,7 +147,7 @@ namespace Xcom2ClassManager.Exporters
             return abilityTree;
         }
 
-        private string getClassStatData(SoldierClass soldier, SoldierRank rank)
+        protected virtual string getClassStatData(SoldierClass soldier, SoldierRank rank)
         {
             List<SoldierClassStat> rankStats = soldier.stats.Where(x => x.rank == rank).OrderBy(x => x.stat).ToList();
 

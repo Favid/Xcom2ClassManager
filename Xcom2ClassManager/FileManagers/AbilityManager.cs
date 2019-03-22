@@ -28,7 +28,15 @@ namespace Xcom2ClassManager.FileManagers
             DirectoryInfo root = directory.Parent.Parent; // TODO make this read same file as tool instead of a copy
             FileInfo excelFile = new FileInfo(Path.Combine(root.FullName, "XComAbilityList.xlsx"));
 
-            package = new ExcelPackage(excelFile);
+            try
+            {
+                package = new ExcelPackage(excelFile);
+            }
+            catch(System.IO.IOException e)
+            {
+                // TODO this is bad
+                System.Windows.Forms.MessageBox.Show("Failed to load ability list from file. Please make sure the file is not in use by another program.");
+            }
         }
 
         public List<Ability> read()
