@@ -22,7 +22,7 @@ namespace Xcom2ClassManager.Exporters
             lines.Add("LeftAbilityTreeTitle=" + Utils.encaseStringInQuotes(soldier.leftTreeName));
             lines.Add("RightAbilityTreeTitle=" + Utils.encaseStringInQuotes(soldier.rightTreeName));
             lines.Add("+AbilityTreeTitles[0]=" + Utils.encaseStringInQuotes(soldier.leftTreeName));
-            lines.Add("+AbilityTreeTitles[1]=" + Utils.encaseStringInQuotes("TODO"));
+            lines.Add("+AbilityTreeTitles[1]=" + Utils.encaseStringInQuotes(soldier.middleTreeName));
             lines.Add("+AbilityTreeTitles[2]=" + Utils.encaseStringInQuotes(soldier.rightTreeName));
             lines.Add("");
 

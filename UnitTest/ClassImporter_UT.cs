@@ -43,6 +43,7 @@ namespace UnitTest
             Assert.AreEqual(expected.experience, actual.experience);
             Assert.AreEqual(expected.equipment, actual.equipment);
             Assert.AreEqual(expected.leftTreeName, actual.leftTreeName);
+            Assert.AreEqual(expected.middleTreeName, actual.middleTreeName);
             Assert.AreEqual(expected.rightTreeName, actual.rightTreeName);
 
             Assert.AreEqual(expected.awcExcludeAbilities.Count(), actual.awcExcludeAbilities.Count());

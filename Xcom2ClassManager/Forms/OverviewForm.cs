@@ -247,6 +247,7 @@ namespace Xcom2ClassManager.Forms
             tSquaddieLoadout.Text = soldierClass.equipment.squaddieLoadout;
             
             tLeftTree.Text = soldierClass.leftTreeName;
+            tMiddleTree.Text = soldierClass.middleTreeName;
             tRightTree.Text = soldierClass.rightTreeName;
 
             openSoldierStats(soldierClass);
@@ -484,6 +485,7 @@ namespace Xcom2ClassManager.Forms
             soldierClass.soldierAbilities = buildSoldierClassAbilities();
 
             soldierClass.leftTreeName = tLeftTree.Text;
+            soldierClass.middleTreeName = tMiddleTree.Text;
             soldierClass.rightTreeName = tRightTree.Text;
 
             soldierClass.nicknames = buildSoldierClassNicknames();

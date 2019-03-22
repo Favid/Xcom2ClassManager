@@ -13,6 +13,7 @@ namespace Xcom2ClassManager
         public List<SoldierClassStat> stats { get; set; }
 
         public string leftTreeName { get; set; }
+        public string middleTreeName { get; set; }
         public string rightTreeName { get; set; }
 
         public List<ClassNickname> nicknames { get; set; }
@@ -31,6 +32,7 @@ namespace Xcom2ClassManager
             stats = new List<SoldierClassStat>();
 
             leftTreeName = "";
+            middleTreeName = "";
             rightTreeName = "";
 
             nicknames = new List<ClassNickname>();
@@ -60,6 +62,7 @@ namespace Xcom2ClassManager
             }
 
             leftTreeName = other.leftTreeName;
+            middleTreeName = other.middleTreeName;
             rightTreeName = other.rightTreeName;
 
             nicknames = new List<ClassNickname>();

@@ -349,6 +349,10 @@ namespace Xcom2ClassManager.FileManagers
                     {
                         foundClass.leftTreeName = value;
                     }
+                    else if (line.ToLower().Contains("AbilityTreeTitles[1]".ToLower()))
+                    {
+                        foundClass.rightTreeName = value;
+                    }
                     else if (line.ToLower().Contains("RightAbilityTreeTitle".ToLower()) || line.ToLower().Contains("AbilityTreeTitles[2]".ToLower()))
                     {
                         foundClass.rightTreeName = value;
