@@ -66,7 +66,9 @@ namespace Xcom2ClassManager.Forms
         
         private void defaultEnableControls()
         {
-            setControlEnable(this, true);
+            bool hasClasses = cSoldierClass.Items.Count > 0;
+
+            setControlEnable(this, hasClasses);
 
             bAddUnfavoredClass.Enabled = false;
             bDeleteUnfavoredClass.Enabled = false;
@@ -86,14 +88,14 @@ namespace Xcom2ClassManager.Forms
             closeToolStripMenuItem.Enabled = true;
             saveToolStripMenuItem.Enabled = !string.IsNullOrEmpty(ProjectState.getClassPack().filePath);
             saveAsToolStripMenuItem.Enabled = true;
-            nicknamesToolStripMenuItem.Enabled = true;
-            exportToolStripMenuItem.Enabled = true;
+            nicknamesToolStripMenuItem.Enabled = hasClasses;
+            exportToolStripMenuItem.Enabled = hasClasses;
             importToolStripMenuItem.Enabled = true;
 
             addToolStripMenuItem.Enabled = true;
-            copyToolStripMenuItem.Enabled = true;
-            renameToolStripMenuItem.Enabled = true;
-            deleteToolStripMenuItem.Enabled = true;
+            copyToolStripMenuItem.Enabled = hasClasses;
+            renameToolStripMenuItem.Enabled = hasClasses;
+            deleteToolStripMenuItem.Enabled = hasClasses;
         }
 
         private void disableAllControls()
@@ -758,6 +760,7 @@ namespace Xcom2ClassManager.Forms
         {
             previousSelectedSoldierClassIndex = -1;
             ProjectState.deleteOpenSoldierClass();
+            selectClass();
         }
 
         #endregion Delete Class
@@ -1012,7 +1015,7 @@ namespace Xcom2ClassManager.Forms
         {
             ClassPack classPack = new ClassPack();
 
-            // TODO once the overview form has a state for no loaded class, remove this
+            // Add a class to start with
             SoldierClass soldierClass = new SoldierClass();
             soldierClass.metadata.internalName = "NewClass";
             classPack.soldierClasses.Add(soldierClass);
@@ -1035,8 +1038,8 @@ namespace Xcom2ClassManager.Forms
 
         private void unloadClassPack()
         {
-            disableAllControls();
             clearAllControls();
+            disableAllControls();
         }
         
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1111,25 +1114,31 @@ namespace Xcom2ClassManager.Forms
 
         private void cSoldierClass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox combo = sender as ComboBox;
-            
-            if (combo != null)
+            selectClass();
+        }
+
+        private void selectClass()
+        {
+            SoldierClass soldierClass = cSoldierClass.SelectedItem as SoldierClass;
+
+            if (previousSelectedSoldierClassIndex > -1 && previousSelectedSoldierClassIndex != cSoldierClass.SelectedIndex && soldierClass != null)
             {
-                SoldierClass soldierClass = combo.SelectedItem as SoldierClass;
-
-                if (previousSelectedSoldierClassIndex > -1 && previousSelectedSoldierClassIndex != cSoldierClass.SelectedIndex && soldierClass != null)
-                {
-                    saveOpenClass();
-                }
-
-                combo.SelectedItem = soldierClass;
-
-                if (soldierClass != null)
-                {
-                    open(soldierClass);
-                    previousSelectedSoldierClassIndex = combo.SelectedIndex;
-                }
+                saveOpenClass();
             }
+
+            cSoldierClass.SelectedItem = soldierClass;
+
+            if (soldierClass != null)
+            {
+                open(soldierClass);
+                previousSelectedSoldierClassIndex = cSoldierClass.SelectedIndex;
+            }
+            else
+            {
+                clearAllControls();
+            }
+
+            defaultEnableControls();
         }
 
         private void saveOpenClass()
@@ -1140,8 +1149,14 @@ namespace Xcom2ClassManager.Forms
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int selectedIndexBefore = cSoldierClass.SelectedIndex;
             SoldierClass newClass = ProjectState.addNewClassPackSoldierClass();
             cSoldierClass.SelectedIndex = cSoldierClass.Items.IndexOf(newClass);
+
+            if (selectedIndexBefore == -1)
+            {
+                selectClass();
+            }
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
