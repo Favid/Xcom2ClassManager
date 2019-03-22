@@ -60,18 +60,10 @@
     <Compile Include="Exporters\XComGameDataIniExporter.cs" />
     <Compile Include="Exporters\XComGameIntExporter.cs" />
     <Compile Include="Exporters\XComGameIntExporterWOTC.cs" />
-    <Compile Include="ExportForXcom\ClassExportManager.cs" />
     <Compile Include="FileManagers\AbilityManager.cs" />
     <Compile Include="FileManagers\SoldierClassImporter.cs" />
-    <Compile Include="FileManagers\XmlSoldierClass.cs" />
     <Compile Include="FileManagers\ClassPackManager.cs" />
     <Compile Include="FileManagers\NicknameManager.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ClassPackExportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,12 +99,6 @@
     </Compile>
     <Compile Include="Forms\RenameForm.Designer.cs">
       <DependentUpon>RenameForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\WeaponForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\WeaponForm.Designer.cs">
-      <DependentUpon>WeaponForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,7 +163,9 @@
     <Content Include="Images\XCOM2_rank_major.png" />
     <Content Include="Images\XCOM2_rank_sergeant.png" />
     <Content Include="Images\XCOM2_rank_squaddie.png" />
-    <None Include="Resources\XCOM2_rank_squaddie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
