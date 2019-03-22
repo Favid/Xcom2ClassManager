@@ -63,7 +63,7 @@ namespace Xcom2ClassManager.Forms
                 List<string> classRequiredMods = soldierClass.getRequiredMods();
                 foreach(string classRequiredMod in classRequiredMods)
                 {
-                    if(!requiredMods.Contains(classRequiredMod))
+                    if(!requiredMods.Contains(classRequiredMod) && classRequiredMod != "None")
                     {
                         requiredMods.Add(classRequiredMod);
                     }
