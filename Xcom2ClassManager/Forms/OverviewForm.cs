@@ -799,9 +799,9 @@ namespace Xcom2ClassManager.Forms
 
         private void bDeleteUnfavoredClass_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem eachItem in lvArmors.SelectedItems)
+            foreach (ListViewItem eachItem in lvUnfavoredClasses.SelectedItems)
             {
-                lvArmors.Items.Remove(eachItem);
+                lvUnfavoredClasses.Items.Remove(eachItem);
             }
         }
 

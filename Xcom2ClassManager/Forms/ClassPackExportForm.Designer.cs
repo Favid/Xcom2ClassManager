@@ -38,7 +38,6 @@
             this.chXcomGameDataIni = new System.Windows.Forms.CheckBox();
             this.chXcomGameInt = new System.Windows.Forms.CheckBox();
             this.chXcomClassDataIni = new System.Windows.Forms.CheckBox();
-            this.chForceVanilla = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chDebugClasses = new System.Windows.Forms.CheckBox();
             this.lRequiredMods = new System.Windows.Forms.ListBox();
@@ -49,7 +48,7 @@
             // chlClasses
             // 
             this.chlClasses.FormattingEnabled = true;
-            this.chlClasses.Location = new System.Drawing.Point(12, 12);
+            this.chlClasses.Location = new System.Drawing.Point(12, 33);
             this.chlClasses.Name = "chlClasses";
             this.chlClasses.Size = new System.Drawing.Size(377, 124);
             this.chlClasses.TabIndex = 0;
@@ -58,7 +57,7 @@
             // laDestination
             // 
             this.laDestination.AutoSize = true;
-            this.laDestination.Location = new System.Drawing.Point(12, 148);
+            this.laDestination.Location = new System.Drawing.Point(9, 9);
             this.laDestination.Name = "laDestination";
             this.laDestination.Size = new System.Drawing.Size(63, 13);
             this.laDestination.TabIndex = 40;
@@ -66,7 +65,7 @@
             // 
             // bBrowse
             // 
-            this.bBrowse.Location = new System.Drawing.Point(309, 145);
+            this.bBrowse.Location = new System.Drawing.Point(306, 6);
             this.bBrowse.Name = "bBrowse";
             this.bBrowse.Size = new System.Drawing.Size(80, 21);
             this.bBrowse.TabIndex = 39;
@@ -76,14 +75,14 @@
             // 
             // tDestination
             // 
-            this.tDestination.Location = new System.Drawing.Point(80, 145);
+            this.tDestination.Location = new System.Drawing.Point(77, 6);
             this.tDestination.Name = "tDestination";
             this.tDestination.Size = new System.Drawing.Size(223, 20);
             this.tDestination.TabIndex = 38;
             // 
             // bExport
             // 
-            this.bExport.Location = new System.Drawing.Point(309, 370);
+            this.bExport.Location = new System.Drawing.Point(637, 265);
             this.bExport.Name = "bExport";
             this.bExport.Size = new System.Drawing.Size(80, 21);
             this.bExport.TabIndex = 41;
@@ -93,7 +92,7 @@
             // 
             // bClose
             // 
-            this.bClose.Location = new System.Drawing.Point(228, 370);
+            this.bClose.Location = new System.Drawing.Point(556, 265);
             this.bClose.Name = "bClose";
             this.bClose.Size = new System.Drawing.Size(75, 21);
             this.bClose.TabIndex = 42;
@@ -106,7 +105,7 @@
             this.groupBox1.Controls.Add(this.chXcomGameDataIni);
             this.groupBox1.Controls.Add(this.chXcomGameInt);
             this.groupBox1.Controls.Add(this.chXcomClassDataIni);
-            this.groupBox1.Location = new System.Drawing.Point(12, 188);
+            this.groupBox1.Location = new System.Drawing.Point(12, 163);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(377, 96);
             this.groupBox1.TabIndex = 43;
@@ -143,23 +142,12 @@
             this.chXcomClassDataIni.Text = "XComClassData.ini";
             this.chXcomClassDataIni.UseVisualStyleBackColor = true;
             // 
-            // chForceVanilla
-            // 
-            this.chForceVanilla.AutoSize = true;
-            this.chForceVanilla.Location = new System.Drawing.Point(6, 19);
-            this.chForceVanilla.Name = "chForceVanilla";
-            this.chForceVanilla.Size = new System.Drawing.Size(148, 17);
-            this.chForceVanilla.TabIndex = 3;
-            this.chForceVanilla.Text = "Force Vanilla Compatibility";
-            this.chForceVanilla.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.chDebugClasses);
-            this.groupBox2.Controls.Add(this.chForceVanilla);
-            this.groupBox2.Location = new System.Drawing.Point(12, 301);
+            this.groupBox2.Location = new System.Drawing.Point(396, 163);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(377, 52);
+            this.groupBox2.Size = new System.Drawing.Size(321, 96);
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Export Options";
@@ -167,7 +155,7 @@
             // chDebugClasses
             // 
             this.chDebugClasses.AutoSize = true;
-            this.chDebugClasses.Location = new System.Drawing.Point(158, 19);
+            this.chDebugClasses.Location = new System.Drawing.Point(7, 19);
             this.chDebugClasses.Name = "chDebugClasses";
             this.chDebugClasses.Size = new System.Drawing.Size(185, 17);
             this.chDebugClasses.TabIndex = 4;
@@ -177,7 +165,7 @@
             // lRequiredMods
             // 
             this.lRequiredMods.FormattingEnabled = true;
-            this.lRequiredMods.Location = new System.Drawing.Point(396, 13);
+            this.lRequiredMods.Location = new System.Drawing.Point(396, 33);
             this.lRequiredMods.Name = "lRequiredMods";
             this.lRequiredMods.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lRequiredMods.Size = new System.Drawing.Size(321, 121);
@@ -187,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 402);
+            this.ClientSize = new System.Drawing.Size(733, 300);
             this.Controls.Add(this.lRequiredMods);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -220,7 +208,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chXcomGameInt;
         private System.Windows.Forms.CheckBox chXcomClassDataIni;
-        private System.Windows.Forms.CheckBox chForceVanilla;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox lRequiredMods;
         private System.Windows.Forms.CheckBox chXcomGameDataIni;
