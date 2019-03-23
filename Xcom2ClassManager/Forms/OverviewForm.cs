@@ -978,7 +978,7 @@ namespace Xcom2ClassManager.Forms
 
                 if (ability != null)
                 {
-                    updateHelpText(ability.description);
+                    updateHelpText(ability);
                 }
             }
         }
@@ -993,7 +993,7 @@ namespace Xcom2ClassManager.Forms
 
                 if (ability != null)
                 {
-                    updateHelpText(ability.description);
+                    updateHelpText(ability);
                 }
             }
         }
@@ -1006,8 +1006,11 @@ namespace Xcom2ClassManager.Forms
             dialog.ShowDialog();
         }
 
-        private void updateHelpText(string text)
+        private void updateHelpText(Ability ability)
         {
+            string text = ability.internalName + "\n";
+            text += ability.displayName + "\n";
+            text += ability.description;
             laHelp.Text = text;
         }
         

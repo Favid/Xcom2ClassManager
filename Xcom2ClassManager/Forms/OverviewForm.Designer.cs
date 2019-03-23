@@ -150,11 +150,11 @@
             this.laTotalDodge = new System.Windows.Forms.Label();
             this.tabAbilities = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tMiddleTree = new System.Windows.Forms.TextBox();
             this.tRightTree = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cSquaddie1 = new System.Windows.Forms.ComboBox();
             this.cSquaddie2 = new System.Windows.Forms.ComboBox();
             this.cBrigadier3 = new System.Windows.Forms.ComboBox();
@@ -182,12 +182,12 @@
             this.cCaptain1 = new System.Windows.Forms.ComboBox();
             this.cLieutenant3 = new System.Windows.Forms.ComboBox();
             this.cSquaddie4 = new System.Windows.Forms.ComboBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.tLeftTree = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.chDragAndDrop = new System.Windows.Forms.CheckBox();
             this.tabNicknames = new System.Windows.Forms.TabPage();
             this.cNicknameGender = new System.Windows.Forms.ComboBox();
@@ -274,14 +274,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.tabAbilities.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabNicknames.SuspendLayout();
             this.tabEquipment.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -317,7 +317,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 99);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(570, 525);
+            this.tabControl1.Size = new System.Drawing.Size(570, 575);
             this.tabControl1.TabIndex = 16;
             // 
             // tabGeneral
@@ -327,7 +327,7 @@
             this.tabGeneral.Controls.Add(this.groupBox1);
             this.tabGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabGeneral.Name = "tabGeneral";
-            this.tabGeneral.Size = new System.Drawing.Size(562, 499);
+            this.tabGeneral.Size = new System.Drawing.Size(562, 549);
             this.tabGeneral.TabIndex = 6;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
@@ -553,7 +553,7 @@
             this.tabStats.Controls.Add(this.tableLayoutPanel2);
             this.tabStats.Location = new System.Drawing.Point(4, 22);
             this.tabStats.Name = "tabStats";
-            this.tabStats.Size = new System.Drawing.Size(562, 499);
+            this.tabStats.Size = new System.Drawing.Size(562, 549);
             this.tabStats.TabIndex = 7;
             this.tabStats.Text = "Stats";
             this.tabStats.UseVisualStyleBackColor = true;
@@ -661,7 +661,7 @@
             this.tableLayoutPanel2.Controls.Add(this.laTotalMobility, 6, 9);
             this.tableLayoutPanel2.Controls.Add(this.laTotalWill, 7, 9);
             this.tableLayoutPanel2.Controls.Add(this.laTotalDodge, 8, 9);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 23);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 48);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 10;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.571031F));
@@ -1668,9 +1668,10 @@
             // 
             this.tabAbilities.Controls.Add(this.tableLayoutPanel1);
             this.tabAbilities.Controls.Add(this.chDragAndDrop);
+            this.tabAbilities.Controls.Add(this.laHelp);
             this.tabAbilities.Location = new System.Drawing.Point(4, 22);
             this.tabAbilities.Name = "tabAbilities";
-            this.tabAbilities.Size = new System.Drawing.Size(562, 499);
+            this.tabAbilities.Size = new System.Drawing.Size(562, 549);
             this.tabAbilities.TabIndex = 8;
             this.tabAbilities.Text = "Abilities";
             this.tabAbilities.UseVisualStyleBackColor = true;
@@ -1722,7 +1723,7 @@
             this.tableLayoutPanel1.Controls.Add(this.pictureBox8, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.tLeftTree, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 14);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 11);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -1736,8 +1737,21 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(556, 412);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(556, 411);
             this.tableLayoutPanel1.TabIndex = 108;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Black;
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.InitialImage = null;
+            this.pictureBox4.Location = new System.Drawing.Point(4, 168);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(85, 34);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox4.TabIndex = 111;
+            this.pictureBox4.TabStop = false;
             // 
             // tMiddleTree
             // 
@@ -1782,19 +1796,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 109;
             this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 127);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 34);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 108;
-            this.pictureBox1.TabStop = false;
             // 
             // cSquaddie1
             // 
@@ -1845,7 +1846,7 @@
             this.cBrigadier3.DisplayMember = "internalName";
             this.cBrigadier3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier3.FormattingEnabled = true;
-            this.cBrigadier3.Location = new System.Drawing.Point(404, 380);
+            this.cBrigadier3.Location = new System.Drawing.Point(404, 379);
             this.cBrigadier3.Name = "cBrigadier3";
             this.cBrigadier3.Size = new System.Drawing.Size(148, 21);
             this.cBrigadier3.TabIndex = 99;
@@ -1885,7 +1886,7 @@
             this.cBrigadier2.DisplayMember = "internalName";
             this.cBrigadier2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier2.FormattingEnabled = true;
-            this.cBrigadier2.Location = new System.Drawing.Point(250, 380);
+            this.cBrigadier2.Location = new System.Drawing.Point(250, 379);
             this.cBrigadier2.Name = "cBrigadier2";
             this.cBrigadier2.Size = new System.Drawing.Size(147, 21);
             this.cBrigadier2.TabIndex = 98;
@@ -1925,7 +1926,7 @@
             this.cBrigadier1.DisplayMember = "internalName";
             this.cBrigadier1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBrigadier1.FormattingEnabled = true;
-            this.cBrigadier1.Location = new System.Drawing.Point(96, 380);
+            this.cBrigadier1.Location = new System.Drawing.Point(96, 379);
             this.cBrigadier1.Name = "cBrigadier1";
             this.cBrigadier1.Size = new System.Drawing.Size(147, 21);
             this.cBrigadier1.TabIndex = 97;
@@ -2336,19 +2337,6 @@
             this.cSquaddie4.DragEnter += new System.Windows.Forms.DragEventHandler(this.cAbility_DragEnter);
             this.cSquaddie4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cAbility_MouseDown);
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Black;
-            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.InitialImage = null;
-            this.pictureBox4.Location = new System.Drawing.Point(4, 168);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(85, 34);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 111;
-            this.pictureBox4.TabStop = false;
-            // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Black;
@@ -2396,7 +2384,7 @@
             this.pictureBox8.InitialImage = null;
             this.pictureBox8.Location = new System.Drawing.Point(4, 373);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(85, 35);
+            this.pictureBox8.Size = new System.Drawing.Size(85, 34);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox8.TabIndex = 116;
             this.pictureBox8.TabStop = false;
@@ -2410,10 +2398,23 @@
             this.tLeftTree.TabIndex = 117;
             this.tLeftTree.WordWrap = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 127);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(85, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 108;
+            this.pictureBox1.TabStop = false;
+            // 
             // chDragAndDrop
             // 
             this.chDragAndDrop.AutoSize = true;
-            this.chDragAndDrop.Location = new System.Drawing.Point(22, 471);
+            this.chDragAndDrop.Location = new System.Drawing.Point(7, 428);
             this.chDragAndDrop.Name = "chDragAndDrop";
             this.chDragAndDrop.Size = new System.Drawing.Size(96, 17);
             this.chDragAndDrop.TabIndex = 107;
@@ -2430,7 +2431,7 @@
             this.tabNicknames.Location = new System.Drawing.Point(4, 22);
             this.tabNicknames.Name = "tabNicknames";
             this.tabNicknames.Padding = new System.Windows.Forms.Padding(3);
-            this.tabNicknames.Size = new System.Drawing.Size(562, 499);
+            this.tabNicknames.Size = new System.Drawing.Size(562, 549);
             this.tabNicknames.TabIndex = 9;
             this.tabNicknames.Text = "Nicknames";
             this.tabNicknames.UseVisualStyleBackColor = true;
@@ -2512,7 +2513,7 @@
             this.tabEquipment.Controls.Add(this.groupBox4);
             this.tabEquipment.Location = new System.Drawing.Point(4, 22);
             this.tabEquipment.Name = "tabEquipment";
-            this.tabEquipment.Size = new System.Drawing.Size(562, 499);
+            this.tabEquipment.Size = new System.Drawing.Size(562, 549);
             this.tabEquipment.TabIndex = 10;
             this.tabEquipment.Text = "Equipment";
             this.tabEquipment.UseVisualStyleBackColor = true;
@@ -2734,7 +2735,7 @@
             this.tabAwc.Location = new System.Drawing.Point(4, 22);
             this.tabAwc.Name = "tabAwc";
             this.tabAwc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAwc.Size = new System.Drawing.Size(562, 499);
+            this.tabAwc.Size = new System.Drawing.Size(562, 549);
             this.tabAwc.TabIndex = 11;
             this.tabAwc.Text = "AWC";
             this.tabAwc.UseVisualStyleBackColor = true;
@@ -2850,9 +2851,12 @@
             this.laHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.laHelp.Location = new System.Drawing.Point(13, 627);
+            this.laHelp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.laHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.laHelp.Location = new System.Drawing.Point(7, 448);
+            this.laHelp.Margin = new System.Windows.Forms.Padding(5);
             this.laHelp.Name = "laHelp";
-            this.laHelp.Size = new System.Drawing.Size(565, 50);
+            this.laHelp.Size = new System.Drawing.Size(548, 95);
             this.laHelp.TabIndex = 17;
             this.laHelp.Text = "Click a parameter label for more details about what each item does.";
             // 
@@ -3036,7 +3040,6 @@
             this.ClientSize = new System.Drawing.Size(594, 686);
             this.Controls.Add(this.laFile);
             this.Controls.Add(this.cSoldierClass);
-            this.Controls.Add(this.laHelp);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.laClass);
             this.Controls.Add(this.menu);
@@ -3072,14 +3075,14 @@
             this.tabAbilities.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabNicknames.ResumeLayout(false);
             this.tabNicknames.PerformLayout();
             this.tabEquipment.ResumeLayout(false);
