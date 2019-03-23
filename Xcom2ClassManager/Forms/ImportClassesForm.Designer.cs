@@ -144,7 +144,7 @@
             // 
             // tDisplayName
             // 
-            this.tDisplayName.Location = new System.Drawing.Point(88, 56);
+            this.tDisplayName.Location = new System.Drawing.Point(97, 56);
             this.tDisplayName.Name = "tDisplayName";
             this.tDisplayName.Size = new System.Drawing.Size(212, 20);
             this.tDisplayName.TabIndex = 31;
@@ -154,13 +154,13 @@
             this.laInternalName.AutoSize = true;
             this.laInternalName.Location = new System.Drawing.Point(6, 33);
             this.laInternalName.Name = "laInternalName";
-            this.laInternalName.Size = new System.Drawing.Size(76, 13);
+            this.laInternalName.Size = new System.Drawing.Size(85, 13);
             this.laInternalName.TabIndex = 30;
-            this.laInternalName.Text = "Internal Name:";
+            this.laInternalName.Text = "Template Name:";
             // 
             // tInternalName
             // 
-            this.tInternalName.Location = new System.Drawing.Point(88, 30);
+            this.tInternalName.Location = new System.Drawing.Point(97, 30);
             this.tInternalName.Name = "tInternalName";
             this.tInternalName.Size = new System.Drawing.Size(212, 20);
             this.tInternalName.TabIndex = 29;

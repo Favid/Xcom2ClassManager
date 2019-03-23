@@ -113,19 +113,39 @@ namespace Xcom2ClassManager.Forms
 
         private void bSave_Click(object sender, EventArgs e)
         {
+            bool validNames = true;
+
+            List<SoldierClass> existingClasses = ProjectState.getClassPack().soldierClasses.ToList();
             List<SoldierClass> selectedClasses = chListClasses.CheckedItems.OfType<SoldierClass>().ToList();
 
-            foreach (SoldierClass soldierClass in selectedClasses)
+            foreach (SoldierClass selectedClass in selectedClasses)
             {
-                ProjectState.addSoldierClass(soldierClass);
+                if (ProjectState.soldierWithNameExists(selectedClass.getInternalName()) ||
+                    selectedClasses.Where(x => x.getInternalName().ToLower() == selectedClass.getInternalName().ToLower()).Count() > 1)
+                {
+                    validNames = false;
+                    break;
+                }
             }
 
-            AbilityManager abilityManager = new AbilityManager();
-            abilityManager.addAbilities(newAbilities);
+            if (validNames)
+            {
+                foreach (SoldierClass soldierClass in selectedClasses)
+                {
+                    ProjectState.addSoldierClass(soldierClass);
+                }
 
-            overviewForm.reloadAbilities();
+                AbilityManager abilityManager = new AbilityManager();
+                abilityManager.addAbilities(newAbilities);
 
-            Close();
+                overviewForm.reloadAbilities();
+
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Class names must be unique");
+            }
         }
 
         private void bUpdate_Click(object sender, EventArgs e)
@@ -172,24 +192,14 @@ namespace Xcom2ClassManager.Forms
             bBrowseClass.Enabled = !imported;
             bBrowseGame.Enabled = !imported;
             bBrowseInt.Enabled = !imported;
+            tModName.Enabled = !imported;
 
             chListClasses.Enabled = imported;
             tInternalName.Enabled = chListClasses.SelectedIndex >= 0;
             tDisplayName.Enabled = chListClasses.SelectedIndex >= 0;
             bUpdate.Enabled = chListClasses.SelectedIndex >= 0;
-
-            List<SoldierClass> selectedClasses = chListClasses.CheckedItems.OfType<SoldierClass>().ToList();
-
-            bool allNamesUnique = true;
-            foreach (SoldierClass soldierClass in selectedClasses)
-            {
-                if (ProjectState.soldierWithNameExists(soldierClass.metadata.internalName))
-                {
-                    allNamesUnique = false;
-                }
-            }
-
-            bSave.Enabled = allNamesUnique && imported && chListClasses.CheckedItems.Count > 0;
+            
+            bSave.Enabled = imported && chListClasses.CheckedItems.Count > 0;
         }
 
         private void chListClasses_ItemCheck(object sender, ItemCheckEventArgs e)

@@ -129,7 +129,7 @@
             // 
             // bUpdate
             // 
-            this.bUpdate.Location = new System.Drawing.Point(225, 193);
+            this.bUpdate.Location = new System.Drawing.Point(234, 191);
             this.bUpdate.Name = "bUpdate";
             this.bUpdate.Size = new System.Drawing.Size(75, 23);
             this.bUpdate.TabIndex = 41;
@@ -141,7 +141,7 @@
             // 
             this.cWeaponSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cWeaponSlot.FormattingEnabled = true;
-            this.cWeaponSlot.Location = new System.Drawing.Point(88, 150);
+            this.cWeaponSlot.Location = new System.Drawing.Point(97, 150);
             this.cWeaponSlot.Name = "cWeaponSlot";
             this.cWeaponSlot.Size = new System.Drawing.Size(212, 21);
             this.cWeaponSlot.TabIndex = 39;
@@ -166,7 +166,7 @@
             // 
             // tDescription
             // 
-            this.tDescription.Location = new System.Drawing.Point(88, 82);
+            this.tDescription.Location = new System.Drawing.Point(97, 82);
             this.tDescription.Multiline = true;
             this.tDescription.Name = "tDescription";
             this.tDescription.Size = new System.Drawing.Size(212, 62);
@@ -183,7 +183,7 @@
             // 
             // tDisplayName
             // 
-            this.tDisplayName.Location = new System.Drawing.Point(88, 56);
+            this.tDisplayName.Location = new System.Drawing.Point(97, 56);
             this.tDisplayName.Name = "tDisplayName";
             this.tDisplayName.Size = new System.Drawing.Size(212, 20);
             this.tDisplayName.TabIndex = 31;
@@ -193,13 +193,13 @@
             this.laInternalName.AutoSize = true;
             this.laInternalName.Location = new System.Drawing.Point(6, 33);
             this.laInternalName.Name = "laInternalName";
-            this.laInternalName.Size = new System.Drawing.Size(76, 13);
+            this.laInternalName.Size = new System.Drawing.Size(85, 13);
             this.laInternalName.TabIndex = 30;
-            this.laInternalName.Text = "Internal Name:";
+            this.laInternalName.Text = "Template Name:";
             // 
             // tInternalName
             // 
-            this.tInternalName.Location = new System.Drawing.Point(88, 30);
+            this.tInternalName.Location = new System.Drawing.Point(97, 30);
             this.tInternalName.Name = "tInternalName";
             this.tInternalName.Size = new System.Drawing.Size(212, 20);
             this.tInternalName.TabIndex = 29;

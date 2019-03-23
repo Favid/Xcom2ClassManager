@@ -39,6 +39,7 @@
             this.tNewName.Name = "tNewName";
             this.tNewName.Size = new System.Drawing.Size(164, 20);
             this.tNewName.TabIndex = 3;
+            this.tNewName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tNewName_KeyPress);
             // 
             // bCancel
             // 
