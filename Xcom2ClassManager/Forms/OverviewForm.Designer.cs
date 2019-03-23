@@ -231,7 +231,6 @@
             this.nBaseAbilityPointsPerPromotion = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.chAllowAwc = new System.Windows.Forms.CheckBox();
-            this.laHelp = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -253,6 +252,7 @@
             this.cSoldierClass = new System.Windows.Forms.ComboBox();
             this.laFile = new System.Windows.Forms.Label();
             this.soldierClassAbilityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tHelp = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -1666,9 +1666,9 @@
             // 
             // tabAbilities
             // 
+            this.tabAbilities.Controls.Add(this.tHelp);
             this.tabAbilities.Controls.Add(this.tableLayoutPanel1);
             this.tabAbilities.Controls.Add(this.chDragAndDrop);
-            this.tabAbilities.Controls.Add(this.laHelp);
             this.tabAbilities.Location = new System.Drawing.Point(4, 22);
             this.tabAbilities.Name = "tabAbilities";
             this.tabAbilities.Size = new System.Drawing.Size(562, 549);
@@ -2846,20 +2846,6 @@
             this.chAllowAwc.Text = "Allow AWC Abilities";
             this.chAllowAwc.UseVisualStyleBackColor = true;
             // 
-            // laHelp
-            // 
-            this.laHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.laHelp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.laHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.laHelp.Location = new System.Drawing.Point(7, 448);
-            this.laHelp.Margin = new System.Windows.Forms.Padding(5);
-            this.laHelp.Name = "laHelp";
-            this.laHelp.Size = new System.Drawing.Size(548, 95);
-            this.laHelp.TabIndex = 17;
-            this.laHelp.Text = "Click a parameter label for more details about what each item does.";
-            // 
             // menu
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -3033,6 +3019,15 @@
             // 
             this.soldierClassAbilityBindingSource.DataSource = typeof(Xcom2ClassManager.SoldierClassAbility);
             // 
+            // tHelp
+            // 
+            this.tHelp.Location = new System.Drawing.Point(7, 451);
+            this.tHelp.Multiline = true;
+            this.tHelp.Name = "tHelp";
+            this.tHelp.ReadOnly = true;
+            this.tHelp.Size = new System.Drawing.Size(548, 87);
+            this.tHelp.TabIndex = 109;
+            // 
             // OverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3109,7 +3104,6 @@
 
         private System.Windows.Forms.Label laClass;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Label laHelp;
         private System.Windows.Forms.TabPage tabGeneral;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
@@ -3328,5 +3322,6 @@
         private System.Windows.Forms.ToolStripMenuItem classesToolStripMenuItem;
         private System.Windows.Forms.Label laFile;
         private System.Windows.Forms.TextBox tMiddleTree;
+        private System.Windows.Forms.TextBox tHelp;
     }
 }

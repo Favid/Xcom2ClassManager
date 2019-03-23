@@ -137,7 +137,7 @@ namespace Xcom2ClassManager.Forms
         {
             clearControl(this);
 
-            laHelp.Text = "";
+            tHelp.Text = "";
         }
 
         private void clearControl(Control control)
@@ -1015,10 +1015,21 @@ namespace Xcom2ClassManager.Forms
 
         private void updateHelpText(Ability ability)
         {
-            string text = ability.internalName + "\n";
-            text += ability.displayName + "\n";
-            text += ability.description;
-            laHelp.Text = text;
+            string text = string.Empty;
+
+            if (ability.internalName != string.Empty)
+            {
+                string weaponSlotText = string.Empty;
+                if (ability.weaponSlot != WeaponSlot.None)
+                {
+                    weaponSlotText = ", " + Enums.getDescription(ability.weaponSlot);
+                }
+
+                text = string.Format("{0}   ({1}{2})", ability.displayName, ability.internalName, weaponSlotText);
+                text += Environment.NewLine + ability.description;
+            }
+
+            tHelp.Text = text;
         }
         
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1146,6 +1157,7 @@ namespace Xcom2ClassManager.Forms
             else
             {
                 clearAllControls();
+                previousSelectedSoldierClassIndex = -1;
             }
 
             defaultEnableControls();

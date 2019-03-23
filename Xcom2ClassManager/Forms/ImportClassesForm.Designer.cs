@@ -35,7 +35,6 @@
             this.tFileInt = new System.Windows.Forms.TextBox();
             this.chListClasses = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bUpdate = new System.Windows.Forms.Button();
             this.laDisplayName = new System.Windows.Forms.Label();
             this.tDisplayName = new System.Windows.Forms.TextBox();
             this.laInternalName = new System.Windows.Forms.Label();
@@ -111,7 +110,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.bUpdate);
             this.groupBox1.Controls.Add(this.laDisplayName);
             this.groupBox1.Controls.Add(this.tDisplayName);
             this.groupBox1.Controls.Add(this.laInternalName);
@@ -122,16 +120,6 @@
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Class Metadata";
-            // 
-            // bUpdate
-            // 
-            this.bUpdate.Location = new System.Drawing.Point(225, 95);
-            this.bUpdate.Name = "bUpdate";
-            this.bUpdate.Size = new System.Drawing.Size(75, 23);
-            this.bUpdate.TabIndex = 41;
-            this.bUpdate.Text = "Update";
-            this.bUpdate.UseVisualStyleBackColor = true;
-            this.bUpdate.Click += new System.EventHandler(this.bUpdate_Click);
             // 
             // laDisplayName
             // 
@@ -148,6 +136,7 @@
             this.tDisplayName.Name = "tDisplayName";
             this.tDisplayName.Size = new System.Drawing.Size(212, 20);
             this.tDisplayName.TabIndex = 31;
+            this.tDisplayName.Leave += new System.EventHandler(this.tDisplayName_Leave);
             // 
             // laInternalName
             // 
@@ -164,6 +153,7 @@
             this.tInternalName.Name = "tInternalName";
             this.tInternalName.Size = new System.Drawing.Size(212, 20);
             this.tInternalName.TabIndex = 29;
+            this.tInternalName.Leave += new System.EventHandler(this.tInternalName_Leave);
             // 
             // laFileClass
             // 
@@ -292,7 +282,6 @@
         private System.Windows.Forms.Label laFileClass;
         private System.Windows.Forms.TextBox tFileClass;
         private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bUpdate;
         private System.Windows.Forms.Button bBrowseClass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tFileGame;

@@ -147,18 +147,6 @@ namespace Xcom2ClassManager.Forms
                 MessageBox.Show("Class names must be unique");
             }
         }
-
-        private void bUpdate_Click(object sender, EventArgs e)
-        {
-            SoldierClass soldierClass = (SoldierClass)chListClasses.SelectedItem;
-            
-            soldierClass.metadata.internalName = tInternalName.Text;
-            soldierClass.metadata.displayName = tDisplayName.Text;
-
-            chListClasses.Refresh();
-
-            updateControls();
-        }
         
         private ValidationResult validateFile(string fileName, string expectedFileName)
         {
@@ -197,7 +185,6 @@ namespace Xcom2ClassManager.Forms
             chListClasses.Enabled = imported;
             tInternalName.Enabled = chListClasses.SelectedIndex >= 0;
             tDisplayName.Enabled = chListClasses.SelectedIndex >= 0;
-            bUpdate.Enabled = chListClasses.SelectedIndex >= 0;
             
             bSave.Enabled = imported && chListClasses.CheckedItems.Count > 0;
         }
@@ -209,6 +196,26 @@ namespace Xcom2ClassManager.Forms
 
         private void tModName_TextChanged(object sender, EventArgs e)
         {
+            updateControls();
+        }
+
+        private void tInternalName_Leave(object sender, EventArgs e)
+        {
+            SoldierClass soldierClass = (SoldierClass)chListClasses.SelectedItem;
+            soldierClass.metadata.internalName = tInternalName.Text;
+
+            chListClasses.Refresh();
+
+            updateControls();
+        }
+
+        private void tDisplayName_Leave(object sender, EventArgs e)
+        {
+            SoldierClass soldierClass = (SoldierClass)chListClasses.SelectedItem;
+            soldierClass.metadata.displayName = tDisplayName.Text;
+
+            chListClasses.Refresh();
+
             updateControls();
         }
     }

@@ -184,13 +184,39 @@ namespace Xcom2ClassManager.Forms
             Close();
         }
 
-        private void bUpdate_Click(object sender, EventArgs e)
+        private void tInternalName_Leave(object sender, EventArgs e)
         {
             Ability selectedAbility = (Ability)chListAbilities.SelectedItem;
             selectedAbility.internalName = tInternalName.Text;
+
+            chListAbilities.Refresh();
+        }
+
+        private void tDisplayName_Leave(object sender, EventArgs e)
+        {
+            Ability selectedAbility = (Ability)chListAbilities.SelectedItem;
             selectedAbility.displayName = tDisplayName.Text;
+
+            chListAbilities.Refresh();
+        }
+
+        private void tDescription_Leave(object sender, EventArgs e)
+        {
+            Ability selectedAbility = (Ability)chListAbilities.SelectedItem;
             selectedAbility.description = tDescription.Text;
-            selectedAbility.weaponSlot = (WeaponSlot)cWeaponSlot.SelectedItem;
+
+            chListAbilities.Refresh();
+        }
+
+        private void cWeaponSlot_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Ability selectedAbility = (Ability)chListAbilities.SelectedItem;
+
+            if (selectedAbility != null)
+            {
+                selectedAbility.weaponSlot = (WeaponSlot)cWeaponSlot.SelectedItem;
+                chListAbilities.Refresh();
+            }
         }
     }
 }

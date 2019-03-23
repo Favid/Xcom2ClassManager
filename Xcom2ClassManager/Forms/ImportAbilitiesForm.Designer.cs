@@ -35,7 +35,6 @@
             this.tFileInt = new System.Windows.Forms.TextBox();
             this.chListAbilities = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bUpdate = new System.Windows.Forms.Button();
             this.cWeaponSlot = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.laDescription = new System.Windows.Forms.Label();
@@ -111,7 +110,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.bUpdate);
             this.groupBox1.Controls.Add(this.cWeaponSlot);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.laDescription);
@@ -127,16 +125,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ability Metadata";
             // 
-            // bUpdate
-            // 
-            this.bUpdate.Location = new System.Drawing.Point(234, 191);
-            this.bUpdate.Name = "bUpdate";
-            this.bUpdate.Size = new System.Drawing.Size(75, 23);
-            this.bUpdate.TabIndex = 41;
-            this.bUpdate.Text = "Update";
-            this.bUpdate.UseVisualStyleBackColor = true;
-            this.bUpdate.Click += new System.EventHandler(this.bUpdate_Click);
-            // 
             // cWeaponSlot
             // 
             this.cWeaponSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -145,6 +133,7 @@
             this.cWeaponSlot.Name = "cWeaponSlot";
             this.cWeaponSlot.Size = new System.Drawing.Size(212, 21);
             this.cWeaponSlot.TabIndex = 39;
+            this.cWeaponSlot.SelectedValueChanged += new System.EventHandler(this.cWeaponSlot_SelectedValueChanged);
             // 
             // label1
             // 
@@ -171,6 +160,7 @@
             this.tDescription.Name = "tDescription";
             this.tDescription.Size = new System.Drawing.Size(212, 62);
             this.tDescription.TabIndex = 33;
+            this.tDescription.Leave += new System.EventHandler(this.tDescription_Leave);
             // 
             // laDisplayName
             // 
@@ -187,6 +177,7 @@
             this.tDisplayName.Name = "tDisplayName";
             this.tDisplayName.Size = new System.Drawing.Size(212, 20);
             this.tDisplayName.TabIndex = 31;
+            this.tDisplayName.Leave += new System.EventHandler(this.tDisplayName_Leave);
             // 
             // laInternalName
             // 
@@ -203,6 +194,7 @@
             this.tInternalName.Name = "tInternalName";
             this.tInternalName.Size = new System.Drawing.Size(212, 20);
             this.tInternalName.TabIndex = 29;
+            this.tInternalName.Leave += new System.EventHandler(this.tInternalName_Leave);
             // 
             // laRequiredMod
             // 
@@ -305,7 +297,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cWeaponSlot;
         private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bUpdate;
         private System.Windows.Forms.TextBox tFileClass;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button bBrowseClass;
