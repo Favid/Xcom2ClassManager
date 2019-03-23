@@ -26,6 +26,7 @@ namespace Xcom2ClassManager.FileManagers
 
         private List<SoldierClass> soldierClasses;
         private List<MissingAbilityEntry> missingAbilities;
+        private List<Ability> newAbilities;
         private string intFile;
         private string classFile;
         private string gameFile;
@@ -42,13 +43,14 @@ namespace Xcom2ClassManager.FileManagers
             intDelimitters.Add('\"');
         }
 
-        public List<SoldierClass> importSoldierClasses(string intFile, string classFile, string gameFile)
+        public List<SoldierClass> importSoldierClasses(string intFile, string classFile, string gameFile, out List<Ability> newAbilities)
         {
             soldierClasses = new List<SoldierClass>();
             missingAbilities = new List<MissingAbilityEntry>();
             this.intFile = intFile;
             this.classFile = classFile;
             this.gameFile = gameFile;
+            this.newAbilities = new List<Ability>();
 
             importClassFile();
             importIntFile();
@@ -56,6 +58,8 @@ namespace Xcom2ClassManager.FileManagers
 
             padSoldierStats();
             padSoldierAbilities();
+
+            newAbilities = this.newAbilities;
 
             return soldierClasses;
         }
@@ -423,10 +427,7 @@ namespace Xcom2ClassManager.FileManagers
                 }
             }
 
-            // TODO this probably shouldn't be done yet
-            AbilityManager abilityManager = new AbilityManager();
-            abilityManager.addAbilities(foundAbilities.Where(x => x.requiredMod == "Class Import").ToList());
-            ProjectState.reloadAbilities();
+            newAbilities = foundAbilities.Where(x => x.requiredMod == "Class Import").ToList();
         }
 
         private void importGameFile()

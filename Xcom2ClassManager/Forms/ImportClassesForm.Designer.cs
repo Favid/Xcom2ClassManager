@@ -47,6 +47,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tFileGame = new System.Windows.Forms.TextBox();
             this.bBrowseGame = new System.Windows.Forms.Button();
+            this.tModName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +73,7 @@
             // 
             // bImport
             // 
-            this.bImport.Location = new System.Drawing.Point(439, 91);
+            this.bImport.Location = new System.Drawing.Point(439, 89);
             this.bImport.Name = "bImport";
             this.bImport.Size = new System.Drawing.Size(75, 23);
             this.bImport.TabIndex = 36;
@@ -227,11 +229,30 @@
             this.bBrowseGame.UseVisualStyleBackColor = true;
             this.bBrowseGame.Click += new System.EventHandler(this.bBrowseGame_Click);
             // 
+            // tModName
+            // 
+            this.tModName.Location = new System.Drawing.Point(120, 90);
+            this.tModName.Name = "tModName";
+            this.tModName.Size = new System.Drawing.Size(313, 20);
+            this.tModName.TabIndex = 45;
+            this.tModName.TextChanged += new System.EventHandler(this.tModName_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Mod Name:";
+            // 
             // ImportClassesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 328);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tModName);
             this.Controls.Add(this.bBrowseGame);
             this.Controls.Add(this.tFileGame);
             this.Controls.Add(this.label1);
@@ -276,5 +297,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tFileGame;
         private System.Windows.Forms.Button bBrowseGame;
+        private System.Windows.Forms.TextBox tModName;
+        private System.Windows.Forms.Label label2;
     }
 }

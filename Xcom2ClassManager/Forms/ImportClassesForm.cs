@@ -10,25 +10,27 @@ namespace Xcom2ClassManager.Forms
     public partial class ImportClassesForm : Form
     {
         private bool imported;
+        private List<Ability> newAbilities;
 
         public ImportClassesForm()
         {
             InitializeComponent();
 
             imported = false;
+            newAbilities = new List<Ability>();
 
             updateControls();
         }
 
         private void bImport_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(tFileInt.Text) || string.IsNullOrEmpty(tFileClass.Text) || string.IsNullOrEmpty(tFileGame.Text))
+            if (string.IsNullOrEmpty(tFileInt.Text) || string.IsNullOrEmpty(tFileClass.Text) || string.IsNullOrEmpty(tFileGame.Text) || string.IsNullOrEmpty(tModName.Text))
             {
                 return;
             }
 
             SoldierClassImporter importer = new SoldierClassImporter();
-            List<SoldierClass> newClasses = importer.importSoldierClasses(tFileInt.Text, tFileClass.Text, tFileGame.Text);
+            List<SoldierClass> newClasses = importer.importSoldierClasses(tFileInt.Text, tFileClass.Text, tFileGame.Text, out newAbilities);
             foreach (SoldierClass newClass in newClasses)
             {
                 chListClasses.Items.Add(newClass, true);
@@ -116,6 +118,15 @@ namespace Xcom2ClassManager.Forms
                 ProjectState.addSoldierClass(soldierClass);
             }
 
+            foreach (Ability ability in newAbilities)
+            {
+                ability.requiredMod = tModName.Text;
+            }
+
+            AbilityManager abilityManager = new AbilityManager();
+            abilityManager.addAbilities(newAbilities);
+            ProjectState.reloadAbilities();
+
             Close();
         }
 
@@ -156,7 +167,8 @@ namespace Xcom2ClassManager.Forms
         {
             bool filesSelected = (tFileClass.Text != string.Empty &&
                                   tFileGame.Text != string.Empty &&
-                                  tFileInt.Text != string.Empty);
+                                  tFileInt.Text != string.Empty &&
+                                  tModName.Text != string.Empty);
 
             bImport.Enabled = !imported && filesSelected;
             bBrowseClass.Enabled = !imported;
@@ -183,6 +195,11 @@ namespace Xcom2ClassManager.Forms
         }
 
         private void chListClasses_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            updateControls();
+        }
+
+        private void tModName_TextChanged(object sender, EventArgs e)
         {
             updateControls();
         }
