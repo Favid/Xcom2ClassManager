@@ -21,7 +21,7 @@ namespace UnitTest
             string classFile = "D:\\Dev\\X2CM Unit tests\\Test_LW2\\XComClassData.ini";
             string intFile = "D:\\Dev\\X2CM Unit tests\\Test_LW2\\XComGame.int";
             string gameFile = "D:\\Dev\\X2CM Unit tests\\Test_LW2\\XComGameData.ini";
-            List<SoldierClass> actual = importer.importSoldierClasses(intFile, classFile, gameFile, "Unit Test", true, out List<Ability> test);
+            List<SoldierClass> actual = importer.importSoldierClasses(intFile, classFile, gameFile, "Unit Test", out List<Ability> test);
             
             string expectedFile = "D:\\Dev\\X2CM Unit tests\\Test_LW2\\LW2 import.xml";
             FileStream myStream = new FileStream(expectedFile, FileMode.Open);

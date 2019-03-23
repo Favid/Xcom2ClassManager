@@ -45,7 +45,7 @@ namespace Xcom2ClassManager.FileManagers
             intDelimitters.Add('\"');
         }
 
-        public List<SoldierClass> importSoldierClasses(string intFile, string classFile, string gameFile, string modName, bool onlyClassAbility, out List<Ability> newAbilities)
+        public List<SoldierClass> importSoldierClasses(string intFile, string classFile, string gameFile, string modName, out List<Ability> newAbilities)
         {
             soldierClasses = new List<SoldierClass>();
             missingAbilities = new List<MissingAbilityEntry>();
@@ -53,7 +53,7 @@ namespace Xcom2ClassManager.FileManagers
             this.classFile = classFile;
             this.gameFile = gameFile;
             this.modName = modName;
-            this.onlyClassAbility = onlyClassAbility;
+            this.onlyClassAbility = true;
             this.newAbilities = new List<Ability>();
 
             importClassFile();
@@ -66,6 +66,37 @@ namespace Xcom2ClassManager.FileManagers
             newAbilities = this.newAbilities;
 
             return soldierClasses;
+        }
+
+        public List<Ability> importAbilities(string intFile, string classFile, string modName)
+        {
+            soldierClasses = new List<SoldierClass>();
+            missingAbilities = new List<MissingAbilityEntry>();
+            this.intFile = intFile;
+            this.classFile = classFile;
+            this.modName = modName;
+            this.onlyClassAbility = false;
+            this.newAbilities = new List<Ability>();
+
+            importClassFile();
+            importIntFile();
+            
+            return newAbilities;
+        }
+
+        public List<Ability> importAbilities(string intFile, string modName)
+        {
+            soldierClasses = new List<SoldierClass>();
+            missingAbilities = new List<MissingAbilityEntry>();
+            this.intFile = intFile;
+            this.classFile = string.Empty;
+            this.modName = modName;
+            this.onlyClassAbility = false;
+            this.newAbilities = new List<Ability>();
+            
+            importIntFile();
+
+            return newAbilities;
         }
 
         private void importClassFile()

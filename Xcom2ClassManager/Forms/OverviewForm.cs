@@ -1009,7 +1009,7 @@ namespace Xcom2ClassManager.Forms
 
         private void abilitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ImportAbilitiesForm dialog = new ImportAbilitiesForm(ProjectState.getAbilities());
+            ImportAbilitiesForm dialog = new ImportAbilitiesForm(this, ProjectState.getAbilities());
             dialog.ShowDialog();
         }
 

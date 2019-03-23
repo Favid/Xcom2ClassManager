@@ -31,8 +31,8 @@
             this.bClose = new System.Windows.Forms.Button();
             this.laFile = new System.Windows.Forms.Label();
             this.bImport = new System.Windows.Forms.Button();
-            this.bBrowse = new System.Windows.Forms.Button();
-            this.tFile = new System.Windows.Forms.TextBox();
+            this.bBrowseInt = new System.Windows.Forms.Button();
+            this.tFileInt = new System.Windows.Forms.TextBox();
             this.chListAbilities = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bUpdate = new System.Windows.Forms.Button();
@@ -45,14 +45,17 @@
             this.laInternalName = new System.Windows.Forms.Label();
             this.tInternalName = new System.Windows.Forms.TextBox();
             this.laRequiredMod = new System.Windows.Forms.Label();
-            this.tRequiredMod = new System.Windows.Forms.TextBox();
+            this.tModName = new System.Windows.Forms.TextBox();
             this.bSave = new System.Windows.Forms.Button();
+            this.tFileClass = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bBrowseClass = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bClose
             // 
-            this.bClose.Location = new System.Drawing.Point(388, 372);
+            this.bClose.Location = new System.Drawing.Point(358, 358);
             this.bClose.Name = "bClose";
             this.bClose.Size = new System.Drawing.Size(75, 23);
             this.bClose.TabIndex = 38;
@@ -63,15 +66,15 @@
             // laFile
             // 
             this.laFile.AutoSize = true;
-            this.laFile.Location = new System.Drawing.Point(12, 18);
+            this.laFile.Location = new System.Drawing.Point(12, 15);
             this.laFile.Name = "laFile";
-            this.laFile.Size = new System.Drawing.Size(47, 13);
+            this.laFile.Size = new System.Drawing.Size(87, 13);
             this.laFile.TabIndex = 37;
-            this.laFile.Text = "INT File:";
+            this.laFile.Text = "XComGame.INT:";
             // 
             // bImport
             // 
-            this.bImport.Location = new System.Drawing.Point(469, 13);
+            this.bImport.Location = new System.Drawing.Point(439, 62);
             this.bImport.Name = "bImport";
             this.bImport.Size = new System.Drawing.Size(75, 23);
             this.bImport.TabIndex = 36;
@@ -79,29 +82,30 @@
             this.bImport.UseVisualStyleBackColor = true;
             this.bImport.Click += new System.EventHandler(this.bImport_Click);
             // 
-            // bBrowse
+            // bBrowseInt
             // 
-            this.bBrowse.Location = new System.Drawing.Point(388, 13);
-            this.bBrowse.Name = "bBrowse";
-            this.bBrowse.Size = new System.Drawing.Size(75, 23);
-            this.bBrowse.TabIndex = 35;
-            this.bBrowse.Text = "Browse";
-            this.bBrowse.UseVisualStyleBackColor = true;
-            this.bBrowse.Click += new System.EventHandler(this.bBrowse_Click);
+            this.bBrowseInt.Location = new System.Drawing.Point(439, 10);
+            this.bBrowseInt.Name = "bBrowseInt";
+            this.bBrowseInt.Size = new System.Drawing.Size(75, 23);
+            this.bBrowseInt.TabIndex = 35;
+            this.bBrowseInt.Text = "Browse";
+            this.bBrowseInt.UseVisualStyleBackColor = true;
+            this.bBrowseInt.Click += new System.EventHandler(this.bBrowseInt_Click);
             // 
-            // tFile
+            // tFileInt
             // 
-            this.tFile.Location = new System.Drawing.Point(80, 13);
-            this.tFile.Name = "tFile";
-            this.tFile.Size = new System.Drawing.Size(290, 20);
-            this.tFile.TabIndex = 34;
+            this.tFileInt.Location = new System.Drawing.Point(120, 12);
+            this.tFileInt.Name = "tFileInt";
+            this.tFileInt.ReadOnly = true;
+            this.tFileInt.Size = new System.Drawing.Size(313, 20);
+            this.tFileInt.TabIndex = 34;
             // 
-            // chListClasses
+            // chListAbilities
             // 
             this.chListAbilities.FormattingEnabled = true;
-            this.chListAbilities.Location = new System.Drawing.Point(15, 74);
-            this.chListAbilities.Name = "chListClasses";
-            this.chListAbilities.Size = new System.Drawing.Size(178, 289);
+            this.chListAbilities.Location = new System.Drawing.Point(12, 101);
+            this.chListAbilities.Name = "chListAbilities";
+            this.chListAbilities.Size = new System.Drawing.Size(178, 229);
             this.chListAbilities.TabIndex = 33;
             this.chListAbilities.SelectedValueChanged += new System.EventHandler(this.chListClasses_SelectedValueChanged);
             // 
@@ -116,16 +120,16 @@
             this.groupBox1.Controls.Add(this.tDisplayName);
             this.groupBox1.Controls.Add(this.laInternalName);
             this.groupBox1.Controls.Add(this.tInternalName);
-            this.groupBox1.Location = new System.Drawing.Point(229, 74);
+            this.groupBox1.Location = new System.Drawing.Point(199, 101);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 289);
+            this.groupBox1.Size = new System.Drawing.Size(315, 229);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ability Metadata";
             // 
             // bUpdate
             // 
-            this.bUpdate.Location = new System.Drawing.Point(225, 251);
+            this.bUpdate.Location = new System.Drawing.Point(225, 193);
             this.bUpdate.Name = "bUpdate";
             this.bUpdate.Size = new System.Drawing.Size(75, 23);
             this.bUpdate.TabIndex = 41;
@@ -137,7 +141,7 @@
             // 
             this.cWeaponSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cWeaponSlot.FormattingEnabled = true;
-            this.cWeaponSlot.Location = new System.Drawing.Point(88, 208);
+            this.cWeaponSlot.Location = new System.Drawing.Point(88, 150);
             this.cWeaponSlot.Name = "cWeaponSlot";
             this.cWeaponSlot.Size = new System.Drawing.Size(212, 21);
             this.cWeaponSlot.TabIndex = 39;
@@ -145,7 +149,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 211);
+            this.label1.Location = new System.Drawing.Point(6, 153);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 36;
@@ -165,7 +169,7 @@
             this.tDescription.Location = new System.Drawing.Point(88, 82);
             this.tDescription.Multiline = true;
             this.tDescription.Name = "tDescription";
-            this.tDescription.Size = new System.Drawing.Size(212, 120);
+            this.tDescription.Size = new System.Drawing.Size(212, 62);
             this.tDescription.TabIndex = 33;
             // 
             // laDisplayName
@@ -203,22 +207,22 @@
             // laRequiredMod
             // 
             this.laRequiredMod.AutoSize = true;
-            this.laRequiredMod.Location = new System.Drawing.Point(12, 42);
+            this.laRequiredMod.Location = new System.Drawing.Point(12, 68);
             this.laRequiredMod.Name = "laRequiredMod";
             this.laRequiredMod.Size = new System.Drawing.Size(62, 13);
             this.laRequiredMod.TabIndex = 38;
             this.laRequiredMod.Text = "Mod Name:";
             // 
-            // tRequiredMod
+            // tModName
             // 
-            this.tRequiredMod.Location = new System.Drawing.Point(80, 39);
-            this.tRequiredMod.Name = "tRequiredMod";
-            this.tRequiredMod.Size = new System.Drawing.Size(290, 20);
-            this.tRequiredMod.TabIndex = 37;
+            this.tModName.Location = new System.Drawing.Point(120, 64);
+            this.tModName.Name = "tModName";
+            this.tModName.Size = new System.Drawing.Size(313, 20);
+            this.tModName.TabIndex = 37;
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(469, 372);
+            this.bSave.Location = new System.Drawing.Point(439, 358);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(75, 23);
             this.bSave.TabIndex = 40;
@@ -226,20 +230,51 @@
             this.bSave.UseVisualStyleBackColor = true;
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
+            // tFileClass
+            // 
+            this.tFileClass.Location = new System.Drawing.Point(120, 38);
+            this.tFileClass.Name = "tFileClass";
+            this.tFileClass.ReadOnly = true;
+            this.tFileClass.Size = new System.Drawing.Size(313, 20);
+            this.tFileClass.TabIndex = 41;
+            this.tFileClass.Text = "     (Optional)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "XComClassData.ini:";
+            // 
+            // bBrowseClass
+            // 
+            this.bBrowseClass.Location = new System.Drawing.Point(439, 36);
+            this.bBrowseClass.Name = "bBrowseClass";
+            this.bBrowseClass.Size = new System.Drawing.Size(75, 23);
+            this.bBrowseClass.TabIndex = 43;
+            this.bBrowseClass.Text = "Browse";
+            this.bBrowseClass.UseVisualStyleBackColor = true;
+            this.bBrowseClass.Click += new System.EventHandler(this.bBrowseClass_Click);
+            // 
             // ImportAbilitiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 407);
+            this.ClientSize = new System.Drawing.Size(526, 393);
+            this.Controls.Add(this.bBrowseClass);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tFileClass);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.laRequiredMod);
-            this.Controls.Add(this.tRequiredMod);
+            this.Controls.Add(this.tModName);
             this.Controls.Add(this.bClose);
             this.Controls.Add(this.laFile);
             this.Controls.Add(this.bImport);
-            this.Controls.Add(this.bBrowse);
-            this.Controls.Add(this.tFile);
+            this.Controls.Add(this.bBrowseInt);
+            this.Controls.Add(this.tFileInt);
             this.Controls.Add(this.chListAbilities);
             this.Name = "ImportAbilitiesForm";
             this.Text = "ImportAbilities";
@@ -255,8 +290,8 @@
         private System.Windows.Forms.Button bClose;
         private System.Windows.Forms.Label laFile;
         private System.Windows.Forms.Button bImport;
-        private System.Windows.Forms.Button bBrowse;
-        private System.Windows.Forms.TextBox tFile;
+        private System.Windows.Forms.Button bBrowseInt;
+        private System.Windows.Forms.TextBox tFileInt;
         private System.Windows.Forms.CheckedListBox chListAbilities;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label laDescription;
@@ -266,10 +301,13 @@
         private System.Windows.Forms.Label laInternalName;
         private System.Windows.Forms.TextBox tInternalName;
         private System.Windows.Forms.Label laRequiredMod;
-        private System.Windows.Forms.TextBox tRequiredMod;
+        private System.Windows.Forms.TextBox tModName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cWeaponSlot;
         private System.Windows.Forms.Button bSave;
         private System.Windows.Forms.Button bUpdate;
+        private System.Windows.Forms.TextBox tFileClass;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button bBrowseClass;
     }
 }

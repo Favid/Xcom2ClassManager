@@ -16,11 +16,13 @@ namespace Xcom2ClassManager.Forms
     public partial class ImportAbilitiesForm : Form
     {
         private List<Ability> allAbilities;
+        private OverviewForm overviewForm;
 
-        public ImportAbilitiesForm(List<Ability> allAbilities)
+        public ImportAbilitiesForm(OverviewForm overviewForm, List<Ability> allAbilities)
         {
             InitializeComponent();
 
+            this.overviewForm = overviewForm;
             this.allAbilities = allAbilities;
 
             List<WeaponSlot> weaponSlots = new List<WeaponSlot>();
@@ -37,38 +39,26 @@ namespace Xcom2ClassManager.Forms
 
         private void bImport_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(tFile.Text))
+            if (string.IsNullOrEmpty(tFileInt.Text) || string.IsNullOrEmpty(tModName.Text))
             {
                 return;
             }
+            
+            SoldierClassImporter importer = new SoldierClassImporter();
 
-            List<Ability> foundAbilities = new List<Ability>();
+            List<Ability> newAbilities;
 
-            int counter = 0;
-            string line;
-
-            StreamReader file = new StreamReader(tFile.Text);
-            while ((line = file.ReadLine()) != null)
+            if (string.IsNullOrEmpty(tFileClass.Text) || tFileClass.Text == "     (Optional)")
             {
-                if (line.Contains(" X2AbilityTemplate]"))
-                {
-                    Ability foundAbility = importAbility(file, line);
-
-                    // TODO Kind of a hack - Ignoresabilities whose names already exist
-                    // Will probably want an overwrite option in the future
-                    if (foundAbilities.Where(x => x.internalName.Equals(foundAbility.internalName, StringComparison.OrdinalIgnoreCase)).Count() == 0
-                        && allAbilities.Where(x => x.internalName.Equals(foundAbility.internalName, StringComparison.OrdinalIgnoreCase)).Count() == 0)
-                    {
-                        foundAbilities.Add(foundAbility);
-                    }
-                }
-                counter++;
+                newAbilities = importer.importAbilities(tFileInt.Text, tModName.Text);
             }
-
-            file.Close();
-
-            foundAbilities = foundAbilities.OrderBy(x => x.internalName).ToList();
-            foreach (Ability foundAbility in foundAbilities)
+            else
+            {
+                newAbilities = importer.importAbilities(tFileInt.Text, tFileClass.Text, tModName.Text);
+            }
+            
+            newAbilities = newAbilities.OrderBy(x => x.internalName).ToList();
+            foreach (Ability foundAbility in newAbilities)
             {
                 chListAbilities.Items.Add(foundAbility);
             }
@@ -100,8 +90,21 @@ namespace Xcom2ClassManager.Forms
             return ability;
         }
 
-        private void bBrowse_Click(object sender, EventArgs e)
+        private void bBrowseInt_Click(object sender, EventArgs e)
         {
+            tFileInt.Text = browse("XComGame.INT");
+            //updateControls();
+        }
+        private void bBrowseClass_Click(object sender, EventArgs e)
+        {
+            tFileClass.Text = browse("XComClassData.ini");
+            //updateControls();
+        }
+
+        private string browse(string expectedFileName)
+        {
+            string result = string.Empty;
+
             ValidationResult validFolder = new ValidationResult();
             validFolder.valid = false;
 
@@ -114,7 +117,7 @@ namespace Xcom2ClassManager.Forms
 
                 if (dialogResult == DialogResult.OK)
                 {
-                    validFolder = validateIntFile(dialog.FileName);
+                    validFolder = validateFile(dialog.FileName, expectedFileName);
 
                     if (!validFolder.valid)
                     {
@@ -123,23 +126,25 @@ namespace Xcom2ClassManager.Forms
                 }
                 else
                 {
-                    return;
+                    return result;
                 }
             } while (!validFolder.valid);
 
-            tFile.Text = dialog.FileName;
+            result = dialog.FileName;
+
+            return result;
         }
 
-        private ValidationResult validateIntFile(string fileName)
+        private ValidationResult validateFile(string fileName, string expectedFileName)
         {
             ValidationResult validFile = new ValidationResult();
             validFile.valid = true;
             validFile.message = "";
 
-            if (!fileName.EndsWith("XComGame.INT", StringComparison.OrdinalIgnoreCase))
+            if (!fileName.EndsWith(expectedFileName, StringComparison.OrdinalIgnoreCase))
             {
                 validFile.valid = false;
-                validFile.message += "Must select XComGame.INT file.";
+                validFile.message += string.Format("Must select {0} file.", expectedFileName);
                 validFile.message += "\n";
             }
 
@@ -170,17 +175,13 @@ namespace Xcom2ClassManager.Forms
         private void bSave_Click(object sender, EventArgs e)
         {
             List<Ability> selectedAbilities = chListAbilities.CheckedItems.OfType<Ability>().ToList();
-            int abilityIdIncrementor = 0;
-
-            foreach (Ability ability in selectedAbilities)
-            {
-                ability.id = ProjectState.getNextAbilityId() + abilityIdIncrementor;
-                abilityIdIncrementor++;
-                ability.requiredMod = tRequiredMod.Text;
-            }
+            
             AbilityManager abilityManager = new AbilityManager();
             abilityManager.addAbilities(selectedAbilities);
-            ProjectState.reloadAbilities();
+
+            overviewForm.reloadAbilities();
+
+            Close();
         }
 
         private void bUpdate_Click(object sender, EventArgs e)
@@ -190,8 +191,6 @@ namespace Xcom2ClassManager.Forms
             selectedAbility.displayName = tDisplayName.Text;
             selectedAbility.description = tDescription.Text;
             selectedAbility.weaponSlot = (WeaponSlot)cWeaponSlot.SelectedItem;
-
-
         }
     }
 }
