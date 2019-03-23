@@ -30,6 +30,8 @@ namespace Xcom2ClassManager.FileManagers
         private string intFile;
         private string classFile;
         private string gameFile;
+        private string modName;
+        private bool onlyClassAbility;
 
         public SoldierClassImporter()
         {
@@ -43,13 +45,15 @@ namespace Xcom2ClassManager.FileManagers
             intDelimitters.Add('\"');
         }
 
-        public List<SoldierClass> importSoldierClasses(string intFile, string classFile, string gameFile, out List<Ability> newAbilities)
+        public List<SoldierClass> importSoldierClasses(string intFile, string classFile, string gameFile, string modName, bool onlyClassAbility, out List<Ability> newAbilities)
         {
             soldierClasses = new List<SoldierClass>();
             missingAbilities = new List<MissingAbilityEntry>();
             this.intFile = intFile;
             this.classFile = classFile;
             this.gameFile = gameFile;
+            this.modName = modName;
+            this.onlyClassAbility = onlyClassAbility;
             this.newAbilities = new List<Ability>();
 
             importClassFile();
@@ -355,7 +359,7 @@ namespace Xcom2ClassManager.FileManagers
                     }
                     else if (line.ToLower().Contains("AbilityTreeTitles[1]".ToLower()))
                     {
-                        foundClass.rightTreeName = value;
+                        foundClass.middleTreeName = value;
                     }
                     else if (line.ToLower().Contains("RightAbilityTreeTitle".ToLower()) || line.ToLower().Contains("AbilityTreeTitles[2]".ToLower()))
                     {
@@ -397,7 +401,7 @@ namespace Xcom2ClassManager.FileManagers
                 {
                     ability.id = ProjectState.getNextAbilityId() + abilityIdIncrementor;
                     ability.weaponSlot = matchingMissingAbilities.First().weaponSlot;
-                    ability.requiredMod = "Class Import";
+                    ability.requiredMod = modName;
                     abilityIdIncrementor++;
 
                     foreach (MissingAbilityEntry missingAbility in matchingMissingAbilities)
@@ -409,6 +413,13 @@ namespace Xcom2ClassManager.FileManagers
                         SoldierClass classToUpdate = soldierClasses.Where(x => x.metadata.internalName == missingAbility.className).FirstOrDefault();
                         classToUpdate.soldierAbilities.Add(soldierAbility);
                     }
+                }
+                else if (!onlyClassAbility)
+                {
+                    ability.id = ProjectState.getNextAbilityId() + abilityIdIncrementor;
+                    ability.weaponSlot = WeaponSlot.None;
+                    ability.requiredMod = modName;
+                    abilityIdIncrementor++;
                 }
             }
 
@@ -427,7 +438,7 @@ namespace Xcom2ClassManager.FileManagers
                 }
             }
 
-            newAbilities = foundAbilities.Where(x => x.requiredMod == "Class Import").ToList();
+            newAbilities = foundAbilities;
         }
 
         private void importGameFile()

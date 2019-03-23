@@ -230,6 +230,13 @@ namespace Xcom2ClassManager.Forms
             initAbilityDataSource(combo, true);
         }
 
+        public void reloadAbilities()
+        {
+            ProjectState.reloadAbilities();
+            initAbilitiesDataSources();
+            openSoldierAbilities(ProjectState.getOpenSoldierClass());
+        }
+
         #region Populate Form With Class
 
         private void open(SoldierClass soldierClass)
@@ -1707,7 +1714,7 @@ namespace Xcom2ClassManager.Forms
 
         private void classesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ImportClassesForm dialog = new ImportClassesForm();
+            ImportClassesForm dialog = new ImportClassesForm(this);
             dialog.ShowDialog();
         }
     }

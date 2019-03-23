@@ -11,13 +11,15 @@ namespace Xcom2ClassManager.Forms
     {
         private bool imported;
         private List<Ability> newAbilities;
+        private OverviewForm overviewForm;
 
-        public ImportClassesForm()
+        public ImportClassesForm(OverviewForm overviewForm)
         {
             InitializeComponent();
 
             imported = false;
             newAbilities = new List<Ability>();
+            this.overviewForm = overviewForm;
 
             updateControls();
         }
@@ -30,7 +32,7 @@ namespace Xcom2ClassManager.Forms
             }
 
             SoldierClassImporter importer = new SoldierClassImporter();
-            List<SoldierClass> newClasses = importer.importSoldierClasses(tFileInt.Text, tFileClass.Text, tFileGame.Text, out newAbilities);
+            List<SoldierClass> newClasses = importer.importSoldierClasses(tFileInt.Text, tFileClass.Text, tFileGame.Text, tModName.Text, true, out newAbilities);
             foreach (SoldierClass newClass in newClasses)
             {
                 chListClasses.Items.Add(newClass, true);
@@ -118,14 +120,10 @@ namespace Xcom2ClassManager.Forms
                 ProjectState.addSoldierClass(soldierClass);
             }
 
-            foreach (Ability ability in newAbilities)
-            {
-                ability.requiredMod = tModName.Text;
-            }
-
             AbilityManager abilityManager = new AbilityManager();
             abilityManager.addAbilities(newAbilities);
-            ProjectState.reloadAbilities();
+
+            overviewForm.reloadAbilities();
 
             Close();
         }
