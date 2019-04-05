@@ -41,9 +41,11 @@ namespace Xcom2ClassManager.Exporters
 
                     if (!string.IsNullOrEmpty(abilityTree))
                     {
-                        thisAbility = ",";
+                        thisAbility += ",";
                     }
 
+                    thisAbility += "(AbilityType=";
+                    
                     thisAbility += "(AbilityName=" + Utils.encaseStringInQuotes(soldierAbility.internalName);
 
                     if (soldierAbility.weaponSlot != WeaponSlot.None)
@@ -52,14 +54,13 @@ namespace Xcom2ClassManager.Exporters
                     }
 
                     thisAbility += ")";
-
-                    thisAbility = string.Format("(AbilityType={0})", thisAbility);
-
+                    thisAbility += ")";
+                    
                     abilityTree += thisAbility;
                 }
             }
 
-            abilityTree = "AbilitySlots=(" + abilityTree + "),";
+            abilityTree = "(AbilitySlots=(" + abilityTree + "),";
 
             return abilityTree;
         }
