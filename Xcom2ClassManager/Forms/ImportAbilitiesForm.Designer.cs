@@ -269,7 +269,7 @@
             this.Controls.Add(this.tFileInt);
             this.Controls.Add(this.chListAbilities);
             this.Name = "ImportAbilitiesForm";
-            this.Text = "ImportAbilities";
+            this.Text = "Import Abilities";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

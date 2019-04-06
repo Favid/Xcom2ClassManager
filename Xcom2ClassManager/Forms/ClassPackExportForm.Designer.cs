@@ -186,7 +186,7 @@
             this.Controls.Add(this.tDestination);
             this.Controls.Add(this.chlClasses);
             this.Name = "ClassPackExportForm";
-            this.Text = "ClassPackExportForm";
+            this.Text = "Export Classes";
             this.Load += new System.EventHandler(this.ClassPackExportForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

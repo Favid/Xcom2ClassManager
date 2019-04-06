@@ -1061,6 +1061,8 @@ namespace Xcom2ClassManager.Forms
         {
             clearAllControls();
             disableAllControls();
+
+            laFile.Text = "File: None";
         }
         
         private void openToolStripMenuItem_Click(object sender, EventArgs e)

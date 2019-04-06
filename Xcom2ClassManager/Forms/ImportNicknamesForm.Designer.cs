@@ -136,6 +136,7 @@
             this.bClose.TabIndex = 46;
             this.bClose.Text = "Close";
             this.bClose.UseVisualStyleBackColor = true;
+            this.bClose.Click += new System.EventHandler(this.bClose_Click);
             // 
             // ImportNicknamesForm
             // 
@@ -153,7 +154,7 @@
             this.Controls.Add(this.bBrowse);
             this.Controls.Add(this.tFile);
             this.Name = "ImportNicknamesForm";
-            this.Text = "ImportNicknamesForm";
+            this.Text = "Import Nicknames";
             this.ResumeLayout(false);
             this.PerformLayout();
 

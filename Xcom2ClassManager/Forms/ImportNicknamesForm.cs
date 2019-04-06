@@ -307,6 +307,9 @@ namespace Xcom2ClassManager.Forms
             return false;
         }
 
-
+        private void bClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
