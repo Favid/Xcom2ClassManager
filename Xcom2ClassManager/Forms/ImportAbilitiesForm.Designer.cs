@@ -211,6 +211,7 @@
             this.tModName.Name = "tModName";
             this.tModName.Size = new System.Drawing.Size(313, 20);
             this.tModName.TabIndex = 37;
+            this.tModName.TextChanged += new System.EventHandler(this.tModName_TextChanged);
             // 
             // bSave
             // 
@@ -229,7 +230,6 @@
             this.tFileClass.ReadOnly = true;
             this.tFileClass.Size = new System.Drawing.Size(313, 20);
             this.tFileClass.TabIndex = 41;
-            this.tFileClass.Text = "     (Optional)";
             // 
             // label2
             // 

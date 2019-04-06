@@ -15,6 +15,9 @@ namespace Xcom2ClassManager.Forms
 {
     public partial class ImportAbilitiesForm : Form
     {
+        private const string CLASS_DATA_FILE_DEFAULT_TEXT = "     (Optional)";
+
+        private bool imported;
         private List<Ability> allAbilities;
         private OverviewForm overviewForm;
 
@@ -22,6 +25,7 @@ namespace Xcom2ClassManager.Forms
         {
             InitializeComponent();
 
+            imported = false;
             this.overviewForm = overviewForm;
             this.allAbilities = allAbilities;
 
@@ -32,9 +36,13 @@ namespace Xcom2ClassManager.Forms
             weaponSlots.Add(WeaponSlot.Secondary);
             weaponSlots.Add(WeaponSlot.Heavy);
 
+            tFileClass.Text = CLASS_DATA_FILE_DEFAULT_TEXT;
+
             cWeaponSlot.DataSource = weaponSlots;
 
             cWeaponSlot.SelectedIndex = 0;
+
+            updateControls();
         }
 
         private void bImport_Click(object sender, EventArgs e)
@@ -48,7 +56,7 @@ namespace Xcom2ClassManager.Forms
 
             List<Ability> newAbilities;
 
-            if (string.IsNullOrEmpty(tFileClass.Text) || tFileClass.Text == "     (Optional)")
+            if (string.IsNullOrEmpty(tFileClass.Text) || tFileClass.Text == CLASS_DATA_FILE_DEFAULT_TEXT)
             {
                 newAbilities = importer.importAbilities(tFileInt.Text, tModName.Text);
             }
@@ -62,6 +70,9 @@ namespace Xcom2ClassManager.Forms
             {
                 chListAbilities.Items.Add(foundAbility);
             }
+
+            imported = true;
+            updateControls();
         }
 
         private Ability importAbility(StreamReader file, string startingLine)
@@ -93,12 +104,12 @@ namespace Xcom2ClassManager.Forms
         private void bBrowseInt_Click(object sender, EventArgs e)
         {
             tFileInt.Text = browse("XComGame.INT");
-            //updateControls();
+            updateControls();
         }
         private void bBrowseClass_Click(object sender, EventArgs e)
         {
             tFileClass.Text = browse("XComClassData.ini");
-            //updateControls();
+            updateControls();
         }
 
         private string browse(string expectedFileName)
@@ -165,6 +176,8 @@ namespace Xcom2ClassManager.Forms
             tDisplayName.Text = selectedAbility.displayName;
             tDescription.Text = selectedAbility.description;
             cWeaponSlot.SelectedItem = selectedAbility.weaponSlot;
+
+            updateControls();
         }
 
         private void bClose_Click(object sender, EventArgs e)
@@ -217,6 +230,30 @@ namespace Xcom2ClassManager.Forms
                 selectedAbility.weaponSlot = (WeaponSlot)cWeaponSlot.SelectedItem;
                 chListAbilities.Refresh();
             }
+        }
+
+        private void updateControls()
+        {
+            bool filesSelected = (tFileInt.Text != string.Empty &&
+                                  tModName.Text != string.Empty);
+
+            bImport.Enabled = !imported && filesSelected;
+            bBrowseClass.Enabled = !imported;
+            bBrowseInt.Enabled = !imported;
+            tModName.Enabled = !imported;
+
+            chListAbilities.Enabled = imported;
+            tInternalName.Enabled = chListAbilities.SelectedIndex >= 0;
+            tDisplayName.Enabled = chListAbilities.SelectedIndex >= 0;
+            tDescription.Enabled = chListAbilities.SelectedIndex >= 0;
+            cWeaponSlot.Enabled = chListAbilities.SelectedIndex >= 0;
+
+            bSave.Enabled = imported && chListAbilities.CheckedItems.Count > 0;
+        }
+
+        private void tModName_TextChanged(object sender, EventArgs e)
+        {
+            updateControls();
         }
     }
 }
