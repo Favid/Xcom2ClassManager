@@ -15,13 +15,17 @@ namespace Xcom2ClassManager.Forms
     public partial class ImportNicknamesForm : Form
     {
         private ClassPack classPack;
+        private bool imported;
 
         public ImportNicknamesForm(ClassPack classPack)
         {
+            imported = false;
             this.classPack = classPack;
             InitializeComponent();
             cSoldierClass.DataSource = classPack.soldierClasses;
             cSoldierClass.SelectedIndex = 0;
+
+            updateControls();
         }
 
         private void bBrowse_Click(object sender, EventArgs e)
@@ -52,6 +56,7 @@ namespace Xcom2ClassManager.Forms
             } while (!validFolder.valid);
 
             tFile.Text = dialog.FileName;
+            updateControls();
         }
 
         private ValidationResult validateIntFile(string fileName)
@@ -119,6 +124,9 @@ namespace Xcom2ClassManager.Forms
 
                 populateTree(nicknames, className);
             }
+
+            imported = true;
+            updateControls();
         }
 
         private ClassNickname getNicknameFromLine(string line)
@@ -253,11 +261,13 @@ namespace Xcom2ClassManager.Forms
                     }
                 }
             }
+
+            updateControls();
         }
 
         private bool allNodesChecked(TreeNodeCollection treeNodes)
         {
-            foreach(TreeNode treeNode in treeNodes)
+            foreach (TreeNode treeNode in treeNodes)
             {
                 if(!treeNode.Checked)
                 {
@@ -266,6 +276,35 @@ namespace Xcom2ClassManager.Forms
             }
 
             return true;
+        }
+
+        private void updateControls()
+        {
+            bool fileSelected = (tFile.Text != string.Empty);
+
+            bImport.Enabled = !imported && fileSelected;
+            tvClassNicknames.Enabled = imported;
+            cSoldierClass.Enabled = imported;
+            bSave.Enabled = AnyChecked();
+        }
+
+        private bool AnyChecked()
+        {
+            foreach (TreeNode classNode in tvClassNicknames.Nodes)
+            {
+                foreach (TreeNode genderNode in classNode.Nodes)
+                {
+                    foreach (TreeNode nicknameNode in genderNode.Nodes)
+                    {
+                        if (nicknameNode.Checked)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
 

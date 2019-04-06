@@ -73,6 +73,7 @@
             // 
             this.tFile.Location = new System.Drawing.Point(74, 12);
             this.tFile.Name = "tFile";
+            this.tFile.ReadOnly = true;
             this.tFile.Size = new System.Drawing.Size(290, 20);
             this.tFile.TabIndex = 38;
             // 
