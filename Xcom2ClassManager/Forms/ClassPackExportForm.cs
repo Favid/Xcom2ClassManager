@@ -88,6 +88,13 @@ namespace Xcom2ClassManager.Forms
         private void bExport_Click(object sender, EventArgs e)
         {
             string destination = tDestination.Text;
+
+            if (!Directory.Exists(destination))
+            {
+                MessageBox.Show("Destination is not a valid folder.");
+                return;
+            }
+
             List<SoldierClass> soldiersToExport = chlClasses.CheckedItems.Cast<SoldierClass>().ToList();
 
             if (chXcomClassDataIni.Checked)
