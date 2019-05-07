@@ -115,6 +115,12 @@ namespace Xcom2ClassManager.Forms
                 exporter.export(chDebugClasses.Checked);
             }
 
+            if (chCRO.Checked)
+            {
+                TLPExporter exporter = new TLPExporter(destination, soldiersToExport);
+                exporter.export();
+            }
+
             Process.Start(destination);
         }
 

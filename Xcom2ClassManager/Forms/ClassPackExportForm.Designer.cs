@@ -41,6 +41,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chDebugClasses = new System.Windows.Forms.CheckBox();
             this.lRequiredMods = new System.Windows.Forms.ListBox();
+            this.chCRO = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -144,6 +145,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chCRO);
             this.groupBox2.Controls.Add(this.chDebugClasses);
             this.groupBox2.Location = new System.Drawing.Point(396, 163);
             this.groupBox2.Name = "groupBox2";
@@ -170,6 +172,16 @@
             this.lRequiredMods.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lRequiredMods.Size = new System.Drawing.Size(321, 121);
             this.lRequiredMods.TabIndex = 45;
+            // 
+            // chCRO
+            // 
+            this.chCRO.AutoSize = true;
+            this.chCRO.Location = new System.Drawing.Point(7, 42);
+            this.chCRO.Name = "chCRO";
+            this.chCRO.Size = new System.Drawing.Size(171, 17);
+            this.chCRO.TabIndex = 5;
+            this.chCRO.Text = "Custom Resistance Operations";
+            this.chCRO.UseVisualStyleBackColor = true;
             // 
             // ClassPackExportForm
             // 
@@ -212,5 +224,6 @@
         private System.Windows.Forms.ListBox lRequiredMods;
         private System.Windows.Forms.CheckBox chXcomGameDataIni;
         private System.Windows.Forms.CheckBox chDebugClasses;
+        private System.Windows.Forms.CheckBox chCRO;
     }
 }

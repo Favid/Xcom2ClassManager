@@ -55,6 +55,7 @@
     <Compile Include="DataObjects\ClassNickname.cs" />
     <Compile Include="DataObjects\ProjectState.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Exporters\TLPExporter.cs" />
     <Compile Include="Exporters\XComClassDataIniExporter.cs" />
     <Compile Include="Exporters\XComClassDataIniExporterWOTC.cs" />
     <Compile Include="Exporters\XComGameDataIniExporter.cs" />
