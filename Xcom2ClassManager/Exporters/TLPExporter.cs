@@ -217,13 +217,18 @@ namespace Xcom2ClassManager.Exporters
 
         private string buildUtilityItemTemplate(SoldierClass soldier, int abilitySlot, SoldierRank rank, int utilitySlot)
         {
+            // going to get hacky and put in some hardcoded values for now...
             string templateName = "FragGrenade";
             if (rank >= SoldierRank.Lieutenant)
             {
                 templateName = "AlienGrenade";
             }
 
-            // going to get hacky and put in some hardcoded values for now...
+            // for slot 2, always do nothing
+            if (utilitySlot == 2)
+            {
+                templateName = "";
+            }
 
             templateName = string.Format("UtilityItem{0}Template=\"{1}\"", utilitySlot, templateName);
 
