@@ -1731,5 +1731,35 @@ namespace Xcom2ClassManager.Forms
             ImportClassesForm dialog = new ImportClassesForm(this);
             dialog.ShowDialog();
         }
+
+        private void chShowDisplayNames_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach(ComboBox control in tableLayoutPanel1.Controls.OfType<ComboBox>())
+            {
+                if (chShowDisplayNames.Checked && control.DisplayMember == "internalName")
+                {
+                    control.DisplayMember = "displayName";
+                }
+                else if (control.DisplayMember == "displayName")
+                {
+                    control.DisplayMember = "internalName";
+                }
+            }
+        }
+
+        private void cAbility_MouseHover(object sender, EventArgs e)
+        {
+            ComboBox combo = sender as ComboBox;
+
+            if (combo != null)
+            {
+                Ability ability = combo.SelectedItem as Ability;
+
+                if (ability != null)
+                {
+                    updateHelpText(ability);
+                }
+            }
+        }
     }
 }

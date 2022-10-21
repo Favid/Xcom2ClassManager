@@ -323,6 +323,7 @@ namespace Xcom2ClassManager.FileManagers
 
             SoldierClass foundClass = null;
             List<SoldierClass> foundClasses = new List<SoldierClass>();
+            int numTreesFound = 0;
 
             while ((line = file.ReadLine()) != null)
             {
@@ -357,6 +358,7 @@ namespace Xcom2ClassManager.FileManagers
                     {
                         foundClass = new SoldierClass();
                         foundClass.metadata.internalName = line.Substring(1, line.IndexOf(' ') - 1);
+                        numTreesFound = 0;
                     }
                 }
                 else if(foundAbility != null)
@@ -396,9 +398,21 @@ namespace Xcom2ClassManager.FileManagers
                     {
                         foundClass.rightTreeName = value;
                     }
-                    else if (line.ToLower().Contains("RandomNickNames[".ToLower()))
+                    else if (line.ToLower().Contains("+AbilityTreeTitles".ToLower()))
                     {
-                        foundClass.nicknames.Add(new ClassNickname(value, NicknameGender.Unisex));
+                        switch (numTreesFound)
+                        {
+                            case 0:
+                                foundClass.leftTreeName = value;
+                                break;
+                            case 1:
+                                foundClass.middleTreeName = value;
+                                break;
+                            case 2:
+                                foundClass.rightTreeName = value;
+                                break;
+                        }
+                        numTreesFound++;
                     }
                     else if (line.ToLower().Contains("RandomNickNames_Male".ToLower()))
                     {
@@ -407,6 +421,10 @@ namespace Xcom2ClassManager.FileManagers
                     else if (line.ToLower().Contains("RandomNickNames_Female".ToLower()))
                     {
                         foundClass.nicknames.Add(new ClassNickname(value, NicknameGender.Female));
+                    }
+                    else if (line.ToLower().Contains("RandomNickNames".ToLower()))
+                    {
+                        foundClass.nicknames.Add(new ClassNickname(value, NicknameGender.Unisex));
                     }
                 }
             }
@@ -464,6 +482,7 @@ namespace Xcom2ClassManager.FileManagers
                     classToUpdate.metadata.displayName = soldierClass.metadata.displayName;
                     classToUpdate.metadata.description = soldierClass.metadata.description;
                     classToUpdate.leftTreeName = soldierClass.leftTreeName;
+                    classToUpdate.middleTreeName = soldierClass.middleTreeName;
                     classToUpdate.rightTreeName = soldierClass.rightTreeName;
                     classToUpdate.nicknames.AddRange(soldierClass.nicknames);
                 }
@@ -541,8 +560,9 @@ namespace Xcom2ClassManager.FileManagers
             if (assignIndex != -1)
             {
                 valueStartIndex = assignIndex + 1;
+
                 while (valueStartIndex < line.Length &&
-                        (delimitters.Contains(line[valueStartIndex])))
+                        (delimitters.Contains(line[valueStartIndex]) || line[valueStartIndex] == ' '))
                 {
                     valueStartIndex++;
                 }
